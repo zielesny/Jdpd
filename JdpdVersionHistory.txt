@@ -21,6 +21,19 @@
 --------------------------------------------------------------------------------
 Jdpd 1.0.0.0 (Jdpd.jar)
 --------------------------------------------------------------------------------
+for Java 8 or higher
+
+Authors:
+  - Karina van den Broek (karina.broek@studmail.w-hs.de) 
+  - Hubert Kuhn (kuhn@molecular-dynamics.de)
+  - Achim Zielesny (achim.zielesny@w-hs.de)
+
+Acknowledgements: 
+  Many thanks to Matthias Epple for helpful discussions, kind support and 
+  continual encouragement. The support of GNWI – Gesellschaft für 
+  naturwissenschaftliche Informatik mbH, Oer-Erkenschwick, Germany, is 
+  gratefully acknowledged.
+
 Dependencies:
   - commons-rng-core-1.0.jar
     commons-rng-simple-1.0.jar
@@ -32,6 +45,12 @@ Dependencies:
   - Pcg32.java
       PCG pseudorandom generator implementation for Java 
       (https://github.com/alexeyr/pcg-java)
-      Version 0.9.1      
+      Version 0.9.1
+      
+Unit tests: 
+  - Package src.de.gnwi.jdpd.tests
+  
+Simulation input file description:  
+  - File Input.txt in package src.de.gnwi.jdpd.tests.test_Water_GWMVV              
 --------------------------------------------------------------------------------
 Basic operational version
