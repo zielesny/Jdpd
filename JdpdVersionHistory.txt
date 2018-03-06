@@ -21,7 +21,7 @@
 --------------------------------------------------------------------------------
 Jdpd 1.0.0.0 (Jdpd.jar)
 --------------------------------------------------------------------------------
-Used Java libraries:
+Dependencies:
   - commons-rng-core-1.0.jar
     commons-rng-simple-1.0.jar
     commons-rng-sampling-1.0.jar
