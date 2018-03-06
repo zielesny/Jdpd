@@ -1,0 +1,177 @@
+# Input file for DPD simulation task with Jdpd
+
+# Description: DMPC Bilayer Membrane (Compartment)
+# Timestamp 2017/11/15 - 17:50:21
+
+# ------------------------------------------------------------------------------
+[GENERAL]
+# ------------------------------------------------------------------------------
+
+Version 1.0.0.0
+
+[/GENERAL]
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+[PARTICLE_DESCRIPTION]
+# ------------------------------------------------------------------------------
+
+ParticleTable
+TABLE_START
+H2O     0  18.02  
+TriMeNP 1  59.11  
+MeAc    0  74.08  
+DMPN    -1 126.05 
+Et      0  30.07  
+TABLE_END
+
+[/PARTICLE_DESCRIPTION]
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+[CHEMICAL_SYSTEM_DESCRIPTION]
+# ------------------------------------------------------------------------------
+
+MoleculeTable
+TABLE_START
+Water PositionsBonds0.txt 
+DMPC  PositionsBonds1.txt 
+TABLE_END
+
+BoxSize 42.209086 42.209086 42.209086
+
+MoleculeFixation
+TABLE_START
+Water false false false 
+DMPC  false false false 
+TABLE_END
+
+MoleculeBoundary
+TABLE_START
+Water false 0 42.209086 false 0 42.209086 false 0 42.209086 
+DMPC  false 0 42.209086 false 0 42.209086 false 0 42.209086 
+TABLE_END
+
+MoleculeFixedVelocity
+TABLE_START
+Water false 0 false 0 false 0 
+DMPC  false 0 false 0 false 0 
+TABLE_END
+
+MoleculeAcceleration
+TABLE_START
+Water 0 0 0 1 
+DMPC  0 0 0 1 
+TABLE_END
+
+RadiusOfGyration
+TABLE_START
+Water false 
+DMPC  false 
+TABLE_END
+
+NearestNeighborParticle
+TABLE_START
+DMPC  DMPN    false 
+DMPC  Et      false 
+DMPC  MeAc    false 
+DMPC  TriMeNP false 
+Water H2O     false 
+TABLE_END
+
+NearestNeighborDistance 2
+
+[/CHEMICAL_SYSTEM_DESCRIPTION]
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+[INTERACTION_DESCRIPTION]
+# ------------------------------------------------------------------------------
+
+Temperature 0.983221
+
+DpdSigma 3
+
+IsGaussianRandomDpdForce false
+
+InteractionTable
+TABLE_START
+DMPN    DMPN    50.000000 
+DMPN    H2O     13.515800 
+DMPN    MeAc    26.790600 
+DMPN    TriMeNP 1.000000  
+Et      DMPN    43.061300 
+Et      Et      23.030000 
+Et      H2O     38.071800 
+Et      MeAc    17.479800 
+Et      TriMeNP 34.925900 
+H2O     H2O     23.030000 
+MeAc    H2O     28.588300 
+MeAc    MeAc    23.030000 
+MeAc    TriMeNP 24.243900 
+TriMeNP H2O     22.411900 
+TriMeNP TriMeNP 50.000000 
+TABLE_END
+
+#              Cutoff Maximum force Effective charge Effective exponent Damping distance Damping factor
+Electrostatics 5      100           1                2                  5                1
+
+Bonds12Table
+TABLE_START
+DMPN    DMPN    1.233 4 true 
+DMPN    H2O     1.031 4 true 
+DMPN    MeAc    1.186 4 true 
+DMPN    TriMeNP 1.186 4 true 
+Et      DMPN    1.122 4 true 
+Et      Et      1.010 4 true 
+Et      H2O     0.919 4 true 
+Et      MeAc    1.074 4 true 
+Et      TriMeNP 1.074 4 true 
+H2O     H2O     0.829 4 true 
+MeAc    H2O     0.983 4 true 
+MeAc    MeAc    1.138 4 true 
+MeAc    TriMeNP 1.138 4 true 
+TriMeNP H2O     0.983 4 true 
+TriMeNP TriMeNP 1.138 4 true 
+TABLE_END
+
+GravitationalAcceleration 0 0 0
+
+[/INTERACTION_DESCRIPTION]
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+[SIMULATION_DESCRIPTION]
+# ------------------------------------------------------------------------------
+
+TimeStepNumber 100
+
+TimeStepLength 0.04
+
+TimeStepFrequencyForOutput 10
+
+IntegrationType GWMVV 0.65 none
+
+InitialPotentialEnergyMinimizationStepNumber 50
+
+IsInitialPotentialEnergyMinimizationStepOutput false
+
+PeriodicBoundaries true true false
+
+IsDpdUnitMass true
+
+IsVelocityScaling false
+
+RandomNumberGenerator ACRNG_MT 123456 10000
+
+[/SIMULATION_DESCRIPTION]
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+[SIMULATION_COUNTS]
+# ------------------------------------------------------------------------------
+
+ParticleNumber 225600
+
+[/SIMULATION_COUNTS]
+# ------------------------------------------------------------------------------

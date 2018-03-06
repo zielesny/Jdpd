@@ -1,0 +1,712 @@
+---------------------------------------
+DPD Simulation:
+Logger started at 2018/02/26 - 19:25:29
+---------------------------------------
+(RESULT): FileInput.getFactory: Random type           = ACRNG_MT
+(RESULT): FileInput.getFactory: Random seed           = 123456
+(RESULT): FileInput.getFactory: Random warm-up steps  = 10000
+(RESULT): FileInput.getFactory: DPD type              = CUTOFF_LENGTH_ONE
+(RESULT): FileInput.getFactory: Electrostatics type   = AD_HOC
+(RESULT): FileInput.getFactory: Harmonic bond type    = DEFAULT
+(RESULT): FileInput.getFactory: Integration type      = GWMVV
+(RESULT): FileInput.getFactory: Integration parameter = 0.65
+(A_IJ): a(H2O, H2O) = 23.03
+(RESULT): DpdSimulationTask.setParameters: No electrostatics parameters
+(RESULT): DpdSimulationTask.setParameters: No gravitational acceleration 
+(RESULT): DpdSimulationTask.setParameters: No bonds
+(RESULT): DpdSimulationTask.setParameters: No charged particles
+(RESULT): DpdSimulationTask.setParameters: Molecule number                = 1
+(RESULT): DpdSimulationTask.setParameters: No molecule fixations
+(RESULT): DpdSimulationTask.setParameters: No molecule boundaries
+(RESULT): DpdSimulationTask.setParameters: No molecule velocity fixations
+(RESULT): DpdSimulationTask.setParameters: No molecule accelerations
+(RESULT): DpdSimulationTask.setParameters: No molecule Rg calculations
+(RESULT): DpdSimulationTask.setParameters: No nearest-neigbor determination
+(RESULT): DpdSimulationTask.initialiseVelocities, tmpUkin = 36029.102551470336
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 175503.7769841681
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 174137.32808159775
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 175539.2998726577
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 175289.11688091734
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Upot(START)       = 175503.7769841681
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 154533.23507632155
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 170202.13167311103
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 171389.60400444543
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 170994.22219572373
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 1, Timestep Length = 0.02
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 1, Upot(Min)       = 154533.23507632155
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 129484.69372145963
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 164227.74725926644
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 165189.42807516642
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 164655.1728741263
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 2, Timestep Length = 0.04
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 2, Upot(Min)       = 129484.69372145963
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 106062.51249410867
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 157668.64114578388
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 158332.78817696584
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 157837.1885702751
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 3, Timestep Length = 0.08
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 3, Upot(Min)       = 106062.51249410867
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 95372.2800207118
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 154170.01444096066
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 154321.956242876
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 154135.31616470177
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 4, Timestep Length = 0.16
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 4, Upot(Min)       = 95372.2800207118
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 122274.40011649315
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 159600.29983411127
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 160016.06643656897
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 160380.93183385752
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 5, Timestep Length = 0.32
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 5, Upot(Current)   = 122274.40011649315
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 91613.88854216895
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 157666.47121655615
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 157967.44616980353
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 157859.96767113043
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 6, Timestep Length = 0.16
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 6, Upot(Min)       = 91613.88854216895
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 183596.8216461943
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 164723.1357557934
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 164573.964675249
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 163967.56475699076
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 7, Timestep Length = 0.32
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 7, Upot(Current)   = 183596.8216461943
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 118581.83654428384
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 159511.16304297396
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 160122.93614318245
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 159500.3877369002
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 8, Timestep Length = 0.16
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 8, Upot(Current)   = 118581.83654428384
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 88558.31208037227
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 158300.104067751
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 158581.05653961186
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 158348.5014702291
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 9, Timestep Length = 0.08
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 9, Upot(Min)       = 88558.31208037227
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 151181.32821314185
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 161801.96347076716
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 162537.73166428995
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 162199.3072778734
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 10, Timestep Length = 0.16
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 10, Upot(Current)   = 151181.32821314185
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 98029.52515258966
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 160451.9158111579
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 160915.502511431
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 160646.0117843418
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 11, Timestep Length = 0.08
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 11, Upot(Current)   = 98029.52515258966
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 84581.94072227566
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 159434.68297380747
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 159761.345515725
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 159544.50416825755
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 12, Timestep Length = 0.04
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 12, Upot(Min)       = 84581.94072227566
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 93699.61778683405
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 161383.2144428832
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 161692.84891205563
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 161521.44639919963
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 13, Timestep Length = 0.08
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 13, Upot(Current)   = 93699.61778683405
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 84195.98521197884
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 160444.17691120112
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 160694.33861572333
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 160497.40213093424
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 14, Timestep Length = 0.04
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 14, Upot(Min)       = 84195.98521197884
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 161979.6918073305
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 162893.01445395837
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 163792.0113382665
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 164595.76956476035
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 15, Timestep Length = 0.08
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 15, Upot(Current)   = 161979.6918073305
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 107475.6807799646
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 162951.25466704913
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 163709.73503788785
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 163553.86267757573
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 16, Timestep Length = 0.04
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 16, Upot(Current)   = 107475.6807799646
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 86632.66134690915
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 161546.86970506926
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 161969.97855060652
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 161713.64447720532
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 17, Timestep Length = 0.02
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 17, Upot(Current)   = 86632.66134690915
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 82552.40114321996
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 161078.21923795302
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 161384.0949231739
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 161148.113966164
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 18, Timestep Length = 0.01
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 18, Upot(Min)       = 82552.40114321996
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 82164.44802338963
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 161755.01286800407
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 161972.31819601462
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 161785.56735777747
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 19, Timestep Length = 0.02
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 19, Upot(Min)       = 82164.44802338963
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 92030.80960280349
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 163684.5280353275
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 164236.86626100482
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 164135.08662332827
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 20, Timestep Length = 0.04
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 20, Upot(Current)   = 92030.80960280349
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 83504.8099311837
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 162597.97836955465
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 162964.78966177363
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 162749.2332700693
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 21, Timestep Length = 0.02
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 21, Upot(Current)   = 83504.8099311837
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 81792.19896011583
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 162183.9064270695
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 162474.79436451645
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 162251.61409611107
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 22, Timestep Length = 0.01
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 22, Upot(Min)       = 81792.19896011583
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 81797.63840506953
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 162734.12850318704
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 162915.29985393188
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 162798.41721768017
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 23, Timestep Length = 0.02
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 23, Upot(Current)   = 81797.63840506953
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 81402.54544582739
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 162506.08132596329
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 162730.862745314
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 162552.50126091507
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 24, Timestep Length = 0.01
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 24, Upot(Min)       = 81402.54544582739
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 81130.59609703161
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 163138.36717867202
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 163396.305539692
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 163208.18501083713
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 25, Timestep Length = 0.02
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 25, Upot(Min)       = 81130.59609703161
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 82998.19083760248
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 163858.54396230262
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 164101.235821974
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 164050.42231054915
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 26, Timestep Length = 0.04
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 26, Upot(Current)   = 82998.19083760248
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 81112.41291796847
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 163440.2577282676
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 163650.62364920008
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 163518.25369832598
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 27, Timestep Length = 0.02
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 27, Upot(Min)       = 81112.41291796847
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 89849.68162336481
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 164691.4290824985
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 165331.84158846713
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 165159.2772502937
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 28, Timestep Length = 0.04
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 28, Upot(Current)   = 89849.68162336481
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 82337.60694248947
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 163845.95251355902
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 164201.36238467283
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 164001.30174811618
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 29, Timestep Length = 0.02
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 29, Upot(Current)   = 82337.60694248947
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 80797.62867580295
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 163612.74778704677
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 163869.55602779085
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 163695.36298608512
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 30, Timestep Length = 0.01
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 30, Upot(Min)       = 80797.62867580295
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 81166.0369022177
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 163912.24082892927
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 164143.9344625019
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 164035.7120121047
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 31, Timestep Length = 0.02
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 31, Upot(Current)   = 81166.0369022177
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 80598.39727081679
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 163782.71101615173
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 164005.5845866067
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 163858.10477830854
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 32, Timestep Length = 0.01
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 32, Upot(Min)       = 80598.39727081679
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 82515.45989256281
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 164490.38317982922
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 164842.5829305967
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 164645.59711889437
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 33, Timestep Length = 0.02
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 33, Upot(Current)   = 82515.45989256281
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 80785.16916218898
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 164078.07801046447
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 164341.357528206
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 164166.50670628707
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 34, Timestep Length = 0.01
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 34, Upot(Current)   = 80785.16916218898
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 80484.67503804645
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 163942.11448327976
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 164181.64588728407
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 164017.42911078717
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 35, Timestep Length = 0.005
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 35, Upot(Min)       = 80484.67503804645
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 80452.81972681268
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 164133.7280929902
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 164350.87784388693
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 164214.63562854458
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 36, Timestep Length = 0.01
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 36, Upot(Min)       = 80452.81972681268
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 82132.08646012621
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 164591.11915648868
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 164930.07054190958
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 164727.63597878942
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 37, Timestep Length = 0.02
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 37, Upot(Current)   = 82132.08646012621
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 80488.98476108388
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 164286.45398180594
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 164526.66843884712
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 164360.40052163345
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 38, Timestep Length = 0.01
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 38, Upot(Current)   = 80488.98476108388
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 80254.41640043614
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 164228.41901228236
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 164444.40112581995
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 164295.5320610247
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 39, Timestep Length = 0.005
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 39, Upot(Min)       = 80254.41640043614
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 80154.38935986074
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 164480.39776925114
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 164676.03968996444
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 164537.43522202116
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 40, Timestep Length = 0.01
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 40, Upot(Min)       = 80154.38935986074
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 82617.86301114342
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 165086.51067878725
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 165418.41602769739
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 165251.29722615724
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 41, Timestep Length = 0.02
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 41, Upot(Current)   = 82617.86301114342
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 80476.13967428607
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 164670.86486162932
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 164890.25722302272
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 164740.78386145315
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 42, Timestep Length = 0.01
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 42, Upot(Current)   = 80476.13967428607
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 80059.48876601495
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 164554.79669334754
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 164750.57385989878
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 164614.7395636639
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 43, Timestep Length = 0.005
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 43, Upot(Min)       = 80059.48876601495
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 80015.86401634268
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 164631.95018650725
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 164806.17276061667
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 164690.80436949787
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 44, Timestep Length = 0.01
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 44, Upot(Min)       = 80015.86401634268
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 81790.89473346321
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 165127.14778075338
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 165404.74898929862
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 165237.17568110203
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 45, Timestep Length = 0.02
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 45, Upot(Current)   = 81790.89473346321
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 80222.64330751085
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 164783.19658295298
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 164972.48770258663
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 164844.65103370717
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 46, Timestep Length = 0.01
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 46, Upot(Current)   = 80222.64330751085
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 79931.22775635358
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 164693.83260182882
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 164868.2883184112
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 164753.21577911457
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 47, Timestep Length = 0.005
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 47, Upot(Min)       = 79931.22775635358
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 79897.5615650565
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 164756.73279043086
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 164918.79394189653
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 164811.2459523467
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 48, Timestep Length = 0.01
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 48, Upot(Min)       = 79897.5615650565
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 81300.68424152645
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 165184.57468569555
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 165408.1680249353
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 165264.36002516904
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 49, Timestep Length = 0.02
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 49, Upot(Current)   = 81300.68424152645
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 80052.21259930679
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 164883.10336661513
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 165046.64660446582
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 164939.15949508763
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 50, Timestep Length = 0.01
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 50, Upot(Current)   = 80052.21259930679
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Upot(Minimum) = 79897.5615650565
+<(OUTPUT_STEP): Output time step = 1 (ID = 9)
+|  (RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 83240.10975592764
+|  (RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 163115.53372451535
+|  (RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 163105.53649548595
+|  (RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 163049.7881516686
+|  (RESULT): DpdSimulationTask.call: Temperature              = 0.8978303302889211
+|  (RESULT): DpdSimulationTask.call: U(pot)                   = 83240.10975592764
+|  (RESULT): DpdSimulationTask.call: U(kin)                   = 32321.89189040116
+|  (RESULT): DpdSimulationTask.call: U(total)                 = 115562.0016463288
+|  (RESULT): DpdSimulationTask.call: Surface Tension X        = 0.09467850234519574
+|  (RESULT): DpdSimulationTask.call: Surface Tension Y        = 0.057188893484926666
+|  (RESULT): DpdSimulationTask.call: Surface Tension Z        = -0.1518673958301224
+|  (RESULT): DpdSimulationTask.call: Surface Tension Norm     = 0.18787840285829185
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension X    = 0.09467850234519574
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Y    = 0.057188893484926666
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Z    = -0.1518673958301224
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Norm = 0.18787840285829185
+>(OUTPUT_STEP): Output time step = 1 (ID = 9)
+<(OUTPUT_STEP): Output time step = 100 (ID = 207)
+|  (RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 101508.89266088599
+|  (RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 151888.92851715448
+|  (RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 152200.08484656663
+|  (RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 152133.50227304664
+|  (RESULT): DpdSimulationTask.call: Temperature              = 0.9706993698534835
+|  (RESULT): DpdSimulationTask.call: U(pot)                   = 101508.89266088599
+|  (RESULT): DpdSimulationTask.call: U(kin)                   = 34945.177314725406
+|  (RESULT): DpdSimulationTask.call: U(total)                 = 136454.0699756114
+|  (RESULT): DpdSimulationTask.call: Surface Tension X        = -0.6946626066304452
+|  (RESULT): DpdSimulationTask.call: Surface Tension Y        = 0.4721736286651867
+|  (RESULT): DpdSimulationTask.call: Surface Tension Z        = 0.22248897796525852
+|  (RESULT): DpdSimulationTask.call: Surface Tension Norm     = 0.8689104775369437
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension X    = -0.6946626066304452
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Y    = 0.4721736286651867
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Z    = 0.22248897796525852
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Norm = 0.8689104775369437
+>(OUTPUT_STEP): Output time step = 100 (ID = 207)
+<(OUTPUT_STEP): Output time step = 200 (ID = 407)
+|  (RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 101901.56288572826
+|  (RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 151743.83568981808
+|  (RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 152405.48465936235
+|  (RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 152424.16304157028
+|  (RESULT): DpdSimulationTask.call: Temperature              = 0.9812685427782443
+|  (RESULT): DpdSimulationTask.call: U(pot)                   = 101901.56288572826
+|  (RESULT): DpdSimulationTask.call: U(kin)                   = 35325.667540016795
+|  (RESULT): DpdSimulationTask.call: U(total)                 = 137227.23042574505
+|  (RESULT): DpdSimulationTask.call: Surface Tension X        = -1.6774704016205941
+|  (RESULT): DpdSimulationTask.call: Surface Tension Y        = 0.8037132341704273
+|  (RESULT): DpdSimulationTask.call: Surface Tension Z        = 0.8737571674501668
+|  (RESULT): DpdSimulationTask.call: Surface Tension Norm     = 2.0550701931477633
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension X    = -1.6774704016205941
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Y    = 0.8037132341704273
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Z    = 0.8737571674501668
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Norm = 2.0550701931477633
+>(OUTPUT_STEP): Output time step = 200 (ID = 407)
+<(OUTPUT_STEP): Output time step = 300 (ID = 607)
+|  (RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 101994.84553763019
+|  (RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 152346.3569511847
+|  (RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 152016.79459983864
+|  (RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 152279.72194394772
+|  (RESULT): DpdSimulationTask.call: Temperature              = 0.9777072037044527
+|  (RESULT): DpdSimulationTask.call: U(pot)                   = 101994.84553763019
+|  (RESULT): DpdSimulationTask.call: U(kin)                   = 35197.4593333603
+|  (RESULT): DpdSimulationTask.call: U(total)                 = 137192.30487099048
+|  (RESULT): DpdSimulationTask.call: Surface Tension X        = 0.49524669822872963
+|  (RESULT): DpdSimulationTask.call: Surface Tension Y        = -0.7406121193189028
+|  (RESULT): DpdSimulationTask.call: Surface Tension Z        = 0.24536542109010043
+|  (RESULT): DpdSimulationTask.call: Surface Tension Norm     = 0.924110271155568
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension X    = 0.49524669822872963
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Y    = -0.7406121193189028
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Z    = 0.24536542109010043
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Norm = 0.924110271155568
+>(OUTPUT_STEP): Output time step = 300 (ID = 607)
+<(OUTPUT_STEP): Output time step = 400 (ID = 807)
+|  (RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 101791.62183906668
+|  (RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 151699.78729933468
+|  (RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 151970.71970734902
+|  (RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 152099.62821903356
+|  (RESULT): DpdSimulationTask.call: Temperature              = 0.9848929489741152
+|  (RESULT): DpdSimulationTask.call: U(pot)                   = 101791.62183906668
+|  (RESULT): DpdSimulationTask.call: U(kin)                   = 35456.146163068144
+|  (RESULT): DpdSimulationTask.call: U(total)                 = 137247.7680021348
+|  (RESULT): DpdSimulationTask.call: Surface Tension X        = -0.8384666596414899
+|  (RESULT): DpdSimulationTask.call: Surface Tension Y        = 0.17752987041225424
+|  (RESULT): DpdSimulationTask.call: Surface Tension Z        = 0.6609367892292357
+|  (RESULT): DpdSimulationTask.call: Surface Tension Norm     = 1.082303392573266
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension X    = -0.8384666596414899
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Y    = 0.17752987041225424
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Z    = 0.6609367892292357
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Norm = 1.082303392573266
+>(OUTPUT_STEP): Output time step = 400 (ID = 807)
+<(OUTPUT_STEP): Output time step = 500 (ID = 1007)
+|  (RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 101789.75297875577
+|  (RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 151999.8524714543
+|  (RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 152094.37759068666
+|  (RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 151821.42046732514
+|  (RESULT): DpdSimulationTask.call: Temperature              = 0.980976351886604
+|  (RESULT): DpdSimulationTask.call: U(pot)                   = 101789.75297875577
+|  (RESULT): DpdSimulationTask.call: U(kin)                   = 35315.14866791775
+|  (RESULT): DpdSimulationTask.call: U(total)                 = 137104.9016466735
+|  (RESULT): DpdSimulationTask.call: Surface Tension X        = 0.10488360612100223
+|  (RESULT): DpdSimulationTask.call: Surface Tension Y        = 0.4593528032423637
+|  (RESULT): DpdSimulationTask.call: Surface Tension Z        = -0.5642364093633659
+|  (RESULT): DpdSimulationTask.call: Surface Tension Norm     = 0.7350974726734048
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension X    = 0.10488360612100223
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Y    = 0.4593528032423637
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Z    = -0.5642364093633659
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Norm = 0.7350974726734048
+>(OUTPUT_STEP): Output time step = 500 (ID = 1007)
+<(OUTPUT_STEP): Output time step = 600 (ID = 1207)
+|  (RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 101946.60462609764
+|  (RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 151958.6063558236
+|  (RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 151939.98588945763
+|  (RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 152215.11560594782
+|  (RESULT): DpdSimulationTask.call: Temperature              = 0.9851012995408528
+|  (RESULT): DpdSimulationTask.call: U(pot)                   = 101946.60462609764
+|  (RESULT): DpdSimulationTask.call: U(kin)                   = 35463.6467834707
+|  (RESULT): DpdSimulationTask.call: U(total)                 = 137410.25140956836
+|  (RESULT): DpdSimulationTask.call: Surface Tension X        = -0.2973609796977689
+|  (RESULT): DpdSimulationTask.call: Surface Tension Y        = -0.36718772857020665
+|  (RESULT): DpdSimulationTask.call: Surface Tension Z        = 0.6645487082680483
+|  (RESULT): DpdSimulationTask.call: Surface Tension Norm     = 0.8153988998766777
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension X    = -0.2973609796977689
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Y    = -0.36718772857020665
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Z    = 0.6645487082680483
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Norm = 0.8153988998766777
+>(OUTPUT_STEP): Output time step = 600 (ID = 1207)
+<(OUTPUT_STEP): Output time step = 700 (ID = 1407)
+|  (RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 101722.37545946767
+|  (RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 151885.32478879334
+|  (RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 152021.67546953593
+|  (RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 152051.56026777992
+|  (RESULT): DpdSimulationTask.call: Temperature              = 0.9807467309277615
+|  (RESULT): DpdSimulationTask.call: U(pot)                   = 101722.37545946767
+|  (RESULT): DpdSimulationTask.call: U(kin)                   = 35306.882313399416
+|  (RESULT): DpdSimulationTask.call: U(total)                 = 137029.2577728671
+|  (RESULT): DpdSimulationTask.call: Surface Tension X        = -0.37823269966145745
+|  (RESULT): DpdSimulationTask.call: Surface Tension Y        = 0.1330823531232454
+|  (RESULT): DpdSimulationTask.call: Surface Tension Z        = 0.24515034653821202
+|  (RESULT): DpdSimulationTask.call: Surface Tension Norm     = 0.46996763741115183
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension X    = -0.37823269966145745
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Y    = 0.1330823531232454
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Z    = 0.24515034653821202
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Norm = 0.46996763741115183
+>(OUTPUT_STEP): Output time step = 700 (ID = 1407)
+<(OUTPUT_STEP): Output time step = 800 (ID = 1607)
+|  (RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 101741.00677106717
+|  (RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 152054.64987594265
+|  (RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 152053.5095228157
+|  (RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 152423.63053513263
+|  (RESULT): DpdSimulationTask.call: Temperature              = 0.9840623719129837
+|  (RESULT): DpdSimulationTask.call: U(pot)                   = 101741.00677106717
+|  (RESULT): DpdSimulationTask.call: U(kin)                   = 35426.24538886741
+|  (RESULT): DpdSimulationTask.call: U(total)                 = 137167.25215993458
+|  (RESULT): DpdSimulationTask.call: Surface Tension X        = -0.45980038257876005
+|  (RESULT): DpdSimulationTask.call: Surface Tension Y        = -0.4640767068048444
+|  (RESULT): DpdSimulationTask.call: Surface Tension Z        = 0.9238770893836772
+|  (RESULT): DpdSimulationTask.call: Surface Tension Norm     = 1.1315177673843477
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension X    = -0.45980038257876005
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Y    = -0.4640767068048444
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Z    = 0.9238770893836772
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Norm = 1.1315177673843477
+>(OUTPUT_STEP): Output time step = 800 (ID = 1607)
+<(OUTPUT_STEP): Output time step = 900 (ID = 1807)
+|  (RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 101629.79722240758
+|  (RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 152449.24962299236
+|  (RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 152492.17892102938
+|  (RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 151837.6362067968
+|  (RESULT): DpdSimulationTask.call: Temperature              = 0.9779022436404824
+|  (RESULT): DpdSimulationTask.call: U(pot)                   = 101629.79722240758
+|  (RESULT): DpdSimulationTask.call: U(kin)                   = 35204.480771057366
+|  (RESULT): DpdSimulationTask.call: U(total)                 = 136834.27799346496
+|  (RESULT): DpdSimulationTask.call: Surface Tension X        = 0.7108551476981666
+|  (RESULT): DpdSimulationTask.call: Surface Tension Y        = 0.8718400153370021
+|  (RESULT): DpdSimulationTask.call: Surface Tension Z        = -1.5826951630351687
+|  (RESULT): DpdSimulationTask.call: Surface Tension Norm     = 1.9417373747360185
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension X    = 0.7108551476981666
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Y    = 0.8718400153370021
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Z    = -1.5826951630351687
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Norm = 1.9417373747360185
+>(OUTPUT_STEP): Output time step = 900 (ID = 1807)
+<(OUTPUT_STEP): Output time step = 1000 (ID = 2007)
+|  (RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 101801.9655493987
+|  (RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 152266.38810370726
+|  (RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 152141.30897283187
+|  (RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 152317.72869908015
+|  (RESULT): DpdSimulationTask.call: Temperature              = 0.9847124997426852
+|  (RESULT): DpdSimulationTask.call: U(pot)                   = 101801.9655493987
+|  (RESULT): DpdSimulationTask.call: U(kin)                   = 35449.64999073667
+|  (RESULT): DpdSimulationTask.call: U(total)                 = 137251.61554013536
+|  (RESULT): DpdSimulationTask.call: Surface Tension X        = 0.09217316937814758
+|  (RESULT): DpdSimulationTask.call: Surface Tension Y        = -0.37687357140457606
+|  (RESULT): DpdSimulationTask.call: Surface Tension Z        = 0.2847004020264285
+|  (RESULT): DpdSimulationTask.call: Surface Tension Norm     = 0.48123164992596107
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension X    = 0.09217316937814758
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Y    = -0.37687357140457606
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Z    = 0.2847004020264285
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Norm = 0.48123164992596107
+>(OUTPUT_STEP): Output time step = 1000 (ID = 2007)
+<(OUTPUT_STEP): Output time step = 1100 (ID = 2207)
+|  (RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 101403.1202537423
+|  (RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 152153.66188750693
+|  (RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 152253.100127722
+|  (RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 152491.20047722396
+|  (RESULT): DpdSimulationTask.call: Temperature              = 0.9850512024941699
+|  (RESULT): DpdSimulationTask.call: U(pot)                   = 101403.1202537423
+|  (RESULT): DpdSimulationTask.call: U(kin)                   = 35461.843289790115
+|  (RESULT): DpdSimulationTask.call: U(total)                 = 136864.96354353242
+|  (RESULT): DpdSimulationTask.call: Surface Tension X        = -0.5462210374151618
+|  (RESULT): DpdSimulationTask.call: Surface Tension Y        = -0.17332763660866476
+|  (RESULT): DpdSimulationTask.call: Surface Tension Z        = 0.7195486740237539
+|  (RESULT): DpdSimulationTask.call: Surface Tension Norm     = 0.919864221293873
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension X    = -0.5462210374151618
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Y    = -0.17332763660866476
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Z    = 0.7195486740237539
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Norm = 0.919864221293873
+>(OUTPUT_STEP): Output time step = 1100 (ID = 2207)
+<(OUTPUT_STEP): Output time step = 1200 (ID = 2407)
+|  (RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 101778.9395817761
+|  (RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 151706.0609588643
+|  (RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 152193.96072533372
+|  (RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 151649.647458004
+|  (RESULT): DpdSimulationTask.call: Temperature              = 0.984473428733466
+|  (RESULT): DpdSimulationTask.call: U(pot)                   = 101778.9395817761
+|  (RESULT): DpdSimulationTask.call: U(kin)                   = 35441.043434404775
+|  (RESULT): DpdSimulationTask.call: U(total)                 = 137219.98301618086
+|  (RESULT): DpdSimulationTask.call: Surface Tension X        = -0.5393578320113739
+|  (RESULT): DpdSimulationTask.call: Surface Tension Y        = 1.2902662922488526
+|  (RESULT): DpdSimulationTask.call: Surface Tension Z        = -0.7509084602375515
+|  (RESULT): DpdSimulationTask.call: Surface Tension Norm     = 1.5873114034498528
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension X    = -0.5393578320113739
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Y    = 1.2902662922488526
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Z    = -0.7509084602375515
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Norm = 1.5873114034498528
+>(OUTPUT_STEP): Output time step = 1200 (ID = 2407)
+<(OUTPUT_STEP): Output time step = 1300 (ID = 2607)
+|  (RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 101835.39261573018
+|  (RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 152120.2346618058
+|  (RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 152040.14415245375
+|  (RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 151670.99787576392
+|  (RESULT): DpdSimulationTask.call: Temperature              = 0.9808706273717092
+|  (RESULT): DpdSimulationTask.call: U(pot)                   = 101835.39261573018
+|  (RESULT): DpdSimulationTask.call: U(kin)                   = 35311.34258538153
+|  (RESULT): DpdSimulationTask.call: U(total)                 = 137146.7352011117
+|  (RESULT): DpdSimulationTask.call: Surface Tension X        = 0.6616591192423948
+|  (RESULT): DpdSimulationTask.call: Surface Tension Y        = 0.36131970917223954
+|  (RESULT): DpdSimulationTask.call: Surface Tension Z        = -1.0229788284146344
+|  (RESULT): DpdSimulationTask.call: Surface Tension Norm     = 1.2707597749761799
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension X    = 0.6616591192423948
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Y    = 0.36131970917223954
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Z    = -1.0229788284146344
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Norm = 1.2707597749761799
+>(OUTPUT_STEP): Output time step = 1300 (ID = 2607)
+<(OUTPUT_STEP): Output time step = 1400 (ID = 2807)
+|  (RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 101675.93874006807
+|  (RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 151989.9195933474
+|  (RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 151971.94586134146
+|  (RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 152286.04980450773
+|  (RESULT): DpdSimulationTask.call: Temperature              = 0.9825701922288869
+|  (RESULT): DpdSimulationTask.call: U(pot)                   = 101675.93874006807
+|  (RESULT): DpdSimulationTask.call: U(kin)                   = 35372.52692023993
+|  (RESULT): DpdSimulationTask.call: U(total)                 = 137048.465660308
+|  (RESULT): DpdSimulationTask.call: Surface Tension X        = -0.34769559894295526
+|  (RESULT): DpdSimulationTask.call: Surface Tension Y        = -0.4150970939652325
+|  (RESULT): DpdSimulationTask.call: Surface Tension Z        = 0.7627926929081877
+|  (RESULT): DpdSimulationTask.call: Surface Tension Norm     = 0.9354413500037329
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension X    = -0.34769559894295526
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Y    = -0.4150970939652325
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Z    = 0.7627926929081877
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Norm = 0.9354413500037329
+>(OUTPUT_STEP): Output time step = 1400 (ID = 2807)
+<(OUTPUT_STEP): Output time step = 1500 (ID = 3007)
+|  (RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 101751.6310494005
+|  (RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 151619.99535625277
+|  (RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 151958.24558166772
+|  (RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 151977.75686188217
+|  (RESULT): DpdSimulationTask.call: Temperature              = 0.9726208699925137
+|  (RESULT): DpdSimulationTask.call: U(pot)                   = 101751.6310494005
+|  (RESULT): DpdSimulationTask.call: U(kin)                   = 35014.35131973049
+|  (RESULT): DpdSimulationTask.call: U(total)                 = 136765.982369131
+|  (RESULT): DpdSimulationTask.call: Surface Tension X        = -0.8700146638054866
+|  (RESULT): DpdSimulationTask.call: Surface Tension Y        = 0.39842368150064433
+|  (RESULT): DpdSimulationTask.call: Surface Tension Z        = 0.4715909823047696
+|  (RESULT): DpdSimulationTask.call: Surface Tension Norm     = 1.066801293497659
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension X    = -0.8700146638054866
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Y    = 0.39842368150064433
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Z    = 0.4715909823047696
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Norm = 1.066801293497659
+>(OUTPUT_STEP): Output time step = 1500 (ID = 3007)
+<(OUTPUT_STEP): Output time step = 1600 (ID = 3207)
+|  (RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 102081.78630608338
+|  (RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 152450.08545558684
+|  (RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 151922.7643531456
+|  (RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 151968.6715158703
+|  (RESULT): DpdSimulationTask.call: Temperature              = 0.9863985789358392
+|  (RESULT): DpdSimulationTask.call: U(pot)                   = 102081.78630608338
+|  (RESULT): DpdSimulationTask.call: U(kin)                   = 35510.34884169021
+|  (RESULT): DpdSimulationTask.call: U(total)                 = 137592.1351477736
+|  (RESULT): DpdSimulationTask.call: Surface Tension X        = 1.2609188026972697
+|  (RESULT): DpdSimulationTask.call: Surface Tension Y        = -0.7165353314574168
+|  (RESULT): DpdSimulationTask.call: Surface Tension Z        = -0.544383471239853
+|  (RESULT): DpdSimulationTask.call: Surface Tension Norm     = 1.549094081062044
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension X    = 1.2609188026972697
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Y    = -0.7165353314574168
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Z    = -0.544383471239853
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Norm = 1.549094081062044
+>(OUTPUT_STEP): Output time step = 1600 (ID = 3207)
+<(OUTPUT_STEP): Output time step = 1700 (ID = 3407)
+|  (RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 101783.53940837506
+|  (RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 152322.90819465925
+|  (RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 152137.2757182524
+|  (RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 152263.9417867844
+|  (RESULT): DpdSimulationTask.call: Temperature              = 0.9866081266855993
+|  (RESULT): DpdSimulationTask.call: U(pot)                   = 101783.53940837506
+|  (RESULT): DpdSimulationTask.call: U(kin)                   = 35517.892560681576
+|  (RESULT): DpdSimulationTask.call: U(total)                 = 137301.43196905663
+|  (RESULT): DpdSimulationTask.call: Surface Tension X        = 0.30574860535212794
+|  (RESULT): DpdSimulationTask.call: Surface Tension Y        = -0.39037318117349057
+|  (RESULT): DpdSimulationTask.call: Surface Tension Z        = 0.08462457582136267
+|  (RESULT): DpdSimulationTask.call: Surface Tension Norm     = 0.503025594862953
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension X    = 0.30574860535212794
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Y    = -0.39037318117349057
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Z    = 0.08462457582136267
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Norm = 0.503025594862953
+>(OUTPUT_STEP): Output time step = 1700 (ID = 3407)
+<(OUTPUT_STEP): Output time step = 1800 (ID = 3607)
+|  (RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 101798.76301483656
+|  (RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 151831.82917932814
+|  (RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 152163.9219158631
+|  (RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 152144.03372843226
+|  (RESULT): DpdSimulationTask.call: Temperature              = 0.9851733179301171
+|  (RESULT): DpdSimulationTask.call: U(pot)                   = 101798.76301483656
+|  (RESULT): DpdSimulationTask.call: U(kin)                   = 35466.239445484214
+|  (RESULT): DpdSimulationTask.call: U(total)                 = 137265.00246032077
+|  (RESULT): DpdSimulationTask.call: Surface Tension X        = -0.8053716070488008
+|  (RESULT): DpdSimulationTask.call: Surface Tension Y        = 0.4399761549571849
+|  (RESULT): DpdSimulationTask.call: Surface Tension Z        = 0.3653954520916159
+|  (RESULT): DpdSimulationTask.call: Surface Tension Norm     = 0.9877835181761807
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension X    = -0.8053716070488008
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Y    = 0.4399761549571849
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Z    = 0.3653954520916159
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Norm = 0.9877835181761807
+>(OUTPUT_STEP): Output time step = 1800 (ID = 3607)
+<(OUTPUT_STEP): Output time step = 1900 (ID = 3807)
+|  (RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 101837.23957473843
+|  (RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 152024.9947253281
+|  (RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 151780.01982688147
+|  (RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 152050.9709744982
+|  (RESULT): DpdSimulationTask.call: Temperature              = 0.9832645669872863
+|  (RESULT): DpdSimulationTask.call: U(pot)                   = 101837.23957473843
+|  (RESULT): DpdSimulationTask.call: U(kin)                   = 35397.524411542305
+|  (RESULT): DpdSimulationTask.call: U(total)                 = 137234.76398628074
+|  (RESULT): DpdSimulationTask.call: Surface Tension X        = 0.27374831159570023
+|  (RESULT): DpdSimulationTask.call: Surface Tension Y        = -0.6449075575792085
+|  (RESULT): DpdSimulationTask.call: Surface Tension Z        = 0.3711592459835083
+|  (RESULT): DpdSimulationTask.call: Surface Tension Norm     = 0.7928449292284862
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension X    = 0.27374831159570023
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Y    = -0.6449075575792085
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Z    = 0.3711592459835083
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Norm = 0.7928449292284862
+>(OUTPUT_STEP): Output time step = 1900 (ID = 3807)
+<(OUTPUT_STEP): Output time step = 2000 (ID = 4007)
+|  (RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 101782.4309551083
+|  (RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 152065.80474659
+|  (RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 152049.89096359472
+|  (RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 151658.82053951675
+|  (RESULT): DpdSimulationTask.call: Temperature              = 0.9785743179317323
+|  (RESULT): DpdSimulationTask.call: U(pot)                   = 101782.4309551083
+|  (RESULT): DpdSimulationTask.call: U(kin)                   = 35228.675445542365
+|  (RESULT): DpdSimulationTask.call: U(total)                 = 137011.10640065066
+|  (RESULT): DpdSimulationTask.call: Surface Tension X        = 0.5286224875856714
+|  (RESULT): DpdSimulationTask.call: Surface Tension Y        = 0.4689458013534022
+|  (RESULT): DpdSimulationTask.call: Surface Tension Z        = -0.9975682889390737
+|  (RESULT): DpdSimulationTask.call: Surface Tension Norm     = 1.2224951493094274
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension X    = 0.5286224875856714
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Y    = 0.4689458013534022
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Z    = -0.9975682889390737
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Norm = 1.2224951493094274
+>(OUTPUT_STEP): Output time step = 2000 (ID = 4007)
+----------------------------------------
+Logger finished at 2018/02/26 - 19:26:02
+----------------------------------------

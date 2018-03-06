@@ -1,0 +1,1054 @@
+---------------------------------------
+DPD Simulation:
+Logger started at 2018/02/26 - 19:26:41
+---------------------------------------
+(RESULT): FileInput.getFactory: Random type           = ACRNG_MT
+(RESULT): FileInput.getFactory: Random seed           = 123456
+(RESULT): FileInput.getFactory: Random warm-up steps  = 10000
+(RESULT): FileInput.getFactory: DPD type              = CUTOFF_LENGTH_ONE
+(RESULT): FileInput.getFactory: Electrostatics type   = AD_HOC
+(RESULT): FileInput.getFactory: Harmonic bond type    = DEFAULT
+(RESULT): FileInput.getFactory: Integration type      = GWMVV
+(RESULT): FileInput.getFactory: Integration parameter = 0.65
+(A_IJ): a(H2O, H2O) = 23.03
+(A_IJ): a(H2O, TriMeNP) = 22.4119
+(A_IJ): a(H2O, MeAc) = 28.5883
+(A_IJ): a(H2O, DMPN) = 13.5158
+(A_IJ): a(H2O, Et) = 38.0718
+(A_IJ): a(TriMeNP, H2O) = 22.4119
+(A_IJ): a(TriMeNP, TriMeNP) = 50.0
+(A_IJ): a(TriMeNP, MeAc) = 24.2439
+(A_IJ): a(TriMeNP, DMPN) = 1.0
+(A_IJ): a(TriMeNP, Et) = 34.9259
+(A_IJ): a(MeAc, H2O) = 28.5883
+(A_IJ): a(MeAc, TriMeNP) = 24.2439
+(A_IJ): a(MeAc, MeAc) = 23.03
+(A_IJ): a(MeAc, DMPN) = 26.7906
+(A_IJ): a(MeAc, Et) = 17.4798
+(A_IJ): a(DMPN, H2O) = 13.5158
+(A_IJ): a(DMPN, TriMeNP) = 1.0
+(A_IJ): a(DMPN, MeAc) = 26.7906
+(A_IJ): a(DMPN, DMPN) = 50.0
+(A_IJ): a(DMPN, Et) = 43.0613
+(A_IJ): a(Et, H2O) = 38.0718
+(A_IJ): a(Et, TriMeNP) = 34.9259
+(A_IJ): a(Et, MeAc) = 17.4798
+(A_IJ): a(Et, DMPN) = 43.0613
+(A_IJ): a(Et, Et) = 23.03
+(RESULT): DpdSimulationTask.setParameters: Electrostatics parameters defined
+(RESULT): DpdSimulationTask.setParameters: No gravitational acceleration 
+(RESULT): DpdSimulationTask.setParameters: Bond number                    = 24000
+(RESULT): DpdSimulationTask.setParameters: Bond chunk number              = 3
+(RESULT): DpdSimulationTask.setParameters: Bond info                      : 11200 + 11200 + 1600 = 24000
+(RESULT): DpdSimulationTask.setParameters: Charged particle number        = 3200
+(RESULT): DpdSimulationTask.setParameters: Molecule number                = 2
+(RESULT): DpdSimulationTask.setParameters: No molecule fixations
+(RESULT): DpdSimulationTask.setParameters: No molecule boundaries
+(RESULT): DpdSimulationTask.setParameters: No molecule velocity fixations
+(RESULT): DpdSimulationTask.setParameters: No molecule accelerations
+(RESULT): DpdSimulationTask.setParameters: No molecule Rg calculations
+(RESULT): DpdSimulationTask.setParameters: No nearest-neigbor determination
+(RESULT): DpdSimulationTask.initialiseVelocities, tmpUkin = 338377.580948953
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 2578446.090992162
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1735897.4594756514
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1743155.479598202
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1992612.8961981654
+(RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 79099.95179354683
+(RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = 0.0027010763564316313
+(RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = 0.0027010763564316313
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = 11686.28750107365
+(RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -3962.1598313314234
+(RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = 1423.7459646647535
+(RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = 1307.5233774020548
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -6693.429173398511
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Upot(START)       = 2653583.882954377
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 2457974.0928196115
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1734557.0955445906
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1742715.3607194847
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1993561.1550468777
+(RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 77444.6764848971
+(RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = 216.5287131253849
+(RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = 215.32122595157082
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = 11976.824685328165
+(RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -3879.786460526303
+(RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = 1122.8278131153431
+(RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = 1093.7139476641687
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -6096.328221305854
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 1, Timestep Length = 0.042209086
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 1, Upot(Min)       = 2531538.9828439825
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 2228175.514780681
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1722651.9888912342
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1731055.7727967121
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1982890.3292152488
+(RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 73463.74703157207
+(RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = 849.2385446583514
+(RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = 836.8461122315167
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = 12287.238290261981
+(RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -3444.8004052635506
+(RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = 732.1514092719692
+(RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = 762.5023462203307
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -4939.454160755931
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 2, Timestep Length = 0.084418172
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 2, Upot(Min)       = 2298194.46140699
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 1816237.827822034
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1669847.7003549028
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1675468.2484732731
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1894789.0990481102
+(RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 63787.079092147535
+(RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = 2344.2696611923343
+(RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = 2296.3737937614806
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = 11967.688252142725
+(RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -2077.2703512446997
+(RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = 152.50389290651054
+(RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = 236.3971524837617
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -2466.1713966349676
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 3, Timestep Length = 0.168836344
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 3, Upot(Min)       = 1877947.636562937
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 1239131.7517945082
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1521546.1365623323
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1523959.3616823922
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1625397.4112169994
+(RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 45956.51605577609
+(RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = 2738.026052602494
+(RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = 2662.2233560385107
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = 6768.085795698462
+(RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -244.75545998627584
+(RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = 877.2042439538594
+(RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = 914.3389461826403
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -2036.2986501227645
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 4, Timestep Length = 0.337672688
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 4, Upot(Min)       = 1284843.512390298
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 1002754.7792837118
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1462078.4368265502
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1462270.111974252
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1522015.9818556076
+(RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 31230.65032413574
+(RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = 2601.2680168012
+(RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = 2483.846322910485
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = 6533.019819770784
+(RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -475.17186682736417
+(RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = 808.1672122462957
+(RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = 851.4308339072737
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -2134.769912980925
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 5, Timestep Length = 0.675345376
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 5, Upot(Min)       = 1033510.2577410202
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 1553008.4360350359
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1576549.3073285758
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1578886.1463770396
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1560257.972199672
+(RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 147240.85578818433
+(RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = -67954.72451155682
+(RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = -65806.52406192647
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = -84252.75616118411
+(RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = 2123.5875757323174
+(RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = 1338.3214245113588
+(RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = 1363.6315862372296
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -578.3654350163322
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 6, Timestep Length = 1.350690752
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 6, Upot(Current)   = 1702372.8793989525
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 1182041.450939545
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1526894.2575232682
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1528408.714995958
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1506160.3445688665
+(RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 34982.41630922189
+(RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = -10840.981265784269
+(RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = -10363.78397854998
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = -16043.656750987286
+(RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = 959.3669710364907
+(RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = 1198.1674842878663
+(RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = 1230.229238092555
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -1469.029751343987
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 7, Timestep Length = 0.675345376
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 7, Upot(Current)   = 1217983.2342198032
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 951635.7101115036
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1486398.1448514995
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1487580.8140294328
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1481390.3792815974
+(RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 25060.90663336221
+(RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = 504.06201970047687
+(RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = 553.9749532261869
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = -144.6563194874216
+(RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = 57.180588057098895
+(RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = 924.8620458930501
+(RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = 934.0624466790562
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -1801.7439045149144
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 8, Timestep Length = 0.337672688
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 8, Upot(Min)       = 976753.7973329229
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 1638567.758835777
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1581241.4265936553
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1583343.0558459426
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1560368.0692972913
+(RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 90478.58706432774
+(RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = -47154.95405546831
+(RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = -44994.34320588817
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = -53287.11525028121
+(RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -676.2984066019037
+(RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = 91.06249575578211
+(RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = 79.56256876286157
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -846.9234711205419
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 9, Timestep Length = 0.675345376
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 9, Upot(Current)   = 1728370.0474935027
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 1172604.2679197607
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1521657.291764475
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1523487.491593089
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1502378.4784068996
+(RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 22770.17457123542
+(RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = -7141.266410692342
+(RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = -6842.211747398719
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = -10256.516327432055
+(RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -612.1554719561392
+(RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = 524.4150913874784
+(RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = 511.3993416419794
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -1647.9699049855703
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 10, Timestep Length = 0.337672688
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 10, Upot(Current)   = 1194762.28701904
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 884644.3771466464
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1475701.6978747526
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1476983.7439213602
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1471595.6290227023
+(RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 17615.823788496225
+(RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = 142.20069279309774
+(RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = 180.5798097472432
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = -1205.795185488171
+(RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -419.45085401376264
+(RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = 723.3959047639765
+(RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = 737.6806469730998
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -1880.527405750807
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 11, Timestep Length = 0.168836344
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 11, Upot(Min)       = 901840.7500811288
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 1005265.2739856605
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1505464.9973349075
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1507326.9364428737
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1487261.4978550314
+(RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 16022.5637071232
+(RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = -1457.1712938096848
+(RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = -1286.7700129367183
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = -4571.361520003088
+(RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -785.9161687035814
+(RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = 515.9649802124827
+(RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = 498.83908293929164
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -1800.7202318552993
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 12, Timestep Length = 0.337672688
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 12, Upot(Current)   = 1020501.9215240801
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 819719.025304296
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1476294.1716263983
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1477195.7709162224
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1465186.8417318314
+(RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 14813.268219456342
+(RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = 601.0982007339385
+(RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = 658.5444768213417
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = -1458.4552332058374
+(RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -661.848125200601
+(RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = 631.6387355629832
+(RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = 608.0395156483261
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -1901.5263764118768
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 13, Timestep Length = 0.168836344
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 13, Upot(Min)       = 833870.4453985518
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 1398082.6953047758
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1556229.1081261062
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1558983.2188350915
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1521267.211333694
+(RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 21841.30222468463
+(RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = -8389.07376498803
+(RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = -8260.341738135696
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = -12503.301285672693
+(RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -1041.798336453303
+(RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = 229.1812114542238
+(RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = 163.0610652541237
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -1434.040613161629
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 14, Timestep Length = 0.337672688
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 14, Upot(Current)   = 1418882.1991930073
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 959754.0382874456
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1513823.2001668937
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1516479.036716654
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1498825.2195760426
+(RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 13157.988428222521
+(RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = -762.6861864496054
+(RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = -699.2182190341292
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = -3640.2932338493324
+(RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -1242.3196614631606
+(RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = 334.76145385592116
+(RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = 367.0794120284705
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -1944.1605273475952
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 15, Timestep Length = 0.168836344
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 15, Upot(Current)   = 971669.7070542049
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 805546.5208101899
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1486687.6471582626
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1487622.9437121472
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1477591.6529007682
+(RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 12673.0559862341
+(RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = 690.8086473633495
+(RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = 747.6835091794537
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = -1685.481426240335
+(RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -965.2205848232218
+(RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = 485.10352573728045
+(RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = 508.7340910470401
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -1959.0582016075412
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 16, Timestep Length = 0.084418172
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 16, Upot(Min)       = 817254.3562116008
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 961240.568157628
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1520517.5792354727
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1523299.2466587971
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1498270.560846646
+(RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 13092.009834355544
+(RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = -894.7334309083553
+(RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = -570.6865190433939
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = -3940.3556998380673
+(RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -1514.8612568904302
+(RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = 207.96585684153493
+(RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = 100.10283900909367
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -1822.9299527410399
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 17, Timestep Length = 0.168836344
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 17, Upot(Current)   = 972817.716735093
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 796864.2921589679
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1491420.9275770877
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1492479.4909110682
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1476269.1947461022
+(RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 11736.09671154295
+(RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = 601.7907841829284
+(RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = 746.0328924082071
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = -2077.220830921521
+(RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -1318.858917343482
+(RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = 368.71014804673376
+(RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = 270.15386317483745
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -1957.722928565052
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 18, Timestep Length = 0.084418172
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 18, Upot(Min)       = 807281.5299531674
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 1008834.5422496796
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1534719.9223611332
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1537375.6460039774
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1514909.689697196
+(RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 12525.832372039045
+(RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = -998.6843458358373
+(RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = -825.4691672829272
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = -4139.005740878124
+(RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -1657.322541174952
+(RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = 166.42529050127152
+(RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = 130.55437827400877
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -1954.3022099501961
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 19, Timestep Length = 0.168836344
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 19, Upot(Current)   = 1019703.0520805437
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 800087.6144295227
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1500206.7444635164
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1501295.099292413
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1489607.6111746228
+(RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 10719.341352540758
+(RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = 586.8201289739611
+(RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = 698.0372613525878
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = -2196.6411625929354
+(RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -1575.942873067223
+(RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = 217.55454932585002
+(RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = 241.3242900210666
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -2034.8217124141038
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 20, Timestep Length = 0.084418172
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 20, Upot(Current)   = 809231.0129089962
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 764173.5182527736
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1489741.6589706477
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1490367.044147362
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1477349.383019994
+(RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 10852.875742264801
+(RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = 794.8637819798417
+(RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = 905.6238382636355
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = -1901.485729335304
+(RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -1441.5242441388616
+(RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = 303.74373634420306
+(RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = 263.9910919778227
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -2009.2590724608988
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 21, Timestep Length = 0.042209086
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 21, Upot(Min)       = 773584.8697508995
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 826702.023671708
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1534164.2187108763
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1534309.5373530963
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1492426.6894822265
+(RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 9308.860750029231
+(RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = -623.234569231971
+(RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = -344.760509953485
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = -3079.7127508656545
+(RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -2538.3150378934033
+(RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = -265.72528500189253
+(RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = -199.5960486651943
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -2072.993704226315
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 22, Timestep Length = 0.084418172
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 22, Upot(Current)   = 833472.5693838438
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 773258.6776925867
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1511748.9040460743
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1512139.994405142
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1493840.227608375
+(RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 9580.633450272851
+(RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = 457.5695069605407
+(RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = 651.7598721945483
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = -2156.7262934173
+(RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -2198.553953121193
+(RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = 1.381335506872202
+(RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = -63.04072892169185
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -2136.894559706318
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 23, Timestep Length = 0.042209086
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 23, Upot(Current)   = 780640.7571897383
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 761112.5458823871
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1499085.0872272684
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1499633.0847642203
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1486789.9744623606
+(RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 10105.83773508006
+(RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = 715.0760839827283
+(RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = 866.509162579186
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = -1943.6146633015023
+(RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -1780.048608614388
+(RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = 162.8772350911099
+(RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = 97.89978190941707
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -2040.8256256149639
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 24, Timestep Length = 0.021104543
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 24, Upot(Min)       = 769438.3350088528
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 798257.4519912112
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1526238.3095718245
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1527015.2126105195
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1507841.4531716642
+(RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 9446.766811434745
+(RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = 259.69878845941986
+(RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = 367.2293012048707
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = -2598.6396227698187
+(RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -2469.135027631721
+(RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = -165.05958533595984
+(RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = -158.8863489765273
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -2145.189093319231
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 25, Timestep Length = 0.042209086
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 25, Upot(Current)   = 805235.0837750142
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 761894.1578819081
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1505082.9531559744
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1505730.2880210676
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1492216.33699413
+(RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 9493.17856464394
+(RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = 680.6463132072986
+(RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = 807.1095667154816
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = -2074.508043179353
+(RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -2151.1094081994024
+(RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = 19.624474406755755
+(RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = -58.404793738127275
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -2112.3290888679976
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 26, Timestep Length = 0.021104543
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 26, Upot(Min)       = 769236.2270383526
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 751866.4641035231
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1501424.577550295
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1501958.5902847545
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1485941.4032781792
+(RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 9148.983793720818
+(RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = 605.5012888438702
+(RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = 772.0721595538248
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = -2149.0820540350123
+(RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -2358.784166121773
+(RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = -50.86545408341664
+(RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = -143.34667585164055
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -2164.572036186704
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 27, Timestep Length = 0.042209086
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 27, Upot(Min)       = 758656.6637311222
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 858401.845321
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1543419.3608626907
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1544603.4057402916
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1505750.871311497
+(RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 10473.687276820681
+(RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = -580.3237871004401
+(RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = -480.0612212344666
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = -3557.743869958069
+(RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -2846.7149998193877
+(RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = -373.9134687280435
+(RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = -320.7472526846227
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -2152.0542784067684
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 28, Timestep Length = 0.084418172
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 28, Upot(Current)   = 866028.8175980012
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 772218.1529916172
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1515831.1020268642
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1516640.0759839907
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1499768.8828043824
+(RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 8933.046468898272
+(RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = 511.7183061654724
+(RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = 642.6069902508756
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = -2285.603632415966
+(RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -2644.377599716956
+(RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = -214.93572705444936
+(RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = -193.06670314470205
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -2236.375169517825
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 29, Timestep Length = 0.042209086
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 29, Upot(Current)   = 778506.8218607985
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 748797.5371284704
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1504492.167441526
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1505037.7927693266
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1490796.8627723737
+(RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 8802.99884404962
+(RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = 684.0714375902766
+(RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = 833.8749480423149
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = -2069.2327446262757
+(RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -2494.8563141236436
+(RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = -120.95498744217247
+(RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = -169.16726877595207
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -2204.7340579055194
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 30, Timestep Length = 0.021104543
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 30, Upot(Min)       = 755105.6796583964
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 749528.0419527855
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1508640.2847332563
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1508977.6550968254
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1494558.9735224517
+(RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 8592.542191376864
+(RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = 554.2372965758715
+(RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = 706.1390687297518
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = -2179.8010532018484
+(RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -2821.8036059976916
+(RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = -237.32344878357506
+(RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = -311.19702106586044
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -2273.283136148209
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 31, Timestep Length = 0.042209086
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 31, Upot(Current)   = 755298.7805381647
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 742847.7648144873
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1502551.1523338472
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1502988.9452860877
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1488012.6976758945
+(RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 8635.356803452432
+(RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = 653.106390257745
+(RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = 804.068240653877
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = -2083.9222793829
+(RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -2648.2087348076425
+(RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = -181.95241891443558
+(RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = -230.98089230446539
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -2235.275423588782
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 32, Timestep Length = 0.021104543
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 32, Upot(Min)       = 748834.9128831321
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 779637.6471105808
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1537151.860075179
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1537677.3942451675
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1498644.2461330849
+(RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 7915.938154600922
+(RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = 373.7711946500923
+(RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = 495.84309852847394
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = -2207.3702379777556
+(RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -3879.758992758998
+(RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = -710.3934892113674
+(RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = -598.4092705879397
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -2570.9562329597
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 33, Timestep Length = 0.042209086
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 33, Upot(Current)   = 783673.8262724227
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 753102.7138613396
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1517729.8169565503
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1518208.368922083
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1500334.1753165158
+(RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 8167.657699021714
+(RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = 595.9950540129837
+(RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = 730.982126125798
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = -2056.317488993501
+(RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -3182.079396136253
+(RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = -419.7277799100351
+(RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = -434.8022891754076
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -2327.5493270507677
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 34, Timestep Length = 0.021104543
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 34, Upot(Current)   = 758088.2921642251
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 745038.687630491
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1508893.7459027914
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1509323.9543313645
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1495166.1105501798
+(RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 8374.861658155089
+(RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = 644.8293302561976
+(RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = 787.0884208063756
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = -2046.9097837400711
+(RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -2893.178081576796
+(RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = -293.82491075029117
+(RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = -316.4722863673537
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -2282.8808844591144
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 35, Timestep Length = 0.0105522715
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 35, Upot(Current)   = 750520.3712070693
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 742639.5434087514
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1504879.3383110936
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1505348.741383517
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1490994.682814982
+(RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 8498.48739708308
+(RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = 653.9909766521629
+(RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = 800.4097133322374
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = -2059.5273263373206
+(RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -2763.289429363248
+(RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = -234.34265903210846
+(RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = -273.15463177278343
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -2255.7921385583622
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 36, Timestep Length = 0.00527613575
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 36, Upot(Min)       = 748374.7413764712
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 741021.488272945
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1505468.3836345212
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1505897.2873308447
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1491573.2152707744
+(RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 8358.278071874965
+(RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = 640.9091904461326
+(RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = 781.9115597159958
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = -2054.9656879740087
+(RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -2908.5441771904975
+(RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = -296.2697326174854
+(RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = -325.98012619277023
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -2286.2943183801754
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 37, Timestep Length = 0.0105522715
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 37, Upot(Min)       = 746471.2221676295
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 743693.9401716208
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1511762.6987819993
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1512219.1642635704
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1497999.3193070858
+(RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 8100.11495182055
+(RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = 616.2472391928122
+(RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = 752.1009794087299
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = -2040.4173417775664
+(RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -3184.769360253251
+(RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = -407.64594383686597
+(RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = -430.03749271010616
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -2347.085923706209
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 38, Timestep Length = 0.021104543
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 38, Upot(Current)   = 748609.2857631881
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 740137.8256877142
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1506711.4006327821
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1507105.7341892675
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1492644.8775306894
+(RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 8225.373286322156
+(RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = 633.1540571353713
+(RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = 770.8335550938215
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = -2043.6831552352646
+(RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -3029.174784800473
+(RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = -346.3095653482876
+(RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = -368.4697608839336
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -2314.3954585682172
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 39, Timestep Length = 0.0105522715
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 39, Upot(Min)       = 745334.0241892358
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 742374.6920966944
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1512201.5368203148
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1512664.1302137743
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1498580.0505862993
+(RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 8000.488763969142
+(RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = 602.8372880662617
+(RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = 747.1592944298533
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = -2036.9895060794315
+(RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -3315.881211161646
+(RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = -505.44928181389264
+(RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = -475.87335271210924
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -2334.558576635609
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 40, Timestep Length = 0.021104543
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 40, Upot(Current)   = 747059.2996495019
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 738760.0648282199
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1507168.5219881672
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1507599.572956439
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1493212.7867443794
+(RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 8109.752223418665
+(RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = 621.8605736965258
+(RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = 762.1024473581165
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = -2036.6775326913798
+(RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -3155.140322054975
+(RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = -398.5123097556637
+(RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = -419.79748751888724
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -2336.8305247804547
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 41, Timestep Length = 0.0105522715
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 41, Upot(Min)       = 743714.6767295836
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 745300.8648333583
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1516940.0082514659
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1517419.4443946162
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1502184.5136724017
+(RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 7818.3831784240765
+(RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = 588.2803634460104
+(RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = 719.542980665819
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = -2029.1963107688316
+(RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -3488.9771267275837
+(RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = -528.6527042722468
+(RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = -576.7675681085071
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -2383.5568543469544
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 42, Timestep Length = 0.021104543
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 42, Upot(Current)   = 749630.2708850548
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 739365.0304247397
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1509893.2864186424
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1510292.671966369
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1496066.8498791838
+(RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 7957.502649973696
+(RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = 612.4191688787845
+(RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = 746.7744429011393
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = -2026.1938124434241
+(RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -3338.069509943407
+(RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = -499.47298630414656
+(RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = -494.2598799062341
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -2344.3366437330574
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 43, Timestep Length = 0.0105522715
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 43, Upot(Current)   = 743984.4635647701
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 737392.5631586594
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1506908.3808632728
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1507320.146233042
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1492350.3189229495
+(RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 8032.03971546971
+(RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = 618.9492327214617
+(RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = 755.9097167278468
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = -2029.7321917338106
+(RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -3248.1555801349723
+(RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = -450.52858945859606
+(RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = -453.77364466739715
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -2343.8533460089716
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 44, Timestep Length = 0.00527613575
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 44, Upot(Min)       = 742176.4472939941
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 740343.1740675394
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1512261.9664153566
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1512762.7350965717
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1498596.5651478264
+(RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 7865.310680060777
+(RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = 603.3660333490011
+(RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = 731.4091308053338
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = -2023.6886751080217
+(RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -3428.240144872714
+(RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = -510.5380076322615
+(RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = -548.0270474392893
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -2369.675089801172
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 45, Timestep Length = 0.0105522715
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 45, Upot(Current)   = 744780.2446027275
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 737462.5154458146
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1508499.0175949733
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1508909.5101450041
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1494518.469583879
+(RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 7946.599720544448
+(RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = 613.6595503874497
+(RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = 745.5920424283387
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = -2024.545961782282
+(RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -3342.1146959901707
+(RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = -498.69960298324486
+(RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = -499.4842590856615
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -2343.930833921248
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 46, Timestep Length = 0.00527613575
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 46, Upot(Min)       = 742067.0004703688
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 740762.8982268099
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1514173.202117575
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1514507.3916358221
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1500295.6801056296
+(RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 7756.089635101992
+(RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = 590.731206729495
+(RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = 713.229444335173
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = -2018.7561088502098
+(RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -3556.6791062511224
+(RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = -557.8473252657762
+(RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = -607.0206780010457
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -2391.811102984313
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 47, Timestep Length = 0.0105522715
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 47, Upot(Current)   = 744962.3087556608
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 736720.4599647047
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1509049.0080577307
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1509415.9496548118
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1494913.7709902667
+(RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 7848.240987047651
+(RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = 605.658569309582
+(RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = 732.3620058902641
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = -2018.5147046633833
+(RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -3440.5766903098297
+(RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = -516.0427348481156
+(RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = -553.7303860829965
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -2370.8035693787247
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 48, Timestep Length = 0.00527613575
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 48, Upot(Min)       = 741128.1242614426
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 743324.240154738
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1518334.713409216
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1518622.3715169216
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1503575.4136854792
+(RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 7617.367736453981
+(RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = 566.3033188610784
+(RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = 685.4529156991808
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = -2011.3921350762134
+(RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -3761.335830155377
+(RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = -648.5028845259748
+(RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = -683.9311040456291
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -2428.9018415837418
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 49, Timestep Length = 0.0105522715
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 49, Upot(Current)   = 747180.2720610366
+(RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 737152.2565002122
+(RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1511358.7764926797
+(RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1511706.7403395416
+(RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1497361.6091217995
+(RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 7725.346211325679
+(RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = 592.569372916632
+(RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = 715.0917667365402
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = -2008.6002458189523
+(RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -3592.910139426895
+(RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = -578.7768018222141
+(RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = -617.1389507362741
+(RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -2396.9943868684486
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 50, Timestep Length = 0.00527613575
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = 50, Upot(Current)   = 741284.692572111
+(RESULT): Utils.calculateInitialPotentialEnergyMinimizationSteps, Upot(Minimum) = 741128.1242614426
+<(OUTPUT_STEP): Output time step = 1 (ID = 9)
+|  (RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 767623.2964778503
+|  (RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1495195.1541639685
+|  (RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1495497.7804598636
+|  (RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1482872.8935462942
+|  (RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 8051.096325093247
+|  (RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = 425.7758562183503
+|  (RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = 578.2207069317406
+|  (RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = -2206.6944413388233
+|  (RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -3045.106139077864
+|  (RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = -373.27506748062814
+|  (RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = -372.20249622824883
+|  (RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -2299.6285753689453
+|  (RESULT): DpdSimulationTask.call: Temperature              = 0.9046695030456098
+|  (RESULT): DpdSimulationTask.call: U(pot)                   = 772629.2866638657
+|  (RESULT): DpdSimulationTask.call: U(kin)                   = 306140.15983063437
+|  (RESULT): DpdSimulationTask.call: U(total)                 = 1078769.4464945002
+|  (RESULT): DpdSimulationTask.call: Surface Tension X        = 4.609585966378019
+|  (RESULT): DpdSimulationTask.call: Surface Tension Y        = 4.993630034158924
+|  (RESULT): DpdSimulationTask.call: Surface Tension Z        = -9.603216000536813
+|  (RESULT): DpdSimulationTask.call: Surface Tension Norm     = 11.764624144121626
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension X    = 3.373256481402651
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Y    = 3.6280486206828675
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Z    = -7.001305102085388
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Norm = 8.576705032578113
+>(OUTPUT_STEP): Output time step = 1 (ID = 9)
+<(OUTPUT_STEP): Output time step = 10 (ID = 27)
+|  (RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 902454.1716205346
+|  (RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1410314.5812200857
+|  (RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1410082.550128599
+|  (RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1398419.6388583367
+|  (RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 11131.716605795178
+|  (RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = -5258.221705260155
+|  (RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = -4910.002273113107
+|  (RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = -7942.143101479375
+|  (RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -1975.1445427552944
+|  (RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = -188.09760672278583
+|  (RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = -213.87956263843944
+|  (RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -1573.167373394058
+|  (RESULT): DpdSimulationTask.call: Temperature              = 0.7899633357944128
+|  (RESULT): DpdSimulationTask.call: U(pot)                   = 911610.7436835745
+|  (RESULT): DpdSimulationTask.call: U(kin)                   = 267323.5928328293
+|  (RESULT): DpdSimulationTask.call: U(total)                 = 1178934.3365164038
+|  (RESULT): DpdSimulationTask.call: Surface Tension X        = 4.454834221565842
+|  (RESULT): DpdSimulationTask.call: Surface Tension Y        = 4.530950661168564
+|  (RESULT): DpdSimulationTask.call: Surface Tension Z        = -8.985784882734537
+|  (RESULT): DpdSimulationTask.call: Surface Tension Norm     = 11.005425561710847
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension X    = 3.403380727382175
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Y    = 3.2080252708954156
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Z    = -6.61140599827759
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Norm = 8.09846379187318
+>(OUTPUT_STEP): Output time step = 10 (ID = 27)
+<(OUTPUT_STEP): Output time step = 20 (ID = 47)
+|  (RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 917839.1879229851
+|  (RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1407738.6246670077
+|  (RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1408037.7393001642
+|  (RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1395554.9145028763
+|  (RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 16565.633566180008
+|  (RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = -11775.624654790667
+|  (RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = -11093.21055965519
+|  (RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = -12605.642084570065
+|  (RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -2183.014309005104
+|  (RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = -453.6467688952699
+|  (RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = -542.4673105017605
+|  (RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -1186.9002296080905
+|  (RESULT): DpdSimulationTask.call: Temperature              = 0.8919942436469354
+|  (RESULT): DpdSimulationTask.call: U(pot)                   = 932221.80718016
+|  (RESULT): DpdSimulationTask.call: U(kin)                   = 301850.8520501229
+|  (RESULT): DpdSimulationTask.call: U(total)                 = 1234072.659230283
+|  (RESULT): DpdSimulationTask.call: Surface Tension X        = 3.6074940472126062
+|  (RESULT): DpdSimulationTask.call: Surface Tension Y        = 4.359097697403848
+|  (RESULT): DpdSimulationTask.call: Surface Tension Z        = -7.966591744616454
+|  (RESULT): DpdSimulationTask.call: Surface Tension Norm     = 9.77150602832424
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension X    = 3.335358450220779
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Y    = 3.587193992292614
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Z    = -6.922552442513393
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Norm = 8.48023048325619
+>(OUTPUT_STEP): Output time step = 20 (ID = 47)
+<(OUTPUT_STEP): Output time step = 30 (ID = 67)
+|  (RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 927877.6839825903
+|  (RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1409321.4201530006
+|  (RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1408646.1718591459
+|  (RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1394596.3268527514
+|  (RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 19839.4891250199
+|  (RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = -14606.773683160201
+|  (RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = -14471.735847369095
+|  (RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = -14770.866462206091
+|  (RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -2461.467749674008
+|  (RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = -749.0838632379214
+|  (RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = -680.9886291948509
+|  (RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -1031.3952572412695
+|  (RESULT): DpdSimulationTask.call: Temperature              = 0.9497542524028217
+|  (RESULT): DpdSimulationTask.call: U(pot)                   = 945255.7053579362
+|  (RESULT): DpdSimulationTask.call: U(kin)                   = 321396.83901311486
+|  (RESULT): DpdSimulationTask.call: U(total)                 = 1266652.544371051
+|  (RESULT): DpdSimulationTask.call: Surface Tension X        = 4.390309764097057
+|  (RESULT): DpdSimulationTask.call: Surface Tension Y        = 3.9928187015335763
+|  (RESULT): DpdSimulationTask.call: Surface Tension Z        = -8.383128465630502
+|  (RESULT): DpdSimulationTask.call: Surface Tension Norm     = 10.271040058305033
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension X    = 4.322036819705495
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Y    = 3.753520601285725
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Z    = -8.07555742099122
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Norm = 9.89866389139932
+>(OUTPUT_STEP): Output time step = 30 (ID = 67)
+<(OUTPUT_STEP): Output time step = 40 (ID = 87)
+|  (RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 933238.860365222
+|  (RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1408106.466776937
+|  (RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1407304.8946853743
+|  (RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1394898.3248563597
+|  (RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 22722.65754592139
+|  (RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = -16406.931679240883
+|  (RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = -16632.969193927136
+|  (RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = -17434.462719881776
+|  (RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -2540.9949701705
+|  (RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = -796.8009882402033
+|  (RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = -782.8009761819651
+|  (RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -961.3930057483102
+|  (RESULT): DpdSimulationTask.call: Temperature              = 0.9869327953654132
+|  (RESULT): DpdSimulationTask.call: U(pot)                   = 953420.5229409728
+|  (RESULT): DpdSimulationTask.call: U(kin)                   = 333978.0579516558
+|  (RESULT): DpdSimulationTask.call: U(total)                 = 1287398.5808926285
+|  (RESULT): DpdSimulationTask.call: Surface Tension X        = 4.325834789533071
+|  (RESULT): DpdSimulationTask.call: Surface Tension Y        = 3.4724398255064517
+|  (RESULT): DpdSimulationTask.call: Surface Tension Z        = -7.7982746150395235
+|  (RESULT): DpdSimulationTask.call: Surface Tension Norm     = 9.56994106249708
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension X    = 3.931763423818713
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Y    = 3.2568905830678574
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Z    = -7.188654006886571
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Norm = 8.81719038706101
+>(OUTPUT_STEP): Output time step = 40 (ID = 87)
+<(OUTPUT_STEP): Output time step = 50 (ID = 107)
+|  (RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 936131.0934594839
+|  (RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1408616.122561156
+|  (RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1407015.660646941
+|  (RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1395974.6589788734
+|  (RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 25187.923149352915
+|  (RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = -18057.530969778432
+|  (RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = -18157.421614528987
+|  (RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = -19673.5523976077
+|  (RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -2610.840649889091
+|  (RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = -794.1838858079926
+|  (RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = -833.2338356563195
+|  (RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -983.4229284248479
+|  (RESULT): DpdSimulationTask.call: Temperature              = 1.0086915028618717
+|  (RESULT): DpdSimulationTask.call: U(pot)                   = 958708.1759589477
+|  (RESULT): DpdSimulationTask.call: U(kin)                   = 341341.2045684574
+|  (RESULT): DpdSimulationTask.call: U(total)                 = 1300049.380527405
+|  (RESULT): DpdSimulationTask.call: Surface Tension X        = 4.542563847686464
+|  (RESULT): DpdSimulationTask.call: Surface Tension Y        = 3.078097301647029
+|  (RESULT): DpdSimulationTask.call: Surface Tension Z        = -7.620661149333362
+|  (RESULT): DpdSimulationTask.call: Surface Tension Norm     = 9.39063606267827
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension X    = 3.996932535764693
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Y    = 2.649445154493469
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Z    = -6.646377690258293
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Norm = 8.195691900241643
+>(OUTPUT_STEP): Output time step = 50 (ID = 107)
+<(OUTPUT_STEP): Output time step = 60 (ID = 127)
+|  (RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 938343.331329974
+|  (RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1409836.7977703237
+|  (RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1408515.1291857355
+|  (RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1396464.6975802486
+|  (RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 26416.25364412173
+|  (RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = -18850.271676402106
+|  (RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = -19276.799243126185
+|  (RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = -20483.38099779056
+|  (RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -2790.9583426816894
+|  (RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = -917.4806946069765
+|  (RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = -876.4499681605756
+|  (RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -997.0276799141232
+|  (RESULT): DpdSimulationTask.call: Temperature              = 1.0222854781799655
+|  (RESULT): DpdSimulationTask.call: U(pot)                   = 961968.626631414
+|  (RESULT): DpdSimulationTask.call: U(kin)                   = 345941.40581610036
+|  (RESULT): DpdSimulationTask.call: U(total)                 = 1307910.0324475144
+|  (RESULT): DpdSimulationTask.call: Surface Tension X        = 4.712577599364357
+|  (RESULT): DpdSimulationTask.call: Surface Tension Y        = 3.275252632541995
+|  (RESULT): DpdSimulationTask.call: Surface Tension Z        = -7.987830231906352
+|  (RESULT): DpdSimulationTask.call: Surface Tension Norm     = 9.835705325535178
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension X    = 4.123740325905861
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Y    = 3.0109792385365672
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Z    = -7.134719564442559
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Norm = 8.773565610037908
+>(OUTPUT_STEP): Output time step = 60 (ID = 127)
+<(OUTPUT_STEP): Output time step = 70 (ID = 147)
+|  (RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 940003.6863824718
+|  (RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1409425.3934903583
+|  (RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1407809.2352387975
+|  (RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1398233.7487099448
+|  (RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 26899.550465814093
+|  (RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = -19399.21581919441
+|  (RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = -19507.544318374228
+|  (RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = -20701.066085467544
+|  (RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -2642.1540975541297
+|  (RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = -873.018492145096
+|  (RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = -858.1702492892033
+|  (RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -910.9653561197863
+|  (RESULT): DpdSimulationTask.call: Temperature              = 1.0286922766336688
+|  (RESULT): DpdSimulationTask.call: U(pot)                   = 964261.0827507317
+|  (RESULT): DpdSimulationTask.call: U(kin)                   = 348109.46641283354
+|  (RESULT): DpdSimulationTask.call: U(total)                 = 1312370.5491635653
+|  (RESULT): DpdSimulationTask.call: Surface Tension X        = 3.9966953684264666
+|  (RESULT): DpdSimulationTask.call: Surface Tension Y        = 2.5572882226214997
+|  (RESULT): DpdSimulationTask.call: Surface Tension Z        = -6.553983591047967
+|  (RESULT): DpdSimulationTask.call: Surface Tension Norm     = 8.091229686103727
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension X    = 3.594452496100577
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Y    = 2.233749794728432
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Z    = -5.828202290829009
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Norm = 7.202615416291327
+>(OUTPUT_STEP): Output time step = 70 (ID = 147)
+<(OUTPUT_STEP): Output time step = 80 (ID = 167)
+|  (RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 940402.8443059216
+|  (RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1408853.6907573233
+|  (RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1406225.4923074846
+|  (RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1398298.3416597755
+|  (RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 28094.45332455691
+|  (RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = -20354.00006358607
+|  (RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = -20388.87894113699
+|  (RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = -21680.288215744215
+|  (RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -2716.8602230639194
+|  (RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = -856.7422006646287
+|  (RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = -902.3514849589587
+|  (RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -957.7665374402952
+|  (RESULT): DpdSimulationTask.call: Temperature              = 1.0328250474289224
+|  (RESULT): DpdSimulationTask.call: U(pot)                   = 965780.4374074145
+|  (RESULT): DpdSimulationTask.call: U(kin)                   = 349507.99604994734
+|  (RESULT): DpdSimulationTask.call: U(total)                 = 1315288.433457362
+|  (RESULT): DpdSimulationTask.call: Surface Tension X        = 4.123061001964704
+|  (RESULT): DpdSimulationTask.call: Surface Tension Y        = 1.842518743105404
+|  (RESULT): DpdSimulationTask.call: Surface Tension Z        = -5.965579745070108
+|  (RESULT): DpdSimulationTask.call: Surface Tension Norm     = 7.482155373915169
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension X    = 3.6999035096699693
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Y    = 1.4871271760505853
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Z    = -5.187030685720686
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Norm = 6.542638653725601
+>(OUTPUT_STEP): Output time step = 80 (ID = 167)
+<(OUTPUT_STEP): Output time step = 90 (ID = 187)
+|  (RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 940415.6498529254
+|  (RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1407207.3763842299
+|  (RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1406411.0952818885
+|  (RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1395067.5213141015
+|  (RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 28736.709064419803
+|  (RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = -20752.921091330943
+|  (RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = -20775.322951990765
+|  (RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = -22164.94159793472
+|  (RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -2629.7539251032317
+|  (RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = -873.8708190248691
+|  (RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = -791.5762063936194
+|  (RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -964.3068996847537
+|  (RESULT): DpdSimulationTask.call: Temperature              = 1.0385904173244556
+|  (RESULT): DpdSimulationTask.call: U(pot)                   = 966522.6049922421
+|  (RESULT): DpdSimulationTask.call: U(kin)                   = 351458.99722259573
+|  (RESULT): DpdSimulationTask.call: U(total)                 = 1317981.602214838
+|  (RESULT): DpdSimulationTask.call: Surface Tension X        = 4.035317689111375
+|  (RESULT): DpdSimulationTask.call: Surface Tension Y        = 3.415325422488035
+|  (RESULT): DpdSimulationTask.call: Surface Tension Z        = -7.45064311159941
+|  (RESULT): DpdSimulationTask.call: Surface Tension Norm     = 9.13566195576281
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension X    = 3.6304686165885265
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Y    = 2.9600504530447473
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Z    = -6.590519069633274
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Norm = 8.085613314264075
+>(OUTPUT_STEP): Output time step = 90 (ID = 187)
+<(OUTPUT_STEP): Output time step = 100 (ID = 207)
+|  (RESULT): PotentialAccumulator.accumulate: uPot(DPD)      = 940101.9940379136
+|  (RESULT): PotentialAccumulator.accumulate: PressureX(DPD) = 1405790.2616325188
+|  (RESULT): PotentialAccumulator.accumulate: PressureY(DPD) = 1407517.0898216737
+|  (RESULT): PotentialAccumulator.accumulate: PressureZ(DPD) = 1395528.1796867396
+|  (RESULT): PotentialAccumulator.accumulate: uPot(Bonds)      = 29396.47424901519
+|  (RESULT): PotentialAccumulator.accumulate: PressureX(Bonds) = -21123.580752471553
+|  (RESULT): PotentialAccumulator.accumulate: PressureY(Bonds) = -21247.623843721376
+|  (RESULT): PotentialAccumulator.accumulate: PressureZ(Bonds) = -22863.201458553347
+|  (RESULT): PotentialAccumulator.accumulate: uPot(Estat)      = -2622.36335741698
+|  (RESULT): PotentialAccumulator.accumulate: PressureX(Estat) = -836.3155957119607
+|  (RESULT): PotentialAccumulator.accumulate: PressureY(Estat) = -783.9950275795135
+|  (RESULT): PotentialAccumulator.accumulate: PressureZ(Estat) = -1002.0527341255149
+|  (RESULT): DpdSimulationTask.call: Temperature              = 1.0413393623924958
+|  (RESULT): DpdSimulationTask.call: U(pot)                   = 966876.1049295119
+|  (RESULT): DpdSimulationTask.call: U(kin)                   = 352389.24023362057
+|  (RESULT): DpdSimulationTask.call: U(total)                 = 1319265.3451631325
+|  (RESULT): DpdSimulationTask.call: Surface Tension X        = 2.9502394390650517
+|  (RESULT): DpdSimulationTask.call: Surface Tension Y        = 4.343733392183953
+|  (RESULT): DpdSimulationTask.call: Surface Tension Z        = -7.293972831249004
+|  (RESULT): DpdSimulationTask.call: Surface Tension Norm     = 8.987434127335087
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension X    = 2.3953806982946455
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Y    = 3.8492604650310356
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Z    = -6.244641163325681
+|  (RESULT): DpdSimulationTask.call: DPD Surface Tension Norm = 7.716877482253751
+>(OUTPUT_STEP): Output time step = 100 (ID = 207)
+----------------------------------------
+Logger finished at 2018/02/26 - 19:27:10
+----------------------------------------

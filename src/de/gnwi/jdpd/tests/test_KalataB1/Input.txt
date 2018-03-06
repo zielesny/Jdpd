@@ -1,0 +1,345 @@
+# Input file for DPD simulation task with Jdpd
+
+# Description: Kalata B1
+# Timestamp 2017/11/15 - 18:17:10
+
+# ------------------------------------------------------------------------------
+[GENERAL]
+# ------------------------------------------------------------------------------
+
+Version 1.0.0.0
+
+[/GENERAL]
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+[PARTICLE_DESCRIPTION]
+# ------------------------------------------------------------------------------
+
+ParticleTable
+TABLE_START
+AzolidBB   0  71.12 
+Pr         0  44.10 
+H2O        0  18.02 
+GuanidineP 1  59.07 
+HAcN       -1 60.05 
+MeAcNHBB   0  73.09 
+AcNH2      0  59.07 
+MeOH       0  32.04 
+MeSHSS     0  48.11 
+Pyrrole    0  67.09 
+Ph         0  78.11 
+Me         0  16.04 
+PrOH       0  60.10 
+TABLE_END
+
+[/PARTICLE_DESCRIPTION]
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+[CHEMICAL_SYSTEM_DESCRIPTION]
+# ------------------------------------------------------------------------------
+
+MoleculeTable
+TABLE_START
+KalataB1 PositionsBonds0.txt 
+Water    PositionsBonds1.txt 
+TABLE_END
+
+BoxSize 20.015266 20.015266 20.015266
+
+MoleculeFixation
+TABLE_START
+Water    false false false 
+KalataB1 false false false 
+TABLE_END
+
+MoleculeBoundary
+TABLE_START
+Water    false 0 20.015266 false 0 20.015266 false 0 20.015266 
+KalataB1 false 0 20.015266 false 0 20.015266 false 0 20.015266 
+TABLE_END
+
+MoleculeFixedVelocity
+TABLE_START
+Water    false 0 false 0 false 0 
+KalataB1 false 0 false 0 false 0 
+TABLE_END
+
+MoleculeAcceleration
+TABLE_START
+Water    0 0 0 1 
+KalataB1 0 0 0 1 
+TABLE_END
+
+RadiusOfGyration
+TABLE_START
+Water    false 
+KalataB1 false 
+TABLE_END
+
+NearestNeighborParticle
+TABLE_START
+KalataB1 AcNH2      false 
+KalataB1 AzolidBB   false 
+KalataB1 GuanidineP false 
+KalataB1 HAcN       false 
+KalataB1 Me         false 
+KalataB1 MeAcNHBB   false 
+KalataB1 MeOH       false 
+KalataB1 MeSHSS     false 
+KalataB1 Ph         false 
+KalataB1 Pr         false 
+KalataB1 PrOH       false 
+KalataB1 Pyrrole    false 
+Water    H2O        false 
+TABLE_END
+
+NearestNeighborDistance 2
+
+[/CHEMICAL_SYSTEM_DESCRIPTION]
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+[INTERACTION_DESCRIPTION]
+# ------------------------------------------------------------------------------
+
+Temperature 0.983221
+
+DpdSigma 3
+
+IsGaussianRandomDpdForce false
+
+InteractionTable
+TABLE_START
+AcNH2      AcNH2      23.030000 
+AcNH2      AzolidBB   17.468400 
+AcNH2      GuanidineP 19.012300 
+AcNH2      H2O        22.757500 
+AcNH2      HAcN       17.410600 
+AcNH2      MeAcNHBB   16.638700 
+AcNH2      Pr         23.909800 
+AzolidBB   AzolidBB   23.030000 
+GuanidineP AzolidBB   18.090500 
+GuanidineP GuanidineP 50.000000 
+GuanidineP H2O        22.411900 
+GuanidineP Pr         45.527300 
+H2O        AzolidBB   22.285000 
+H2O        H2O        23.030000 
+H2O        Pr         39.097400 
+HAcN       AzolidBB   12.444100 
+HAcN       GuanidineP 1.000000  
+HAcN       H2O        13.100900 
+HAcN       HAcN       50.000000 
+HAcN       Pr         41.252100 
+Me         AcNH2      26.295100 
+Me         AzolidBB   23.276000 
+Me         GuanidineP 46.327100 
+Me         H2O        37.184500 
+Me         HAcN       41.033200 
+Me         Me         23.030000 
+Me         MeAcNHBB   25.753500 
+Me         MeOH       27.240000 
+Me         MeSHSS     18.459300 
+Me         Ph         21.029000 
+Me         Pr         19.484900 
+Me         Pyrrole    22.757500 
+MeAcNHBB   AzolidBB   17.157200 
+MeAcNHBB   GuanidineP 20.879200 
+MeAcNHBB   H2O        23.783100 
+MeAcNHBB   HAcN       18.539900 
+MeAcNHBB   MeAcNHBB   23.030000 
+MeAcNHBB   Pr         22.250500 
+MeOH       AcNH2      20.579600 
+MeOH       AzolidBB   18.447800 
+MeOH       GuanidineP 16.627100 
+MeOH       H2O        16.880700 
+MeOH       HAcN       11.107500 
+MeOH       MeAcNHBB   19.623200 
+MeOH       MeOH       23.030000 
+MeOH       Pr         26.813600 
+MeSHSS     AcNH2      22.250500 
+MeSHSS     AzolidBB   18.551500 
+MeSHSS     GuanidineP 38.671000 
+MeSHSS     H2O        35.444600 
+MeSHSS     HAcN       36.573700 
+MeSHSS     MeAcNHBB   21.052000 
+MeSHSS     MeOH       25.626700 
+MeSHSS     MeSHSS     23.030000 
+MeSHSS     Pr         16.454300 
+Ph         AcNH2      22.296500 
+Ph         AzolidBB   18.079000 
+Ph         GuanidineP 39.281700 
+Ph         H2O        36.919500 
+Ph         HAcN       38.129400 
+Ph         MeAcNHBB   20.821600 
+Ph         MeOH       26.099200 
+Ph         MeSHSS     16.604100 
+Ph         Ph         23.030000 
+Ph         Pr         17.145700 
+Ph         Pyrrole    17.353100 
+Pr         AzolidBB   18.954800 
+Pr         Pr         23.030000 
+PrOH       AcNH2      18.735800 
+PrOH       AzolidBB   16.281400 
+PrOH       GuanidineP 19.312000 
+PrOH       H2O        19.346600 
+PrOH       HAcN       12.040800 
+PrOH       Me         28.012100 
+PrOH       MeAcNHBB   17.917700 
+PrOH       MeOH       16.627200 
+PrOH       MeSHSS     23.690800 
+PrOH       Ph         23.760000 
+PrOH       Pr         24.704900 
+PrOH       PrOH       23.030000 
+PrOH       Pyrrole    19.150700 
+Pyrrole    AcNH2      18.816600 
+Pyrrole    AzolidBB   13.700200 
+Pyrrole    GuanidineP 25.718800 
+Pyrrole    H2O        28.323100 
+Pyrrole    HAcN       27.735500 
+Pyrrole    MeAcNHBB   17.549000 
+Pyrrole    MeOH       22.434800 
+Pyrrole    MeSHSS     17.860100 
+Pyrrole    Pr         19.554000 
+Pyrrole    Pyrrole    23.030000 
+TABLE_END
+
+#              Cutoff Maximum force Effective charge Effective exponent Damping distance Damping factor
+Electrostatics 5      100           1                2                  5                1
+
+Bonds12Table
+TABLE_START
+AcNH2      AcNH2      1.109 4 true 
+AcNH2      AzolidBB   1.150 4 true 
+AcNH2      GuanidineP 1.107 4 true 
+AcNH2      H2O        0.984 4 true 
+AcNH2      HAcN       1.106 4 true 
+AcNH2      MeAcNHBB   1.150 4 true 
+AcNH2      Pr         1.124 4 true 
+AzolidBB   AzolidBB   1.191 4 true 
+GuanidineP AzolidBB   1.148 4 true 
+GuanidineP GuanidineP 1.106 4 true 
+GuanidineP H2O        0.983 4 true 
+GuanidineP Pr         1.123 4 true 
+H2O        AzolidBB   1.025 4 true 
+H2O        H2O        0.859 4 true 
+H2O        Pr         1.000 4 true 
+HAcN       AzolidBB   1.147 4 true 
+HAcN       GuanidineP 1.104 4 true 
+HAcN       H2O        0.981 4 true 
+HAcN       HAcN       1.103 4 true 
+HAcN       Pr         1.122 4 true 
+Me         AcNH2      1.029 4 true 
+Me         AzolidBB   1.070 4 true 
+Me         GuanidineP 1.028 4 true 
+Me         H2O        0.905 4 true 
+Me         HAcN       1.026 4 true 
+Me         Me         0.950 4 true 
+Me         MeAcNHBB   1.071 4 true 
+Me         MeOH       0.976 4 true 
+Me         MeSHSS     0.999 4 true 
+Me         Ph         1.078 4 true 
+Me         Pr         1.045 4 true 
+Me         Pyrrole    1.049 4 true 
+MeAcNHBB   AzolidBB   1.191 4 true 
+MeAcNHBB   GuanidineP 1.149 4 true 
+MeAcNHBB   H2O        1.026 4 true 
+MeAcNHBB   HAcN       1.148 4 true 
+MeAcNHBB   MeAcNHBB   1.192 4 true 
+MeAcNHBB   Pr         1.166 4 true 
+MeOH       AcNH2      1.056 4 true 
+MeOH       AzolidBB   1.097 4 true 
+MeOH       GuanidineP 1.054 4 true 
+MeOH       H2O        0.931 4 true 
+MeOH       HAcN       1.053 4 true 
+MeOH       MeAcNHBB   1.097 4 true 
+MeOH       MeOH       1.003 4 true 
+MeOH       Pr         1.071 4 true 
+MeSHSS     AcNH2      1.079 4 true 
+MeSHSS     AzolidBB   1.120 4 true 
+MeSHSS     GuanidineP 1.077 4 true 
+MeSHSS     H2O        0.954 4 true 
+MeSHSS     HAcN       1.076 4 true 
+MeSHSS     MeAcNHBB   1.121 4 true 
+MeSHSS     MeOH       1.026 4 true 
+MeSHSS     MeSHSS     1.049 4 true 
+MeSHSS     Pr         1.095 4 true 
+Ph         AcNH2      1.158 4 true 
+Ph         AzolidBB   1.199 4 true 
+Ph         GuanidineP 1.156 4 true 
+Ph         H2O        1.033 4 true 
+Ph         HAcN       1.155 4 true 
+Ph         MeAcNHBB   1.199 4 true 
+Ph         MeOH       1.105 4 true 
+Ph         MeSHSS     1.128 4 true 
+Ph         Ph         1.206 4 true 
+Ph         Pr         1.173 4 true 
+Ph         Pyrrole    1.177 4 true 
+Pr         AzolidBB   1.165 4 true 
+Pr         Pr         1.140 4 true 
+PrOH       AcNH2      1.139 4 true 
+PrOH       AzolidBB   1.180 4 true 
+PrOH       GuanidineP 1.137 4 true 
+PrOH       H2O        1.014 4 true 
+PrOH       HAcN       1.136 4 true 
+PrOH       Me         1.059 4 true 
+PrOH       MeAcNHBB   1.181 4 true 
+PrOH       MeOH       1.086 4 true 
+PrOH       MeSHSS     1.109 4 true 
+PrOH       Ph         1.188 4 true 
+PrOH       Pr         1.155 4 true 
+PrOH       PrOH       1.169 4 true 
+PrOH       Pyrrole    1.159 4 true 
+Pyrrole    AcNH2      1.129 4 true 
+Pyrrole    AzolidBB   1.170 4 true 
+Pyrrole    GuanidineP 1.127 4 true 
+Pyrrole    H2O        1.004 4 true 
+Pyrrole    HAcN       1.126 4 true 
+Pyrrole    MeAcNHBB   1.170 4 true 
+Pyrrole    MeOH       1.076 4 true 
+Pyrrole    MeSHSS     1.099 4 true 
+Pyrrole    Pr         1.144 4 true 
+Pyrrole    Pyrrole    1.148 4 true 
+TABLE_END
+
+GravitationalAcceleration 0 0 0
+
+[/INTERACTION_DESCRIPTION]
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+[SIMULATION_DESCRIPTION]
+# ------------------------------------------------------------------------------
+
+TimeStepNumber 1000
+
+TimeStepLength 0.04
+
+TimeStepFrequencyForOutput 100
+
+IntegrationType GWMVV 0.65 none
+
+InitialPotentialEnergyMinimizationStepNumber 50
+
+IsInitialPotentialEnergyMinimizationStepOutput false
+
+PeriodicBoundaries true true true
+
+IsDpdUnitMass true
+
+IsVelocityScaling false
+
+RandomNumberGenerator ACRNG_MT 123456 10000
+
+[/SIMULATION_DESCRIPTION]
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+[SIMULATION_COUNTS]
+# ------------------------------------------------------------------------------
+
+ParticleNumber 24055
+
+[/SIMULATION_COUNTS]
+# ------------------------------------------------------------------------------
