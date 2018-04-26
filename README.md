@@ -7,3 +7,6 @@ Detailed input/output communication, parallelization and process control as well
 The Jdpd library uses the [Apache Commons RNG](http://commons.apache.org/proper/commons-rng/) libraries and a [PCG pseudorandom generator implementation for Java](https://github.com/alexeyr/pcg-java) and is published as open source under the GNU General Public License version 3. This repository comprises the Java bytecode libraries (including the Apache Commons RNG libraries), the Javadoc HTML documentation and the Netbeans source code packages including Unit tests.
 
 Jdpd is currently under scientific review - additional information will be published soon.
+
+# Acknowledgements
+The support of [GNWI - Gesellschaft für naturwissenschaftliche Informatik mbH](http://www.gnwi.de) is gratefully acknowledged.
