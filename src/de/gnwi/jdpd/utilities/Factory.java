@@ -136,7 +136,7 @@ public class Factory {
         /**
          * Checks if aRandomNumberGeneratorTypeRepresentation is defined
          * 
-         * @param aRandomNumberGeneratorTypeRepresentation
+         * @param aRandomNumberGeneratorTypeRepresentation Random number generator type representation
          * @return True: aRandomNumberGeneratorTypeRepresentation is defined, 
          * false: Otherwise
          */
@@ -158,7 +158,7 @@ public class Factory {
         /**
          * Returns RandomType of aRandomNumberGeneratorTypeRepresentation
          * 
-         * @param aRandomNumberGeneratorTypeRepresentation
+         * @param aRandomNumberGeneratorTypeRepresentation Random number generator type representation
          * @return RandomType of aRandomNumberGeneratorTypeRepresentation or null if
          * not available
          */
@@ -432,7 +432,6 @@ public class Factory {
      * Returns new random number generator instance
      * 
      * @param aSeed Seed value (greater/equal 0)
-     * @param this.numberORandomNumberGeneratorfWarmUpSteps Number of warm-up steps (greater/equal 0)
      * @return New random number generator instance
      */
     public IRandom getNewRandomNumberGenerator(int aSeed) {

@@ -133,22 +133,72 @@ public class ParticlePairElectrostaticsAdHocPotentialCalculator extends Particle
         final double tmpEffectiveChargeProduct = tmpParticleCharge1 * tmpElectrostatics.getEffectiveChargeFactor() * tmpParticleCharge2 * tmpElectrostatics.getEffectiveChargeFactor();
         // Potential energy
         double tmpPotentialEnergy;
+        // Calculate |F|
+        double tmpFactor;
         if (tmpElectrostatics.getEffectiveExponent() == 2.0) {
-            tmpPotentialEnergy = tmpEffectiveChargeProduct / tmpRij;
+            tmpFactor = tmpEffectiveChargeProduct / (tmpRij * tmpRij);
         } else {
-            tmpPotentialEnergy = tmpEffectiveChargeProduct / Math.pow(tmpRij, tmpElectrostatics.getEffectiveExponent() - 1.0);
+            tmpFactor = tmpEffectiveChargeProduct / Math.pow(tmpRij, tmpElectrostatics.getEffectiveExponent());
         }
-        aRandomAdderGroup.getPotentialEnergyAdder().add(tmpPotentialEnergy);
-        // Pressure diagonal terms
-        double tmpForceTerm;
-        if (tmpElectrostatics.getEffectiveExponent() == 2.0) {
-            tmpForceTerm = tmpEffectiveChargeProduct / (tmpRij * tmpRij * tmpRij);
-        } else {
-            tmpForceTerm = tmpEffectiveChargeProduct / Math.pow(tmpRij, tmpElectrostatics.getEffectiveExponent() + 1.0);
+        if (tmpRij <= tmpElectrostatics.getDampingDistance()) {
+            tmpFactor *= tmpElectrostatics.getDampingFactor();
         }
-        aRandomAdderGroup.getPressureXAdder().add(tmpForceTerm * aRij_x * aRij_x);
-        aRandomAdderGroup.getPressureYAdder().add(tmpForceTerm * aRij_y * aRij_y);
-        aRandomAdderGroup.getPressureZAdder().add(tmpForceTerm * aRij_z * aRij_z);
+        // Set potential energy according to |F| (for |F| = 0 there is no potential energy)
+        if (tmpFactor > tmpElectrostatics.getMaximumAbsoluteForceValue() || tmpFactor < -tmpElectrostatics.getMaximumAbsoluteForceValue()) {
+            // <editor-fold defaultstate="collapsed" desc="|F| > Fmax: Set Epot,max according to Fmax">
+            double tmpRijFmax;
+            if (tmpElectrostatics.getEffectiveExponent() == 2.0) {
+                tmpRijFmax = Math.sqrt(Math.abs(tmpEffectiveChargeProduct)/tmpElectrostatics.getMaximumAbsoluteForceValue());
+                tmpPotentialEnergy = tmpEffectiveChargeProduct / tmpRijFmax;
+            } else {
+                tmpRijFmax = Math.pow(Math.abs(tmpEffectiveChargeProduct)/tmpElectrostatics.getMaximumAbsoluteForceValue(), 1.0 / tmpElectrostatics.getEffectiveExponent());
+                tmpPotentialEnergy = tmpEffectiveChargeProduct / Math.pow(tmpRijFmax, tmpElectrostatics.getEffectiveExponent() - 1.0);
+            }
+            if (tmpRij <= tmpElectrostatics.getDampingDistance()) {
+                tmpPotentialEnergy *= tmpElectrostatics.getDampingFactor();
+            }
+            aRandomAdderGroup.getPotentialEnergyAdder().add(tmpPotentialEnergy);
+            // Pressure diagonal terms
+            double tmpForceTerm;
+            if (tmpElectrostatics.getEffectiveExponent() == 2.0) {
+                tmpForceTerm = tmpEffectiveChargeProduct / (tmpRijFmax * tmpRijFmax * tmpRijFmax);
+            } else {
+                tmpForceTerm = tmpEffectiveChargeProduct / Math.pow(tmpRijFmax, tmpElectrostatics.getEffectiveExponent() + 1.0);
+            }
+            if (tmpRij <= tmpElectrostatics.getDampingDistance()) {
+                tmpForceTerm *= tmpElectrostatics.getDampingFactor();
+            }
+            aRandomAdderGroup.getPressureXAdder().add(tmpForceTerm * aRij_x * aRij_x);
+            aRandomAdderGroup.getPressureYAdder().add(tmpForceTerm * aRij_y * aRij_y);
+            aRandomAdderGroup.getPressureZAdder().add(tmpForceTerm * aRij_z * aRij_z);
+            // </editor-fold>
+        } else if (tmpFactor != 0.0) {
+            // <editor-fold defaultstate="collapsed" desc="|F| <= Fmax and |F| != 0">
+            if (tmpElectrostatics.getEffectiveExponent() == 2.0) {
+                tmpPotentialEnergy = tmpEffectiveChargeProduct / tmpRij;
+            } else {
+                tmpPotentialEnergy = tmpEffectiveChargeProduct / Math.pow(tmpRij, tmpElectrostatics.getEffectiveExponent() - 1.0);
+            }
+            if (tmpRij <= tmpElectrostatics.getDampingDistance()) {
+                tmpPotentialEnergy *= tmpElectrostatics.getDampingFactor();
+            }
+            aRandomAdderGroup.getPotentialEnergyAdder().add(tmpPotentialEnergy);
+            // Pressure diagonal terms
+            double tmpForceTerm;
+            if (tmpElectrostatics.getEffectiveExponent() == 2.0) {
+                tmpForceTerm = tmpEffectiveChargeProduct / (tmpRij * tmpRij * tmpRij);
+            } else {
+                tmpForceTerm = tmpEffectiveChargeProduct / Math.pow(tmpRij, tmpElectrostatics.getEffectiveExponent() + 1.0);
+            }
+            if (tmpRij <= tmpElectrostatics.getDampingDistance()) {
+                tmpForceTerm *= tmpElectrostatics.getDampingFactor();
+            }
+            aRandomAdderGroup.getPressureXAdder().add(tmpForceTerm * aRij_x * aRij_x);
+            aRandomAdderGroup.getPressureYAdder().add(tmpForceTerm * aRij_y * aRij_y);
+            aRandomAdderGroup.getPressureZAdder().add(tmpForceTerm * aRij_z * aRij_z);
+            // </editor-fold>
+        }
+        // Set potential energy to 0 if |F| > Fmax or |F| = 0, otherwise accumulate
         // Add to particle pair distance parameters cache if necessary
         if (this.isParticlePairDistanceParametersCacheActive) {
             aParticlePairDistanceParameters.add(

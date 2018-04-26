@@ -19,6 +19,37 @@
  */
 
 --------------------------------------------------------------------------------
+Jdpd 1.0.1.0 (Jdpd.jar)
+--------------------------------------------------------------------------------
+for Java 8 or higher
+
+Dependencies:
+  - commons-rng-core-1.0.jar
+    commons-rng-simple-1.0.jar
+    commons-rng-sampling-1.0.jar
+    commons-rng-client-api-1.0.jar
+    commons-rng-jmh-1.0.jar
+      Apache Commons RNG 1.0 (http://commons.apache.org/proper/commons-rng/)
+      Version 1.0
+  - Pcg32.java
+      PCG pseudorandom generator implementation for Java 
+      (https://github.com/alexeyr/pcg-java)
+      Version 0.9.1
+      
+Unit tests: 
+  - Package src.de.gnwi.jdpd.tests
+  
+Simulation input file description:  
+  - File Input.txt in package src.de.gnwi.jdpd.tests.test_Water_GWMVV              
+--------------------------------------------------------------------------------
+- Removed problems:
+  - Corrected ad-hoc electrostatic potential calculation in 
+    ParticlePairElectrostaticsAdHocPotentialCalculator:
+    Method calculateParticlePairInteraction() now correctly implements maximum
+    electrostatics force, cut-off length and damping settings.  
+
+
+--------------------------------------------------------------------------------
 Jdpd 1.0.0.0 (Jdpd.jar)
 --------------------------------------------------------------------------------
 for Java 8 or higher

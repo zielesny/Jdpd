@@ -320,8 +320,8 @@ public class FileInput implements IInput {
     /**
      * Constructor
      * 
-     * @param anInputFilePathname
-     * @param aSimulationLogger
+     * @param anInputFilePathname Pathname of input file
+     * @param aSimulationLogger Simulation logger
      * @throws IllegalArgumentException Thrown if an argument is illegal
      */
     public FileInput(String anInputFilePathname, ILogger aSimulationLogger) throws IllegalArgumentException {
