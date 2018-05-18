@@ -373,6 +373,10 @@ public class PnhlnTimeStepCalculator implements ITimeStepCalculator {
             if (this.simulationDescription.getInitialPotentialEnergyMinimizationStepNumber() > 0) {
                 IParticlePairForceCalculator tmpParticlePairDpdForceConservativeMinStepCalculator = 
                     this.factory.getParticlePairDpdForceConservativeCalculator(this.conservativeForceAccumulator.getParticlePairDpdForceCalculator());
+                // NOTE: Do NOT use electrostatic forces for initial potential 
+                //       energy minimization steps due to possibly extremely 
+                //       large initial electrostatic forces caused by 
+                //       unfavorable start geometry
                 Utils.calculateInitialPotentialEnergyMinimizationSteps(
                     this.simulationLogger,
                     this.parameters,
@@ -382,7 +386,7 @@ public class PnhlnTimeStepCalculator implements ITimeStepCalculator {
                         tmpParticlePairDpdForceConservativeMinStepCalculator,
                         ParticlePairInteractionCalculator.CellBasedCalculationMode.WITH_PARTICLE_CELL_ASSIGNMENTS,
                         this.conservativeForceAccumulator.getHarmonicBondForceConservativeCalculator(),
-                        this.conservativeForceAccumulator.getParticlePairElectrostaticsForceConservativeCalculator(),
+                        null, // see NOTE above
                         ParticlePairInteractionCalculator.CellBasedCalculationMode.WITH_PARTICLE_CELL_ASSIGNMENTS
                     ),
                     this.potentialAccumulator,
