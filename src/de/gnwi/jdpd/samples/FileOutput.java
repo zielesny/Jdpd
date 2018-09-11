@@ -129,7 +129,7 @@ public class FileOutput implements IOutput {
         public void run() {
             // IMPORTANT: Sort particle positions first
             Arrays.sort(this.particlePositions);
-            try (PrintWriter tmpPrintWriter = new PrintWriter(new GZIPOutputStream(new FileOutputStream(this.particlePositionsFilePathname), Constants.BUFFER_SIZE));) {
+            try (PrintWriter tmpPrintWriter = new PrintWriter(new GZIPOutputStream(new FileOutputStream(this.particlePositionsFilePathname), Constants.BUFFER_SIZE))) {
                 this.writeOutput(tmpPrintWriter);
             } catch (Exception e) {
                 return;
@@ -1153,8 +1153,7 @@ public class FileOutput implements IOutput {
         HashMap<String, HashMap<String, LinkedList<String>>> aBaseToNearestNeighborStepFrequencyMap,
         LinkedList<String> aSimulationStepList,
         String aCurrentSimulationStepString
-    )
-    {
+    ) {
         String tmpZeroString = String.valueOf(0);
         for (String tmpBase : aBaseToNearestNeighborFrequencyMap.keySet()) {
             HashMap<String, Integer> tmpNearestNeighborToFrequencyMap = aBaseToNearestNeighborFrequencyMap.get(tmpBase);

@@ -20,9 +20,8 @@
 package de.gnwi.jdpd.samples.random;
 
 import de.gnwi.jdpd.interfaces.IRandom;
-import java.util.Random;
 import org.apache.commons.rng.UniformRandomProvider;
-import org.apache.commons.rng.sampling.distribution.BoxMullerGaussianSampler;
+import org.apache.commons.rng.sampling.distribution.ZigguratNormalizedGaussianSampler;
 import org.apache.commons.rng.sampling.distribution.ContinuousSampler;
 import org.apache.commons.rng.simple.RandomSource;
 
@@ -174,7 +173,9 @@ public class ApacheCommonsRandom implements IRandom {
         }
         // </editor-fold>
         // <editor-fold defaultstate="collapsed" desc="Gaussian sampler">
-        this.gaussianSampler = new BoxMullerGaussianSampler(this.randomNumberGenerator, 0.0, 1.0);
+        // Old code Apache Commons RNG 1.0:
+        // this.gaussianSampler = new BoxMullerGaussianSampler(this.randomNumberGenerator, 0.0, 1.0);
+        this.gaussianSampler = new ZigguratNormalizedGaussianSampler(this.randomNumberGenerator);
         // </editor-fold>
     }
     // </editor-fold>
