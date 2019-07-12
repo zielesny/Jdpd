@@ -71,11 +71,6 @@ public class FileOutput implements IOutput {
         private final String particlePositionsFilePathname;
         
         /**
-         * Particle positions
-         */
-        private final ParticlePosition[] particlePositions;
-        
-        /**
          * Queue with particle positions file pathnames
          */
         private final ConcurrentLinkedQueue<String> particlePositionsFilePathnameQueue;
@@ -91,6 +86,11 @@ public class FileOutput implements IOutput {
          * Number of after-decimal-separator digits for particle positions (unrestricted if smaller of equal to 0)
          */
         private final int numberOfAfterDecimalDigitsForParticlePositions;
+        
+        /**
+         * Particle positions
+         */
+        private ParticlePosition[] particlePositions;
         // </editor-fold>
         //
         // <editor-fold defaultstate="collapsed" desc="Constructor">
@@ -142,6 +142,8 @@ public class FileOutput implements IOutput {
             }
             // Add this.particlePositionsFilePathname to this.particlePositionsFilePathnameQueue if available
             this.particlePositionsFilePathnameQueue.add(this.particlePositionsFilePathname);
+            // Release memory
+            this.releaseMemory();
         }
         // </editor-fold>
         //
@@ -231,6 +233,13 @@ public class FileOutput implements IOutput {
             } else {
                 return null;
             }
+        }
+        
+        /**
+         * Releases memory
+         */
+        private void releaseMemory() {
+            this.particlePositions = null;
         }
         // </editor-fold>
 

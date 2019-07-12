@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2018  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>  
  * 
@@ -18,6 +18,33 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+--------------------------------------------------------------------------------
+Jdpd 1.1.1.0 (Jdpd.jar)
+--------------------------------------------------------------------------------
+for Java 8 or higher
+
+Dependencies:
+  - commons-rng-client-api-1.1.jar
+    commons-rng-core-1.1.jar
+    commons-rng-sampling-1.1.jar
+    commons-rng-simple-1.1.jar
+      Apache Commons RNG 1.1 (http://commons.apache.org/proper/commons-rng/)
+      Version 1.1
+  - Pcg32.java
+      PCG pseudorandom generator implementation for Java 
+      (https://github.com/alexeyr/pcg-java)
+      Version 0.9.1
+      
+Unit tests: 
+  - Package src.de.gnwi.jdpd.tests
+  
+Simulation input file description:  
+  - File Input.txt in package src.de.gnwi.jdpd.tests.test_Water_GWMVV              
+--------------------------------------------------------------------------------
+- Improvements:
+  - ParticlePositionsWriteTask now explicitly releases memory.  
+
+    
 --------------------------------------------------------------------------------
 Jdpd 1.1.0.0 (Jdpd.jar)
 --------------------------------------------------------------------------------
