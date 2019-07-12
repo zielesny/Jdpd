@@ -484,7 +484,7 @@ public class PnhlnTimeStepCalculator implements ITimeStepCalculator {
         }
         if (this.hasMoleculeAccelerationInfos) {
             for (MoleculeAccelerationInfo tmpMoleculeAccelerationInfo : this.moleculeAccelerationInfos) {
-                if (aCurrentTimeStep > 1 && aCurrentTimeStep%tmpMoleculeAccelerationInfo.getFrequency() == 0) {
+                if (aCurrentTimeStep > 1 && aCurrentTimeStep <= tmpMoleculeAccelerationInfo.getMaxTimeStep()  && aCurrentTimeStep%tmpMoleculeAccelerationInfo.getFrequency() == 0) {
                     Utils.addMoleculeAccelerationTo_f(
                         tmpMoleculeAccelerationInfo,
                         this.particleArrays.getF_x(),
@@ -614,7 +614,7 @@ public class PnhlnTimeStepCalculator implements ITimeStepCalculator {
         }
         if (this.hasMoleculeAccelerationInfos) {
             for (MoleculeAccelerationInfo tmpMoleculeAccelerationInfo : this.moleculeAccelerationInfos) {
-                if (aCurrentTimeStep > 1 && aCurrentTimeStep%tmpMoleculeAccelerationInfo.getFrequency() == 0) {
+                if (aCurrentTimeStep > 1 && aCurrentTimeStep <= tmpMoleculeAccelerationInfo.getMaxTimeStep()  && aCurrentTimeStep%tmpMoleculeAccelerationInfo.getFrequency() == 0) {
                     Utils.addMoleculeAccelerationTo_f(
                         tmpMoleculeAccelerationInfo,
                         this.particleArrays.getF_x(),

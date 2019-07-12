@@ -68,8 +68,8 @@ TABLE_END
 
 MoleculeAcceleration
 TABLE_START
-Water    0 0 0 1 
-KalataB1 0 0 0 1 
+Water    0 0 0 1 1
+KalataB1 0 0 0 1 1
 TABLE_END
 
 RadiusOfGyration

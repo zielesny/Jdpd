@@ -51,6 +51,11 @@ public class MoleculeAccelerationDescription {
      * Frequency
      */
     private final int frequency;
+    
+    /**
+     * Maximum time step where acceleration is applied
+     */
+    private final int maxTimeStep;
     // </editor-fold>
     //
     // <editor-fold defaultstate="collapsed" desc="Constructor">
@@ -63,19 +68,22 @@ public class MoleculeAccelerationDescription {
      * @param anAccelerationY y-component of acceleration
      * @param anAccelerationZ z-component of acceleration
      * @param aFrequency Frequency
+     * @param aMaxTimeStep Maximum time step where acceleration is applied
      */
     public MoleculeAccelerationDescription(
         String aMoleculeName,
         double anAccelerationX,
         double anAccelerationY,
         double anAccelerationZ,
-        int aFrequency
+        int aFrequency,
+        int aMaxTimeStep
     ) {
         this.moleculeName = aMoleculeName;
         this.accelerationX = anAccelerationX;
         this.accelerationY = anAccelerationY;
         this.accelerationZ = anAccelerationZ;
         this.frequency = aFrequency;
+        this.maxTimeStep = aMaxTimeStep;
     }
     // </editor-fold>
     //
@@ -123,6 +131,15 @@ public class MoleculeAccelerationDescription {
      */
     public final int getFrequency() {
         return this.frequency;
+    }
+
+    /**
+     * Maximum time step where acceleration is applied
+     * 
+     * @return Maximum time step where acceleration is applied
+     */
+    public final int getMaxTimeStep() {
+        return this.maxTimeStep;
     }
     // </editor-fold>
     

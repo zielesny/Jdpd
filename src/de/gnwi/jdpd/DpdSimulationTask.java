@@ -888,6 +888,7 @@ public class DpdSimulationTask implements Callable<Boolean> {
                         tmpMoleculeAccelerationDescriptions[i].getAccelerationY(),
                         tmpMoleculeAccelerationDescriptions[i].getAccelerationZ(),
                         tmpMoleculeAccelerationDescriptions[i].getFrequency(),
+                        tmpMoleculeAccelerationDescriptions[i].getMaxTimeStep(),
                         tmpMoleculeTypes.getFirstIndex(tmpMoleculeAccelerationDescriptions[i].getMoleculeName()),
                         tmpMoleculeTypes.getLastIndex(tmpMoleculeAccelerationDescriptions[i].getMoleculeName())
                     );

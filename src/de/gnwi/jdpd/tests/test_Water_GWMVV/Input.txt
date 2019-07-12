@@ -65,8 +65,8 @@ TABLE_END
 # Table with molecule acceleration
 MoleculeAcceleration
 TABLE_START
-# Molecule x acceleration y acceleration z acceleration frequency
-Water      0              0              0              1 
+# Molecule x acceleration y acceleration z acceleration frequency maximum time step
+Water      0              0              0              1         1
 TABLE_END
 
 # Table for molecule particle radius of gyration (Rg) calculation

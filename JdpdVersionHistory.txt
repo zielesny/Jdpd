@@ -19,6 +19,35 @@
  */
 
 --------------------------------------------------------------------------------
+Jdpd 1.2.0.0 (Jdpd.jar)
+--------------------------------------------------------------------------------
+for Java 8 or higher
+
+Dependencies:
+  - commons-rng-client-api-1.1.jar
+    commons-rng-core-1.1.jar
+    commons-rng-sampling-1.1.jar
+    commons-rng-simple-1.1.jar
+      Apache Commons RNG 1.1 (http://commons.apache.org/proper/commons-rng/)
+      Version 1.1
+  - Pcg32.java
+      PCG pseudorandom generator implementation for Java 
+      (https://github.com/alexeyr/pcg-java)
+      Version 0.9.1
+      
+Unit tests: 
+  - Package src.de.gnwi.jdpd.tests
+  
+Simulation input file description:  
+  - File Input.txt in package src.de.gnwi.jdpd.tests.test_Water_GWMVV              
+--------------------------------------------------------------------------------
+- Improvements:
+  - Settings for molecule acceleration now contain a maximum time step for the
+    acceleration to be applied. Job definitions of older versions are still 
+    compatible.
+
+
+--------------------------------------------------------------------------------
 Jdpd 1.1.1.0 (Jdpd.jar)
 --------------------------------------------------------------------------------
 for Java 8 or higher

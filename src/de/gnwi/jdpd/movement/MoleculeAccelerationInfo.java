@@ -53,6 +53,7 @@ public class MoleculeAccelerationInfo extends MoleculeAccelerationDescription {
      * @param anAccelerationY y-component of acceleration
      * @param anAccelerationZ z-component of acceleration
      * @param aFrequency Frequency
+     * @param aMaxTimeStep Maximum time step where acceleration is applied
      * @param aFirstIndex First index in particle arrays for molecule
      * @param aLastIndex Last index in particle arrays for molecule
      */
@@ -62,6 +63,7 @@ public class MoleculeAccelerationInfo extends MoleculeAccelerationDescription {
         double anAccelerationY,
         double anAccelerationZ,
         int aFrequency,
+        int aMaxTimeStep,
         int aFirstIndex,
         int aLastIndex
     ) {
@@ -70,7 +72,8 @@ public class MoleculeAccelerationInfo extends MoleculeAccelerationDescription {
             anAccelerationX,
             anAccelerationY,
             anAccelerationZ,
-            aFrequency
+            aFrequency,
+            aMaxTimeStep
         );
         this.firstIndex = aFirstIndex;
         this.exclusiveLastIndex = aLastIndex + 1;

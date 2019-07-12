@@ -687,14 +687,20 @@ public class FileInput implements IInput {
             double tmpAccelerationY = Double.valueOf(tmpMoleculeAccelerationTable[i][2]);
             double tmpAccelerationZ = Double.valueOf(tmpMoleculeAccelerationTable[i][3]);
             int tmpFrequency = Integer.valueOf(tmpMoleculeAccelerationTable[i][4]);
-            if (tmpAccelerationX != 0.0 || tmpAccelerationY != 0.0 || tmpAccelerationZ != 0.0) {
+            // If tmpMaxTimeStep is NOT defined it gets the highest possible value
+            int tmpMaxTimeStep = Constants.MAXIMUM_NUMBER_OF_TIME_STEPS;
+            if (tmpMoleculeAccelerationTable[i].length > 5) {
+                tmpMaxTimeStep = Integer.valueOf(tmpMoleculeAccelerationTable[i][5]);
+            }
+            if ((tmpAccelerationX != 0.0 || tmpAccelerationY != 0.0 || tmpAccelerationZ != 0.0) && tmpFrequency > 0  && tmpMaxTimeStep > 0) {
                 tmpMoleculeAccelerationList.add(
                     new MoleculeAccelerationDescription(
                         tmpMoleculeName, 
                         tmpAccelerationX, 
                         tmpAccelerationY, 
                         tmpAccelerationZ,
-                        tmpFrequency
+                        tmpFrequency,
+                        tmpMaxTimeStep
                     )
                 );
             }

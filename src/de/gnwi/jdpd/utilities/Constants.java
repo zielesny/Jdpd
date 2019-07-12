@@ -32,6 +32,11 @@ public final class Constants {
      * MByte = 1048576 Byte)
      */
     public static final int BUFFER_SIZE = 65536;
+
+    /**
+     * Maximum number of time steps for a simulation
+     */
+    public static final int MAXIMUM_NUMBER_OF_TIME_STEPS = 100000000;
     // </editor-fold>
     
 }
