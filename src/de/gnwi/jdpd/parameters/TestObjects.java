@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2018  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -44,9 +44,9 @@ public class TestObjects {
     //
     // <editor-fold defaultstate="collapsed" desc="Private class variables">
     /**
-     * Number of particle index pairs
+     * Particle index pair counter
      */
-    private AtomicInteger particleIndexPairNumber;
+    private AtomicInteger particleIndexPairCounter;
 
     /**
      * Double adder
@@ -60,17 +60,18 @@ public class TestObjects {
      * 
      * @param aParticleIndexPairQueue Queue of particle pair arrays [length = 2]
      * @param aParticleIndexPairRandomQueue Queue of particle pair random strings
-     * @param aParticleIndexPairNumber Number of particle index pairs
+     * @param aParticleIndexPairNumber Particle index pair counter
      * @param aDoubleAdder Double adder
      */
     public TestObjects(
         ConcurrentLinkedQueue<int[]> aParticleIndexPairQueue,
         ConcurrentLinkedQueue<String> aParticleIndexPairRandomQueue,
         AtomicInteger aParticleIndexPairNumber,
-        DoubleAdder aDoubleAdder) {
+        DoubleAdder aDoubleAdder
+    ) {
         this.particleIndexPairQueue = aParticleIndexPairQueue;
         this.particleIndexPairRandomQueue = aParticleIndexPairRandomQueue;
-        this.particleIndexPairNumber = aParticleIndexPairNumber;
+        this.particleIndexPairCounter = aParticleIndexPairNumber;
         this.doubleAdder = aDoubleAdder;
     }
     // </editor-fold>
@@ -97,21 +98,21 @@ public class TestObjects {
     //
     // <editor-fold defaultstate="collapsed" desc="Public properties (get/set)">
     /**
-     * Number of particle index pairs
+     * Particle index pair counter
      * 
-     * @return Number of particle index pairs
+     * @return Particle index pair counter
      */
-    public AtomicInteger getParticleIndexPairNumber() {
-        return this.particleIndexPairNumber;
+    public AtomicInteger getParticleIndexPairCounter() {
+        return this.particleIndexPairCounter;
     }
     
     /**
-     * Number of particle index pairs
+     * Particle index pair counter
      * 
-     * @param aParticleIndexPairNumber Number of particle index pairs
+     * @param aParticleIndexPairCounter Particle index pair counter
      */
-    public void setParticleIndexPairNumber(AtomicInteger aParticleIndexPairNumber) {
-        this.particleIndexPairNumber = aParticleIndexPairNumber;
+    public void setParticleIndexPairCounter(AtomicInteger aParticleIndexPairCounter) {
+        this.particleIndexPairCounter = aParticleIndexPairCounter;
     }
 
     /**

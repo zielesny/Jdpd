@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2018  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -55,6 +55,7 @@ public class MoleculeVelocityFixationDescription extends MoleculeFixationDescrip
      * @param aVelocityX x-component of velocity
      * @param aVelocityY y-component of velocity
      * @param aVelocityZ z-component of velocity
+     * @param aMaxTimeStep Maximum time step for application
      */
     public MoleculeVelocityFixationDescription(
         String aMoleculeName,
@@ -63,12 +64,15 @@ public class MoleculeVelocityFixationDescription extends MoleculeFixationDescrip
         boolean anIsFixedZ,
         double aVelocityX,
         double aVelocityY,
-        double aVelocityZ) {
+        double aVelocityZ,
+        int aMaxTimeStep
+    ) {
         super(
             aMoleculeName,
             anIsFixedX,
             anIsFixedY,
-            anIsFixedZ
+            anIsFixedZ,
+            aMaxTimeStep
         );
         this.velocityX = aVelocityX;
         this.velocityY = aVelocityY;

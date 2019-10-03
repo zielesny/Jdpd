@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2018  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -54,19 +54,23 @@ public class MoleculeFixationInfo extends MoleculeFixationDescription {
      * @param anIsFixedZ True: z-component of all particles of molecule is fixed, false: Otherwise
      * @param aFirstIndex First index in particle arrays for molecule
      * @param aLastIndex Last index in particle arrays for molecule
+     * @param aMaxTimeStep Maximum time step for application
      */
     public MoleculeFixationInfo(
         String aMoleculeName,
         boolean anIsFixedX,
         boolean anIsFixedY,
         boolean anIsFixedZ,
+        int aMaxTimeStep,
         int aFirstIndex,
-        int aLastIndex) {
+        int aLastIndex
+    ) {
         super(
             aMoleculeName,
             anIsFixedX,
             anIsFixedY,
-            anIsFixedZ
+            anIsFixedZ,
+            aMaxTimeStep
         );
         this.firstIndex = aFirstIndex;
         this.exclusiveLastIndex = aLastIndex + 1;

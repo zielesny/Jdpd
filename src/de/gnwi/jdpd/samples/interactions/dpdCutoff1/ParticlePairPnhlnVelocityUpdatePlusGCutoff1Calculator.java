@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2018  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -64,7 +64,7 @@ public class ParticlePairPnhlnVelocityUpdatePlusGCutoff1Calculator extends Parti
      * Constructor
      * 
      * @param aFactory Factory for new objects
-     * @param aSimulationLogger Simulation simulationLogger
+     * @param aSimulationLogger Simulation logger
      * @param aBoxSize Box size
      * @param aPeriodicBoundaries Periodic boundaries
      * @param aCutOffLength Cut-off length for partitioning of the box

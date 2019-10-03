@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2018  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -59,12 +59,6 @@ import java.util.List;
 public final class Utils {
 
     // <editor-fold defaultstate="collapsed" desc="Private static final class variables">
-    /**
-     * Tiny threshold (a little smaller than square root of significant number 
-     * of digits of double precision)
-     */
-    private static final double TINY_THRESHOLD = 1E-7;
-
     /**
      * General separator string
      */
@@ -821,47 +815,77 @@ public final class Utils {
     // </editor-fold>
     // <editor-fold defaultstate="collapsed" desc="Calculation methods">
     /**
+     * Adds b to a
+     * NOTE: NO checks are performed.
+     * 
+     * @param a_x x-component of a (may be changed)
+     * @param a_y y-component of a (may be changed)
+     * @param a_z z-component of a (may be changed)
+     * @param b_x x-component of b (is not changed)
+     * @param b_y y-component of b (is not changed)
+     * @param b_z z-component of b (is not changed)
+     */
+    public static void add_b_to_a(
+        double[] a_x,
+        double[] a_y,
+        double[] a_z,
+        double[] b_x,
+        double[] b_y,
+        double[] b_z
+    ) {
+        for (int i = 0; i < a_x.length; i++) {
+            a_x[i] += b_x[i];
+            a_y[i] += b_y[i];
+            a_z[i] += b_z[i];
+        }
+    }
+
+    /**
      * Fills v for fixed molecules
      * NOTE: NO checks are performed.
      * 
+     * @param aCurrentTimeStep Current time step
      * @param aMoleculeVelocityFixationInfos Molecule velocity fixation infos
      * @param aV_x Current x-components of particle velocities
      * @param aV_y Current y-components of particle velocities
      * @param aV_z Current z-components of particle velocities
      */
     public static void fill_v_forFixedMolecules(
+        int aCurrentTimeStep,
         MoleculeVelocityFixationInfo[] aMoleculeVelocityFixationInfos,
         double[] aV_x,
         double[] aV_y,
         double[] aV_z
     ) {
         for (int i = 0; i < aMoleculeVelocityFixationInfos.length; i++) {
-            // <editor-fold defaultstate="collapsed" desc="Fill v for fixed molecules">
-            if (aMoleculeVelocityFixationInfos[i].isFixedX()) {
-                Arrays.fill(
-                    aV_x,
-                    aMoleculeVelocityFixationInfos[i].getFirstIndex(),
-                    aMoleculeVelocityFixationInfos[i].getExclusiveLastIndex(),
-                    aMoleculeVelocityFixationInfos[i].getVelocityX()
-                );
+            if (aCurrentTimeStep <= aMoleculeVelocityFixationInfos[i].getMaxTimeStep()) {
+                // <editor-fold defaultstate="collapsed" desc="Fill v for fixed molecules">
+                if (aMoleculeVelocityFixationInfos[i].isFixedX()) {
+                    Arrays.fill(
+                        aV_x,
+                        aMoleculeVelocityFixationInfos[i].getFirstIndex(),
+                        aMoleculeVelocityFixationInfos[i].getExclusiveLastIndex(),
+                        aMoleculeVelocityFixationInfos[i].getVelocityX()
+                    );
+                }
+                if (aMoleculeVelocityFixationInfos[i].isFixedY()) {
+                    Arrays.fill(
+                        aV_y,
+                        aMoleculeVelocityFixationInfos[i].getFirstIndex(),
+                        aMoleculeVelocityFixationInfos[i].getExclusiveLastIndex(),
+                        aMoleculeVelocityFixationInfos[i].getVelocityY()
+                    );
+                }
+                if (aMoleculeVelocityFixationInfos[i].isFixedZ()) {
+                    Arrays.fill(
+                        aV_z,
+                        aMoleculeVelocityFixationInfos[i].getFirstIndex(),
+                        aMoleculeVelocityFixationInfos[i].getExclusiveLastIndex(),
+                        aMoleculeVelocityFixationInfos[i].getVelocityZ()
+                    );
+                }
+                // </editor-fold>
             }
-            if (aMoleculeVelocityFixationInfos[i].isFixedY()) {
-                Arrays.fill(
-                    aV_y,
-                    aMoleculeVelocityFixationInfos[i].getFirstIndex(),
-                    aMoleculeVelocityFixationInfos[i].getExclusiveLastIndex(),
-                    aMoleculeVelocityFixationInfos[i].getVelocityY()
-                );
-            }
-            if (aMoleculeVelocityFixationInfos[i].isFixedZ()) {
-                Arrays.fill(
-                    aV_z,
-                    aMoleculeVelocityFixationInfos[i].getFirstIndex(),
-                    aMoleculeVelocityFixationInfos[i].getExclusiveLastIndex(),
-                    aMoleculeVelocityFixationInfos[i].getVelocityZ()
-                );
-            }
-            // </editor-fold>
         }
     }
     
@@ -869,6 +893,7 @@ public final class Utils {
      * Copies rOld to r for fixed molecules
      * NOTE: NO checks are performed.
      * 
+     * @param aCurrentTimeStep Current time step
      * @param aMoleculeFixationInfos Molecule fixation infos
      * @param aR_x Current x-position of particle in simulation box (may be changed)
      * @param aR_y Current y-position of particle in simulation box (may be changed)
@@ -878,6 +903,7 @@ public final class Utils {
      * @param aRold_z Old z-position of particle in simulation box (is NOT changed)
      */
     public static void copy_rOld_to_r_forFixedMolecules(
+        int aCurrentTimeStep,
         MoleculeFixationInfo[] aMoleculeFixationInfos,
         double[] aR_x,
         double[] aR_y,
@@ -887,35 +913,37 @@ public final class Utils {
         double[] aRold_z
     ) {
         for (int i = 0; i < aMoleculeFixationInfos.length; i++) {
-            // <editor-fold defaultstate="collapsed" desc="Copy rOld to r for fixed molecules">
-            if (aMoleculeFixationInfos[i].isFixedX()) {
-                System.arraycopy(
-                    aRold_x, 
-                    aMoleculeFixationInfos[i].getFirstIndex(), 
-                    aR_x, 
-                    aMoleculeFixationInfos[i].getFirstIndex(), 
-                    aMoleculeFixationInfos[i].getLength()
-                );
+            if (aCurrentTimeStep <= aMoleculeFixationInfos[i].getMaxTimeStep()) {
+                // <editor-fold defaultstate="collapsed" desc="Copy rOld to r for fixed molecules">
+                if (aMoleculeFixationInfos[i].isFixedX()) {
+                    System.arraycopy(
+                        aRold_x, 
+                        aMoleculeFixationInfos[i].getFirstIndex(), 
+                        aR_x, 
+                        aMoleculeFixationInfos[i].getFirstIndex(), 
+                        aMoleculeFixationInfos[i].getLength()
+                    );
+                }
+                if (aMoleculeFixationInfos[i].isFixedY()) {
+                    System.arraycopy(
+                        aRold_y, 
+                        aMoleculeFixationInfos[i].getFirstIndex(), 
+                        aR_y, 
+                        aMoleculeFixationInfos[i].getFirstIndex(), 
+                        aMoleculeFixationInfos[i].getLength()
+                    );
+                }
+                if (aMoleculeFixationInfos[i].isFixedZ()) {
+                    System.arraycopy(
+                        aRold_z, 
+                        aMoleculeFixationInfos[i].getFirstIndex(), 
+                        aR_z, 
+                        aMoleculeFixationInfos[i].getFirstIndex(), 
+                        aMoleculeFixationInfos[i].getLength()
+                    );
+                }
+                // </editor-fold>
             }
-            if (aMoleculeFixationInfos[i].isFixedY()) {
-                System.arraycopy(
-                    aRold_y, 
-                    aMoleculeFixationInfos[i].getFirstIndex(), 
-                    aR_y, 
-                    aMoleculeFixationInfos[i].getFirstIndex(), 
-                    aMoleculeFixationInfos[i].getLength()
-                );
-            }
-            if (aMoleculeFixationInfos[i].isFixedZ()) {
-                System.arraycopy(
-                    aRold_z, 
-                    aMoleculeFixationInfos[i].getFirstIndex(), 
-                    aR_z, 
-                    aMoleculeFixationInfos[i].getFirstIndex(), 
-                    aMoleculeFixationInfos[i].getLength()
-                );
-            }
-            // </editor-fold>
         }
     }
     
@@ -923,6 +951,7 @@ public final class Utils {
      * Corrects r and v for molecule boundaries
      * NOTE: NO checks are performed.
      * 
+     * @param aCurrentTimeStep Current time step
      * @param aMoleculeBoundaryInfos Molecule boundary infos
      * @param aR_x Current x-position of particle in simulation box (may be changed)
      * @param aR_y Current y-position of particle in simulation box (may be changed)
@@ -932,6 +961,7 @@ public final class Utils {
      * @param aV_z Current z-components of particle velocities (may be changed)
      */
     public static void correct_r_and_v_forMoleculeBoundaries(
+        int aCurrentTimeStep,
         MoleculeBoundaryInfo[] aMoleculeBoundaryInfos,
         double[] aR_x,
         double[] aR_y,
@@ -941,35 +971,37 @@ public final class Utils {
         double[] aV_z
     ) {
         for (MoleculeBoundaryInfo tmpMoleculeBoundaryInfo: aMoleculeBoundaryInfos) {
-            if (tmpMoleculeBoundaryInfo.isBoundaryX()) {
-                Utils.correct_r_and_v_ComponentforMoleculeBoundaries(
-                    aR_x,
-                    aV_x,
-                    tmpMoleculeBoundaryInfo.getXmin(),
-                    tmpMoleculeBoundaryInfo.getXmax(),
-                    tmpMoleculeBoundaryInfo.getFirstIndex(),
-                    tmpMoleculeBoundaryInfo.getExclusiveLastIndex()
-                );
-            }
-            if (tmpMoleculeBoundaryInfo.isBoundaryY()) {
-                Utils.correct_r_and_v_ComponentforMoleculeBoundaries(
-                    aR_y,
-                    aV_y,
-                    tmpMoleculeBoundaryInfo.getYmin(),
-                    tmpMoleculeBoundaryInfo.getYmax(),
-                    tmpMoleculeBoundaryInfo.getFirstIndex(),
-                    tmpMoleculeBoundaryInfo.getExclusiveLastIndex()
-                );
-            }
-            if (tmpMoleculeBoundaryInfo.isBoundaryZ()) {
-                Utils.correct_r_and_v_ComponentforMoleculeBoundaries(
-                    aR_z,
-                    aV_z,
-                    tmpMoleculeBoundaryInfo.getZmin(),
-                    tmpMoleculeBoundaryInfo.getZmax(),
-                    tmpMoleculeBoundaryInfo.getFirstIndex(),
-                    tmpMoleculeBoundaryInfo.getExclusiveLastIndex()
-                );
+            if (aCurrentTimeStep <= tmpMoleculeBoundaryInfo.getMaxTimeStep()) {
+                if (tmpMoleculeBoundaryInfo.isBoundaryX()) {
+                    Utils.correct_r_and_v_ComponentforMoleculeBoundaries(
+                        aR_x,
+                        aV_x,
+                        tmpMoleculeBoundaryInfo.getXmin(),
+                        tmpMoleculeBoundaryInfo.getXmax(),
+                        tmpMoleculeBoundaryInfo.getFirstIndex(),
+                        tmpMoleculeBoundaryInfo.getExclusiveLastIndex()
+                    );
+                }
+                if (tmpMoleculeBoundaryInfo.isBoundaryY()) {
+                    Utils.correct_r_and_v_ComponentforMoleculeBoundaries(
+                        aR_y,
+                        aV_y,
+                        tmpMoleculeBoundaryInfo.getYmin(),
+                        tmpMoleculeBoundaryInfo.getYmax(),
+                        tmpMoleculeBoundaryInfo.getFirstIndex(),
+                        tmpMoleculeBoundaryInfo.getExclusiveLastIndex()
+                    );
+                }
+                if (tmpMoleculeBoundaryInfo.isBoundaryZ()) {
+                    Utils.correct_r_and_v_ComponentforMoleculeBoundaries(
+                        aR_z,
+                        aV_z,
+                        tmpMoleculeBoundaryInfo.getZmin(),
+                        tmpMoleculeBoundaryInfo.getZmax(),
+                        tmpMoleculeBoundaryInfo.getFirstIndex(),
+                        tmpMoleculeBoundaryInfo.getExclusiveLastIndex()
+                    );
+                }
             }
         }
     }
@@ -1222,7 +1254,7 @@ public final class Utils {
      * @param aX x-component of vector
      * @param aY y-component of vector
      * @param aZ z-component of vector
-     * @return Mean force
+     * @return Mean magnitude
      */
     public static double calculateMeanMagnitude(
         double[] aX,
@@ -1234,6 +1266,46 @@ public final class Utils {
             tmpMeanMagnitude += Math.sqrt(aX[i] * aX[i] + aY[i] * aY[i] + aZ[i] * aZ[i]);
         }
         return tmpMeanMagnitude / (double) aX.length;
+    }
+    
+    /**
+     * Calculates min, mean and max magnitude of vector components if magnitude
+     * is not zero
+     * NOTE: No checks are performed.
+     * 
+     * @param aX x-component of vector
+     * @param aY y-component of vector
+     * @param aZ z-component of vector
+     * @return Array of length 3 with min (index 0), mean (index 1) and 
+     * max (index 2) magnitude of (non-zero magnitude) vector components
+     */
+    public static double[] calculateMinMeanMax(
+        double[] aX,
+        double[] aY,
+        double[] aZ
+    ) {
+        double tmpSum = 0.0;
+        double tmpMin = Double.MAX_VALUE;
+        double tmpMax = 0.0;
+        int tmpCounter = 0;
+        for (int i = 0; i < aX.length; i++) {
+            if (aX[i] != 0.0 || aY[i] != 0.0 || aZ[i] != 0.0) {
+                tmpCounter++;
+                double tmpMagnitude = Math.sqrt(aX[i] * aX[i] + aY[i] * aY[i] + aZ[i] * aZ[i]);
+                tmpSum += tmpMagnitude;
+                if (tmpMagnitude < tmpMin) {
+                    tmpMin = tmpMagnitude;
+                }
+                if (tmpMagnitude > tmpMax) {
+                    tmpMax = tmpMagnitude;
+                }
+            }
+        }
+        if (tmpSum == 0.0) {
+            return null;
+        } else {
+            return new double[]{tmpMin, tmpSum / (double) tmpCounter, tmpMax};
+        }
     }
 
     /**
@@ -1256,6 +1328,15 @@ public final class Utils {
         double aTemperature,
         boolean anIsDpdUnitMass
     ) {
+        // Remove excess momentum first
+        Utils.removeExcessMomentum(
+            aV_x, 
+            aV_y, 
+            aV_z, 
+            aDpdMasses, 
+            anIsDpdUnitMass
+        );
+        
         double tmpVelocityScaleFactor = 
             Utils.getVelocityScaleFactor(
                 aV_x, 
@@ -1309,6 +1390,60 @@ public final class Utils {
     }
     
     /**
+     * Removes excess momentum from velocities
+     * NOTE: No checks are performed.
+     * 
+     * @param aV_x Current x-components of particle velocities (may be changed)
+     * @param aV_y Current y-components of particle velocities (may be changed)
+     * @param aV_z Current z-components of particle velocities (may be changed)
+     * @param aDpdMasses DPD masses of particles
+     * @param anIsDpdUnitMass Flag for use of DPD unit masses. True : DPD masses of all particles are set to 1, False: ...
+     */
+    public static void removeExcessMomentum(
+        double[] aV_x,
+        double[] aV_y,
+        double[] aV_z,
+        double[] aDpdMasses,
+        boolean anIsDpdUnitMass
+    ) {
+        if (anIsDpdUnitMass) {
+            double tmpExcessMomentum_x = 0.0;
+            double tmpExcessMomentum_y = 0.0;
+            double tmpExcessMomentum_z = 0.0;
+            for (int i = 0; i < aV_x.length; i++) {
+                tmpExcessMomentum_x += aV_x[i];
+                tmpExcessMomentum_y += aV_y[i];
+                tmpExcessMomentum_z += aV_z[i];
+            }
+            double tmpExcessMomentumPerParticle_x = tmpExcessMomentum_x / (double) aV_x.length;
+            double tmpExcessMomentumPerParticle_y = tmpExcessMomentum_y / (double) aV_x.length;
+            double tmpExcessMomentumPerParticle_z = tmpExcessMomentum_z / (double) aV_x.length;
+            for (int i = 0; i < aV_x.length; i++) {
+                aV_x[i] -= tmpExcessMomentumPerParticle_x;
+                aV_y[i] -= tmpExcessMomentumPerParticle_y;
+                aV_z[i] -= tmpExcessMomentumPerParticle_z;
+            }
+        } else {
+            double tmpExcessMomentum_x = 0.0;
+            double tmpExcessMomentum_y = 0.0;
+            double tmpExcessMomentum_z = 0.0;
+            for (int i = 0; i < aV_x.length; i++) {
+                tmpExcessMomentum_x += aDpdMasses[i] * aV_x[i];
+                tmpExcessMomentum_y += aDpdMasses[i] * aV_y[i];
+                tmpExcessMomentum_z += aDpdMasses[i] * aV_z[i];
+            }
+            double tmpExcessMomentumPerParticle_x = tmpExcessMomentum_x / (double) aV_x.length;
+            double tmpExcessMomentumPerParticle_y = tmpExcessMomentum_y / (double) aV_x.length;
+            double tmpExcessMomentumPerParticle_z = tmpExcessMomentum_z / (double) aV_x.length;
+            for (int i = 0; i < aV_x.length; i++) {
+                aV_x[i] -= tmpExcessMomentumPerParticle_x / aDpdMasses[i];
+                aV_y[i] -= tmpExcessMomentumPerParticle_y / aDpdMasses[i];
+                aV_z[i] -= tmpExcessMomentumPerParticle_z / aDpdMasses[i];
+            }
+        }
+    }
+    
+    /**
      * Corrects position difference for threshold and periodic boundary 
      * 
      * @param aPositionDifference Difference between two positions
@@ -1325,11 +1460,11 @@ public final class Utils {
         double aBoxAxisLength,
         double aBoxAxisNegativeHalfLength
     ) {
-        if (Math.abs(aPositionDifference) < TINY_THRESHOLD) {
+        if (Math.abs(aPositionDifference) < Constants.TINY_THRESHOLD) {
             if (aPositionDifference < 0.0) {
-                return -TINY_THRESHOLD;
+                return -Constants.TINY_THRESHOLD;
             } else {
-                return TINY_THRESHOLD;
+                return Constants.TINY_THRESHOLD;
             }
         } else {
             if (anIsPeriodicBoundaryAlongAxis) {
@@ -1395,7 +1530,7 @@ public final class Utils {
     };
 
     /**
-     * Calculates initial potential energy minimisation steps
+     * Calculates initial potential energy minimization steps
      * 
      * @param aSimulationLogger Simulation logger
      * @param aParameters Parameters
@@ -1515,17 +1650,17 @@ public final class Utils {
             double tmpUpotCurrent = aPotentialAccumulator.getExtendedAdderGroup().getPotentialEnergyAdder().getSum();
             
             // <editor-fold defaultstate="collapsed" desc="Intermediate results logging">
-            aSimulationLogger.appendIntermediateResults("Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = " + String.valueOf(i + 1) + ", Timestep Length = " + String.valueOf(tmpStepLength));
+            aSimulationLogger.appendIntermediateResults("Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = " + String.valueOf(i + 1) + ", Timestep Length = " + String.valueOf(tmpStepLength));
             // </editor-fold>
             if (tmpUpotCurrent < tmpUpotMin) {
                 tmpStepLength *= 2.0;
                 tmpUpotMin = tmpUpotCurrent;
                 // <editor-fold defaultstate="collapsed" desc="Intermediate results logging">
-                aSimulationLogger.appendIntermediateResults("Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = " + String.valueOf(i + 1) + ", Upot(Min)       = " + String.valueOf(tmpUpotMin));
+                aSimulationLogger.appendIntermediateResults("Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = " + String.valueOf(i + 1) + ", Upot(Min)       = " + String.valueOf(tmpUpotMin));
                 // </editor-fold>
             } else {
                 // <editor-fold defaultstate="collapsed" desc="Intermediate results logging">
-                aSimulationLogger.appendIntermediateResults("Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = " + String.valueOf(i + 1) + ", Upot(Current)   = " + String.valueOf(tmpUpotCurrent));
+                aSimulationLogger.appendIntermediateResults("Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = " + String.valueOf(i + 1) + ", Upot(Current)   = " + String.valueOf(tmpUpotCurrent));
                 // </editor-fold>
                 // Restore x,y,z-positions
                 for (int k = 0; k < tmpR_x.length; k++) {
@@ -1537,7 +1672,7 @@ public final class Utils {
                     tmpStepLength *= 0.5;
                 } else {
                     // <editor-fold defaultstate="collapsed" desc="Intermediate results logging">
-                    aSimulationLogger.appendIntermediateResults("Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimisation step = " + String.valueOf(i + 1) + ", Break");
+                    aSimulationLogger.appendIntermediateResults("Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = " + String.valueOf(i + 1) + ", Break");
                     // </editor-fold>
                     break;
                 }

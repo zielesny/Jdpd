@@ -42,20 +42,20 @@ BoxSize 42.209086 42.209086 42.209086
 
 MoleculeFixation
 TABLE_START
-Water false false false 
-DMPC  false false false 
+Water false false false 1
+DMPC  false false false 1
 TABLE_END
 
 MoleculeBoundary
 TABLE_START
-Water false 0 42.209086 false 0 42.209086 false 0 42.209086 
-DMPC  false 0 42.209086 false 0 42.209086 false 0 42.209086 
+Water false 0 42.209086 false 0 42.209086 false 0 42.209086 1
+DMPC  false 0 42.209086 false 0 42.209086 false 0 42.209086 1
 TABLE_END
 
 MoleculeFixedVelocity
 TABLE_START
-Water false 0 false 0 false 0 
-DMPC  false 0 false 0 false 0 
+Water false 0 false 0 false 0 1
+DMPC  false 0 false 0 false 0 1
 TABLE_END
 
 MoleculeAcceleration
@@ -160,7 +160,7 @@ PeriodicBoundaries true true false
 
 IsDpdUnitMass true
 
-IsVelocityScaling false
+InitialVelocityScalingSteps 0
 
 RandomNumberGenerator ACRNG_MT 123456 10000
 

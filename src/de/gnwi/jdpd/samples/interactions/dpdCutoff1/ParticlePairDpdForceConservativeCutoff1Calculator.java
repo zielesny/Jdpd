@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2018  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -48,7 +48,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * 
  * @author Achim Zielesny
  */
-public class ParticlePairDpdForceConservativeCutoff1Calculator extends ParticlePairInteractionCalculator  implements IParticlePairForceCalculator {
+public class ParticlePairDpdForceConservativeCutoff1Calculator extends ParticlePairInteractionCalculator implements IParticlePairForceCalculator {
 
     // <editor-fold defaultstate="collapsed" desc="Private static final class variables">
     private static final double ONE = 1.0;
@@ -59,11 +59,11 @@ public class ParticlePairDpdForceConservativeCutoff1Calculator extends ParticleP
      * Constructor
      * 
      * @param aFactory Factory for new objects
-     * @param aSimulationLogger Simulation simulationLogger
+     * @param aSimulationLogger Simulation logger
      * @param aBoxSize Box size
      * @param aPeriodicBoundaries Periodic boundaries
      * @param aCutOffLength Cut-off length for partitioning of the box
-     * @param aParallelizationInfo Parallelisation info
+     * @param aParallelizationInfo Parallelization info
      * @param aRandomNumberSeed Random number seed
      * @throws IllegalArgumentException Thrown if an argument is illegal
      */
@@ -85,7 +85,7 @@ public class ParticlePairDpdForceConservativeCutoff1Calculator extends ParticleP
             aRandomNumberSeed
         );
         // <editor-fold defaultstate="collapsed" desc="Method call logging">
-        this.simulationLogger.appendMethodCall("ParticlePairDpdRcut1ConservativeForceCalculator.Constructor: FULL");
+        this.simulationLogger.appendMethodCall("ParticlePairDpdForceConservativeCutoff1Calculator.Constructor: FULL");
         // </editor-fold>
     }
 
@@ -99,7 +99,7 @@ public class ParticlePairDpdForceConservativeCutoff1Calculator extends ParticleP
     public ParticlePairDpdForceConservativeCutoff1Calculator(IParticlePairInteractionCalculator aParticlePairInteractionCalculator) throws IllegalArgumentException {
         super(aParticlePairInteractionCalculator);
         // <editor-fold defaultstate="collapsed" desc="Method call logging">
-        this.simulationLogger.appendMethodCall("ParticlePairDpdRcut1ConservativeForceCalculator.Constructor WITH aParticlePairInteractionCalculator");
+        this.simulationLogger.appendMethodCall("ParticlePairDpdForceConservativeCutoff1Calculator.Constructor WITH aParticlePairInteractionCalculator");
         // </editor-fold>
     }
     // </editor-fold>

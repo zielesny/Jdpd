@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2018  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -76,6 +76,11 @@ public class MoleculeBoundaryDescription {
      * Boundary z-max in simulation box
      */
     private final double zMax;
+
+    /**
+     * Maximum time step for application
+     */
+    private final int maxTimeStep;
     // </editor-fold>
     //
     // <editor-fold defaultstate="collapsed" desc="Constructor">
@@ -93,6 +98,7 @@ public class MoleculeBoundaryDescription {
      * @param anIsBoundaryZ True: Boundary in z-direction is defined, false: Otherwise
      * @param aZmin Boundary z-min in simulation box
      * @param aZmax Boundary z-max in simulation box
+     * @param aMaxTimeStep Maximum time step for application
      */
     public MoleculeBoundaryDescription(
         String aMoleculeName,
@@ -104,7 +110,8 @@ public class MoleculeBoundaryDescription {
         double aYmax,
         boolean anIsBoundaryZ,
         double aZmin,
-        double aZmax
+        double aZmax,
+        int aMaxTimeStep
     ) {
         this.moleculeName = aMoleculeName;
         this.isBoundaryX = anIsBoundaryX;
@@ -116,6 +123,7 @@ public class MoleculeBoundaryDescription {
         this.isBoundaryZ = anIsBoundaryZ;
         this.zMin = aZmin;
         this.zMax = aZmax;
+        this.maxTimeStep = aMaxTimeStep;
     }
     // </editor-fold>
     //
@@ -208,6 +216,15 @@ public class MoleculeBoundaryDescription {
      */
     public double getZmax() {
         return this.zMax;
+    }
+
+    /**
+     * Maximum time step for application
+     * 
+     * @return Maximum time step for application
+     */
+    public final int getMaxTimeStep() {
+        return this.maxTimeStep;
     }
     // </editor-fold>
     

@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2018  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -55,13 +55,13 @@ public class SimulationDescription {
     private final int timeStepFrequencyForOutput;
     
     /**
-     * Number of initial potential energy minimisation steps
+     * Number of initial potential energy minimization steps
      */
     private final int initialPotentialEnergyMinimizationStepNumber;
     
     /**
-     * Flag for initial potential energy minimisation step output.
-     * True: Potential energy minimisation step output is generated, 
+     * Flag for initial potential energy minimization step output.
+     * True: Potential energy minimization step output is generated, 
      * false: Otherwise (NO output)
      */
     private final boolean isInitialPotentialEnergyMinimizationStepOutput;
@@ -81,9 +81,9 @@ public class SimulationDescription {
     private final boolean isDpdUnitMass;
 
     /**
-     * True: Velocity scaling is performed for every simulation step, false: Otherwise
+     * Number of initial velocity scaling steps
      */
-    private final boolean isVelocityScaling;
+    private final int numberOfInitialVelocityScalingSteps;
     // </editor-fold>
     //
     // <editor-fold defaultstate="collapsed" desc="Constructor">
@@ -94,11 +94,11 @@ public class SimulationDescription {
      * @param aTimeStepNumber Number of time steps
      * @param aTimeStepLength Time step length
      * @param aTimeStepFrequencyForOutput Time step frequency for output
-     * @param anInitialPotentialEnergyMinimizationStepNumber Number of initial potential energy minimisation steps
-     * @param anIsInitialPotentialEnergyMinimizationStepOutput Flag for initial potential energy minimisation step output
+     * @param anInitialPotentialEnergyMinimizationStepNumber Number of initial potential energy minimization steps
+     * @param anIsInitialPotentialEnergyMinimizationStepOutput Flag for initial potential energy minimization step output
      * @param aPeriodicBoundaries Periodic boundaries
      * @param anIsDpdUnitMass Flag for use of DPD unit masses
-     * @param anIsVelocityScaling True: Velocity scaling is performed for every simulation step, false: Otherwise
+     * @param aNumberOfInitialVelocityScalingSteps Number of initial velocity scaling steps
      */
     public SimulationDescription(
         int aTimeStepNumber,
@@ -108,7 +108,7 @@ public class SimulationDescription {
         boolean anIsInitialPotentialEnergyMinimizationStepOutput,
         PeriodicBoundaries aPeriodicBoundaries,
         boolean anIsDpdUnitMass,
-        boolean anIsVelocityScaling
+        int aNumberOfInitialVelocityScalingSteps
     ) {
         this.timeStepNumber = aTimeStepNumber;
         this.timeStepLength = aTimeStepLength;
@@ -121,7 +121,7 @@ public class SimulationDescription {
         this.isInitialPotentialEnergyMinimizationStepOutput = anIsInitialPotentialEnergyMinimizationStepOutput;
         this.periodicBoundaries = aPeriodicBoundaries;
         this.isDpdUnitMass = anIsDpdUnitMass;
-        this.isVelocityScaling = anIsVelocityScaling;
+        this.numberOfInitialVelocityScalingSteps = aNumberOfInitialVelocityScalingSteps;
     }
     // </editor-fold>
     //
@@ -172,18 +172,18 @@ public class SimulationDescription {
     }
 
     /**
-     * Number of initial potential energy minimisation steps
+     * Number of initial potential energy minimization steps
      * 
-     * @return Number of initial potential energy minimisation steps
+     * @return Number of initial potential energy minimization steps
      */
     public int getInitialPotentialEnergyMinimizationStepNumber() {
         return this.initialPotentialEnergyMinimizationStepNumber;
     }
 
     /**
-     * Flag for initial potential energy minimisation step output.
+     * Flag for initial potential energy minimization step output.
      * 
-     * @return True: Potential energy minimisation step output is generated, 
+     * @return True: Potential energy minimization step output is generated, 
      * false: Otherwise (NO output)
      */
     public boolean isInitialPotentialEnergyMinimizationStepOutput() {
@@ -213,12 +213,12 @@ public class SimulationDescription {
     }
     
     /**
-     * True: Velocity scaling is performed for every simulation step, false: Otherwise
+     * Number of initial velocity scaling steps
      * 
-     * @return True: Velocity scaling is performed for every simulation step, false: Otherwise
+     * @return Number of initial velocity scaling steps
      */
-    public boolean isVelocityScaling() {
-        return this.isVelocityScaling;
+    public int getNumberOfInitialVelocityScalingSteps() {
+        return this.numberOfInitialVelocityScalingSteps;
     }
     // </editor-fold>
     

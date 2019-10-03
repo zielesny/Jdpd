@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2018  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -58,6 +58,7 @@ public class MoleculeBoundaryInfo extends MoleculeBoundaryDescription {
      * @param anIsBoundaryZ True: Boundary in z-direction is defined, false: Otherwise
      * @param aZmin Boundary z-min in simulation box
      * @param aZmax Boundary z-max in simulation box
+     * @param aMaxTimeStep Maximum time step for application
      * @param aFirstIndex First index in particle arrays for molecule
      * @param aLastIndex Last index in particle arrays for molecule
      */
@@ -72,6 +73,7 @@ public class MoleculeBoundaryInfo extends MoleculeBoundaryDescription {
         boolean anIsBoundaryZ,
         double aZmin,
         double aZmax,
+        int aMaxTimeStep,
         int aFirstIndex,
         int aLastIndex
     ) {
@@ -85,7 +87,8 @@ public class MoleculeBoundaryInfo extends MoleculeBoundaryDescription {
             aYmax,
             anIsBoundaryZ,
             aZmin,
-            aZmax
+            aZmax,
+            aMaxTimeStep
         );
         this.firstIndex = aFirstIndex;
         this.exclusiveLastIndex = aLastIndex + 1;

@@ -50,20 +50,20 @@ BoxSize 20.015266 20.015266 20.015266
 
 MoleculeFixation
 TABLE_START
-Water    false false false 
-KalataB1 false false false 
+Water    false false false 1
+KalataB1 false false false 1
 TABLE_END
 
 MoleculeBoundary
 TABLE_START
-Water    false 0 20.015266 false 0 20.015266 false 0 20.015266 
-KalataB1 false 0 20.015266 false 0 20.015266 false 0 20.015266 
+Water    false 0 20.015266 false 0 20.015266 false 0 20.015266 1
+KalataB1 false 0 20.015266 false 0 20.015266 false 0 20.015266 1
 TABLE_END
 
 MoleculeFixedVelocity
 TABLE_START
-Water    false 0 false 0 false 0 
-KalataB1 false 0 false 0 false 0 
+Water    false 0 false 0 false 0 1
+KalataB1 false 0 false 0 false 0 1
 TABLE_END
 
 MoleculeAcceleration
@@ -328,7 +328,7 @@ PeriodicBoundaries true true true
 
 IsDpdUnitMass true
 
-IsVelocityScaling false
+InitialVelocityScalingSteps 0
 
 RandomNumberGenerator ACRNG_MT 123456 10000
 

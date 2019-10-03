@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2018  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -64,6 +64,13 @@ public interface IParticlePairInteractionCalculator extends ICalculator {
      * @param aValue True: Cache for ParticlePairDistanceParameterss is active, false: Otherwise
      */
     void setParticlePairDistanceParametersCacheActivity(boolean aValue);
+
+    /**
+     * Activity of cache for ParticlePairDistanceParameterss
+     * 
+     * @return True: Cache for ParticlePairDistanceParameterss is active, false: Otherwise
+     */
+    boolean getParticlePairDistanceParametersCacheActivity();
     
     /**
      * Sets cache for ParticlePairDistanceParameterss

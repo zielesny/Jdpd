@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2018  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -130,7 +130,7 @@ public class ParticlePairInteractionCalculatorTest extends TestCase {
             BoxSize tmpBoxSize = new BoxSize(tmpBoxLength, tmpBoxLength, tmpBoxLength);
             PeriodicBoundaries tmpPeriodicBoundaries = new PeriodicBoundaries(true, true, true);
 
-            MemoryLogger tmpMemoryLogger = new MemoryLogger(new ILogger.LogLevel[] {ILogger.LogLevel.EXCEPTIONS});
+            MemoryLogger tmpMemoryLogger = new MemoryLogger(new int[] {ILogger.EXCEPTION});
             ParticleArrays tmpParticles = new ParticleArrays(
                 new double[tmpParticleNumber],
                 new double[tmpParticleNumber],
@@ -170,7 +170,7 @@ public class ParticlePairInteractionCalculatorTest extends TestCase {
             );
             tmpEnd = System.currentTimeMillis();
             System.out.println(tmpOffset + "calculateCellBasedParticlePairInteractions(parallel),   t [s] = " + String.valueOf((tmpEnd - tmpStart)/1000.0));
-            tmpNumber1 = tmpParameters.getTestObjects().getParticleIndexPairNumber().intValue();
+            tmpNumber1 = tmpParameters.getTestObjects().getParticleIndexPairCounter().intValue();
             System.out.println(tmpOffset + "Number of particle index pairs                                = " + String.valueOf(tmpNumber1));
             System.out.println(tmpOffset + "Time in nanoseconds per particle index pair,           t [ns] = " + String.valueOf((int) ((double) (tmpEnd - tmpStart)/(double) tmpNumber1 * 1000000.0)));
 
@@ -206,7 +206,7 @@ public class ParticlePairInteractionCalculatorTest extends TestCase {
             BoxSize tmpBoxSize = new BoxSize(tmpBoxLength, tmpBoxLength, tmpBoxLength);
             PeriodicBoundaries tmpPeriodicBoundaries = new PeriodicBoundaries(true, true, true);
 
-            MemoryLogger tmpMemoryLogger = new MemoryLogger(new ILogger.LogLevel[] {ILogger.LogLevel.EXCEPTIONS});
+            MemoryLogger tmpMemoryLogger = new MemoryLogger(new int[] {ILogger.EXCEPTION});
             ParticleArrays tmpParticles = new ParticleArrays(
                 new double[tmpParticleNumber],
                 new double[tmpParticleNumber],
@@ -246,7 +246,7 @@ public class ParticlePairInteractionCalculatorTest extends TestCase {
             );
             tmpEnd = System.currentTimeMillis();
             System.out.println(tmpOffset + "calculateCellBasedParticlePairInteractions(parallel), t [s] = " + String.valueOf((tmpEnd - tmpStart)/1000.0));
-            tmpNumber1 = tmpParameters.getTestObjects().getParticleIndexPairNumber().intValue();
+            tmpNumber1 = tmpParameters.getTestObjects().getParticleIndexPairCounter().intValue();
             System.out.println(tmpOffset + "Number of particle index pairs                              = " + String.valueOf(tmpNumber1));
             System.out.println(tmpOffset + "Time in nanoseconds per particle index pair,         t [ns] = " + String.valueOf((int) ((double) (tmpEnd - tmpStart)/(double) tmpNumber1 * 1000000.0)));
 
@@ -281,7 +281,7 @@ public class ParticlePairInteractionCalculatorTest extends TestCase {
         BoxSize tmpBoxSize = new BoxSize(tmpBoxLength, tmpBoxLength, tmpBoxLength);
         PeriodicBoundaries tmpPeriodicBoundaries = new PeriodicBoundaries(true, true, true);
 
-        MemoryLogger tmpMemoryLogger = new MemoryLogger(new ILogger.LogLevel[] {ILogger.LogLevel.EXCEPTIONS});
+        MemoryLogger tmpMemoryLogger = new MemoryLogger(new int[] {ILogger.EXCEPTION});
         tmpMemoryLogger.start();
         ParticleArrays tmpParticles = new ParticleArrays(
             new double[tmpParticleNumber],
@@ -410,7 +410,7 @@ public class ParticlePairInteractionCalculatorTest extends TestCase {
         BoxSize tmpBoxSize = new BoxSize(tmpBoxLength, tmpBoxLength, tmpBoxLength);
         PeriodicBoundaries tmpPeriodicBoundaries = new PeriodicBoundaries(true, true, true);
 
-        MemoryLogger tmpMemoryLogger = new MemoryLogger(new ILogger.LogLevel[] {ILogger.LogLevel.EXCEPTIONS});
+        MemoryLogger tmpMemoryLogger = new MemoryLogger(new int[] {ILogger.EXCEPTION});
         ParticleArrays tmpParticles = new ParticleArrays(
             new double[tmpParticleNumber],
             new double[tmpParticleNumber],
@@ -535,7 +535,7 @@ public class ParticlePairInteractionCalculatorTest extends TestCase {
         BoxSize tmpBoxSize = new BoxSize(tmpBoxLength, tmpBoxLength, tmpBoxLength);
         PeriodicBoundaries tmpPeriodicBoundaries = new PeriodicBoundaries(true, true, true);
 
-        MemoryLogger tmpMemoryLogger = new MemoryLogger(new ILogger.LogLevel[] {ILogger.LogLevel.EXCEPTIONS});
+        MemoryLogger tmpMemoryLogger = new MemoryLogger(new int[] {ILogger.EXCEPTION});
         ParticleArrays tmpParticles = new ParticleArrays(
             new double[tmpParticleNumber],
             new double[tmpParticleNumber],
@@ -636,7 +636,7 @@ public class ParticlePairInteractionCalculatorTest extends TestCase {
         BoxSize tmpBoxSize = new BoxSize(tmpBoxLength, tmpBoxLength, tmpBoxLength);
         PeriodicBoundaries tmpPeriodicBoundaries = new PeriodicBoundaries(true, true, true);
 
-        MemoryLogger tmpMemoryLogger = new MemoryLogger(new ILogger.LogLevel[] {ILogger.LogLevel.EXCEPTIONS});
+        MemoryLogger tmpMemoryLogger = new MemoryLogger(new int[] {ILogger.EXCEPTION});
         ParticleArrays tmpParticles = new ParticleArrays(
             new double[tmpParticleNumber],
             new double[tmpParticleNumber],
@@ -676,7 +676,7 @@ public class ParticlePairInteractionCalculatorTest extends TestCase {
         );
         tmpEnd = System.currentTimeMillis();
         System.out.println("calculateCellBasedParticlePairInteractions, t [s] = " + String.valueOf((tmpEnd - tmpStart)/1000.0));
-        tmpNumber1 = tmpParameters.getTestObjects().getParticleIndexPairNumber().intValue();
+        tmpNumber1 = tmpParameters.getTestObjects().getParticleIndexPairCounter().intValue();
 
         // Sequential loop -----------------------------------------------------
 
@@ -696,7 +696,7 @@ public class ParticlePairInteractionCalculatorTest extends TestCase {
         );
         tmpEnd = System.currentTimeMillis();
         System.out.println("calculateLoopBasedParticlePairInteractions, t [s] = " + String.valueOf((tmpEnd - tmpStart)/1000.0));
-        tmpNumber2 = tmpParameters.getTestObjects().getParticleIndexPairNumber().intValue();
+        tmpNumber2 = tmpParameters.getTestObjects().getParticleIndexPairCounter().intValue();
         
         assertTrue("loop = cell-based", tmpNumber2 == tmpNumber1);
         

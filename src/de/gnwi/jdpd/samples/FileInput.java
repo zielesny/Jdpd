@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2018  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -255,6 +255,11 @@ public class FileInput implements IInput {
      * String for parameter IsVelocityScaling
      */
     private static final String IS_VELOCITY_SCALING = "IsVelocityScaling";
+
+    /**
+     * String for parameter InitialVelocityScalingSteps
+     */
+    private static final String INITIAL_VELOCITY_SCALING_STEPS = "InitialVelocityScalingSteps";
 
     /**
      * String for parameter RandomNumberGenerator
@@ -579,8 +584,23 @@ public class FileInput implements IInput {
             boolean tmpIsFixedX = Boolean.valueOf(tmpMoleculeFixationTable[i][1]);
             boolean tmpIsFixedY = Boolean.valueOf(tmpMoleculeFixationTable[i][2]);
             boolean tmpIsFixedZ = Boolean.valueOf(tmpMoleculeFixationTable[i][3]);
-            if (tmpIsFixedX || tmpIsFixedY || tmpIsFixedZ) {
-                tmpMoleculeFixationList.add(new MoleculeFixationDescription(tmpMoleculeName, tmpIsFixedX, tmpIsFixedY, tmpIsFixedZ));
+
+            // If tmpMaxTimeStep is NOT defined it gets the highest possible value
+            int tmpMaxTimeStep = Constants.MAXIMUM_NUMBER_OF_TIME_STEPS;
+            if (tmpMoleculeFixationTable[i].length > 4) {
+                tmpMaxTimeStep = Integer.valueOf(tmpMoleculeFixationTable[i][4]);
+            }
+            
+            if ((tmpIsFixedX || tmpIsFixedY || tmpIsFixedZ) && tmpMaxTimeStep > 0) {
+                tmpMoleculeFixationList.add(
+                    new MoleculeFixationDescription(
+                        tmpMoleculeName, 
+                        tmpIsFixedX, 
+                        tmpIsFixedY, 
+                        tmpIsFixedZ, 
+                        tmpMaxTimeStep
+                    )
+                );
             }
         }
         if (!tmpMoleculeFixationList.isEmpty()) {
@@ -604,7 +624,14 @@ public class FileInput implements IInput {
             boolean tmpIsActiveX = Boolean.valueOf(tmpMoleculeBoundaryTable[i][1]);
             boolean tmpIsActiveY = Boolean.valueOf(tmpMoleculeBoundaryTable[i][4]);
             boolean tmpIsActiveZ = Boolean.valueOf(tmpMoleculeBoundaryTable[i][7]);
-            if (tmpIsActiveX || tmpIsActiveY || tmpIsActiveZ) {
+
+            // If tmpMaxTimeStep is NOT defined it gets the highest possible value
+            int tmpMaxTimeStep = Constants.MAXIMUM_NUMBER_OF_TIME_STEPS;
+            if (tmpMoleculeBoundaryTable[i].length > 10) {
+                tmpMaxTimeStep = Integer.valueOf(tmpMoleculeBoundaryTable[i][10]);
+            }
+            
+            if ((tmpIsActiveX || tmpIsActiveY || tmpIsActiveZ) && tmpMaxTimeStep > 0) {
                 double tmpXmin = Double.valueOf(tmpMoleculeBoundaryTable[i][2]);
                 double tmpXmax = Double.valueOf(tmpMoleculeBoundaryTable[i][3]);
                 double tmpYmin = Double.valueOf(tmpMoleculeBoundaryTable[i][5]);
@@ -622,7 +649,8 @@ public class FileInput implements IInput {
                         tmpYmax,
                         tmpIsActiveZ,
                         tmpZmin,
-                        tmpZmax
+                        tmpZmax,
+                        tmpMaxTimeStep
                     )
                 );
             }
@@ -651,7 +679,14 @@ public class FileInput implements IInput {
             double tmpVelocityY = Double.valueOf(tmpMoleculeVelocityFixationTable[i][4]);
             boolean tmpIsFixedZ = Boolean.valueOf(tmpMoleculeVelocityFixationTable[i][5]);
             double tmpVelocityZ = Double.valueOf(tmpMoleculeVelocityFixationTable[i][6]);
-            if (tmpIsFixedX || tmpIsFixedY || tmpIsFixedZ) {
+
+            // If tmpMaxTimeStep is NOT defined it gets the highest possible value
+            int tmpMaxTimeStep = Constants.MAXIMUM_NUMBER_OF_TIME_STEPS;
+            if (tmpMoleculeVelocityFixationTable[i].length > 7) {
+                tmpMaxTimeStep = Integer.valueOf(tmpMoleculeVelocityFixationTable[i][7]);
+            }
+            
+            if ((tmpIsFixedX || tmpIsFixedY || tmpIsFixedZ) && tmpMaxTimeStep > 0) {
                 tmpMoleculeVelocityFixationList.add(
                     new MoleculeVelocityFixationDescription(
                         tmpMoleculeName, 
@@ -660,7 +695,8 @@ public class FileInput implements IInput {
                         tmpIsFixedZ,
                         tmpVelocityX,
                         tmpVelocityY,
-                        tmpVelocityZ
+                        tmpVelocityZ,
+                        tmpMaxTimeStep
                     )
                 );
             }
@@ -687,11 +723,13 @@ public class FileInput implements IInput {
             double tmpAccelerationY = Double.valueOf(tmpMoleculeAccelerationTable[i][2]);
             double tmpAccelerationZ = Double.valueOf(tmpMoleculeAccelerationTable[i][3]);
             int tmpFrequency = Integer.valueOf(tmpMoleculeAccelerationTable[i][4]);
+
             // If tmpMaxTimeStep is NOT defined it gets the highest possible value
             int tmpMaxTimeStep = Constants.MAXIMUM_NUMBER_OF_TIME_STEPS;
             if (tmpMoleculeAccelerationTable[i].length > 5) {
                 tmpMaxTimeStep = Integer.valueOf(tmpMoleculeAccelerationTable[i][5]);
             }
+
             if ((tmpAccelerationX != 0.0 || tmpAccelerationY != 0.0 || tmpAccelerationZ != 0.0) && tmpFrequency > 0  && tmpMaxTimeStep > 0) {
                 tmpMoleculeAccelerationList.add(
                     new MoleculeAccelerationDescription(
@@ -920,9 +958,9 @@ public class FileInput implements IInput {
     }
     
     /**
-     * Number of initial potential minimisation steps
+     * Number of initial potential minimization steps
      * 
-     * @return Number of initial potential minimisation steps
+     * @return Number of initial potential minimization steps
      */
     @Override
     public int getInitialPotentialEnergyMinimizationStepNumber() {
@@ -930,9 +968,9 @@ public class FileInput implements IInput {
     }
     
     /**
-     * Flag for initial potential energy minimisation step output
+     * Flag for initial potential energy minimization step output
      * 
-     * @return True: Potential energy minimisation step output is generated, false: Otherwise (NO output)
+     * @return True: Potential energy minimization step output is generated, false: Otherwise (NO output)
      */
     @Override
     public boolean isInitialPotentialEnergyMinimizationStepOutput() {
@@ -965,13 +1003,25 @@ public class FileInput implements IInput {
     }
 
     /**
-     * True: Velocity scaling is performed for every simulation step, false: Otherwise
+     * Number of initial velocity scaling steps
      * 
-     * @return True: Velocity scaling is performed for every simulation step, false: Otherwise
+     * @return Number of initial velocity scaling steps
      */
     @Override
-    public boolean isVelocityScaling() {
-        return this.getSingleBooleanValue(Section.SIMULATION_DESCRIPTION, FileInput.IS_VELOCITY_SCALING);
+    public int getInitialVelocityScalingSteps() {
+        int tmpNumberOfInitialVelocityScalingSteps;
+        if (this.hasParameter(Section.SIMULATION_DESCRIPTION, FileInput.INITIAL_VELOCITY_SCALING_STEPS)) {
+            tmpNumberOfInitialVelocityScalingSteps = this.getSingleIntegerValue(Section.SIMULATION_DESCRIPTION, FileInput.INITIAL_VELOCITY_SCALING_STEPS);
+        } else {
+            // Code for compatibility
+            boolean tmpIsVelocityScaling = this.getSingleBooleanValue(Section.SIMULATION_DESCRIPTION, FileInput.IS_VELOCITY_SCALING);
+            if (tmpIsVelocityScaling) {
+                tmpNumberOfInitialVelocityScalingSteps = Constants.MAXIMUM_NUMBER_OF_TIME_STEPS;
+            } else {
+                tmpNumberOfInitialVelocityScalingSteps = 0;
+            }
+        }
+        return tmpNumberOfInitialVelocityScalingSteps;
     }
     
     /**

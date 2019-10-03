@@ -19,6 +19,66 @@
  */
 
 --------------------------------------------------------------------------------
+Jdpd 1.3.0.0 (Jdpd.jar)
+--------------------------------------------------------------------------------
+for Java 8 or higher
+
+Dependencies:
+  - commons-rng-client-api-1.1.jar
+    commons-rng-core-1.1.jar
+    commons-rng-sampling-1.1.jar
+    commons-rng-simple-1.1.jar
+      Apache Commons RNG 1.1 (http://commons.apache.org/proper/commons-rng/)
+      Version 1.1
+  - Pcg32.java
+      PCG pseudorandom generator implementation for Java 
+      (https://github.com/alexeyr/pcg-java)
+      Version 0.9.1
+      
+Unit tests: 
+  - Package src.de.gnwi.jdpd.tests
+  
+Simulation input file description:  
+  - File Input.txt in package src.de.gnwi.jdpd.tests.test_Water_GWMVV              
+--------------------------------------------------------------------------------
+- Removed problems:
+  - A fatal error concerning ad-hoc-electrostatic force calculations is removed.
+    Note that all prior Jdpd versions contained this severe calculation error
+    so that all prior electrostatic force calculations are spoiled.
+- Improvements:
+  - Dissipative force calculation is refactored with less numeric operations for
+    better performance (for all integration types).
+  - New log level PARTICLE for particle force magnitude and velocity analysis
+    is implemented: The min, mean and max value of the magnitude of 
+    conservative/random/dissipative DPD, conservative harmonic bond and 
+    conservative electrostatics forces on all particles may be evaluated as well 
+    as the min, mean and max value of the particle velocities and logged for 
+    every output step.
+  - New log level SCMVV for specific logging during integration with type SCMVV.
+  - Excess momentum is always removed before velocity scaling operation (if 
+    velocity scaling is defined).
+  - Internal improvements for logging of exceptions in parallelized calculation
+    tasks.
+  - Refactored log level names.
+  - Log levels detection changed from hashmap to (faster but less elegant) 
+    boolean array.
+  - Setting for velocity scaling may now contain the number of initial velocity
+    scaling steps. Job definitions of older versions are still compatible.
+  - Initial potential energy minimization steps now again include possible 
+    electrostatic interactions for force calculations due to removed severe 
+    problem concerning ad-hoc-electrostatic force calculations.
+  - Settings for molecule fixation now contain a maximum time step for the
+    fixation to be applied. Job definitions of older versions are still 
+    compatible.
+  - Settings for molecule velocity fixation now contain a maximum time step 
+    for the velocity fixation to be applied. Job definitions of older versions 
+    are still compatible.
+  - Settings for molecule boundaries now contain a maximum time step for the
+    boundaries to be applied. Job definitions of older versions are still 
+    compatible.
+
+
+--------------------------------------------------------------------------------
 Jdpd 1.2.0.0 (Jdpd.jar)
 --------------------------------------------------------------------------------
 for Java 8 or higher

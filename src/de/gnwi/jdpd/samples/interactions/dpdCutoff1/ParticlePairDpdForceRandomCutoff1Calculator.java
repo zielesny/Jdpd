@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2018  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -63,7 +63,7 @@ public class ParticlePairDpdForceRandomCutoff1Calculator extends ParticlePairInt
      * Constructor
      * 
      * @param aFactory Factory for new objects
-     * @param aSimulationLogger Simulation simulationLogger
+     * @param aSimulationLogger Simulation logger
      * @param aBoxSize Box size
      * @param aPeriodicBoundaries Periodic boundaries
      * @param aCutOffLength Cut-off length for partitioning of the box
@@ -89,7 +89,7 @@ public class ParticlePairDpdForceRandomCutoff1Calculator extends ParticlePairInt
             aRandomNumberSeed
         );
         // <editor-fold defaultstate="collapsed" desc="Method call logging">
-        this.simulationLogger.appendMethodCall("ParticlePairDpdRcut1ForceCalculator.Constructor: FULL");
+        this.simulationLogger.appendMethodCall("ParticlePairDpdForceRandomCutoff1Calculator.Constructor: FULL");
         // </editor-fold>
     }
 
@@ -103,7 +103,7 @@ public class ParticlePairDpdForceRandomCutoff1Calculator extends ParticlePairInt
     public ParticlePairDpdForceRandomCutoff1Calculator(IParticlePairInteractionCalculator aParticlePairInteractionCalculator) throws IllegalArgumentException {
         super(aParticlePairInteractionCalculator);
         // <editor-fold defaultstate="collapsed" desc="Method call logging">
-        this.simulationLogger.appendMethodCall("ParticlePairDpdRcut1ForceCalculator.Constructor WITH aParticlePairInteractionCalculator");
+        this.simulationLogger.appendMethodCall("ParticlePairDpdForceRandomCutoff1Calculator.Constructor WITH aParticlePairInteractionCalculator");
         // </editor-fold>
     }
     // </editor-fold>
@@ -158,33 +158,18 @@ public class ParticlePairDpdForceRandomCutoff1Calculator extends ParticlePairInt
         Parameters aParameters,
         ParticlePairDistanceParameters aParticlePairDistanceParameters
     ) {
-        // Support quantities
-        final ParticleArrays tmpParticleArrays = aParameters.getParticleArrays();
-        final InteractionDescription tmpInteractionDescription = aParameters.getInteractionDescription();
-        final double tmpRandomValue;
-        if (tmpInteractionDescription.isGaussianRandomDpdForce()) {
-            tmpRandomValue = aRandomAdderGroup.getRandomNumberGenerator().nextGaussian();
-        } else {
-            tmpRandomValue = aRandomAdderGroup.getRandomNumberGenerator().nextZeroMeanUnitVarianceDouble();
-        }
         final double tmpRij = Math.sqrt(aRij_Square);
-        final double tmpFactor = tmpInteractionDescription.getDpdSigmaDivRootTimeStepLength() * tmpRandomValue * (ONE/tmpRij - ONE);
-        // Random DPD force
-        final double tmpFij_x = tmpFactor * aRij_x;
-        final double tmpFij_y = tmpFactor * aRij_y;
-        final double tmpFij_z = tmpFactor * aRij_z;
-        // Add to particle forces
-        // NOTE: ParticlePairInteractionCalculator parallelization avoids collisions 
-        //       of access of particle indices thus a lock is NOT necessary
-        final double[] tmpF_x = tmpParticleArrays.getF_x();
-        final double[] tmpF_y = tmpParticleArrays.getF_y();
-        final double[] tmpF_z = tmpParticleArrays.getF_z();
-        tmpF_x[aParticleIndex_i] += tmpFij_x;
-        tmpF_x[aParticleIndex_j] -= tmpFij_x;
-        tmpF_y[aParticleIndex_i] += tmpFij_y;
-        tmpF_y[aParticleIndex_j] -= tmpFij_y;
-        tmpF_z[aParticleIndex_i] += tmpFij_z;
-        tmpF_z[aParticleIndex_j] -= tmpFij_z;
+        this.calculateParticlePairInteraction(
+            aParticleIndex_i, 
+            aParticleIndex_j, 
+            aRij_x,
+            aRij_y,
+            aRij_z,
+            aRij_Square,
+            tmpRij,
+            aRandomAdderGroup,
+            aParameters
+        );
         // Add to particle pair distance parameters cache if necessary
         if (this.isParticlePairDistanceParametersCacheActive) {
             aParticlePairDistanceParameters.add(
@@ -229,8 +214,32 @@ public class ParticlePairDpdForceRandomCutoff1Calculator extends ParticlePairInt
         RandomAdderGroup aRandomAdderGroup,
         Parameters aParameters
     ) {
-        // Method not defined
-        throw new IllegalStateException("ParticlePairDpdForceRandomCutoff1Calculator.calculateParticlePairInteraction: Overload NOT supported.");
+        // Support quantities
+        final ParticleArrays tmpParticleArrays = aParameters.getParticleArrays();
+        final InteractionDescription tmpInteractionDescription = aParameters.getInteractionDescription();
+        final double tmpRandomValue;
+        if (tmpInteractionDescription.isGaussianRandomDpdForce()) {
+            tmpRandomValue = aRandomAdderGroup.getRandomNumberGenerator().nextGaussian();
+        } else {
+            tmpRandomValue = aRandomAdderGroup.getRandomNumberGenerator().nextZeroMeanUnitVarianceDouble();
+        }
+        final double tmpFactor = tmpInteractionDescription.getDpdSigmaDivRootTimeStepLength() * tmpRandomValue * (ONE/aRij - ONE);
+        // Random DPD force
+        final double tmpFij_x = tmpFactor * aRij_x;
+        final double tmpFij_y = tmpFactor * aRij_y;
+        final double tmpFij_z = tmpFactor * aRij_z;
+        // Add to particle forces
+        // NOTE: ParticlePairInteractionCalculator parallelization avoids collisions 
+        //       of access of particle indices thus a lock is NOT necessary
+        final double[] tmpF_x = tmpParticleArrays.getF_x();
+        final double[] tmpF_y = tmpParticleArrays.getF_y();
+        final double[] tmpF_z = tmpParticleArrays.getF_z();
+        tmpF_x[aParticleIndex_i] += tmpFij_x;
+        tmpF_x[aParticleIndex_j] -= tmpFij_x;
+        tmpF_y[aParticleIndex_i] += tmpFij_y;
+        tmpF_y[aParticleIndex_j] -= tmpFij_y;
+        tmpF_z[aParticleIndex_i] += tmpFij_z;
+        tmpF_z[aParticleIndex_j] -= tmpFij_z;
     }
     // </editor-fold>
     

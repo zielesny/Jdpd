@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2018  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -120,6 +120,15 @@ public class MoleculeTypes {
      */
     public int getIndex(String aMoleculeName) {
         return this.moleculeNameToIndexMap.get(aMoleculeName);
+    }
+    
+    /**
+     * Molecule names
+     * 
+     * @return Molecule names
+     */
+    public String[] getMoleculeNames() {
+        return this.moleculeNames;
     }
     
     /**

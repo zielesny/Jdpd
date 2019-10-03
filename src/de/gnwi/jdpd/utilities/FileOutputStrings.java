@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2018  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -32,7 +32,7 @@ public final class FileOutputStrings {
     public final static String PARTICLE_POSITIONS_START_FILENAME_PREFIX = "PPstart";
 
     /**
-     * Format for particle positions minimisation step file prefix
+     * Format for particle positions minimization step file prefix
      */
     public final static String PARTICLE_POSITIONS_MINIMIZATION_STEP_FILE_PREFIX_FORMAT = "%sPPmin%s";
 

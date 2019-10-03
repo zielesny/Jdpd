@@ -44,22 +44,22 @@ BoxSize 20 20 20
 # Table with molecule particle position fixations
 MoleculeFixation
 TABLE_START
-# Molecule x     y     z 
-Water      false false false 
+# Molecule x     y     z     maximum time step
+Water      false false false 1
 TABLE_END
 
 # Table with molecule boundaries ("virtual walls") in simulation box
 MoleculeBoundary
 TABLE_START
-# Molecule isBoundaryX x(min) x(max) isBoundaryY y(min) y(max) isBoundaryZ z(min) z(max)
-Water      false       0      20     false       0      20     false       0      20 
+# Molecule isBoundaryX x(min) x(max) isBoundaryY y(min) y(max) isBoundaryZ z(min) z(max) maximum time step
+Water      false       0      20     false       0      20     false       0      20     1
 TABLE_END
 
 # Table with molecule particle velocity fixations
 MoleculeFixedVelocity
 TABLE_START
-# Molecule isFixX v_x isFixY v_y isFixZ v_z 
-Water      false  0   false  0   false  0 
+# Molecule isFixX v_x isFixY v_y isFixZ v_z maximum time step
+Water      false  0   false  0   false  0   1
 TABLE_END
 
 # Table with molecule acceleration
@@ -175,9 +175,8 @@ PeriodicBoundaries true true true
 #        ratios to the most lightweight particle.
 IsDpdUnitMass true
 
-# True: Velocity scaling is performed for every simulation step
-# false: No velocity scaling
-IsVelocityScaling false
+# Number of initial velocity scaling steps
+InitialVelocityScalingSteps 0
 
 # Random number generation
 # 

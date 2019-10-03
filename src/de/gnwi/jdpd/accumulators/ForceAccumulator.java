@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2018  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -29,7 +29,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 
 /**
- * Force accumulator that uses the particle related arrays
+ * Force accumulator that uses (and changes) the particle related arrays
  * ParticleArrays.getF_x/getFtwo_x, 
  * ParticleArrays.getF_y/getFtwo_y and
  * ParticleArrays.getF_z/getFtwo_z

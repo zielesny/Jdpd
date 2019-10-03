@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2018  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -62,7 +62,7 @@ public class ParticlePairS1mvvVelocityUpdateCutoff1Calculator extends ParticlePa
      * Constructor
      * 
      * @param aFactory Factory for new objects
-     * @param aSimulationLogger Simulation simulationLogger
+     * @param aSimulationLogger Simulation logger
      * @param aBoxSize Box size
      * @param aPeriodicBoundaries Periodic boundaries
      * @param aCutOffLength Cut-off length for partitioning of the box
@@ -198,76 +198,72 @@ public class ParticlePairS1mvvVelocityUpdateCutoff1Calculator extends ParticlePa
         final ParticleArrays tmpParticleArrays = aParameters.getParticleArrays();
         final InteractionDescription tmpInteractionDescription = aParameters.getInteractionDescription();
         final SimulationDescription tmpSimulationDescription = aParameters.getSimulationDescription();
-        final double[] tmpV_x = tmpParticleArrays.getV_x();
-        final double[] tmpV_y = tmpParticleArrays.getV_y();
-        final double[] tmpV_z = tmpParticleArrays.getV_z();
+
+        final double tmpTimeStepLengthHalf = tmpSimulationDescription.getTimeStepLengthHalf();
         final double tmpFactor1_i;
         final double tmpFactor1_j;
         if (aParameters.getSimulationDescription().isDpdUnitMass()) {
-            tmpFactor1_i = ONE;
-            tmpFactor1_j = ONE;
+            tmpFactor1_i = tmpTimeStepLengthHalf;
+            tmpFactor1_j = tmpTimeStepLengthHalf;
         } else {
             double[] tmpDpdMasses = tmpParticleArrays.getDpdMasses();
-            tmpFactor1_i = ONE/tmpDpdMasses[aParticleIndex_i];
-            tmpFactor1_j = ONE/tmpDpdMasses[aParticleIndex_j];
+            tmpFactor1_i = tmpTimeStepLengthHalf/tmpDpdMasses[aParticleIndex_i];
+            tmpFactor1_j = tmpTimeStepLengthHalf/tmpDpdMasses[aParticleIndex_j];
         }
+
         final double tmpRandomValue;
         if (tmpInteractionDescription.isGaussianRandomDpdForce()) {
             tmpRandomValue = aRandomAdderGroup.getRandomNumberGenerator().nextGaussian();
         } else {
             tmpRandomValue = aRandomAdderGroup.getRandomNumberGenerator().nextZeroMeanUnitVarianceDouble();
         }
-        final double tmpTimeStepLengthHalf = tmpSimulationDescription.getTimeStepLengthHalf();
-        final double tmpRijInvers = ONE/aRij;
-        final double tmpDpdGamma = tmpInteractionDescription.getDpdGamma();
-        final double tmpFactor2 = tmpDpdGamma * tmpTimeStepLengthHalf * (tmpRijInvers * tmpRijInvers - tmpRijInvers - tmpRijInvers + ONE);
-        final double tmpFactor3 = tmpInteractionDescription.getDpdSigmaDivRootTimeStepLength() * tmpTimeStepLengthHalf * (tmpRijInvers - ONE) * tmpRandomValue;
-        final double tmpFactor4 = tmpDpdGamma * tmpSimulationDescription.getTimeStepLength() * (ONE - aRij - aRij + aRij_Square);
-        final double tmpFactor5 = tmpFactor4/(ONE + tmpFactor4);
-        final double tmpFactor6 = ONE/(aRij_Square + aRij_Square);
+
         // Difference of particle velocities: Vector v_ij
+        final double[] tmpV_x = tmpParticleArrays.getV_x();
+        final double[] tmpV_y = tmpParticleArrays.getV_y();
+        final double[] tmpV_z = tmpParticleArrays.getV_z();
         final double tmpVij_x = tmpV_x[aParticleIndex_i] - tmpV_x[aParticleIndex_j];
         final double tmpVij_y = tmpV_y[aParticleIndex_i] - tmpV_y[aParticleIndex_j];
         final double tmpVij_z = tmpV_z[aParticleIndex_i] - tmpV_z[aParticleIndex_j];
-        // Support term 1
-        final double tmpSupportTerm1_x = tmpFactor3 * aRij_x;
-        final double tmpSupportTerm1_y = tmpFactor3 * aRij_y;
-        final double tmpSupportTerm1_z = tmpFactor3 * aRij_z;
-        // Products
-        final double tmpRij_xx = aRij_x * aRij_x;
-        final double tmpRij_xy = aRij_x * aRij_y;
-        final double tmpRij_xz = aRij_x * aRij_z;
-        final double tmpRij_yy = aRij_y * aRij_y;
-        final double tmpRij_yz = aRij_y * aRij_z;
-        final double tmpRij_zz = aRij_z * aRij_z;
-        // Support term 2
-        final double tmpSupportTerm2_x = tmpFactor2 * (tmpVij_x * tmpRij_xx + tmpVij_y * tmpRij_xy + tmpVij_z * tmpRij_xz) - tmpSupportTerm1_x;
-        final double tmpSupportTerm2_y = tmpFactor2 * (tmpVij_x * tmpRij_xy + tmpVij_y * tmpRij_yy + tmpVij_z * tmpRij_yz) - tmpSupportTerm1_y;
-        final double tmpSupportTerm2_z = tmpFactor2 * (tmpVij_x * tmpRij_xz + tmpVij_y * tmpRij_yz + tmpVij_z * tmpRij_zz) - tmpSupportTerm1_z;
+        
+        final double tmpRijInversMinusOne = ONE/aRij - ONE;
+        final double tmpFactor3 = tmpInteractionDescription.getDpdSigmaDivRootTimeStepLength() * tmpRandomValue * tmpRijInversMinusOne;
+        final double tmpDpdGamma = tmpInteractionDescription.getDpdGamma();
+        final double tmpFactor4 = tmpDpdGamma * tmpRijInversMinusOne * tmpRijInversMinusOne * (tmpVij_x * aRij_x + tmpVij_y * aRij_y + tmpVij_z * aRij_z) - tmpFactor3;
+                
         // New v_i
-        final double tmpVnew_i_x = tmpV_x[aParticleIndex_i] - tmpFactor1_i * tmpSupportTerm2_x;
-        final double tmpVnew_i_y = tmpV_y[aParticleIndex_i] - tmpFactor1_i * tmpSupportTerm2_y;
-        final double tmpVnew_i_z = tmpV_z[aParticleIndex_i] - tmpFactor1_i * tmpSupportTerm2_z;
+        final double tmpFactorVnew_i = tmpFactor1_i * tmpFactor4;
+        final double tmpVnew_i_x = tmpV_x[aParticleIndex_i] - tmpFactorVnew_i * aRij_x;
+        final double tmpVnew_i_y = tmpV_y[aParticleIndex_i] - tmpFactorVnew_i * aRij_y;
+        final double tmpVnew_i_z = tmpV_z[aParticleIndex_i] - tmpFactorVnew_i * aRij_z;
         // New v_j
-        final double tmpVnew_j_x = tmpV_x[aParticleIndex_j] + tmpFactor1_j * tmpSupportTerm2_x;
-        final double tmpVnew_j_y = tmpV_y[aParticleIndex_j] + tmpFactor1_j * tmpSupportTerm2_y;
-        final double tmpVnew_j_z = tmpV_z[aParticleIndex_j] + tmpFactor1_j * tmpSupportTerm2_z;
+        final double tmpFactorVnew_j = tmpFactor1_j * tmpFactor4;
+        final double tmpVnew_j_x = tmpV_x[aParticleIndex_j] + tmpFactorVnew_j * aRij_x;
+        final double tmpVnew_j_y = tmpV_y[aParticleIndex_j] + tmpFactorVnew_j * aRij_y;
+        final double tmpVnew_j_z = tmpV_z[aParticleIndex_j] + tmpFactorVnew_j * aRij_z;
+
         // New difference of particle velocities: Vector vNew_ij
         final double tmpVnew_ij_x = tmpVnew_i_x - tmpVnew_j_x;
         final double tmpVnew_ij_y = tmpVnew_i_y - tmpVnew_j_y;
         final double tmpVnew_ij_z = tmpVnew_i_z - tmpVnew_j_z;
-        // Support term 3
-        final double tmpSupportTerm3_x = tmpFactor5 * (tmpFactor6 * (tmpVnew_ij_x * tmpRij_xx + tmpVnew_ij_y * tmpRij_xy + tmpVnew_ij_z * tmpRij_xz) + tmpSupportTerm1_x);
-        final double tmpSupportTerm3_y = tmpFactor5 * (tmpFactor6 * (tmpVnew_ij_x * tmpRij_xy + tmpVnew_ij_y * tmpRij_yy + tmpVnew_ij_z * tmpRij_yz) + tmpSupportTerm1_y);
-        final double tmpSupportTerm3_z = tmpFactor5 * (tmpFactor6 * (tmpVnew_ij_x * tmpRij_xz + tmpVnew_ij_y * tmpRij_yz + tmpVnew_ij_z * tmpRij_zz) + tmpSupportTerm1_z);
+
+        final double tmpOneMinusRij = ONE - aRij;
+        final double tmpFactor5 = tmpDpdGamma * tmpOneMinusRij * tmpOneMinusRij;
+        final double tmpTimeStepLength = tmpSimulationDescription.getTimeStepLength();
+        final double tmpFactor6 = 
+            tmpFactor3
+            - tmpFactor5 / (ONE + tmpFactor5 * tmpTimeStepLength) * (ONE / aRij_Square * (tmpVnew_ij_x * aRij_x + tmpVnew_ij_y * aRij_y + tmpVnew_ij_z * aRij_z) + tmpFactor3 * tmpTimeStepLength);
+
         // Updated velocity i
-        tmpV_x[aParticleIndex_i] = tmpVnew_i_x + tmpFactor1_i * tmpSupportTerm1_x - tmpFactor1_i * tmpSupportTerm3_x;
-        tmpV_y[aParticleIndex_i] = tmpVnew_i_y + tmpFactor1_i * tmpSupportTerm1_y - tmpFactor1_i * tmpSupportTerm3_y;
-        tmpV_z[aParticleIndex_i] = tmpVnew_i_z + tmpFactor1_i * tmpSupportTerm1_z - tmpFactor1_i * tmpSupportTerm3_z;
+        final double tmpFactorV_i = tmpFactor1_i * tmpFactor6;
+        tmpV_x[aParticleIndex_i] = tmpVnew_i_x + tmpFactorV_i * aRij_x;
+        tmpV_y[aParticleIndex_i] = tmpVnew_i_y + tmpFactorV_i * aRij_y;
+        tmpV_z[aParticleIndex_i] = tmpVnew_i_z + tmpFactorV_i * aRij_z;
         // Updated velocity j
-        tmpV_x[aParticleIndex_j] = tmpVnew_j_x - tmpFactor1_j * tmpSupportTerm1_x + tmpFactor1_j * tmpSupportTerm3_x;
-        tmpV_y[aParticleIndex_j] = tmpVnew_j_y - tmpFactor1_j * tmpSupportTerm1_y + tmpFactor1_j * tmpSupportTerm3_y;
-        tmpV_z[aParticleIndex_j] = tmpVnew_j_z - tmpFactor1_j * tmpSupportTerm1_z + tmpFactor1_j * tmpSupportTerm3_z;
+        final double tmpFactorV_j = tmpFactor1_j * tmpFactor6;
+        tmpV_x[aParticleIndex_j] = tmpVnew_j_x - tmpFactorV_j * aRij_x;
+        tmpV_y[aParticleIndex_j] = tmpVnew_j_y - tmpFactorV_j * aRij_y;
+        tmpV_z[aParticleIndex_j] = tmpVnew_j_z - tmpFactorV_j * aRij_z;
     }
     // </editor-fold>
     

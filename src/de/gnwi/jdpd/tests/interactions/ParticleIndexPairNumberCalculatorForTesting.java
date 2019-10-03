@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2018  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -121,7 +121,7 @@ public class ParticleIndexPairNumberCalculatorForTesting extends ParticlePairInt
         Parameters aParameters,
         ParticlePairDistanceParameters aParticlePairDistanceParameters
     ) {
-        aParameters.getTestObjects().getParticleIndexPairNumber().incrementAndGet();
+        aParameters.getTestObjects().getParticleIndexPairCounter().incrementAndGet();
         // Add to particle pair distance parameters cache if necessary
         if (this.isParticlePairDistanceParametersCacheActive) {
             aParticlePairDistanceParameters.add(
@@ -166,7 +166,7 @@ public class ParticleIndexPairNumberCalculatorForTesting extends ParticlePairInt
         RandomAdderGroup aRandomAdderGroup,
         Parameters aParameters
     ) {
-        aParameters.getTestObjects().getParticleIndexPairNumber().incrementAndGet();
+        aParameters.getTestObjects().getParticleIndexPairCounter().incrementAndGet();
     }
     // </editor-fold>
     

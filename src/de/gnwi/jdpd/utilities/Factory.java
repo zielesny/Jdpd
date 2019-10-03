@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2018  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -41,6 +41,8 @@ import de.gnwi.jdpd.samples.integrationType.ScmvvTimeStepCalculator;
 import de.gnwi.jdpd.samples.interactions.electrostatics.ParticlePairElectrostaticsAdHocForceConservativeCalculator;
 import de.gnwi.jdpd.samples.interactions.electrostatics.ParticlePairElectrostaticsAdHocPotentialCalculator;
 import de.gnwi.jdpd.samples.interactions.dpdCutoff1.ParticlePairDpdForceConservativeCutoff1Calculator;
+import de.gnwi.jdpd.samples.interactions.dpdCutoff1.ParticlePairDpdForceDissipativeCutoff1Calculator;
+import de.gnwi.jdpd.samples.interactions.dpdCutoff1.ParticlePairDpdForceRandomCutoff1Calculator;
 import de.gnwi.jdpd.samples.interactions.dpdCutoff1.ParticlePairScmvvDpdForceDissipativeCutoff1Calculator;
 import de.gnwi.jdpd.samples.interactions.dpdCutoff1.ParticlePairGwmvvDpdForceFullCutoff1Calculator;
 import de.gnwi.jdpd.samples.interactions.dpdCutoff1.ParticlePairScmvvDpdForceFullCutoff1Calculator;
@@ -762,7 +764,8 @@ public class Factory {
         PeriodicBoundaries aPeriodicBoundaries, 
         double aCutOffLength,
         ParallelizationInfo aParallelizationInfo,
-        AtomicInteger aRandomNumberSeed) throws IllegalArgumentException {
+        AtomicInteger aRandomNumberSeed
+    ) throws IllegalArgumentException {
         switch (this.dpdType) {
             case CUTOFF_LENGTH_ONE:
                 return new ParticlePairDpdForceConservativeCutoff1Calculator(
@@ -786,7 +789,9 @@ public class Factory {
      * @return Particle pair DPD conservative force calculator
      * @throws IllegalArgumentException Thrown if an argument is illegal
      */
-    public IParticlePairForceCalculator getParticlePairDpdForceConservativeCalculator(IParticlePairInteractionCalculator aParticlePairInteractionCalculator) throws IllegalArgumentException {
+    public IParticlePairForceCalculator getParticlePairDpdForceConservativeCalculator(
+        IParticlePairInteractionCalculator aParticlePairInteractionCalculator
+    ) throws IllegalArgumentException {
         switch (this.dpdType) {
             case CUTOFF_LENGTH_ONE:
                 return new ParticlePairDpdForceConservativeCutoff1Calculator(aParticlePairInteractionCalculator);
@@ -795,6 +800,115 @@ public class Factory {
         }
     }
 
+    /**
+     * Returns particle pair DPD random force calculator
+     * 
+     * @param aSimulationLogger Simulation logger
+     * @param aBoxSize Box size
+     * @param aPeriodicBoundaries Periodic boundaries
+     * @param aCutOffLength Cut-off length for partitioning of the box
+     * @param aParallelizationInfo Parallelisation info
+     * @param aRandomNumberSeed Random number seed
+     * @return Particle pair DPD random force calculator
+     * @throws IllegalArgumentException Thrown if an argument is illegal
+     */
+    public IParticlePairForceCalculator getParticlePairDpdForceRandomCalculator(
+        ILogger aSimulationLogger, 
+        BoxSize aBoxSize, 
+        PeriodicBoundaries aPeriodicBoundaries, 
+        double aCutOffLength,
+        ParallelizationInfo aParallelizationInfo,
+        AtomicInteger aRandomNumberSeed
+    ) throws IllegalArgumentException {
+        switch (this.dpdType) {
+            case CUTOFF_LENGTH_ONE:
+                return new ParticlePairDpdForceRandomCutoff1Calculator(
+                    this,
+                    aSimulationLogger, 
+                    aBoxSize, 
+                    aPeriodicBoundaries, 
+                    aCutOffLength,
+                    aParallelizationInfo,
+                    aRandomNumberSeed
+                );
+            default:
+                throw new IllegalArgumentException("Factory.getParticlePairDpdForceRandomCalculator: Unknown DPD type.");
+        }
+    }
+
+    /**
+     * Returns particle pair DPD random force calculator
+     * 
+     * @param aParticlePairInteractionCalculator ParticlePairInteractionCalculator instance
+     * @return Particle pair DPD random force calculator
+     * @throws IllegalArgumentException Thrown if an argument is illegal
+     */
+    public IParticlePairForceCalculator getParticlePairDpdForceRandomCalculator(
+        IParticlePairInteractionCalculator aParticlePairInteractionCalculator
+    ) throws IllegalArgumentException {
+        switch (this.dpdType) {
+            case CUTOFF_LENGTH_ONE:
+                return new ParticlePairDpdForceRandomCutoff1Calculator(aParticlePairInteractionCalculator);
+            default:
+                throw new IllegalArgumentException("Factory.getParticlePairDpdForceRandomCalculator: Unknown DPD type.");
+        }
+    }
+
+
+    /**
+     * Returns particle pair DPD dissipative force calculator
+     * 
+     * @param aSimulationLogger Simulation logger
+     * @param aBoxSize Box size
+     * @param aPeriodicBoundaries Periodic boundaries
+     * @param aCutOffLength Cut-off length for partitioning of the box
+     * @param aParallelizationInfo Parallelisation info
+     * @param aRandomNumberSeed Random number seed
+     * @return Particle pair DPD dissipative force calculator
+     * @throws IllegalArgumentException Thrown if an argument is illegal
+     */
+    public IParticlePairForceCalculator getParticlePairDpdForceDissipativeCalculator(
+        ILogger aSimulationLogger, 
+        BoxSize aBoxSize, 
+        PeriodicBoundaries aPeriodicBoundaries, 
+        double aCutOffLength,
+        ParallelizationInfo aParallelizationInfo,
+        AtomicInteger aRandomNumberSeed
+    ) throws IllegalArgumentException {
+        switch (this.dpdType) {
+            case CUTOFF_LENGTH_ONE:
+                return new ParticlePairDpdForceDissipativeCutoff1Calculator(
+                    this,
+                    aSimulationLogger, 
+                    aBoxSize, 
+                    aPeriodicBoundaries, 
+                    aCutOffLength,
+                    aParallelizationInfo,
+                    aRandomNumberSeed
+                );
+            default:
+                throw new IllegalArgumentException("Factory.getParticlePairDpdForceDissipativeCalculator: Unknown DPD type.");
+        }
+    }
+
+    /**
+     * Returns particle pair DPD dissipative force calculator
+     * 
+     * @param aParticlePairInteractionCalculator ParticlePairInteractionCalculator instance
+     * @return Particle pair DPD dissipative force calculator
+     * @throws IllegalArgumentException Thrown if an argument is illegal
+     */
+    public IParticlePairForceCalculator getParticlePairDpdForceDissipativeCalculator(
+        IParticlePairInteractionCalculator aParticlePairInteractionCalculator
+    ) throws IllegalArgumentException {
+        switch (this.dpdType) {
+            case CUTOFF_LENGTH_ONE:
+                return new ParticlePairDpdForceDissipativeCutoff1Calculator(aParticlePairInteractionCalculator);
+            default:
+                throw new IllegalArgumentException("Factory.getParticlePairDpdForceDissipativeCalculator: Unknown DPD type.");
+        }
+    }
+    
     /**
      * Returns particle pair DPD potential calculator
      * 

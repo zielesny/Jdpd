@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2018  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -192,7 +192,7 @@ public abstract class HarmonicBondPropertyCalculator implements IHarmonicBondPro
     //
     // <editor-fold defaultstate="collapsed" desc="Protected final class variables">
     /**
-     * Simulation simulationLogger
+     * Simulation logger
      */
     protected final ILogger simulationLogger;
     // </editor-fold>
@@ -201,7 +201,7 @@ public abstract class HarmonicBondPropertyCalculator implements IHarmonicBondPro
     /**
      * Constructor
      * 
-     * @param aSimulationLogger Simulation simulationLogger
+     * @param aSimulationLogger Simulation logger
      * @param aBoxSize Box size
      * @param aPeriodicBoundaries Periodic boundaries
      * @param aParallelizationInfo Parallelisation info
@@ -473,9 +473,9 @@ public abstract class HarmonicBondPropertyCalculator implements IHarmonicBondPro
     }
     
     /**
-     * Simulation simulationLogger
+     * Simulation logger
      * 
-     * @return Simulation simulationLogger
+     * @return Simulation logger
      */
     @Override
     public ILogger getSimulationLogger() {

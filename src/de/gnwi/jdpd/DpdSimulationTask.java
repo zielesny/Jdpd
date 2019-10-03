@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2018  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -359,7 +359,7 @@ public class DpdSimulationTask implements Callable<Boolean> {
                     );
                     // Upot
                     double tmpUpotDpd = tmpTimeStepCalculator.getPotentialAccumulator().getExtendedAdderGroup().getDpdPotentialEnergyAdder().getSum();
-                    double tmpUpotBond = tmpTimeStepCalculator.getPotentialAccumulator().getExtendedAdderGroup().getBondPotentialEnergyAdder().getSum();
+                    double tmpUpotBonds = tmpTimeStepCalculator.getPotentialAccumulator().getExtendedAdderGroup().getBondPotentialEnergyAdder().getSum();
                     double tmpUpotElectrostatics = tmpTimeStepCalculator.getPotentialAccumulator().getExtendedAdderGroup().getElectrostaticsPotentialEnergyAdder().getSum();
                     double tmpUpotTotal = tmpTimeStepCalculator.getPotentialAccumulator().getExtendedAdderGroup().getPotentialEnergyAdder().getSum();
                     // Surface tension
@@ -414,7 +414,7 @@ public class DpdSimulationTask implements Callable<Boolean> {
                         tmpCurrentTimeStep, 
                         tmpTemperature, 
                         tmpUpotDpd,
-                        tmpUpotBond,
+                        tmpUpotBonds,
                         tmpUpotElectrostatics,
                         tmpUpotTotal, 
                         tmpUkin, 
@@ -438,8 +438,11 @@ public class DpdSimulationTask implements Callable<Boolean> {
                     // </editor-fold>
                     // <editor-fold defaultstate="collapsed" desc="Intermediate results logging">
                     this.simulationLogger.appendIntermediateResults("DpdSimulationTask.call: Temperature              = " + String.valueOf(tmpTemperature));
-                    this.simulationLogger.appendIntermediateResults("DpdSimulationTask.call: U(pot)                   = " + String.valueOf(tmpUpotTotal));
-                    this.simulationLogger.appendIntermediateResults("DpdSimulationTask.call: U(kin)                   = " + String.valueOf(tmpUkin));
+                    this.simulationLogger.appendIntermediateResults("DpdSimulationTask.call: Upot(DPD)                = " + String.valueOf(tmpUpotDpd));
+                    this.simulationLogger.appendIntermediateResults("DpdSimulationTask.call: Upot(Bonds)              = " + String.valueOf(tmpUpotBonds));
+                    this.simulationLogger.appendIntermediateResults("DpdSimulationTask.call: Upot(Electrostatics)     = " + String.valueOf(tmpUpotElectrostatics));
+                    this.simulationLogger.appendIntermediateResults("DpdSimulationTask.call: Upot(total)              = " + String.valueOf(tmpUpotTotal));
+                    this.simulationLogger.appendIntermediateResults("DpdSimulationTask.call: Ukin                     = " + String.valueOf(tmpUkin));
                     this.simulationLogger.appendIntermediateResults("DpdSimulationTask.call: U(total)                 = " + String.valueOf(tmpUtotal));
                     this.simulationLogger.appendIntermediateResults("DpdSimulationTask.call: Surface Tension X        = " + String.valueOf(tmpSurfaceTensionAlongX));
                     this.simulationLogger.appendIntermediateResults("DpdSimulationTask.call: Surface Tension Y        = " + String.valueOf(tmpSurfaceTensionAlongY));
@@ -449,6 +452,101 @@ public class DpdSimulationTask implements Callable<Boolean> {
                     this.simulationLogger.appendIntermediateResults("DpdSimulationTask.call: DPD Surface Tension Y    = " + String.valueOf(tmpDpdSurfaceTensionAlongY));
                     this.simulationLogger.appendIntermediateResults("DpdSimulationTask.call: DPD Surface Tension Z    = " + String.valueOf(tmpDpdSurfaceTensionAlongZ));
                     this.simulationLogger.appendIntermediateResults("DpdSimulationTask.call: DPD Surface Tension Norm = " + String.valueOf(tmpDpdSurfaceTensionNorm));
+                    // </editor-fold>
+                    // <editor-fold defaultstate="collapsed" desc="Particle force magnitude logging">
+                    if (this.simulationLogger.isLogLevel(ILogger.PARTICLE)) {
+                        tmpTimeStepCalculator.getParticleForceMagnitudeAccumulator().analyzeParticleForceMagnitudes(
+                            this.parameters.getParticleArrays().getBondChunkArraysList(),
+                            this.parameters.getParticleArrays().getR_x(),
+                            this.parameters.getParticleArrays().getR_y(),
+                            this.parameters.getParticleArrays().getR_z(),
+                            this.parameters
+                        );
+                        double[] tmpMinMeanMaxDpdForceConservativeMagnitude = tmpTimeStepCalculator.getParticleForceMagnitudeAccumulator().getMinMeanMaxDpdForceConservativeMagnitude();
+                        if (tmpMinMeanMaxDpdForceConservativeMagnitude != null) {
+                            this.simulationLogger.appendParticleForceMagnitude(
+                                "DpdSimulationTask.call: DPD conservat. F (min/mean/max) = " + 
+                                String.valueOf(tmpMinMeanMaxDpdForceConservativeMagnitude[0]) +
+                                " / " +
+                                String.valueOf(tmpMinMeanMaxDpdForceConservativeMagnitude[1]) +
+                                " / " +
+                                String.valueOf(tmpMinMeanMaxDpdForceConservativeMagnitude[2])
+                            );
+                        }
+                        double[] tmpMinMeanMaxDpdForceRandomMagnitude = tmpTimeStepCalculator.getParticleForceMagnitudeAccumulator().getMinMeanMaxDpdForceRandomMagnitude();
+                        if (tmpMinMeanMaxDpdForceRandomMagnitude != null) {
+                            this.simulationLogger.appendParticleForceMagnitude(
+                                "DpdSimulationTask.call: DPD random F     (min/mean/max) = " + 
+                                String.valueOf(tmpMinMeanMaxDpdForceRandomMagnitude[0]) +
+                                " / " +
+                                String.valueOf(tmpMinMeanMaxDpdForceRandomMagnitude[1]) +
+                                " / " +
+                                String.valueOf(tmpMinMeanMaxDpdForceRandomMagnitude[2])
+                            );
+                        }
+                        double[] tmpMinMeanMaxDpdForceDissipativeMagnitude = tmpTimeStepCalculator.getParticleForceMagnitudeAccumulator().getMinMeanMaxDpdForceDissipativeMagnitude();
+                        if (tmpMinMeanMaxDpdForceDissipativeMagnitude != null) {
+                            this.simulationLogger.appendParticleForceMagnitude(
+                                "DpdSimulationTask.call: DPD dissipat. F  (min/mean/max) = " + 
+                                String.valueOf(tmpMinMeanMaxDpdForceDissipativeMagnitude[0]) +
+                                " / " +
+                                String.valueOf(tmpMinMeanMaxDpdForceDissipativeMagnitude[1]) +
+                                " / " +
+                                String.valueOf(tmpMinMeanMaxDpdForceDissipativeMagnitude[2])
+                            );
+                        }
+                        double[] tmpMinMeanMaxBondForceMagnitude = tmpTimeStepCalculator.getParticleForceMagnitudeAccumulator().getMinMeanMaxBondForceMagnitude();
+                        if (tmpMinMeanMaxBondForceMagnitude != null) {
+                            this.simulationLogger.appendParticleForceMagnitude(
+                                "DpdSimulationTask.call: Bond F           (min/mean/max) = " + 
+                                String.valueOf(tmpMinMeanMaxBondForceMagnitude[0]) +
+                                " / " +
+                                String.valueOf(tmpMinMeanMaxBondForceMagnitude[1]) +
+                                " / " +
+                                String.valueOf(tmpMinMeanMaxBondForceMagnitude[2])
+                            );
+                        } else {
+                            this.simulationLogger.appendParticleForceMagnitude("DpdSimulationTask.call: Bond F is not defined");
+                        }
+                        double[] tmpMinMeanMaxElectrostaticsForceMagnitude = tmpTimeStepCalculator.getParticleForceMagnitudeAccumulator().getMinMeanMaxElectrostaticsForceMagnitude();
+                        if (tmpMinMeanMaxElectrostaticsForceMagnitude != null) {
+                            this.simulationLogger.appendParticleForceMagnitude(
+                                "DpdSimulationTask.call: Electrostatics F (min/mean/max) = " + 
+                                String.valueOf(tmpMinMeanMaxElectrostaticsForceMagnitude[0]) +
+                                " / " +
+                                String.valueOf(tmpMinMeanMaxElectrostaticsForceMagnitude[1]) +
+                                " / " +
+                                String.valueOf(tmpMinMeanMaxElectrostaticsForceMagnitude[2])
+                            );
+                        } else {
+                            this.simulationLogger.appendParticleForceMagnitude("DpdSimulationTask.call: Electrostatics F is not defined");
+                        }
+                        double[] tmpMinMeanMaxTotalForceMagnitude = tmpTimeStepCalculator.getParticleForceMagnitudeAccumulator().getMinMeanMaxTotalForceMagnitude();
+                        if (tmpMinMeanMaxTotalForceMagnitude != null) {
+                            this.simulationLogger.appendParticleForceMagnitude(
+                                "DpdSimulationTask.call: Total F          (min/mean/max) = " + 
+                                String.valueOf(tmpMinMeanMaxTotalForceMagnitude[0]) +
+                                " / " +
+                                String.valueOf(tmpMinMeanMaxTotalForceMagnitude[1]) +
+                                " / " +
+                                String.valueOf(tmpMinMeanMaxTotalForceMagnitude[2])
+                            );
+                        }
+                        double[] tmpMinMeanMaxVelocityMagnitude =
+                            Utils.calculateMinMeanMax(
+                                this.parameters.getParticleArrays().getV_x(),
+                                this.parameters.getParticleArrays().getV_y(),
+                                this.parameters.getParticleArrays().getV_z()
+                            );
+                        this.simulationLogger.appendParticleForceMagnitude(
+                            "DpdSimulationTask.call: Velocity v       (min/mean/max) = " + 
+                            String.valueOf(tmpMinMeanMaxVelocityMagnitude[0]) +
+                            " / " +
+                            String.valueOf(tmpMinMeanMaxVelocityMagnitude[1]) +
+                            " / " +
+                            String.valueOf(tmpMinMeanMaxVelocityMagnitude[2])
+                        );
+                    }
                     // </editor-fold>
                 }
                 // <editor-fold defaultstate="collapsed" desc="Set progress monitor">
@@ -567,14 +665,14 @@ public class DpdSimulationTask implements Callable<Boolean> {
             aSimulationInput.isInitialPotentialEnergyMinimizationStepOutput(),
             aSimulationInput.getPeriodicBoundaries(),
             aSimulationInput.isDpdUnitMass(),
-            aSimulationInput.isVelocityScaling()
+            aSimulationInput.getInitialVelocityScalingSteps()
         );
         this.simulationLogger.appendSimulationInit("SimulationDescription initialised");
         // </editor-fold>
         // <editor-fold defaultstate="collapsed" desc="4. InteractionDescription">
         double[][] tmpAij = aSimulationInput.getAij(tmpParticleTypes);
         // <editor-fold defaultstate="collapsed" desc="a(ij) logging">
-        if (this.simulationLogger.isLogLevel(ILogger.LogLevel.A_IJ)) {
+        if (this.simulationLogger.isLogLevel(ILogger.A_IJ)) {
             for (int i = 0; i < tmpParticleTypes.getParticleTypeNumber(); i++) {
                 for (int k = 0; k < tmpParticleTypes.getParticleTypeNumber(); k++) {
                     this.simulationLogger.appendAij("a(" + tmpParticleTypes.getParticleToken(i) + ", " + tmpParticleTypes.getParticleToken(k) + ") = " + String.valueOf(tmpAij[i][k]));
@@ -607,6 +705,10 @@ public class DpdSimulationTask implements Callable<Boolean> {
             tmpSimulationDescription
         );
         this.simulationLogger.appendSimulationInit("InteractionDescription initialised");
+        this.simulationLogger.appendIntermediateResults("DPD Temperature          = " + String.valueOf(tmpInteractionDescription.getTemperature()));
+        this.simulationLogger.appendIntermediateResults("DPD Sigma                = " + String.valueOf(tmpInteractionDescription.getDpdSigma()));
+        this.simulationLogger.appendIntermediateResults("DPD Sigma/SQRT(TimeStep) = " + String.valueOf(tmpInteractionDescription.getDpdSigmaDivRootTimeStepLength()));
+        this.simulationLogger.appendIntermediateResults("DPD Gamma                = " + String.valueOf(tmpInteractionDescription.getDpdGamma()));
         // </editor-fold>
         // <editor-fold defaultstate="collapsed" desc="5. ParticleArrays and ChemicalSystemDescription">
         MoleculeDescription[] tmpMoleculeDescriptions = aSimulationInput.getMoleculeDescriptions();
@@ -806,6 +908,7 @@ public class DpdSimulationTask implements Callable<Boolean> {
                         tmpMoleculeFixationDescriptions[i].isFixedX(),
                         tmpMoleculeFixationDescriptions[i].isFixedY(),
                         tmpMoleculeFixationDescriptions[i].isFixedZ(),
+                        tmpMoleculeFixationDescriptions[i].getMaxTimeStep(),
                         tmpMoleculeTypes.getFirstIndex(tmpMoleculeFixationDescriptions[i].getMoleculeName()),
                         tmpMoleculeTypes.getLastIndex(tmpMoleculeFixationDescriptions[i].getMoleculeName())
                     );
@@ -836,6 +939,7 @@ public class DpdSimulationTask implements Callable<Boolean> {
                         tmpMoleculeBoundaryDescriptions[i].isBoundaryZ(),
                         tmpMoleculeBoundaryDescriptions[i].getZmin(),
                         tmpMoleculeBoundaryDescriptions[i].getZmax(),
+                        tmpMoleculeBoundaryDescriptions[i].getMaxTimeStep(),
                         tmpMoleculeTypes.getFirstIndex(tmpMoleculeBoundaryDescriptions[i].getMoleculeName()),
                         tmpMoleculeTypes.getLastIndex(tmpMoleculeBoundaryDescriptions[i].getMoleculeName())
                     );
@@ -863,6 +967,7 @@ public class DpdSimulationTask implements Callable<Boolean> {
                         tmpMoleculeVelocityFixationDescriptions[i].getVelocityX(),
                         tmpMoleculeVelocityFixationDescriptions[i].getVelocityY(),
                         tmpMoleculeVelocityFixationDescriptions[i].getVelocityZ(),
+                        tmpMoleculeVelocityFixationDescriptions[i].getMaxTimeStep(),
                         tmpMoleculeTypes.getFirstIndex(tmpMoleculeVelocityFixationDescriptions[i].getMoleculeName()),
                         tmpMoleculeTypes.getLastIndex(tmpMoleculeVelocityFixationDescriptions[i].getMoleculeName())
                     );
@@ -1078,7 +1183,7 @@ public class DpdSimulationTask implements Callable<Boolean> {
             this.parameters.getParticleArrays().getV_z()[i] = tmpRandomZ.nextGaussian();
         }
         // <editor-fold defaultstate="collapsed" desc="Intermediate results logging">
-        if (this.simulationLogger.isLogLevel(ILogger.LogLevel.INTERMEDIATE_RESULTS)) {
+        if (this.simulationLogger.isLogLevel(ILogger.QUANTITY)) {
             double tmpUkin = 
                 Utils.calculateUkin(
                     this.parameters.getParticleArrays().getV_x(),

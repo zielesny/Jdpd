@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2018  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -205,16 +205,16 @@ public interface IInput {
     int getTimeStepFrequencyForOutput();
     
     /**
-     * Number of initial potential minimisation steps
+     * Number of initial potential minimization steps
      * 
-     * @return Number of initial potential minimisation steps
+     * @return Number of initial potential minimization steps
      */
     int getInitialPotentialEnergyMinimizationStepNumber();
     
     /**
-     * Flag for initial potential energy minimisation step output
+     * Flag for initial potential energy minimization step output
      * 
-     * @return True: Potential energy minimisation step output is generated, false: Otherwise (NO output)
+     * @return True: Potential energy minimization step output is generated, false: Otherwise (NO output)
      */
     boolean isInitialPotentialEnergyMinimizationStepOutput();
     
@@ -237,11 +237,11 @@ public interface IInput {
     boolean isDpdUnitMass();
 
     /**
-     * True: Velocity scaling is performed for every simulation step, false: Otherwise
+     * Number of initial velocity scaling steps
      * 
-     * @return True: Velocity scaling is performed for every simulation step, false: Otherwise
+     * @return Number of initial velocity scaling steps
      */
-    boolean isVelocityScaling();
+    int getInitialVelocityScalingSteps();
     
     /**
      * Seed for random number generation

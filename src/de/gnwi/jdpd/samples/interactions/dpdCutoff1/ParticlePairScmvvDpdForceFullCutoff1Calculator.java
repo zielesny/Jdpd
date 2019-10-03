@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2018  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -73,7 +73,7 @@ public class ParticlePairScmvvDpdForceFullCutoff1Calculator extends ParticlePair
      * Constructor
      * 
      * @param aFactory Factory for new objects
-     * @param aSimulationLogger Simulation simulationLogger
+     * @param aSimulationLogger Simulation logger
      * @param aBoxSize Box size
      * @param aPeriodicBoundaries Periodic boundaries
      * @param aCutOffLength Cut-off length for partitioning of the box
@@ -180,8 +180,8 @@ public class ParticlePairScmvvDpdForceFullCutoff1Calculator extends ParticlePair
             tmpRandomValue = aRandomAdderGroup.getRandomNumberGenerator().nextZeroMeanUnitVarianceDouble();
         }
         final double tmpRij = Math.sqrt(aRij_Square);
-        final double tmpRijInvers = ONE/tmpRij;
-        final double tmpFactor1 = (tmpInteractionDescription.getAij()[tmpParticleTypeIndices[aParticleIndex_i]][tmpParticleTypeIndices[aParticleIndex_j]] + tmpInteractionDescription.getDpdSigmaDivRootTimeStepLength() * tmpRandomValue) * (tmpRijInvers - ONE);
+        final double tmpRijInversMinusOne = ONE/tmpRij - 1.0;
+        final double tmpFactor1 = (tmpInteractionDescription.getAij()[tmpParticleTypeIndices[aParticleIndex_i]][tmpParticleTypeIndices[aParticleIndex_j]] + tmpInteractionDescription.getDpdSigmaDivRootTimeStepLength() * tmpRandomValue) * tmpRijInversMinusOne;
         // Conservative + Random DPD force
         final double tmpFij_x = tmpFactor1 * aRij_x;
         final double tmpFij_y = tmpFactor1 * aRij_y;
@@ -200,7 +200,6 @@ public class ParticlePairScmvvDpdForceFullCutoff1Calculator extends ParticlePair
         tmpF_z[aParticleIndex_j] -= tmpFij_z;
         // </editor-fold>
         // <editor-fold defaultstate="collapsed" desc="Dissipative force to ftwo">
-        final double tmpFactor2 = -aParameters.getInteractionDescription().getDpdGamma() * (tmpRijInvers * tmpRijInvers - tmpRijInvers - tmpRijInvers + ONE);
         // Difference of particle velocities: Vector v_ij
         // IMPORTANT: Use tmpParticleArrays.getV_x() etc., NOT tmpParticleArrays.getVnew_x()
         final double[] tmpV_x = tmpParticleArrays.getV_x();
@@ -209,10 +208,11 @@ public class ParticlePairScmvvDpdForceFullCutoff1Calculator extends ParticlePair
         final double tmpVij_x = tmpV_x[aParticleIndex_i] - tmpV_x[aParticleIndex_j];
         final double tmpVij_y = tmpV_y[aParticleIndex_i] - tmpV_y[aParticleIndex_j];
         final double tmpVij_z = tmpV_z[aParticleIndex_i] - tmpV_z[aParticleIndex_j];
+        final double tmpFactor_v_dot_r = -aParameters.getInteractionDescription().getDpdGamma() * tmpRijInversMinusOne * tmpRijInversMinusOne * (tmpVij_x * aRij_x + tmpVij_y * aRij_y + tmpVij_z * aRij_z);
         // Dissipative DPD force
-        final double tmpFtwo_ij_x = tmpFactor2 * (tmpVij_x * aRij_x * aRij_x + tmpVij_y * aRij_x * aRij_y + tmpVij_z * aRij_x * aRij_z);
-        final double tmpFtwo_ij_y = tmpFactor2 * (tmpVij_x * aRij_x * aRij_y + tmpVij_y * aRij_y * aRij_y + tmpVij_z * aRij_y * aRij_z);
-        final double tmpFtwo_ij_z = tmpFactor2 * (tmpVij_x * aRij_x * aRij_z + tmpVij_y * aRij_y * aRij_z + tmpVij_z * aRij_z * aRij_z);
+        final double tmpFtwo_ij_x = tmpFactor_v_dot_r * aRij_x;
+        final double tmpFtwo_ij_y = tmpFactor_v_dot_r * aRij_y;
+        final double tmpFtwo_ij_z = tmpFactor_v_dot_r * aRij_z;
         // IMPORTANT: Add to particle forces ftwo
         // NOTE: ParticlePairInteractionCalculator parallelization avoids collisions 
         //       of access of particle indices thus a lock is NOT necessary

@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2018  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -48,7 +48,7 @@ public class ParticlePairElectrostaticsAdHocPotentialCalculator extends Particle
      * Constructor
      * 
      * @param aFactory Factory for new objects
-     * @param aSimulationLogger Simulation simulationLogger
+     * @param aSimulationLogger Simulation logger
      * @param aBoxSize Box size
      * @param aPeriodicBoundaries Periodic boundaries
      * @param aCutOffLength Cut-off length for partitioning of the box
@@ -126,8 +126,17 @@ public class ParticlePairElectrostaticsAdHocPotentialCalculator extends Particle
         ParticlePairDistanceParameters aParticlePairDistanceParameters
     ) {
         final ParticleArrays tmpParticleArrays = aParameters.getParticleArrays();
-        final double tmpParticleCharge1 = tmpParticleArrays.getCharges()[tmpParticleArrays.getChargedParticleIndices()[aParticleIndex_i]];
-        final double tmpParticleCharge2 = tmpParticleArrays.getCharges()[tmpParticleArrays.getChargedParticleIndices()[aParticleIndex_j]];
+        final int[] tmpChargedParticleIndices = tmpParticleArrays.getChargedParticleIndices(); 
+        final double[] tmpCharges = tmpParticleArrays.getCharges();
+        // NOTE: ParticlePairElectrostaticsAdHocForceConservativeCalculator is called with
+        //       aParameters.getParticleArrays().getChargedParticles_r_x() etc.
+        //       so that particle indices of method MUST be properly re-converted with 
+        //       tmpParticleArrays.getChargedParticleIndices()
+        final double tmpParticleCharge1 = tmpCharges[tmpChargedParticleIndices[aParticleIndex_i]];
+        final double tmpParticleCharge2 = tmpCharges[tmpChargedParticleIndices[aParticleIndex_j]];
+        if (tmpParticleCharge1 == 0.0 || tmpParticleCharge2 == 0.0) {
+            throw new IllegalStateException("ParticlePairElectrostaticsAdHocPotentialCalculator.calculateParticlePairInteraction: A charged particle does NOT have a charge.");
+        }
         final Electrostatics tmpElectrostatics = aParameters.getInteractionDescription().getElectrostatics();
         final double tmpRij = Math.sqrt(aRij_Square);
         final double tmpEffectiveChargeProduct = tmpParticleCharge1 * tmpElectrostatics.getEffectiveChargeFactor() * tmpParticleCharge2 * tmpElectrostatics.getEffectiveChargeFactor();
@@ -198,7 +207,6 @@ public class ParticlePairElectrostaticsAdHocPotentialCalculator extends Particle
             aRandomAdderGroup.getPressureZAdder().add(tmpForceTerm * aRij_z * aRij_z);
             // </editor-fold>
         }
-        // Set potential energy to 0 if |F| > Fmax or |F| = 0, otherwise accumulate
         // Add to particle pair distance parameters cache if necessary
         if (this.isParticlePairDistanceParametersCacheActive) {
             aParticlePairDistanceParameters.add(

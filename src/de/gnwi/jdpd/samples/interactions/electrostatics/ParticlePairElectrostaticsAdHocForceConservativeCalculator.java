@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2018  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -56,7 +56,7 @@ public class ParticlePairElectrostaticsAdHocForceConservativeCalculator extends 
      * Constructor
      * 
      * @param aFactory Factory for new objects
-     * @param aSimulationLogger Simulation simulationLogger
+     * @param aSimulationLogger Simulation logger
      * @param aBoxSize Box size
      * @param aPeriodicBoundaries Periodic boundaries
      * @param aCutOffLength Cut-off length for partitioning of the box
@@ -153,8 +153,17 @@ public class ParticlePairElectrostaticsAdHocForceConservativeCalculator extends 
     ) {
         // Support quantities
         final ParticleArrays tmpParticleArrays = aParameters.getParticleArrays();
-        final double tmpParticleCharge1 = tmpParticleArrays.getCharges()[tmpParticleArrays.getChargedParticleIndices()[aParticleIndex_i]];
-        final double tmpParticleCharge2 = tmpParticleArrays.getCharges()[tmpParticleArrays.getChargedParticleIndices()[aParticleIndex_j]];
+        final int[] tmpChargedParticleIndices = tmpParticleArrays.getChargedParticleIndices(); 
+        final double[] tmpCharges = tmpParticleArrays.getCharges();
+        // NOTE: ParticlePairElectrostaticsAdHocForceConservativeCalculator is called with
+        //       aParameters.getParticleArrays().getChargedParticles_r_x() etc.
+        //       so that particle indices of method MUST be properly re-converted with 
+        //       tmpParticleArrays.getChargedParticleIndices()
+        final double tmpParticleCharge1 = tmpCharges[tmpChargedParticleIndices[aParticleIndex_i]];
+        final double tmpParticleCharge2 = tmpCharges[tmpChargedParticleIndices[aParticleIndex_j]];
+        if (tmpParticleCharge1 == 0.0 || tmpParticleCharge2 == 0.0) {
+            throw new IllegalStateException("ParticlePairElectrostaticsAdHocForceConservativeCalculator.calculateParticlePairInteraction: A charged particle does NOT have a charge.");
+        }
         final Electrostatics tmpElectrostatics = aParameters.getInteractionDescription().getElectrostatics();
         final double tmpRij = Math.sqrt(aRij_Square);
         double tmpFactor;
@@ -181,12 +190,16 @@ public class ParticlePairElectrostaticsAdHocForceConservativeCalculator extends 
         final double[] tmpF_x = tmpParticleArrays.getF_x();
         final double[] tmpF_y = tmpParticleArrays.getF_y();
         final double[] tmpF_z = tmpParticleArrays.getF_z();
-        tmpF_x[aParticleIndex_i] += tmpFij_x;
-        tmpF_x[aParticleIndex_j] -= tmpFij_x;
-        tmpF_y[aParticleIndex_i] += tmpFij_y;
-        tmpF_y[aParticleIndex_j] -= tmpFij_y;
-        tmpF_z[aParticleIndex_i] += tmpFij_z;
-        tmpF_z[aParticleIndex_j] -= tmpFij_z;
+        // NOTE: ParticlePairElectrostaticsAdHocForceConservativeCalculator is called with
+        //       aParameters.getParticleArrays().getChargedParticles_r_x() etc.
+        //       so that particle indices of method MUST be properly re-converted with 
+        //       tmpParticleArrays.getChargedParticleIndices()
+        tmpF_x[tmpChargedParticleIndices[aParticleIndex_i]] += tmpFij_x;
+        tmpF_x[tmpChargedParticleIndices[aParticleIndex_j]] -= tmpFij_x;
+        tmpF_y[tmpChargedParticleIndices[aParticleIndex_i]] += tmpFij_y;
+        tmpF_y[tmpChargedParticleIndices[aParticleIndex_j]] -= tmpFij_y;
+        tmpF_z[tmpChargedParticleIndices[aParticleIndex_i]] += tmpFij_z;
+        tmpF_z[tmpChargedParticleIndices[aParticleIndex_j]] -= tmpFij_z;
         // Add to particle pair distance parameters cache if necessary
         if (this.isParticlePairDistanceParametersCacheActive) {
             aParticlePairDistanceParameters.add(

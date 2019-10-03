@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2018  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -53,7 +53,7 @@ public class MoleculeAccelerationDescription {
     private final int frequency;
     
     /**
-     * Maximum time step where acceleration is applied
+     * Maximum time step for application
      */
     private final int maxTimeStep;
     // </editor-fold>
@@ -68,7 +68,7 @@ public class MoleculeAccelerationDescription {
      * @param anAccelerationY y-component of acceleration
      * @param anAccelerationZ z-component of acceleration
      * @param aFrequency Frequency
-     * @param aMaxTimeStep Maximum time step where acceleration is applied
+     * @param aMaxTimeStep Maximum time step for application
      */
     public MoleculeAccelerationDescription(
         String aMoleculeName,
@@ -134,9 +134,9 @@ public class MoleculeAccelerationDescription {
     }
 
     /**
-     * Maximum time step where acceleration is applied
+     * Maximum time step for application
      * 
-     * @return Maximum time step where acceleration is applied
+     * @return Maximum time step for application
      */
     public final int getMaxTimeStep() {
         return this.maxTimeStep;

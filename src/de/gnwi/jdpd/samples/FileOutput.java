@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2018  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -373,7 +373,7 @@ public class FileOutput implements IOutput {
     private final String simulationStepParticlePositionsDirectoryPath;
     
     /**
-     * Directory path for minimisation step particle positions
+     * Directory path for minimization step particle positions
      */
     private final String minimizationStepParticlePositionsDirectoryPath;
     
@@ -546,7 +546,7 @@ public class FileOutput implements IOutput {
      * @param aRadiusOfGyrationDirectoryPath Radius of gyration (Rg) directory path
      * @param aNearestNeighborDirectoryPath NearestNeighbor directory path
      * @param aSimulationStepParticlePositionsDirectoryPath Directory path for simulation step particle positions (may be null then nothing is written)
-     * @param aMinimizationStepParticlePositionsDirectoryPath Directory path for minimisation step particle positions (may be null then nothing is written)
+     * @param aMinimizationStepParticlePositionsDirectoryPath Directory path for minimization step particle positions (may be null then nothing is written)
      * @param aParallelTaskNumber Number of parallel tasks for write operations
      * @param aNumberOfAfterDecimalDigitsForParticlePositions Number of after-decimal-separator digits for particle positions (unrestricted if smaller of equal to 0)
      * @throws IllegalArgumentException Thrown if an argument is illegal
@@ -698,9 +698,9 @@ public class FileOutput implements IOutput {
     }
     
     /**
-     * Sets particle positions of minimisation step
+     * Sets particle positions of minimization step
      * 
-     * @param aMinimizationStep Minimisation step
+     * @param aMinimizationStep Minimization step
      * @param aParticlePositions Particle positions
      */
     @Override

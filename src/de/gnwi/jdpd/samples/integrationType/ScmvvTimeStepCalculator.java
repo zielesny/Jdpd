@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2018  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -21,6 +21,7 @@ package de.gnwi.jdpd.samples.integrationType;
 
 import de.gnwi.jdpd.parameters.Parameters;
 import de.gnwi.jdpd.accumulators.ForceAccumulator;
+import de.gnwi.jdpd.accumulators.ParticleForceMagnitudeAccumulator;
 import de.gnwi.jdpd.accumulators.PotentialAccumulator;
 import de.gnwi.jdpd.interfaces.IHarmonicBondPropertyCalculator;
 import de.gnwi.jdpd.interfaces.ILogger;
@@ -43,6 +44,7 @@ import de.gnwi.jdpd.parameters.SimulationDescription;
 import de.gnwi.jdpd.samples.interactions.ParticlePairInteractionCalculator;
 import de.gnwi.jdpd.utilities.GravitationalAcceleration;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.DoubleAdder;
 
 /**
  * Self-consistent Modified Velocity-Verlet (SCMVV) time step calculator
@@ -115,6 +117,11 @@ public class ScmvvTimeStepCalculator implements ITimeStepCalculator {
      * Potential accumulator
      */
     private final PotentialAccumulator potentialAccumulator;
+
+    /**
+     * Particle force magnitude accumulator
+     */
+    private final ParticleForceMagnitudeAccumulator particleForceMagnitudeAccumulator;
     
     /**
      * Particle position pools
@@ -167,9 +174,9 @@ public class ScmvvTimeStepCalculator implements ITimeStepCalculator {
     private final GravitationalAcceleration gravitationalAcceleration;
     
     /**
-     * True: Velocity scaling is performed for every simulation step, false: Otherwise
+     * Number of initial velocity scaling steps
      */
-    private final boolean isVelocityScaling;
+    private final int numberOfInitialVelocityScalingSteps;
     // </editor-fold>
     //
     // <editor-fold defaultstate="collapsed" desc="Private class variables">
@@ -266,7 +273,7 @@ public class ScmvvTimeStepCalculator implements ITimeStepCalculator {
 
         this.gravitationalAcceleration = this.parameters.getInteractionDescription().getGravitationalAcceleration();
 
-        this.isVelocityScaling = this.parameters.getSimulationDescription().isVelocityScaling();
+        this.numberOfInitialVelocityScalingSteps = this.parameters.getSimulationDescription().getNumberOfInitialVelocityScalingSteps();
         
         AtomicInteger tmpDummyRandomNumberSeed = new AtomicInteger(0);
         
@@ -281,7 +288,7 @@ public class ScmvvTimeStepCalculator implements ITimeStepCalculator {
                 aRandomNumberSeed
             );
         tmpParticlePairDpdForceFullCalculator.setParticlePairDistanceParametersCacheActivity(this.isCacheUsage);
-        
+
         IHarmonicBondForceCalculator tmpBondForceCalculator = null;
         if (this.particleArrays.hasBonds()) {
             tmpBondForceCalculator = 
@@ -373,16 +380,60 @@ public class ScmvvTimeStepCalculator implements ITimeStepCalculator {
                 tmpParticlePairElectrostaticsPotentialCalculator,
                 ParticlePairInteractionCalculator.CellBasedCalculationMode.WITH_PARTICLE_CELL_ASSIGNMENTS
             );        
+
+        if (this.simulationLogger.isLogLevel(ILogger.PARTICLE)) {
+            IParticlePairForceCalculator tmpParticlePairDpdForceConservativeCalculator =
+                this.factory.getParticlePairDpdForceConservativeCalculator(
+                    this.simulationLogger,
+                    this.chemicalSystemDescription.getBoxSize(), 
+                    this.simulationDescription.getPeriodicBoundaries(), 
+                    this.factory.getDpdCutOffLength(),
+                    aParallelizationInfo, 
+                    tmpDummyRandomNumberSeed
+                );
+            // IMPORTANT: Set cache usage
+            tmpParticlePairDpdForceConservativeCalculator.setParticlePairDistanceParametersCacheActivity(true);
+            
+            // NOTE: tmpParticlePairDpdFullForceCalculator DOES use random numbers thus provide random number seed
+            IParticlePairForceCalculator tmpParticlePairDpdForceRandomCalculator =
+                this.factory.getParticlePairDpdForceRandomCalculator(
+                    this.simulationLogger,
+                    this.chemicalSystemDescription.getBoxSize(), 
+                    this.simulationDescription.getPeriodicBoundaries(), 
+                    this.factory.getDpdCutOffLength(),
+                    aParallelizationInfo, 
+                    aRandomNumberSeed
+                );
+            IParticlePairForceCalculator tmpParticlePairDpdForceDissipativeCalculator =
+                this.factory.getParticlePairDpdForceDissipativeCalculator(
+                    this.simulationLogger,
+                    this.chemicalSystemDescription.getBoxSize(), 
+                    this.simulationDescription.getPeriodicBoundaries(), 
+                    this.factory.getDpdCutOffLength(),
+                    aParallelizationInfo, 
+                    tmpDummyRandomNumberSeed
+                );
+
+            this.particleForceMagnitudeAccumulator = 
+                new ParticleForceMagnitudeAccumulator(
+                    this.simulationLogger,
+                    tmpParticlePairDpdForceConservativeCalculator,
+                    ParticlePairInteractionCalculator.CellBasedCalculationMode.WITH_PARTICLE_CELL_ASSIGNMENTS,
+                    tmpParticlePairDpdForceRandomCalculator,
+                    tmpParticlePairDpdForceDissipativeCalculator,    
+                    tmpBondForceCalculator,
+                    tmpParticlePairElectrostaticsForceCalculator,
+                    ParticlePairInteractionCalculator.CellBasedCalculationMode.WITH_PARTICLE_CELL_ASSIGNMENTS
+                );
+        } else {
+            this.particleForceMagnitudeAccumulator = null;
+        }
         
         if (!this.parameters.hasRestartInfo()) {
             this.simulationOutput.setStartParticlePositions(Utils.getParticlePositions(this.parameters, this.particlePositionPool));
             if (this.simulationDescription.getInitialPotentialEnergyMinimizationStepNumber() > 0) {
                 IParticlePairForceCalculator tmpParticlePairDpdForceConservativeMinStepCalculator = 
                     this.factory.getParticlePairDpdForceConservativeCalculator(this.fullForceAccumulator.getParticlePairDpdForceCalculator());
-                // NOTE: Do NOT use electrostatic forces for initial potential 
-                //       energy minimization steps due to possibly extremely 
-                //       large initial electrostatic forces caused by 
-                //       unfavorable start geometry
                 Utils.calculateInitialPotentialEnergyMinimizationSteps(
                     this.simulationLogger,
                     this.parameters,
@@ -392,7 +443,7 @@ public class ScmvvTimeStepCalculator implements ITimeStepCalculator {
                         tmpParticlePairDpdForceConservativeMinStepCalculator,
                         ParticlePairInteractionCalculator.CellBasedCalculationMode.WITH_PARTICLE_CELL_ASSIGNMENTS,
                         this.fullForceAccumulator.getHarmonicBondForceConservativeCalculator(),
-                        null, // see NOTE above
+                        this.fullForceAccumulator.getParticlePairElectrostaticsForceConservativeCalculator(),
                         ParticlePairInteractionCalculator.CellBasedCalculationMode.WITH_PARTICLE_CELL_ASSIGNMENTS
                     ),
                     this.potentialAccumulator,
@@ -488,6 +539,7 @@ public class ScmvvTimeStepCalculator implements ITimeStepCalculator {
         // Molecule fixations
         if (this.hasMoleculeFixationInfos) {
             Utils.copy_rOld_to_r_forFixedMolecules(
+                aCurrentTimeStep,
                 this.moleculeFixationInfos,
                 this.particleArrays.getR_x(),
                 this.particleArrays.getR_y(),
@@ -511,6 +563,7 @@ public class ScmvvTimeStepCalculator implements ITimeStepCalculator {
         // Molecule boundaries (AFTER Utils.correct_r_and_v())
         if (this.hasMoleculeBoundaryInfos) {
             Utils.correct_r_and_v_forMoleculeBoundaries(
+                aCurrentTimeStep,
                 this.moleculeBoundaryInfos,
                 this.particleArrays.getR_x(),
                 this.particleArrays.getR_y(),
@@ -592,7 +645,25 @@ public class ScmvvTimeStepCalculator implements ITimeStepCalculator {
                 this.simulationDescription.getTimeStepLengthHalf(),
                 this.simulationDescription.isDpdUnitMass()
             );
-            // NOTE: this.dissipativeForceAccumulator assigns dissipative forces to fold
+            // <editor-fold defaultstate="collapsed" desc="SCMVV logging preparation">
+            if (this.simulationLogger.isLogLevel(ILogger.SCMVV)) {
+                if (aCurrentTimeStep == 1 || aCurrentTimeStep%this.parameters.getSimulationDescription().getTimeStepFrequencyForOutput() == 0) {
+                    this.simulationLogger.setScmvvInformationAccumulation(true);
+                    this.simulationLogger.setScmvvFdissParticleIndexPairCounter(new AtomicInteger());
+                    this.simulationLogger.setScmvvFdissRij_x_Adder(new DoubleAdder());
+                    this.simulationLogger.setScmvvFdissAbsRij_x_Adder(new DoubleAdder());
+                    this.simulationLogger.setScmvvFdissVij_x_Adder(new DoubleAdder());
+                    this.simulationLogger.setScmvvFdissAbsVij_x_Adder(new DoubleAdder());
+                    this.simulationLogger.setScmvvFdissRijVij_x_Adder(new DoubleAdder());
+                    this.simulationLogger.setScmvvFdissAbsRijVij_x_Adder(new DoubleAdder());
+                    this.simulationLogger.setScmvvFdissVdotR_Adder(new DoubleAdder());
+                    this.simulationLogger.setScmvvFdissGammaFactor_Adder(new DoubleAdder());
+                } else {
+                    this.simulationLogger.setScmvvInformationAccumulation(false);
+                }
+            }
+            // </editor-fold>
+            // NOTE: this.dissipativeForceAccumulator assigns dissipative forces to ftwo
             this.dissipativeForceAccumulator.accumulate_f_and_fTwo(
                 null,
                 this.particleArrays.getR_x(),
@@ -600,10 +671,95 @@ public class ScmvvTimeStepCalculator implements ITimeStepCalculator {
                 this.particleArrays.getR_z(),
                 this.parameters
             );
+            // <editor-fold defaultstate="collapsed" desc="SCMVV logging">
+            if (this.simulationLogger.isLogLevel(ILogger.SCMVV)) {
+                if (aCurrentTimeStep == 1 || aCurrentTimeStep%this.parameters.getSimulationDescription().getTimeStepFrequencyForOutput() == 0) {
+                    this.simulationLogger.appendScmvv(
+                        "ScmvvTimeStepCalculator.calculate: (SC iteration " + 
+                        String.valueOf(i) + 
+                        ") ScmvvFdissParticleIndexPairCounter = " + 
+                        String.valueOf(this.simulationLogger.getScmvvFdissParticleIndexPairCounter().get())
+                    );
+                    this.simulationLogger.appendScmvv(
+                        "ScmvvTimeStepCalculator.calculate: (SC iteration " + 
+                        String.valueOf(i) + 
+                        ") ScmvvFdissRij_x sum                = " + 
+                        String.valueOf(this.simulationLogger.getScmvvFdissRij_x_Adder().sum())
+                    );
+                    this.simulationLogger.appendScmvv(
+                        "ScmvvTimeStepCalculator.calculate: (SC iteration " + 
+                        String.valueOf(i) + 
+                        ") ScmvvFdissAbsRij_x sum             = " + 
+                        String.valueOf(this.simulationLogger.getScmvvFdissAbsRij_x_Adder().sum())
+                    );
+                    this.simulationLogger.appendScmvv(
+                        "ScmvvTimeStepCalculator.calculate: (SC iteration " + 
+                        String.valueOf(i) + 
+                        ") ScmvvFdissVij_x sum                = " + 
+                        String.valueOf(this.simulationLogger.getScmvvFdissVij_x_Adder().sum())
+                    );
+                    this.simulationLogger.appendScmvv(
+                        "ScmvvTimeStepCalculator.calculate: (SC iteration " + 
+                        String.valueOf(i) + 
+                        ") ScmvvFdissAbsVij_x sum             = " + 
+                        String.valueOf(this.simulationLogger.getScmvvFdissAbsVij_x_Adder().sum())
+                    );
+                    this.simulationLogger.appendScmvv(
+                        "ScmvvTimeStepCalculator.calculate: (SC iteration " + 
+                        String.valueOf(i) + 
+                        ") ScmvvFdissRijVij_x sum             = " + 
+                        String.valueOf(this.simulationLogger.getScmvvFdissRijVij_x_Adder().sum())
+                    );
+                    this.simulationLogger.appendScmvv(
+                        "ScmvvTimeStepCalculator.calculate: (SC iteration " + 
+                        String.valueOf(i) + 
+                        ") ScmvvFdissAbsRijVij_x sum          = " + 
+                        String.valueOf(this.simulationLogger.getScmvvFdissAbsRijVij_x_Adder().sum())
+                    );
+                    this.simulationLogger.appendScmvv(
+                        "ScmvvTimeStepCalculator.calculate: (SC iteration " + 
+                        String.valueOf(i) + 
+                        ") ScmvvFdissVdotR sum                = " + 
+                        String.valueOf(this.simulationLogger.getScmvvFdissVdotR_Adder().sum())
+                    );
+                    this.simulationLogger.appendScmvv(
+                        "ScmvvTimeStepCalculator.calculate: (SC iteration " + 
+                        String.valueOf(i) + 
+                        ") ScmvvFdissGammaFactor sum          = " + 
+                        String.valueOf(this.simulationLogger.getScmvvFdissGammaFactor_Adder().sum())
+                    );
+                }
+            }
+            // </editor-fold>
+            // <editor-fold defaultstate="collapsed" desc="Particle force magnitude logging for dissipative force">
+            if (this.simulationLogger.isLogLevel(ILogger.PARTICLE)) {
+                if (aCurrentTimeStep == 1 || aCurrentTimeStep%this.parameters.getSimulationDescription().getTimeStepFrequencyForOutput() == 0) {
+                    double[] tmpMinMeanMaxDpdForceDissipativeMagnitude = 
+                        Utils.calculateMinMeanMax(
+                            this.particleArrays.getFtwo_x(),
+                            this.particleArrays.getFtwo_y(),
+                            this.particleArrays.getFtwo_z()
+                        );
+                    if (tmpMinMeanMaxDpdForceDissipativeMagnitude != null) {
+                        this.simulationLogger.appendParticleForceMagnitude(
+                            "ScmvvTimeStepCalculator.calculate: (SC iteration " + 
+                            String.valueOf(i) + 
+                            ") DPD dissipat. F (min/mean/max) = " + 
+                            String.valueOf(tmpMinMeanMaxDpdForceDissipativeMagnitude[0]) +
+                            " / " +
+                            String.valueOf(tmpMinMeanMaxDpdForceDissipativeMagnitude[1]) +
+                            " / " +
+                            String.valueOf(tmpMinMeanMaxDpdForceDissipativeMagnitude[2])
+                        );
+                    }
+                }
+            }
+            // </editor-fold>
         }
         // Molecule velocity fixations
         if (this.hasMoleculeVelocityFixationInfos) {
             Utils.fill_v_forFixedMolecules(
+                aCurrentTimeStep,
                 this.moleculeVelocityFixationInfos,
                 this.particleArrays.getV_x(),
                 this.particleArrays.getV_y(),
@@ -611,7 +767,7 @@ public class ScmvvTimeStepCalculator implements ITimeStepCalculator {
             );            
         }
         final double tmpVelocityScaleFactor;
-        if (this.isVelocityScaling) {
+        if (aCurrentTimeStep <= this.numberOfInitialVelocityScalingSteps) {
             tmpVelocityScaleFactor = Utils.scale_v(
                 this.particleArrays.getV_x(),
                 this.particleArrays.getV_y(),
@@ -635,7 +791,7 @@ public class ScmvvTimeStepCalculator implements ITimeStepCalculator {
             // <editor-fold defaultstate="collapsed" desc="Velocity scale factor logging">
             this.simulationLogger.appendVelocityScaleFactor("ScmvvTimeStepCalculator.calculate, velocity scale factor WITH scaling due to molecule acceleration = " + String.valueOf(tmpVelocityScaleFactor));
             // </editor-fold>
-        } else if (this.simulationLogger.isLogLevel(ILogger.LogLevel.VELOCITY_SCALE_FACTOR)) {
+        } else if (this.simulationLogger.isLogLevel(ILogger.V_SCALE)) {
             tmpVelocityScaleFactor = Utils.getVelocityScaleFactor(
                 this.particleArrays.getV_x(),
                 this.particleArrays.getV_y(),
@@ -660,6 +816,9 @@ public class ScmvvTimeStepCalculator implements ITimeStepCalculator {
     public void shutdownExecutorServices() {
         this.fullForceAccumulator.shutdownExecutorService();
         this.potentialAccumulator.shutdownExecutorService();
+        if (this.particleForceMagnitudeAccumulator != null) {
+            this.particleForceMagnitudeAccumulator.shutdownExecutorService();
+        }
     }
     // </editor-fold>
     //
@@ -672,6 +831,16 @@ public class ScmvvTimeStepCalculator implements ITimeStepCalculator {
     @Override
     public PotentialAccumulator getPotentialAccumulator() {
         return this.potentialAccumulator;
+    }
+    
+    /**
+     * Particle force magnitude accumulator
+     * 
+     * @return Particle force magnitude accumulator
+     */
+    @Override
+    public ParticleForceMagnitudeAccumulator getParticleForceMagnitudeAccumulator() {
+        return this.particleForceMagnitudeAccumulator;
     }
     // </editor-fold>
     //

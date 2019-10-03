@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2018  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -41,15 +41,15 @@ public interface IOutput {
     void setStartParticlePositions(ParticlePosition[] aParticlePositions);
     
     /**
-     * Sets particle positions of minimisation step
+     * Sets particle positions of minimization step
      * 
-     * @param aMinimizationStep Minimisation step
+     * @param aMinimizationStep Minimization step
      * @param aParticlePositions Particle positions
      */
     void setMinimizationStepParticlePositions(int aMinimizationStep, ParticlePosition[] aParticlePositions);
     
     /**
-     * Sets particle positions after minimisation
+     * Sets particle positions after minimization
      * 
      * @param aParticlePositions Particle positions
      */

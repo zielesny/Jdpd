@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2018  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -53,7 +53,7 @@ public class CellBox {
     //
     // <editor-fold defaultstate="collapsed" desc="Protected final class variables">
     /**
-     * Simulation simulationLogger
+     * Simulation logger
      */
     protected final ILogger simulationLogger;
     
@@ -133,7 +133,7 @@ public class CellBox {
     /**
      * Constructor
      * 
-     * @param aSimulationLogger Simulation simulationLogger
+     * @param aSimulationLogger Simulation logger
      * @param aBoxSize Box size
      * @param aPeriodicBoundaries Periodic boundaries
      * @param aCutOffLength Cut-off length for partitioning of the box
@@ -162,7 +162,7 @@ public class CellBox {
     /**
      * Constructor
      * 
-     * @param aSimulationLogger Simulation simulationLogger
+     * @param aSimulationLogger Simulation logger
      * @param aBoxSize Box size
      * @param aPeriodicBoundaries Periodic boundaries
      * @param aCutOffLength Cut-off length for partitioning of the box

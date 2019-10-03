@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2018  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -106,17 +106,17 @@ public class ParticleArrays {
     private final double[] f_z;
 
     /**
-     * Force twox-component
+     * Force two x-component
      */
     private final double[] fTwo_x;
 
     /**
-     * Force twoy-component
+     * Force two y-component
      */
     private final double[] fTwo_y;
     
     /**
-     * Force twoz-component
+     * Force two z-component
      */
     private final double[] fTwo_z;
     
@@ -301,6 +301,65 @@ public class ParticleArrays {
     }
     // </editor-fold>
     //
+    // <editor-fold defaultstate="collapsed" desc="Public methods">
+    /**
+     * Returns if charged particles exist
+     * 
+     * @return True: Charged particles exist, false: Otherwise
+     */
+    public boolean hasChargedParticles() {
+        return this.chargedParticleIndices != null;
+    }
+    
+    /**
+     * Returns charged particles x-positions
+     * 
+     * @return Charged particles x-positions or null if none exist
+     */
+    public double[] getChargedParticles_r_x() {
+        if (this.hasChargedParticles()) {
+            for (int i = 0; i < this.chargedParticleIndices.length; i++) {
+                this.chargedParticles_r_x[i] = this.r_x[this.chargedParticleIndices[i]];
+            }
+            return this.chargedParticles_r_x;
+        } else {
+            return null;
+        }
+    }
+    
+    /**
+     * Returns charged particles y-positions
+     * 
+     * @return Charged particles y-positions or null if none exist
+     */
+    public double[] getChargedParticles_r_y() {
+        if (this.hasChargedParticles()) {
+            for (int i = 0; i < this.chargedParticleIndices.length; i++) {
+                this.chargedParticles_r_y[i] = this.r_y[this.chargedParticleIndices[i]];
+            }
+            return this.chargedParticles_r_y;
+        } else {
+            return null;
+        }
+    }
+    
+    /**
+     * Returns charged particles z-positions
+     * 
+     * @return Charged particles z-positions or null if none exist
+     */
+    public double[] getChargedParticles_r_z() {
+        if (this.hasChargedParticles()) {
+            for (int i = 0; i < this.chargedParticleIndices.length; i++) {
+                this.chargedParticles_r_z[i] = this.r_z[this.chargedParticleIndices[i]];
+            }
+            return this.chargedParticles_r_z;
+        } else {
+            return null;
+        }
+    }
+    // </editor-fold>
+    //
     // <editor-fold defaultstate="collapsed" desc="Public properties (get)">
     /**
      * Current x-components of particle positions in simulation box
@@ -438,27 +497,27 @@ public class ParticleArrays {
     }
     
     /**
-     * Force twox-component
+     * Force two x-component
      * 
-     * @return Current x-components of particle forces
+     * @return Force two x-component
      */
     public double[] getFtwo_x() {
         return this.fTwo_x;
     }
     
     /**
-     * Force twoy-component
+     * Force two y-component
      * 
-     * @return Current y-components of particle forces
+     * @return Force two y-component
      */
     public double[] getFtwo_y() {
         return this.fTwo_y;
     }
     
     /**
-     * Force twoz-component
+     * Force two z-component
      * 
-     * @return Current z-components of particle forces
+     * @return Force two z-component
      */
     public double[] getFtwo_z() {
         return this.fTwo_z;
@@ -561,63 +620,6 @@ public class ParticleArrays {
      */
     public int[] getChargedParticleIndices() {
         return this.chargedParticleIndices;
-    }
-    
-    /**
-     * Returns if charged particles exist
-     * 
-     * @return True: Charged particles exist, false: Otherwise
-     */
-    public boolean hasChargedParticles() {
-        return this.chargedParticleIndices != null;
-    }
-    
-    /**
-     * Returns charged particles x-positions
-     * 
-     * @return Charged particles x-positions or null if none exist
-     */
-    public double[] getChargedParticles_r_x() {
-        if (this.hasChargedParticles()) {
-            for (int i = 0; i < this.chargedParticleIndices.length; i++) {
-                this.chargedParticles_r_x[i] = this.r_x[this.chargedParticleIndices[i]];
-            }
-            return this.chargedParticles_r_x;
-        } else {
-            return null;
-        }
-    }
-    
-    /**
-     * Returns charged particles y-positions
-     * 
-     * @return Charged particles y-positions or null if none exist
-     */
-    public double[] getChargedParticles_r_y() {
-        if (this.hasChargedParticles()) {
-            for (int i = 0; i < this.chargedParticleIndices.length; i++) {
-                this.chargedParticles_r_y[i] = this.r_y[this.chargedParticleIndices[i]];
-            }
-            return this.chargedParticles_r_y;
-        } else {
-            return null;
-        }
-    }
-    
-    /**
-     * Returns charged particles z-positions
-     * 
-     * @return Charged particles z-positions or null if none exist
-     */
-    public double[] getChargedParticles_r_z() {
-        if (this.hasChargedParticles()) {
-            for (int i = 0; i < this.chargedParticleIndices.length; i++) {
-                this.chargedParticles_r_z[i] = this.r_z[this.chargedParticleIndices[i]];
-            }
-            return this.chargedParticles_r_z;
-        } else {
-            return null;
-        }
     }
 
     /**

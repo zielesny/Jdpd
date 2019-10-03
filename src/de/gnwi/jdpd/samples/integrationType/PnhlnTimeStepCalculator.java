@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2018  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -21,6 +21,7 @@ package de.gnwi.jdpd.samples.integrationType;
 
 import de.gnwi.jdpd.parameters.Parameters;
 import de.gnwi.jdpd.accumulators.ForceAccumulator;
+import de.gnwi.jdpd.accumulators.ParticleForceMagnitudeAccumulator;
 import de.gnwi.jdpd.accumulators.PotentialAccumulator;
 import de.gnwi.jdpd.interfaces.IHarmonicBondPropertyCalculator;
 import de.gnwi.jdpd.interfaces.ILogger;
@@ -132,6 +133,11 @@ public class PnhlnTimeStepCalculator implements ITimeStepCalculator {
      * Potential accumulator
      */
     private final PotentialAccumulator potentialAccumulator;
+
+    /**
+     * Particle force magnitude accumulator
+     */
+    private final ParticleForceMagnitudeAccumulator particleForceMagnitudeAccumulator;
     
     /**
      * Particle position pools
@@ -189,9 +195,9 @@ public class PnhlnTimeStepCalculator implements ITimeStepCalculator {
     private final IRandom randomNumberGenerator;
     
     /**
-     * True: Velocity scaling is performed for every simulation step, false: Otherwise
+     * Number of initial velocity scaling steps
      */
-    private final boolean isVelocityScaling;
+    private final int numberOfInitialVelocityScalingSteps;
     // </editor-fold>
     //
     // <editor-fold defaultstate="collapsed" desc="Private class variables">
@@ -286,7 +292,7 @@ public class PnhlnTimeStepCalculator implements ITimeStepCalculator {
 
         this.gravitationalAcceleration = this.parameters.getInteractionDescription().getGravitationalAcceleration();
 
-        this.isVelocityScaling = this.parameters.getSimulationDescription().isVelocityScaling();
+        this.numberOfInitialVelocityScalingSteps = this.parameters.getSimulationDescription().getNumberOfInitialVelocityScalingSteps();
 
         AtomicInteger tmpDummyRandomNumberSeed = new AtomicInteger(0);
         
@@ -367,16 +373,60 @@ public class PnhlnTimeStepCalculator implements ITimeStepCalculator {
                 tmpParticlePairElectrostaticsPotentialCalculator,
                 ParticlePairInteractionCalculator.CellBasedCalculationMode.WITH_PARTICLE_CELL_ASSIGNMENTS
             );        
+
+        if (this.simulationLogger.isLogLevel(ILogger.PARTICLE)) {
+            IParticlePairForceCalculator tmpParticlePairDpdForceConservativeCalculator2 =
+                this.factory.getParticlePairDpdForceConservativeCalculator(
+                    this.simulationLogger,
+                    this.chemicalSystemDescription.getBoxSize(), 
+                    this.simulationDescription.getPeriodicBoundaries(), 
+                    this.factory.getDpdCutOffLength(),
+                    aParallelizationInfo, 
+                    tmpDummyRandomNumberSeed
+                );
+            // IMPORTANT: Set cache usage
+            tmpParticlePairDpdForceConservativeCalculator.setParticlePairDistanceParametersCacheActivity(true);
+            
+            // NOTE: tmpParticlePairDpdFullForceCalculator DOES use random numbers thus provide random number seed
+            IParticlePairForceCalculator tmpParticlePairDpdForceRandomCalculator =
+                this.factory.getParticlePairDpdForceRandomCalculator(
+                    this.simulationLogger,
+                    this.chemicalSystemDescription.getBoxSize(), 
+                    this.simulationDescription.getPeriodicBoundaries(), 
+                    this.factory.getDpdCutOffLength(),
+                    aParallelizationInfo, 
+                    aRandomNumberSeed
+                );
+            IParticlePairForceCalculator tmpParticlePairDpdForceDissipativeCalculator =
+                this.factory.getParticlePairDpdForceDissipativeCalculator(
+                    this.simulationLogger,
+                    this.chemicalSystemDescription.getBoxSize(), 
+                    this.simulationDescription.getPeriodicBoundaries(), 
+                    this.factory.getDpdCutOffLength(),
+                    aParallelizationInfo, 
+                    tmpDummyRandomNumberSeed
+                );
+
+            this.particleForceMagnitudeAccumulator = 
+                new ParticleForceMagnitudeAccumulator(
+                    this.simulationLogger,
+                    tmpParticlePairDpdForceConservativeCalculator2,
+                    ParticlePairInteractionCalculator.CellBasedCalculationMode.WITH_PARTICLE_CELL_ASSIGNMENTS,
+                    tmpParticlePairDpdForceRandomCalculator,
+                    tmpParticlePairDpdForceDissipativeCalculator,    
+                    tmpBondForceCalculator,
+                    tmpParticlePairElectrostaticsForceCalculator,
+                    ParticlePairInteractionCalculator.CellBasedCalculationMode.WITH_PARTICLE_CELL_ASSIGNMENTS
+                );
+        } else {
+            this.particleForceMagnitudeAccumulator = null;
+        }
         
         if (!this.parameters.hasRestartInfo()) {
             this.simulationOutput.setStartParticlePositions(Utils.getParticlePositions(this.parameters, this.particlePositionPool));
             if (this.simulationDescription.getInitialPotentialEnergyMinimizationStepNumber() > 0) {
                 IParticlePairForceCalculator tmpParticlePairDpdForceConservativeMinStepCalculator = 
                     this.factory.getParticlePairDpdForceConservativeCalculator(this.conservativeForceAccumulator.getParticlePairDpdForceCalculator());
-                // NOTE: Do NOT use electrostatic forces for initial potential 
-                //       energy minimization steps due to possibly extremely 
-                //       large initial electrostatic forces caused by 
-                //       unfavorable start geometry
                 Utils.calculateInitialPotentialEnergyMinimizationSteps(
                     this.simulationLogger,
                     this.parameters,
@@ -386,7 +436,7 @@ public class PnhlnTimeStepCalculator implements ITimeStepCalculator {
                         tmpParticlePairDpdForceConservativeMinStepCalculator,
                         ParticlePairInteractionCalculator.CellBasedCalculationMode.WITH_PARTICLE_CELL_ASSIGNMENTS,
                         this.conservativeForceAccumulator.getHarmonicBondForceConservativeCalculator(),
-                        null, // see NOTE above
+                        this.conservativeForceAccumulator.getParticlePairElectrostaticsForceConservativeCalculator(),
                         ParticlePairInteractionCalculator.CellBasedCalculationMode.WITH_PARTICLE_CELL_ASSIGNMENTS
                     ),
                     this.potentialAccumulator,
@@ -433,6 +483,7 @@ public class PnhlnTimeStepCalculator implements ITimeStepCalculator {
         // Molecule fixations
         if (this.hasMoleculeFixationInfos) {
             Utils.copy_rOld_to_r_forFixedMolecules(
+                aCurrentTimeStep,
                 this.moleculeFixationInfos,
                 this.particleArrays.getR_x(),
                 this.particleArrays.getR_y(),
@@ -456,6 +507,7 @@ public class PnhlnTimeStepCalculator implements ITimeStepCalculator {
         // Molecule boundaries (AFTER Utils.correct_r_and_v())
         if (this.hasMoleculeBoundaryInfos) {
             Utils.correct_r_and_v_forMoleculeBoundaries(
+                aCurrentTimeStep,
                 this.moleculeBoundaryInfos,
                 this.particleArrays.getR_x(),
                 this.particleArrays.getR_y(),
@@ -563,6 +615,7 @@ public class PnhlnTimeStepCalculator implements ITimeStepCalculator {
         // Molecule fixations
         if (this.hasMoleculeFixationInfos) {
             Utils.copy_rOld_to_r_forFixedMolecules(
+                aCurrentTimeStep,
                 this.moleculeFixationInfos,
                 this.particleArrays.getR_x(),
                 this.particleArrays.getR_y(),
@@ -586,6 +639,7 @@ public class PnhlnTimeStepCalculator implements ITimeStepCalculator {
         // Molecule boundaries (AFTER Utils.correct_r_and_v())
         if (this.hasMoleculeBoundaryInfos) {
             Utils.correct_r_and_v_forMoleculeBoundaries(
+                aCurrentTimeStep,
                 this.moleculeBoundaryInfos,
                 this.particleArrays.getR_x(),
                 this.particleArrays.getR_y(),
@@ -641,6 +695,7 @@ public class PnhlnTimeStepCalculator implements ITimeStepCalculator {
         // Molecule velocity fixations
         if (this.hasMoleculeVelocityFixationInfos) {
             Utils.fill_v_forFixedMolecules(
+                aCurrentTimeStep,
                 this.moleculeVelocityFixationInfos,
                 this.particleArrays.getV_x(),
                 this.particleArrays.getV_y(),
@@ -648,7 +703,7 @@ public class PnhlnTimeStepCalculator implements ITimeStepCalculator {
             );            
         }
         final double tmpVelocityScaleFactor;
-        if (this.isVelocityScaling) {
+        if (aCurrentTimeStep <= this.numberOfInitialVelocityScalingSteps) {
             tmpVelocityScaleFactor = Utils.scale_v(
                 this.particleArrays.getV_x(),
                 this.particleArrays.getV_y(),
@@ -672,7 +727,7 @@ public class PnhlnTimeStepCalculator implements ITimeStepCalculator {
             // <editor-fold defaultstate="collapsed" desc="Velocity scale factor logging">
             this.simulationLogger.appendVelocityScaleFactor("PnhlnTimeStepCalculator.calculate, velocity scale factor WITH scaling due to molecule acceleration = " + String.valueOf(tmpVelocityScaleFactor));
             // </editor-fold>
-        } else if (this.simulationLogger.isLogLevel(ILogger.LogLevel.VELOCITY_SCALE_FACTOR)) {
+        } else if (this.simulationLogger.isLogLevel(ILogger.V_SCALE)) {
             tmpVelocityScaleFactor = Utils.getVelocityScaleFactor(
                 this.particleArrays.getV_x(),
                 this.particleArrays.getV_y(),
@@ -697,6 +752,9 @@ public class PnhlnTimeStepCalculator implements ITimeStepCalculator {
     public void shutdownExecutorServices() {
         this.conservativeForceAccumulator.shutdownExecutorService();
         this.potentialAccumulator.shutdownExecutorService();
+        if (this.particleForceMagnitudeAccumulator != null) {
+            this.particleForceMagnitudeAccumulator.shutdownExecutorService();
+        }
     }
     // </editor-fold>
     //
@@ -709,6 +767,16 @@ public class PnhlnTimeStepCalculator implements ITimeStepCalculator {
     @Override
     public PotentialAccumulator getPotentialAccumulator() {
         return this.potentialAccumulator;
+    }
+    
+    /**
+     * Particle force magnitude accumulator
+     * 
+     * @return Particle force magnitude accumulator
+     */
+    @Override
+    public ParticleForceMagnitudeAccumulator getParticleForceMagnitudeAccumulator() {
+        return this.particleForceMagnitudeAccumulator;
     }
     // </editor-fold>
     //

@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2018  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -66,7 +66,7 @@ public class ParticlePairScmvvDpdForceDissipativeCutoff1Calculator extends Parti
      * Constructor
      * 
      * @param aFactory Factory for new objects
-     * @param aSimulationLogger Simulation simulationLogger
+     * @param aSimulationLogger Simulation logger
      * @param aBoxSize Box size
      * @param aPeriodicBoundaries Periodic boundaries
      * @param aCutOffLength Cut-off length for partitioning of the box
@@ -219,8 +219,8 @@ public class ParticlePairScmvvDpdForceDissipativeCutoff1Calculator extends Parti
     ) {
         // Support quantities
         final ParticleArrays tmpParticleArrays = aParameters.getParticleArrays();
-        final double tmpRijInvers = ONE/aRij;
-        final double tmpFactor = -aParameters.getInteractionDescription().getDpdGamma() * (tmpRijInvers * tmpRijInvers - tmpRijInvers - tmpRijInvers + ONE);
+        final double tmpRijInversMinusOne = ONE/aRij - 1.0;
+        
         // Difference of particle velocities: Vector v_ij
         // IMPORTANT: Use tmpParticleArrays.getV_x() etc., NOT tmpParticleArrays.getVnew_x()
         final double[] tmpV_x = tmpParticleArrays.getV_x();
@@ -229,10 +229,13 @@ public class ParticlePairScmvvDpdForceDissipativeCutoff1Calculator extends Parti
         final double tmpVij_x = tmpV_x[aParticleIndex_i] - tmpV_x[aParticleIndex_j];
         final double tmpVij_y = tmpV_y[aParticleIndex_i] - tmpV_y[aParticleIndex_j];
         final double tmpVij_z = tmpV_z[aParticleIndex_i] - tmpV_z[aParticleIndex_j];
+        final double tmpFactor_v_dot_r = -aParameters.getInteractionDescription().getDpdGamma() * tmpRijInversMinusOne * tmpRijInversMinusOne * (tmpVij_x * aRij_x + tmpVij_y * aRij_y + tmpVij_z * aRij_z);
+        
         // Dissipative DPD force
-        final double tmpFtwo_ij_x = tmpFactor * (tmpVij_x * aRij_x * aRij_x + tmpVij_y * aRij_x * aRij_y + tmpVij_z * aRij_x * aRij_z);
-        final double tmpFtwo_ij_y = tmpFactor * (tmpVij_x * aRij_x * aRij_y + tmpVij_y * aRij_y * aRij_y + tmpVij_z * aRij_y * aRij_z);
-        final double tmpFtwo_ij_z = tmpFactor * (tmpVij_x * aRij_x * aRij_z + tmpVij_y * aRij_y * aRij_z + tmpVij_z * aRij_z * aRij_z);
+        final double tmpFtwo_ij_x = tmpFactor_v_dot_r * aRij_x;
+        final double tmpFtwo_ij_y = tmpFactor_v_dot_r * aRij_y;
+        final double tmpFtwo_ij_z = tmpFactor_v_dot_r * aRij_z;
+
         // IMPORTANT: Add to particle forces ftwo
         // NOTE: ParticlePairInteractionCalculator parallelization avoids collisions 
         //       of access of particle indices thus a lock is NOT necessary
@@ -245,6 +248,20 @@ public class ParticlePairScmvvDpdForceDissipativeCutoff1Calculator extends Parti
         tmpFtwo_y[aParticleIndex_j] -= tmpFtwo_ij_y;
         tmpFtwo_z[aParticleIndex_i] += tmpFtwo_ij_z;
         tmpFtwo_z[aParticleIndex_j] -= tmpFtwo_ij_z;
+        
+        // <editor-fold defaultstate="collapsed" desc="SCMVV logging">
+        if (this.simulationLogger.isLogLevel(ILogger.SCMVV) && this.simulationLogger.isScmvvInformationAccumulation()) {
+            this.simulationLogger.getScmvvFdissParticleIndexPairCounter().incrementAndGet();
+            this.simulationLogger.getScmvvFdissRij_x_Adder().add(aRij_x);
+            this.simulationLogger.getScmvvFdissAbsRij_x_Adder().add(Math.abs(aRij_x));
+            this.simulationLogger.getScmvvFdissVij_x_Adder().add(tmpVij_x);
+            this.simulationLogger.getScmvvFdissAbsVij_x_Adder().add(Math.abs(tmpVij_x));
+            this.simulationLogger.getScmvvFdissRijVij_x_Adder().add(tmpVij_x * aRij_x);
+            this.simulationLogger.getScmvvFdissAbsRijVij_x_Adder().add(Math.abs(tmpVij_x * aRij_x));
+            this.simulationLogger.getScmvvFdissVdotR_Adder().add(tmpVij_x * aRij_x + tmpVij_y * aRij_y + tmpVij_z * aRij_z);
+            this.simulationLogger.getScmvvFdissGammaFactor_Adder().add(aParameters.getInteractionDescription().getDpdGamma() * tmpRijInversMinusOne * tmpRijInversMinusOne);
+        }
+        // </editor-fold>
     }
     // </editor-fold>
     

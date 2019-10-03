@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2018  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -19,6 +19,7 @@
  */
 package de.gnwi.jdpd.interfaces;
 
+import de.gnwi.jdpd.accumulators.ParticleForceMagnitudeAccumulator;
 import de.gnwi.jdpd.accumulators.PotentialAccumulator;
 
 /**
@@ -42,6 +43,13 @@ public interface ITimeStepCalculator {
      * @return Potential accumulator
      */
     PotentialAccumulator getPotentialAccumulator();
+
+    /**
+     * Particle force magnitude accumulator
+     * 
+     * @return Particle force magnitude accumulator
+     */
+    ParticleForceMagnitudeAccumulator getParticleForceMagnitudeAccumulator();
     
     /**
      * Executor services shutdown

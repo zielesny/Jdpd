@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2018  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -49,7 +49,7 @@ public class ParticlePairNearestNeighborCalculator extends ParticlePairInteracti
      * Constructor
      * 
      * @param aFactory Factory for new objects
-     * @param aSimulationLogger Simulation simulationLogger
+     * @param aSimulationLogger Simulation logger
      * @param aBoxSize Box size
      * @param aPeriodicBoundaries Periodic boundaries
      * @param aCutOffLength Cut-off length for partitioning of the box
@@ -197,6 +197,7 @@ public class ParticlePairNearestNeighborCalculator extends ParticlePairInteracti
      * Sets arrays
      * NOTE: NO checks are performed
      * 
+     * @param aSimulationLogger Simulation logger
      * @param aParticleIndex_i Index of particle i
      * @param aParticleIndex_j Index of particle j
      * @param aRij Distance between particle i and j

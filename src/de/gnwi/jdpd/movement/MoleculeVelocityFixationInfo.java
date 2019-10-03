@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2018  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -57,6 +57,7 @@ public class MoleculeVelocityFixationInfo extends MoleculeVelocityFixationDescri
      * @param aVelocityZ z-component of velocity
      * @param aFirstIndex First index in particle arrays for molecule
      * @param aLastIndex Last index in particle arrays for molecule
+     * @param aMaxTimeStep Maximum time step for application
      */
     public MoleculeVelocityFixationInfo(
         String aMoleculeName,
@@ -66,6 +67,7 @@ public class MoleculeVelocityFixationInfo extends MoleculeVelocityFixationDescri
         double aVelocityX,
         double aVelocityY,
         double aVelocityZ,
+        int aMaxTimeStep,
         int aFirstIndex,
         int aLastIndex) {
         super(
@@ -75,7 +77,8 @@ public class MoleculeVelocityFixationInfo extends MoleculeVelocityFixationDescri
             anIsFixedZ,
             aVelocityX,
             aVelocityY,
-            aVelocityZ
+            aVelocityZ,
+            aMaxTimeStep
         );
         this.firstIndex = aFirstIndex;
         this.exclusiveLastIndex = aLastIndex + 1;

@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2018  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -46,6 +46,11 @@ public class MoleculeFixationDescription {
      * True: z-component of all particles of molecule is fixed, false: Otherwise
      */
     private final boolean isFixedZ;
+
+    /**
+     * Maximum time step for application
+     */
+    private final int maxTimeStep;
     // </editor-fold>
     //
     // <editor-fold defaultstate="collapsed" desc="Constructor">
@@ -57,16 +62,20 @@ public class MoleculeFixationDescription {
      * @param anIsFixedX True: x-component of all particles of molecule is fixed, false: Otherwise
      * @param anIsFixedY True: y-component of all particles of molecule is fixed, false: Otherwise
      * @param anIsFixedZ True: z-component of all particles of molecule is fixed, false: Otherwise
+     * @param aMaxTimeStep Maximum time step for application
      */
     public MoleculeFixationDescription(
         String aMoleculeName,
         boolean anIsFixedX,
         boolean anIsFixedY,
-        boolean anIsFixedZ) {
+        boolean anIsFixedZ,
+        int aMaxTimeStep
+        ) {
         this.moleculeName = aMoleculeName;
         this.isFixedX = anIsFixedX;
         this.isFixedY = anIsFixedY;
         this.isFixedZ = anIsFixedZ;
+        this.maxTimeStep = aMaxTimeStep;
     }
     // </editor-fold>
     //
@@ -105,6 +114,15 @@ public class MoleculeFixationDescription {
      */
     public boolean isFixedZ() {
         return this.isFixedZ;
+    }
+    
+    /**
+     * Maximum time step for application
+     * 
+     * @return Maximum time step for application
+     */
+    public final int getMaxTimeStep() {
+        return this.maxTimeStep;
     }
     // </editor-fold>
     

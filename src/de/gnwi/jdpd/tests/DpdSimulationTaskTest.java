@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2018  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -79,14 +79,15 @@ public class DpdSimulationTaskTest extends TestCase {
             if ((new File(tmpLogFilePathname)).exists()) {
                 (new File(tmpLogFilePathname)).delete();
             }
-            // ILogger.LogLevel[] tmpLogLevels = ILogger.LogLevel.values();
-            ILogger.LogLevel[] tmpLogLevels = 
-                new ILogger.LogLevel[] {
-                    ILogger.LogLevel.EXCEPTIONS, 
-                    ILogger.LogLevel.A_IJ, 
-                    ILogger.LogLevel.OUTPUT_TIME_STEPS, 
-                    ILogger.LogLevel.INTERMEDIATE_RESULTS
-                };
+            int[] tmpLogLevels = ILogger.ALL_LOGLEVELS;
+            // int[] tmpLogLevels = 
+            //     new int[] {
+            //         ILogger.EXCEPTION, 
+            //         ILogger.A_IJ, 
+            //         ILogger.OUTPUT_STEP,
+            //         ILogger.QUANTITY,
+            //         ILogger.PARTICLE
+            //     };
             FileLogger tmpFileLogger = new FileLogger(tmpLogFilePathname, tmpLogLevels);
             // File input
             String tmpInputFilePathname = aDirectoryPath + File.separatorChar + "Input.txt";

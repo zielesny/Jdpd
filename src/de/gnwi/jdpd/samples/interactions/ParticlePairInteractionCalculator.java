@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2018  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -93,6 +93,11 @@ public abstract class ParticlePairInteractionCalculator extends CellBox implemen
         
         // <editor-fold defaultstate="collapsed" desc="Private final class variables">
         /**
+         * Simulation logger
+         */
+        private final ILogger simulationLogger;
+        
+        /**
          * Cell chunks that are parallelisation-safe
          */
         private final int[] parallelizationSafeCellChunk;
@@ -147,6 +152,7 @@ public abstract class ParticlePairInteractionCalculator extends CellBox implemen
         /**
          * Constructor
          * 
+         * @param aSimulationLogger Simulation logger
          * @param aParallelizationSafeCellChunk Cell chunks that are parallelisation-safe
          * @param aStartIndex Start index for parallelizationSafeCellChunk
          * @param anEndIndex End index for parallelizationSafeCellChunk
@@ -159,6 +165,7 @@ public abstract class ParticlePairInteractionCalculator extends CellBox implemen
          * @param aParticlePairInteractionCalculator Particle pair interaction calculator
          */
         public CellChunkCalculationTask(
+            ILogger aSimulationLogger,
             int[] aParallelizationSafeCellChunk,
             int aStartIndex, 
             int anEndIndex,
@@ -170,6 +177,7 @@ public abstract class ParticlePairInteractionCalculator extends CellBox implemen
             Parameters aParameters,
             ParticlePairInteractionCalculator aParticlePairInteractionCalculator
         ) {
+            this.simulationLogger = aSimulationLogger;
             this.parallelizationSafeCellChunk = aParallelizationSafeCellChunk;
             this.startIndex = aStartIndex;
             this.endIndex = anEndIndex;
@@ -191,19 +199,26 @@ public abstract class ParticlePairInteractionCalculator extends CellBox implemen
          */
         @Override
         public Boolean call() {
-            for (int i = this.startIndex; i < this.endIndex; i++) {
-                int tmpCellIndex = this.parallelizationSafeCellChunk[i];
-                this.particlePairInteractionCalculator.calculateSingleCellParticlePairInteractions(
-                    tmpCellIndex,
-                    this.r_x,
-                    this.r_y,
-                    this.r_z,
-                    this.randomAdderGroup,
-                    this.particlePairDistanceParameters,
-                    this.parameters
-                );
+            try {
+                for (int i = this.startIndex; i < this.endIndex; i++) {
+                    int tmpCellIndex = this.parallelizationSafeCellChunk[i];
+                    this.particlePairInteractionCalculator.calculateSingleCellParticlePairInteractions(
+                        tmpCellIndex,
+                        this.r_x,
+                        this.r_y,
+                        this.r_z,
+                        this.randomAdderGroup,
+                        this.particlePairDistanceParameters,
+                        this.parameters
+                    );
+                }
+                return true;
+            } catch (Exception anException) {
+                // <editor-fold defaultstate="collapsed" desc="Exception logging">
+                this.simulationLogger.appendException("CellChunkCalculationTask.call", Utils.getStacktrace(anException));
+                // </editor-fold>
+                throw anException;
             }
-            return true;
         }
         // </editor-fold>
         
@@ -218,6 +233,11 @@ public abstract class ParticlePairInteractionCalculator extends CellBox implemen
     private class CacheCalculationTask implements Callable<Boolean> {
         
         // <editor-fold defaultstate="collapsed" desc="Private final class variables">
+        /**
+         * Simulation logger
+         */
+        private final ILogger simulationLogger;
+
         /**
          * Parameters
          */
@@ -243,6 +263,7 @@ public abstract class ParticlePairInteractionCalculator extends CellBox implemen
         /**
          * Constructor
          * 
+         * @param aSimulationLogger Simulation logger
          * @param aParallelizationSafeCellChunk Cell chunks that are parallelisation-safe
          * @param aStartIndex Start index for parallelizationSafeCellChunk
          * @param anEndIndex End index for parallelizationSafeCellChunk
@@ -255,11 +276,13 @@ public abstract class ParticlePairInteractionCalculator extends CellBox implemen
          * @param aParticlePairInteractionCalculator Particle pair interaction calculator
          */
         public CacheCalculationTask(
+            ILogger aSimulationLogger,
             RandomAdderGroup aRandomAdderGroup,
             ParticlePairDistanceParameters aParticlePairDistanceParameters,
             Parameters aParameters,
             ParticlePairInteractionCalculator aParticlePairInteractionCalculator
         ) {
+            this.simulationLogger = aSimulationLogger;
             this.randomAdderGroup = aRandomAdderGroup;
             this.particlePairDistanceParameters = aParticlePairDistanceParameters;
             this.parameters = aParameters;
@@ -275,27 +298,34 @@ public abstract class ParticlePairInteractionCalculator extends CellBox implemen
          */
         @Override
         public Boolean call() {
-            int[] tmpParticleIndices1 = this.particlePairDistanceParameters.getParticleIndices_i();
-            int[] tmpParticleIndices2 = this.particlePairDistanceParameters.getParticleIndices_j();
-            double[] tmpRij_x = this.particlePairDistanceParameters.getArray_Rij_x();
-            double[] tmpRij_y = this.particlePairDistanceParameters.getArray_Rij_y();
-            double[] tmpRij_z = this.particlePairDistanceParameters.getArray_Rij_z();
-            double[] tmpRij_Square = this.particlePairDistanceParameters.getArray_Rij_Square();
-            double[] tmpRij = this.particlePairDistanceParameters.getArray_Rij();
-            for (int i = 0; i < this.particlePairDistanceParameters.getSize(); i++) {
-                this.particlePairInteractionCalculator.calculateParticlePairInteraction(
-                    tmpParticleIndices1[i],
-                    tmpParticleIndices2[i], 
-                    tmpRij_x[i],
-                    tmpRij_y[i],
-                    tmpRij_z[i],
-                    tmpRij_Square[i],
-                    tmpRij[i],
-                    this.randomAdderGroup,
-                    this.parameters
-                );
+            try{
+                int[] tmpParticleIndices1 = this.particlePairDistanceParameters.getParticleIndices_i();
+                int[] tmpParticleIndices2 = this.particlePairDistanceParameters.getParticleIndices_j();
+                double[] tmpRij_x = this.particlePairDistanceParameters.getArray_Rij_x();
+                double[] tmpRij_y = this.particlePairDistanceParameters.getArray_Rij_y();
+                double[] tmpRij_z = this.particlePairDistanceParameters.getArray_Rij_z();
+                double[] tmpRij_Square = this.particlePairDistanceParameters.getArray_Rij_Square();
+                double[] tmpRij = this.particlePairDistanceParameters.getArray_Rij();
+                for (int i = 0; i < this.particlePairDistanceParameters.getSize(); i++) {
+                    this.particlePairInteractionCalculator.calculateParticlePairInteraction(
+                        tmpParticleIndices1[i],
+                        tmpParticleIndices2[i], 
+                        tmpRij_x[i],
+                        tmpRij_y[i],
+                        tmpRij_z[i],
+                        tmpRij_Square[i],
+                        tmpRij[i],
+                        this.randomAdderGroup,
+                        this.parameters
+                    );
+                }
+                return true;
+            } catch (Exception anException) {
+                // <editor-fold defaultstate="collapsed" desc="Exception logging">
+                this.simulationLogger.appendException("CacheCalculationTask.call", Utils.getStacktrace(anException));
+                // </editor-fold>
+                throw anException;
             }
-            return true;
         }
         // </editor-fold>
         
@@ -360,7 +390,7 @@ public abstract class ParticlePairInteractionCalculator extends CellBox implemen
      * Constructor
      * 
      * @param aFactory Factory for new objects
-     * @param aSimulationLogger Simulation simulationLogger
+     * @param aSimulationLogger Simulation logger
      * @param aBoxSize Box size
      * @param aPeriodicBoundaries Periodic boundaries
      * @param aCutOffLength Cut-off length for partitioning of the box
@@ -398,7 +428,7 @@ public abstract class ParticlePairInteractionCalculator extends CellBox implemen
      * Constructor
      * 
      * @param aFactory Factory for new objects
-     * @param aSimulationLogger Simulation simulationLogger
+     * @param aSimulationLogger Simulation logger
      * @param aBoxSize Box size
      * @param aPeriodicBoundaries Periodic boundaries
      * @param aCutOffLength Cut-off length for partitioning of the box
@@ -696,6 +726,7 @@ public abstract class ParticlePairInteractionCalculator extends CellBox implemen
                 for (int k = 0; k < tmpParticlePairDistanceParametersCachePerCellChunk.length; k++) {
                     CacheCalculationTask newTask = 
                         new CacheCalculationTask(
+                            this.simulationLogger,
                             tmpRandomAdderGroups[k], 
                             tmpParticlePairDistanceParametersCachePerCellChunk[k], 
                             aParameters, 
@@ -783,6 +814,16 @@ public abstract class ParticlePairInteractionCalculator extends CellBox implemen
     @Override
     public void setParticlePairDistanceParametersCacheActivity(boolean aValue) {
         this.isParticlePairDistanceParametersCacheActive = aValue;
+    }
+
+    /**
+     * Activity of cache for ParticlePairDistanceParameterss
+     * 
+     * @return True: Cache for ParticlePairDistanceParameterss is active, false: Otherwise
+     */
+    @Override
+    public boolean getParticlePairDistanceParametersCacheActivity() {
+        return this.isParticlePairDistanceParametersCacheActive;
     }
     
     /**
@@ -1000,9 +1041,9 @@ public abstract class ParticlePairInteractionCalculator extends CellBox implemen
     }
     
     /**
-     * Simulation simulationLogger
+     * Simulation logger
      * 
-     * @return Simulation simulationLogger
+     * @return Simulation logger
      */
     @Override
     public ILogger getSimulationLogger() {
@@ -1123,6 +1164,7 @@ public abstract class ParticlePairInteractionCalculator extends CellBox implemen
                         }
                         CellChunkCalculationTask newTask = 
                             new CellChunkCalculationTask(
+                                this.simulationLogger,
                                 tmpParallelizationSafeCellChunk, 
                                 tmpStartIndex, 
                                 tmpEndIndex, 
@@ -1143,6 +1185,7 @@ public abstract class ParticlePairInteractionCalculator extends CellBox implemen
                     }
                     tmpTaskList.add(
                         new CellChunkCalculationTask(
+                            this.simulationLogger,
                             tmpParallelizationSafeCellChunk, 
                             tmpStartIndex, 
                             tmpParallelizationSafeCellChunk.length, 

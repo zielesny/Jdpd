@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2018  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -43,7 +43,7 @@ public class FileLogger extends MemoryLogger {
      * @param aLogLevels Log levels
      * @throws IllegalArgumentException Thrown if argument is illegal
      */
-    public FileLogger(String aLogFilePathname, LogLevel[] aLogLevels) throws IllegalArgumentException {
+    public FileLogger(String aLogFilePathname, int[] aLogLevels) throws IllegalArgumentException {
         super(aLogLevels);
         // <editor-fold defaultstate="collapsed" desc="Checks">
         if (aLogFilePathname == null || aLogFilePathname.isEmpty()) {
