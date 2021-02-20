@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2021  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -770,7 +770,7 @@ public class FileOutput implements IOutput {
      * @param aBaseMoleculeParticleToNearestNeighborParticleFrequencyMap Base molecule-particle to nearest-neighbor particle frequency map (may be null)
      * @param aBaseMoleculeParticleToNearestNeighborMoleculeFrequencyMap Base molecule-particle to nearest-neighbor molecule frequency map (may be null)
      * @param aBaseMoleculeToNearestNeighborMoleculeFrequencyMap Base molecule to nearest-neighbor molecule frequency map (may be null)
-     * @param aBaseMoleculeToNearestNeighborMoleculeFrequencyMap Base molecule to nearest-neighbor molecule-tuple frequency map (may be null)
+     * @param aBaseMoleculeToNearestNeighborMoleculeTupleFrequencyMap Base molecule to nearest-neighbor molecule-tuple frequency map (may be null)
      * @param aParticlePositions Particle positions
      */
     @Override

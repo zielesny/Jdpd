@@ -158,7 +158,7 @@ TimeStepFrequencyForOutput 100
 #               Type  Parameter1 Parameter2
 IntegrationType GWMVV 0.65
 
-# Number of initial steps for potential minimization
+# Number of initial steps for potential energy minimization
 InitialPotentialEnergyMinimizationStepNumber 50
 
 # true : Output is generated for every potential energy minimization step
@@ -183,10 +183,20 @@ InitialVelocityScalingSteps 0
 # Apache Commons RNG (ACRNG) types:
 # ACRNG_ISAAC
 # ACRNG_JDK
+# ACRNG_JSF_32            // new in ACRNG 1.3
+# ACRNG_JSF_64            // new in ACRNG 1.3
 # ACRNG_KISS
 # ACRNG_MT
 # ACRNG_MT_64
+# ACRNG_MSWS              // new in ACRNG 1.3
 # ACRNG_MWC_256
+# ACRNG_PCG_XSH_RR_32     // new in ACRNG 1.3
+# ACRNG_PCG_XSH_RS_32     // new in ACRNG 1.3
+# ACRNG_PCG_RXS_M_XS_64   // new in ACRNG 1.3
+# ACRNG_PCG_MCG_XSH_RR_32 // new in ACRNG 1.3
+# ACRNG_PCG_MCG_XSH_RS_32 // new in ACRNG 1.3
+# ACRNG_SFC_32            // new in ACRNG 1.3
+# ACRNG_SFC_64            // new in ACRNG 1.3
 # ACRNG_SPLIT_MIX_64
 # ACRNG_TWO_CMRES
 # ACRNG_WELL_1024_A
@@ -195,10 +205,24 @@ InitialVelocityScalingSteps 0
 # ACRNG_WELL_44497_A
 # ACRNG_WELL_44497_B
 # ACRNG_WELL_512_A
-# ACRNG_XOR_SHIFT_1024_S
-#
-# Other RNG types:
-# PCG_32
+# ACRNG_XOR_SHIFT_1024_S_PHI  // new in ACRNG 1.3
+# ACRNG_XO_RO_SHI_RO_64_S     // new in ACRNG 1.3
+# ACRNG_XO_RO_SHI_RO_64_SS    // new in ACRNG 1.3
+# ACRNG_XO_SHI_RO_128_PLUS    // new in ACRNG 1.3
+# ACRNG_XO_SHI_RO_128_SS      // new in ACRNG 1.3
+# ACRNG_XO_RO_SHI_RO_128_PLUS // new in ACRNG 1.3
+# ACRNG_XO_RO_SHI_RO_128_SS   // new in ACRNG 1.3
+# ACRNG_XO_SHI_RO_256_PLUS    // new in ACRNG 1.3
+# ACRNG_XO_SHI_RO_256_SS      // new in ACRNG 1.3
+# ACRNG_XO_SHI_RO_512_PLUS    // new in ACRNG 1.3
+# ACRNG_XO_SHI_RO_512_SS      // new in ACRNG 1.3
+# ACRNG_XO_SHI_RO_128_PP      // new in ACRNG 1.3
+# ACRNG_XO_RO_SHI_RO_128_PP   // new in ACRNG 1.3
+# ACRNG_XO_SHI_RO_256_PP      // new in ACRNG 1.3
+# ACRNG_XO_SHI_RO_512_PP      // new in ACRNG 1.3
+# ACRNG_XO_RO_SHI_RO_1024_PP  // new in ACRNG 1.3
+# ACRNG_XO_RO_SHI_RO_1024_S   // new in ACRNG 1.3
+# ACRNG_XO_RO_SHI_RO_1024_SS  // new in ACRNG 1.3
 #
 #                     Type     Seed   Warm-up steps
 RandomNumberGenerator ACRNG_MT 123456 10000

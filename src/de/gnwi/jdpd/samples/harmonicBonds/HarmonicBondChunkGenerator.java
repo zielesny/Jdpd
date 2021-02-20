@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2021  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -19,9 +19,6 @@
  */
 package de.gnwi.jdpd.samples.harmonicBonds;
 
-import de.gnwi.jdpd.samples.harmonicBonds.HarmonicBondChunkArrays;
-import de.gnwi.jdpd.samples.harmonicBonds.HarmonicBondChunk;
-import de.gnwi.jdpd.samples.harmonicBonds.HarmonicBond;
 import java.util.LinkedList;
 
 /**

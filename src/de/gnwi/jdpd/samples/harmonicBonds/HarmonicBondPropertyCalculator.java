@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2021  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -146,14 +146,14 @@ public abstract class HarmonicBondPropertyCalculator implements IHarmonicBondPro
             int[] tmpParticleIndices2 = this.parallelizationSafeBondChunkArrays.getParticleIndices2();
             double[] tmpBondLengths = this.parallelizationSafeBondChunkArrays.getBondLengths();
             double[] tmpForceConstants = this.parallelizationSafeBondChunkArrays.getForceConstants();
-            boolean[] tmpRepulsionFlags = this.parallelizationSafeBondChunkArrays.getRepulsionFlags();
+            HarmonicBond.HarmonicBondBehaviour[] tmpHarmonicBondBehaviours = this.parallelizationSafeBondChunkArrays.getHarmonicBondBehaviours();
             for (int i = this.startIndex; i < this.endIndex; i++) {
                 this.bondPropertyCalculator.correctAndCalculateBondProperty(
                     tmpParticleIndices1[i],
                     tmpParticleIndices2[i],
                     tmpBondLengths[i],
                     tmpForceConstants[i],
-                    tmpRepulsionFlags[i],
+                    tmpHarmonicBondBehaviours[i],
                     this.r_x,
                     this.r_y,
                     this.r_z,
@@ -211,7 +211,8 @@ public abstract class HarmonicBondPropertyCalculator implements IHarmonicBondPro
         ILogger aSimulationLogger, 
         BoxSize aBoxSize, 
         PeriodicBoundaries aPeriodicBoundaries, 
-        ParallelizationInfo aParallelizationInfo) throws IllegalArgumentException {
+        ParallelizationInfo aParallelizationInfo
+    ) throws IllegalArgumentException {
         // <editor-fold defaultstate="collapsed" desc="Checks">
         if (aSimulationLogger == null) {
             throw new IllegalArgumentException("HarmonicBondPropertyCalculator.Constructor: aSimulationLogger is null.");
@@ -359,14 +360,14 @@ public abstract class HarmonicBondPropertyCalculator implements IHarmonicBondPro
                     int[] tmpParticleIndices2 = tmpBondChunkArrays.getParticleIndices2();
                     double[] tmpBondLengths = tmpBondChunkArrays.getBondLengths();
                     double[] tmpForceConstants = tmpBondChunkArrays.getForceConstants();
-                    boolean[] tmpRepulsionFlags = tmpBondChunkArrays.getRepulsionFlags();
+                    HarmonicBond.HarmonicBondBehaviour[] tmpHarmonicBondBehaviours = tmpBondChunkArrays.getHarmonicBondBehaviours();
                     for (int i = 0; i < tmpParticleIndices1.length; i++) {
                         this.correctAndCalculateBondProperty(
                             tmpParticleIndices1[i],
                             tmpParticleIndices2[i],
                             tmpBondLengths[i],
                             tmpForceConstants[i],
-                            tmpRepulsionFlags[i],
+                            tmpHarmonicBondBehaviours[i],
                             aR_x,
                             aR_y,
                             aR_z,
@@ -491,7 +492,7 @@ public abstract class HarmonicBondPropertyCalculator implements IHarmonicBondPro
      * @param aParticleIndex_j Index of particle j
      * @param aBondLength Bond length
      * @param aForceConstant Force constant
-     * @param anIsRepulsion True: Repulsion for bond is to be calculated, false: Otherwise (no repulsion, attraction only)
+     * @param aHarmonicBondBehaviour Behaviour of harmonic bond
      * @param aR_x Current x-components of particle positions in simulation box
      * @param aR_y Current y-components of particle positions in simulation box
      * @param aR_z Current z-components of particle positions in simulation box
@@ -503,12 +504,13 @@ public abstract class HarmonicBondPropertyCalculator implements IHarmonicBondPro
         int aParticleIndex_j, 
         double aBondLength,
         double aForceConstant,
-        boolean anIsRepulsion,
+        HarmonicBond.HarmonicBondBehaviour aHarmonicBondBehaviour,
         double[] aR_x,
         double[] aR_y,
         double[] aR_z,
         AdderGroup anAdderGroup,
-        Parameters aParameters) {
+        Parameters aParameters
+    ) {
         double tmpCorrectedRij_x = 
             Utils.correctPositionDifference(
                 aR_x[aParticleIndex_i] - aR_x[aParticleIndex_j],
@@ -541,7 +543,7 @@ public abstract class HarmonicBondPropertyCalculator implements IHarmonicBondPro
             tmpCorrectedRij_z,
             aBondLength, 
             aForceConstant,
-            anIsRepulsion,
+            aHarmonicBondBehaviour,
             anAdderGroup,
             aParameters
         );
@@ -562,7 +564,7 @@ public abstract class HarmonicBondPropertyCalculator implements IHarmonicBondPro
      * @param aRij_z z[aParticleIndex_i] - z[aParticleIndex_j] 
      * @param aBondLength Bond length
      * @param aForceConstant Force constant
-     * @param anIsRepulsion True: Repulsion for bond is to be calculated, false: Otherwise (no repulsion, attraction only)
+     * @param aHarmonicBondBehaviour Behaviour of harmonic bond
      * @param anAdderGroup Adder group (NOTE: NOT thread-safe)
      * @param aParameters Parameters (may be null)
      */
@@ -574,7 +576,7 @@ public abstract class HarmonicBondPropertyCalculator implements IHarmonicBondPro
         double aRij_z,
         double aBondLength,
         double aForceConstant,
-        boolean anIsRepulsion,
+        HarmonicBond.HarmonicBondBehaviour aHarmonicBondBehaviour,
         AdderGroup anAdderGroup,
         Parameters aParameters
     );

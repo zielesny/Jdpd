@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2021  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -51,7 +51,7 @@ public class HarmonicBondChunkArrays {
      * Repulsion flags:
      * True: Repulsion for bond is to be calculated, false: Otherwise (no repulsion, attraction only)
      */
-    private final boolean[] repulsionFlags;
+    private final HarmonicBond.HarmonicBondBehaviour[] harmonicBondBehaviours;
     // </editor-fold>
     //
     // <editor-fold defaultstate="collapsed" desc="Constructor">
@@ -62,7 +62,7 @@ public class HarmonicBondChunkArrays {
      * @param aParticleIndices2 Particle indices 2
      * @param aBondLengths Bond lengths in DPD units
      * @param aForceConstants Spring force constants in DPD units
-     * @param aRepulsionFlags Repulsion flags
+     * @param aHarmonicBondBehaviours Behaviours of harmonic bonds
      * @throws IllegalArgumentException Thrown if an argument is illegal
      */
     public HarmonicBondChunkArrays(
@@ -70,7 +70,7 @@ public class HarmonicBondChunkArrays {
         int[] aParticleIndices2,
         double[] aBondLengths,
         double[] aForceConstants,
-        boolean[] aRepulsionFlags
+        HarmonicBond.HarmonicBondBehaviour[] aHarmonicBondBehaviours
         ) {
         // <editor-fold defaultstate="collapsed" desc="Checks">
         if (aParticleIndices1 == null || aParticleIndices1.length == 0) {
@@ -86,8 +86,8 @@ public class HarmonicBondChunkArrays {
             throw new IllegalArgumentException("BondChunkArrays.Constructor: aForceConstants is null/empty.");
         }
         if (aParticleIndices1.length != aParticleIndices2.length ||
-                aParticleIndices2.length != aBondLengths.length ||
-                aBondLengths.length != aForceConstants.length) {
+            aParticleIndices2.length != aBondLengths.length ||
+            aBondLengths.length != aForceConstants.length) {
             throw new IllegalArgumentException("BondChunkArrays.Constructor: Arrays have different lengths.");
         }
         // </editor-fold>
@@ -95,7 +95,7 @@ public class HarmonicBondChunkArrays {
         this.particleIndices2 = aParticleIndices2;
         this.bondLengths = aBondLengths;
         this.forceConstants = aForceConstants;
-        this.repulsionFlags = aRepulsionFlags;
+        this.harmonicBondBehaviours = aHarmonicBondBehaviours;
     }
     // </editor-fold>
     //
@@ -137,13 +137,12 @@ public class HarmonicBondChunkArrays {
     }
 
     /**
-     * Repulsion flags:
-     * True: Repulsion for bond is to be calculated, false: Otherwise (no repulsion, attraction only)
+     * Behaviours of harmonic bonds
      * 
-     * @return Repulsion flags
+     * @return Behaviours of harmonic bonds
      */
-    public boolean[] getRepulsionFlags() {
-        return this.repulsionFlags;
+    public HarmonicBond.HarmonicBondBehaviour[] getHarmonicBondBehaviours() {
+        return this.harmonicBondBehaviours;
     }
     
     /**

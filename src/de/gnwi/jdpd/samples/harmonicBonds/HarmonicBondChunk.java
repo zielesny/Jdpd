@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2021  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -19,7 +19,6 @@
  */
 package de.gnwi.jdpd.samples.harmonicBonds;
 
-import de.gnwi.jdpd.samples.harmonicBonds.HarmonicBond;
 import java.util.LinkedList;
 import java.util.TreeMap;
 
@@ -105,17 +104,17 @@ public class HarmonicBondChunk {
             int[] tmpParticleIndices2 = new int[this.harmonicBondList.size()];
             double[] tmpBondlengths = new double[this.harmonicBondList.size()];
             double[] tmpForceConstants = new double[this.harmonicBondList.size()];
-            boolean[] tmpRepulsionFlags = new boolean[this.harmonicBondList.size()];
+            HarmonicBond.HarmonicBondBehaviour[] tmpHarmonicBondBehaviours = new HarmonicBond.HarmonicBondBehaviour[this.harmonicBondList.size()];
             int tmpIndex = 0;
             for (HarmonicBond tmpBond : this.harmonicBondList) {
                 tmpParticleIndices1[tmpIndex] = tmpBond.getIndex1();
                 tmpParticleIndices2[tmpIndex] = tmpBond.getIndex2();
                 tmpBondlengths[tmpIndex] = tmpBond.getBondLength();
                 tmpForceConstants[tmpIndex] = tmpBond.getForceConstant();
-                tmpRepulsionFlags[tmpIndex] = tmpBond.isRepulsion();
+                tmpHarmonicBondBehaviours[tmpIndex] = tmpBond.getHarmonicBondBehaviour();
                 tmpIndex++;
             }
-            return new HarmonicBondChunkArrays(tmpParticleIndices1, tmpParticleIndices2, tmpBondlengths, tmpForceConstants, tmpRepulsionFlags);
+            return new HarmonicBondChunkArrays(tmpParticleIndices1, tmpParticleIndices2, tmpBondlengths, tmpForceConstants, tmpHarmonicBondBehaviours);
         }
     }
     // </editor-fold>

@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2021  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -90,7 +90,7 @@ public class HarmonicBondPotentialCalculator extends HarmonicBondPropertyCalcula
      * @param aRij_z z[aParticleIndex_i] - z[aParticleIndex_j] 
      * @param aBondLength Bond length
      * @param aForceConstant Force constant
-     * @param anIsRepulsion True: Repulsion for bond is to be calculated, false: Otherwise (no repulsion, attraction only)
+     * @param aHarmonicBondBehaviour Behaviour of harmonic bond
      * @param anAdderGroup Adder group (NOTE: NOT thread-safe)
      * @param aParameters Parameters (may be null)
      */
@@ -103,15 +103,32 @@ public class HarmonicBondPotentialCalculator extends HarmonicBondPropertyCalcula
         double aRij_z,
         double aBondLength,
         double aForceConstant,
-        boolean anIsRepulsion,
+        HarmonicBond.HarmonicBondBehaviour aHarmonicBondBehaviour,
         AdderGroup anAdderGroup,
-        Parameters aParameters) {
+        Parameters aParameters
+    ) {
         final double tmpRij_x_Square = aRij_x * aRij_x;
         final double tmpRij_y_Square = aRij_y * aRij_y;
         final double tmpRij_z_Square = aRij_z * aRij_z;
         final double tmpRij = Math.sqrt(tmpRij_x_Square + tmpRij_y_Square + tmpRij_z_Square);
         final double tmpDeviation = tmpRij - aBondLength;
-        if (tmpDeviation > 0.0 || anIsRepulsion) {
+        boolean tmpIsCalculation = false;
+        switch (aHarmonicBondBehaviour) {
+            case DEFAULT:
+                tmpIsCalculation = true;
+                break;
+            case ATTRACTIVE:
+                if (tmpDeviation > 0.0) {
+                    tmpIsCalculation = true;
+                }        
+                break;
+            case REPULSIVE:
+                if (tmpDeviation < 0.0) {
+                    tmpIsCalculation = true;
+                }        
+                break;
+        }
+        if (tmpIsCalculation) {
             final double tmpTerm = aForceConstant * tmpDeviation;
             // Potential energy
             // NOTE: Factor 0.5 of harmonic spring potential is assumed to be already included in force constant k, i.e. k = 0.5 * k(real)

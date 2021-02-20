@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2021  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -378,12 +378,15 @@ public class FileInput implements IInput {
         // <editor-fold defaultstate="collapsed" desc="Random number generator">
         Factory.RandomType tmpRandomType = Factory.RandomType.getDefaultRandomNumberGeneratorType();
         int tmpRandomSeed = FileInput.DEFAULT_RANDOM_SEED;
-        int tmpNumberORandomNumberGeneratorfWarmUpSteps = FileInput.DEFAULT_RANDOM_WARM_UP_STEPS;
+        int tmpNumberORandomNumberGeneratorWarmUpSteps = FileInput.DEFAULT_RANDOM_WARM_UP_STEPS;
         if (this.hasParameter(Section.SIMULATION_DESCRIPTION, FileInput.RANDOM_NUMBER_GENERATOR)) {
             String[] tmpValues = this.getTripleStringValues(Section.SIMULATION_DESCRIPTION, FileInput.RANDOM_NUMBER_GENERATOR);
-            tmpRandomType = Factory.RandomType.getRandomNumberGeneratorType(tmpValues[0]);
+            // Check for legacy definitions: Replace invalid old settings by default
+            if (Factory.RandomType.isDefinedRandomNumberGeneratorTypeRepresentation(tmpValues[0])) {
+                tmpRandomType = Factory.RandomType.valueOf(tmpValues[0]);
+            }
             tmpRandomSeed = Integer.valueOf(tmpValues[1]);
-            tmpNumberORandomNumberGeneratorfWarmUpSteps = Integer.valueOf(tmpValues[2]);
+            tmpNumberORandomNumberGeneratorWarmUpSteps = Integer.valueOf(tmpValues[2]);
         }
         // </editor-fold>
         // <editor-fold defaultstate="collapsed" desc="Integration type">
@@ -429,20 +432,20 @@ public class FileInput implements IInput {
         Factory tmpFactory = 
             new Factory(
                 tmpRandomType, 
-                tmpNumberORandomNumberGeneratorfWarmUpSteps,
+                tmpNumberORandomNumberGeneratorWarmUpSteps,
                 Factory.DpdType.CUTOFF_LENGTH_ONE, 
                 Factory.ElectrostaticsType.AD_HOC,
-                Factory.HarmonicBondType.DEFAULT,
+                Factory.BondType.HARMONIC,
                 tmpIntegrationType,
                 tmpIntegrationParameters
             );
         // <editor-fold defaultstate="collapsed" desc="Intermediate results logging">
         this.simulationLogger.appendIntermediateResults("FileInput.getFactory: Random type           = " + tmpRandomType.toString());
         this.simulationLogger.appendIntermediateResults("FileInput.getFactory: Random seed           = " + String.valueOf(tmpRandomSeed));
-        this.simulationLogger.appendIntermediateResults("FileInput.getFactory: Random warm-up steps  = " + String.valueOf(tmpNumberORandomNumberGeneratorfWarmUpSteps));
+        this.simulationLogger.appendIntermediateResults("FileInput.getFactory: Random warm-up steps  = " + String.valueOf(tmpNumberORandomNumberGeneratorWarmUpSteps));
         this.simulationLogger.appendIntermediateResults("FileInput.getFactory: DPD type              = " + Factory.DpdType.CUTOFF_LENGTH_ONE.toString());
         this.simulationLogger.appendIntermediateResults("FileInput.getFactory: Electrostatics type   = " + Factory.ElectrostaticsType.AD_HOC.toString());
-        this.simulationLogger.appendIntermediateResults("FileInput.getFactory: Harmonic bond type    = " + Factory.HarmonicBondType.DEFAULT.toString());
+        this.simulationLogger.appendIntermediateResults("FileInput.getFactory: Harmonic bond type    = " + Factory.BondType.HARMONIC.toString());
         this.simulationLogger.appendIntermediateResults("FileInput.getFactory: Integration type      = " + tmpIntegrationType.toString());
         if (tmpIntegrationParameters != null) {
             for (Object tmpParameter : tmpIntegrationParameters) {
@@ -530,15 +533,27 @@ public class FileInput implements IInput {
                 tmpBackboneBonds = new HarmonicBond[tmpBackboneBondNumber];
                 int tmpOffset = tmpTotalMoleculeParticleNumber + 3;
                 for (int j = 0; j < tmpBackboneBondNumber; j++) {
-                    // NOTE: Paramter true = Repulsion calculation is MANDATORY for backbone bonds
-                    tmpBackboneBonds[j] = 
-                        new HarmonicBond(
-                            Integer.valueOf(tmpPositionsBondsFileContent[tmpOffset + j][0]),
-                            Integer.valueOf(tmpPositionsBondsFileContent[tmpOffset + j][1]),
-                            Double.valueOf(tmpPositionsBondsFileContent[tmpOffset + j][2]),
-                            Double.valueOf(tmpPositionsBondsFileContent[tmpOffset + j][3]),
-                            true
-                        );
+                    if (tmpPositionsBondsFileContent[tmpOffset + j].length == 4) {
+                        // NOTE: Use HarmonicBond.HarmonicBondBehaviour.DEFAULT for backbone bonds
+                        //       without HarmonicBondBehaviour specification
+                        tmpBackboneBonds[j] = 
+                            new HarmonicBond(
+                                Integer.valueOf(tmpPositionsBondsFileContent[tmpOffset + j][0]),
+                                Integer.valueOf(tmpPositionsBondsFileContent[tmpOffset + j][1]),
+                                Double.valueOf(tmpPositionsBondsFileContent[tmpOffset + j][2]),
+                                Double.valueOf(tmpPositionsBondsFileContent[tmpOffset + j][3]),
+                                HarmonicBond.HarmonicBondBehaviour.DEFAULT
+                            );
+                    } else {
+                        tmpBackboneBonds[j] = 
+                            new HarmonicBond(
+                                Integer.valueOf(tmpPositionsBondsFileContent[tmpOffset + j][0]),
+                                Integer.valueOf(tmpPositionsBondsFileContent[tmpOffset + j][1]),
+                                Double.valueOf(tmpPositionsBondsFileContent[tmpOffset + j][2]),
+                                Double.valueOf(tmpPositionsBondsFileContent[tmpOffset + j][3]),
+                                HarmonicBond.HarmonicBondBehaviour.valueOf(tmpPositionsBondsFileContent[tmpOffset + j][4])
+                            );
+                    }
                 }
             }
             // Set molecule description
@@ -868,7 +883,7 @@ public class FileInput implements IInput {
                         tmpParticlePairKey, 
                         Double.valueOf(tmpBonds12Row[2]), 
                         Double.valueOf(tmpBonds12Row[3]),
-                        Boolean.valueOf(tmpBonds12Row[4])
+                        (Boolean.valueOf(tmpBonds12Row[4])) ? HarmonicBond.HarmonicBondBehaviour.DEFAULT : HarmonicBond.HarmonicBondBehaviour.ATTRACTIVE
                     )
                 );
             }
@@ -958,9 +973,9 @@ public class FileInput implements IInput {
     }
     
     /**
-     * Number of initial potential minimization steps
+     * Number of initial potential energy minimization steps
      * 
-     * @return Number of initial potential minimization steps
+     * @return Number of initial potential energy minimization steps
      */
     @Override
     public int getInitialPotentialEnergyMinimizationStepNumber() {
@@ -995,7 +1010,7 @@ public class FileInput implements IInput {
      *        The masses of all other particles are set in relation to their 
      *        molar mass ratios to the most lightweight particle.
      * 
-     * @return: Flag value for use of DPD unit masses
+     * @return Flag value for use of DPD unit masses
      */
     @Override
     public boolean isDpdUnitMass() {

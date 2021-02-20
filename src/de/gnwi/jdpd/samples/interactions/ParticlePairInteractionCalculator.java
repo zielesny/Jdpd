@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2021  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -713,7 +713,7 @@ public abstract class ParticlePairInteractionCalculator extends CellBox implemen
             if (this.calculatorUtils.getAdderGroups() == null) {
                 RandomAdderGroup[] tmpRandomAdderGroups = new RandomAdderGroup[this.particlePairDistanceParametersCache[0].length];
                 for (int i = 0; i < this.particlePairDistanceParametersCache[0].length; i++) {
-                    tmpRandomAdderGroups[i] = new RandomAdderGroup(this.factory.getNewRandomNumberGenerator(this.randomNumberSeed.incrementAndGet()));
+                    tmpRandomAdderGroups[i] = new RandomAdderGroup(this.factory.getNewOrJumpedRandomNumberGenerator(this.randomNumberSeed.incrementAndGet()));
                 }
                 this.calculatorUtils.setAdderGroups(tmpRandomAdderGroups);
             }
@@ -767,7 +767,7 @@ public abstract class ParticlePairInteractionCalculator extends CellBox implemen
         try {
             // <editor-fold defaultstate="collapsed" desc="Loop over all particle index pairs">
             if (this.calculatorUtils.getAdderGroups() == null) {
-                this.calculatorUtils.setAdderGroups(new RandomAdderGroup[] {new RandomAdderGroup(this.factory.getNewRandomNumberGenerator(this.randomNumberSeed.incrementAndGet()))});
+                this.calculatorUtils.setAdderGroups(new RandomAdderGroup[] {new RandomAdderGroup(this.factory.getNewOrJumpedRandomNumberGenerator(this.randomNumberSeed.incrementAndGet()))});
             }
             this.calculatorUtils.resetAdders();
             RandomAdderGroup tmpRandomAdderGroup = ((RandomAdderGroup[]) this.calculatorUtils.getAdderGroups())[0];
@@ -1138,7 +1138,7 @@ public abstract class ParticlePairInteractionCalculator extends CellBox implemen
                 if (this.calculatorUtils.getAdderGroups() == null) {
                     RandomAdderGroup[] tmpRandomAdderGroups = new RandomAdderGroup[tmpCurrentParallelTaskNumber];
                     for (int i = 0; i < tmpCurrentParallelTaskNumber; i++) {
-                        tmpRandomAdderGroups[i] = new RandomAdderGroup(this.factory.getNewRandomNumberGenerator(this.randomNumberSeed.incrementAndGet()));
+                        tmpRandomAdderGroups[i] = new RandomAdderGroup(this.factory.getNewOrJumpedRandomNumberGenerator(this.randomNumberSeed.incrementAndGet()));
                     }
                     this.calculatorUtils.setAdderGroups(tmpRandomAdderGroups);
                 }
@@ -1207,7 +1207,7 @@ public abstract class ParticlePairInteractionCalculator extends CellBox implemen
                 this.simulationLogger.appendParallelization("ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.");
                 // </editor-fold>
                 if (this.calculatorUtils.getAdderGroups() == null) {
-                    this.calculatorUtils.setAdderGroups(new RandomAdderGroup[] {new RandomAdderGroup(this.factory.getNewRandomNumberGenerator(this.randomNumberSeed.incrementAndGet()))});
+                    this.calculatorUtils.setAdderGroups(new RandomAdderGroup[] {new RandomAdderGroup(this.factory.getNewOrJumpedRandomNumberGenerator(this.randomNumberSeed.incrementAndGet()))});
                 }
                 RandomAdderGroup tmpRandomAdderGroup = ((RandomAdderGroup[]) this.calculatorUtils.getAdderGroups())[0];
                 ParticlePairDistanceParameters tmpParticlePairDistanceParameters = null;

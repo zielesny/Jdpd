@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2021  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -118,7 +118,7 @@ public class HarmonicBondForceConservativeCalculator extends HarmonicBondPropert
      * @param aRij_z z[aParticleIndex_i] - z[aParticleIndex_j] 
      * @param aBondLength Bond length
      * @param aForceConstant Force constant
-     * @param anIsRepulsion True: Repulsion for bond is to be calculated, false: Otherwise (no repulsion, attraction only)
+     * @param aHarmonicBondBehaviour Behaviour of harmonic bond
      * @param anAdderGroup Adder group (NOTE: NOT thread-safe)
      * @param aParameters Parameters (may be null)
      */
@@ -131,14 +131,30 @@ public class HarmonicBondForceConservativeCalculator extends HarmonicBondPropert
         double aRij_z,
         double aBondLength,
         double aForceConstant,
-        boolean anIsRepulsion,
+        HarmonicBond.HarmonicBondBehaviour aHarmonicBondBehaviour,
         AdderGroup anAdderGroup,
         Parameters aParameters) {
         final ParticleArrays tmpParticleArrays = aParameters.getParticleArrays();
         double tmpRij = Math.sqrt(aRij_x * aRij_x + aRij_y * aRij_y + aRij_z * aRij_z);
         // NOTE: Sign of tmpDeviation is important for correct force direction, see below!
         double tmpDeviation = tmpRij - aBondLength;
-        if (tmpDeviation > 0.0 || anIsRepulsion) {
+        boolean tmpIsCalculation = false;
+        switch (aHarmonicBondBehaviour) {
+            case DEFAULT:
+                tmpIsCalculation = true;
+                break;
+            case ATTRACTIVE:
+                if (tmpDeviation > 0.0) {
+                    tmpIsCalculation = true;
+                }        
+                break;
+            case REPULSIVE:
+                if (tmpDeviation < 0.0) {
+                    tmpIsCalculation = true;
+                }        
+                break;
+        }
+        if (tmpIsCalculation) {
             double tmpForce = aForceConstant * tmpDeviation;
             // Bond force
             final double tmpFij_x = tmpForce * aRij_x / tmpRij;

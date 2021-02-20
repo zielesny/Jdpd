@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2021  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -38,7 +38,7 @@ public final class Constants {
     /**
      * Maximum number of time steps for a simulation
      */
-    public static final int MAXIMUM_NUMBER_OF_TIME_STEPS = 100000000;
+    public static final int MAXIMUM_NUMBER_OF_TIME_STEPS = 1000000000;
 
     /**
      * Tiny threshold (a little smaller than square root of significant number 

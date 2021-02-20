@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2021  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -806,7 +806,7 @@ public class DpdSimulationTask implements Callable<Boolean> {
                                     tmpCurrentIndex + tmpSingleParticleBondOffsets[k],
                                     tmpParticlePairBond.getBondLength(),
                                     tmpParticlePairBond.getForceConstant(),
-                                    tmpParticlePairBond.isRepulsion()
+                                    tmpParticlePairBond.getHarmonicBondBehaviour()
                                 )
                             );
                         }
@@ -822,7 +822,7 @@ public class DpdSimulationTask implements Callable<Boolean> {
                                 tmpBackBoneIndexToArrayIndexMap.get(tmpSingleBackboneBond.getIndex2()),
                                 tmpSingleBackboneBond.getBondLength(),
                                 tmpSingleBackboneBond.getForceConstant(),
-                                tmpSingleBackboneBond.isRepulsion()
+                                tmpSingleBackboneBond.getHarmonicBondBehaviour()
                             )
                         );
                     }
@@ -1174,9 +1174,9 @@ public class DpdSimulationTask implements Callable<Boolean> {
         long tmpId = this.simulationLogger.getId();
         this.simulationLogger.appendMethodCallStart("DpdSimulationTask.initialiseVelocities (NO restart)", tmpId);
         // </editor-fold>
-        IRandom tmpRandomX = this.factory.getNewRandomNumberGenerator(this.randomNumberSeed.incrementAndGet());
-        IRandom tmpRandomY = this.factory.getNewRandomNumberGenerator(this.randomNumberSeed.incrementAndGet());
-        IRandom tmpRandomZ = this.factory.getNewRandomNumberGenerator(this.randomNumberSeed.incrementAndGet());
+        IRandom tmpRandomX = this.factory.getNewOrJumpedRandomNumberGenerator(this.randomNumberSeed.incrementAndGet());
+        IRandom tmpRandomY = this.factory.getNewOrJumpedRandomNumberGenerator(this.randomNumberSeed.incrementAndGet());
+        IRandom tmpRandomZ = this.factory.getNewOrJumpedRandomNumberGenerator(this.randomNumberSeed.incrementAndGet());
         for (int i = 0; i < this.parameters.getParticleArrays().getV_x().length; i++) {
             this.parameters.getParticleArrays().getV_x()[i] = tmpRandomX.nextGaussian();
             this.parameters.getParticleArrays().getV_y()[i] = tmpRandomY.nextGaussian();

@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2021  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -148,7 +148,7 @@ public class ParticlePairInteractionCalculatorTest extends TestCase {
             // new ParticleIndexPairNumberCalculator -------------------------------
 
             tmpStart = System.currentTimeMillis();
-            ParticleIndexPairNumberCalculatorForTesting tmpParticleIndexPairNumberCalculator = new ParticleIndexPairNumberCalculatorForTesting(new Factory(Factory.RandomType.ACRNG_MT_64, 1, Factory.DpdType.CUTOFF_LENGTH_ONE, Factory.ElectrostaticsType.AD_HOC, Factory.HarmonicBondType.DEFAULT, Factory.IntegrationType.GWMVV, new Double[] {0.65}), tmpMemoryLogger, tmpBoxSize, tmpPeriodicBoundaries, tmpCutOffLength, null, null, new ParallelizationInfo(2, 2, tmpParallelTaskNumber), tmpRandomNumberSeed);
+            ParticleIndexPairNumberCalculatorForTesting tmpParticleIndexPairNumberCalculator = new ParticleIndexPairNumberCalculatorForTesting(new Factory(Factory.RandomType.ACRNG_MT_64, 1, Factory.DpdType.CUTOFF_LENGTH_ONE, Factory.ElectrostaticsType.AD_HOC, Factory.BondType.HARMONIC, Factory.IntegrationType.GWMVV, new Double[] {0.65}), tmpMemoryLogger, tmpBoxSize, tmpPeriodicBoundaries, tmpCutOffLength, null, null, new ParallelizationInfo(2, 2, tmpParallelTaskNumber), tmpRandomNumberSeed);
             tmpEnd = System.currentTimeMillis();
             System.out.println(tmpOffset + "new ParticleIndexPairNumberCalculator,                  t [s] = " + String.valueOf((tmpEnd - tmpStart)/1000.0));
 
@@ -224,7 +224,7 @@ public class ParticlePairInteractionCalculatorTest extends TestCase {
             // new ParticleIndexPairNumberCalculatorForTesting -------------------------------
 
             tmpStart = System.currentTimeMillis();
-            ParticleIndexPairNumberCalculatorForTesting tmpParticleIndexPairNumberCalculator = new ParticleIndexPairNumberCalculatorForTesting(new Factory(Factory.RandomType.ACRNG_MT_64, 1, Factory.DpdType.CUTOFF_LENGTH_ONE, Factory.ElectrostaticsType.AD_HOC, Factory.HarmonicBondType.DEFAULT, Factory.IntegrationType.GWMVV, new Double[] {0.65}), tmpMemoryLogger, tmpBoxSize, tmpPeriodicBoundaries, tmpCutOffLength, null, null, new ParallelizationInfo(2, 2, tmpParallelTaskNumber), tmpRandomNumberSeed);
+            ParticleIndexPairNumberCalculatorForTesting tmpParticleIndexPairNumberCalculator = new ParticleIndexPairNumberCalculatorForTesting(new Factory(Factory.RandomType.ACRNG_MT_64, 1, Factory.DpdType.CUTOFF_LENGTH_ONE, Factory.ElectrostaticsType.AD_HOC, Factory.BondType.HARMONIC, Factory.IntegrationType.GWMVV, new Double[] {0.65}), tmpMemoryLogger, tmpBoxSize, tmpPeriodicBoundaries, tmpCutOffLength, null, null, new ParallelizationInfo(2, 2, tmpParallelTaskNumber), tmpRandomNumberSeed);
             tmpEnd = System.currentTimeMillis();
             System.out.println(tmpOffset + "new tmpParticleIndexPairNumberCalculator,             t [s] = " + String.valueOf((tmpEnd - tmpStart)/1000.0));
 
@@ -305,7 +305,7 @@ public class ParticlePairInteractionCalculatorTest extends TestCase {
                     Factory.RandomType.ACRNG_MT_64, 1, 
                     Factory.DpdType.CUTOFF_LENGTH_ONE, 
                     Factory.ElectrostaticsType.AD_HOC, 
-                    Factory.HarmonicBondType.DEFAULT, 
+                    Factory.BondType.HARMONIC, 
                     Factory.IntegrationType.GWMVV, 
                     new Double[] {0.65}
                 ), 
@@ -431,7 +431,7 @@ public class ParticlePairInteractionCalculatorTest extends TestCase {
                 Factory.RandomType.ACRNG_MT_64, 1, 
                 Factory.DpdType.CUTOFF_LENGTH_ONE, 
                 Factory.ElectrostaticsType.AD_HOC, 
-                Factory.HarmonicBondType.DEFAULT, 
+                Factory.BondType.HARMONIC, 
                 Factory.IntegrationType.SCMVV, 
                 new Object[] {1, true}
             );
@@ -554,7 +554,7 @@ public class ParticlePairInteractionCalculatorTest extends TestCase {
         
         AtomicInteger tmpRandomNumberSeed = new AtomicInteger(1);
         tmpStart = System.currentTimeMillis();
-        ParticleIndexPairRandomCalculatorForTesting tmpParticleIndexPairRandomCalculator = new ParticleIndexPairRandomCalculatorForTesting(new Factory(Factory.RandomType.ACRNG_MT_64, 1, Factory.DpdType.CUTOFF_LENGTH_ONE, Factory.ElectrostaticsType.AD_HOC, Factory.HarmonicBondType.DEFAULT, Factory.IntegrationType.GWMVV, new Double[] {0.65}), tmpMemoryLogger, tmpBoxSize, tmpPeriodicBoundaries, tmpCutOffLength, null, null, new ParallelizationInfo(2, 2, aParallelTaskNumber), tmpRandomNumberSeed);
+        ParticleIndexPairRandomCalculatorForTesting tmpParticleIndexPairRandomCalculator = new ParticleIndexPairRandomCalculatorForTesting(new Factory(Factory.RandomType.ACRNG_MT_64, 1, Factory.DpdType.CUTOFF_LENGTH_ONE, Factory.ElectrostaticsType.AD_HOC, Factory.BondType.HARMONIC, Factory.IntegrationType.GWMVV, new Double[] {0.65}), tmpMemoryLogger, tmpBoxSize, tmpPeriodicBoundaries, tmpCutOffLength, null, null, new ParallelizationInfo(2, 2, aParallelTaskNumber), tmpRandomNumberSeed);
         tmpEnd = System.currentTimeMillis();
         System.out.println("new tmpParticleIndexPairRandomCalculator,   t [s] = " + String.valueOf((tmpEnd - tmpStart)/1000.0));
         
@@ -583,7 +583,7 @@ public class ParticlePairInteractionCalculatorTest extends TestCase {
         
         tmpRandomNumberSeed = new AtomicInteger(1);
         tmpStart = System.currentTimeMillis();
-        tmpParticleIndexPairRandomCalculator = new ParticleIndexPairRandomCalculatorForTesting(new Factory(Factory.RandomType.ACRNG_MT_64, 1, Factory.DpdType.CUTOFF_LENGTH_ONE, Factory.ElectrostaticsType.AD_HOC, Factory.HarmonicBondType.DEFAULT, Factory.IntegrationType.GWMVV, new Double[] {0.65}), tmpMemoryLogger, tmpBoxSize, tmpPeriodicBoundaries, tmpCutOffLength, null, null, new ParallelizationInfo(2, 2, aParallelTaskNumber), tmpRandomNumberSeed);
+        tmpParticleIndexPairRandomCalculator = new ParticleIndexPairRandomCalculatorForTesting(new Factory(Factory.RandomType.ACRNG_MT_64, 1, Factory.DpdType.CUTOFF_LENGTH_ONE, Factory.ElectrostaticsType.AD_HOC, Factory.BondType.HARMONIC, Factory.IntegrationType.GWMVV, new Double[] {0.65}), tmpMemoryLogger, tmpBoxSize, tmpPeriodicBoundaries, tmpCutOffLength, null, null, new ParallelizationInfo(2, 2, aParallelTaskNumber), tmpRandomNumberSeed);
         tmpEnd = System.currentTimeMillis();
         System.out.println("new tmpParticleIndexPairRandomCalculator,   t [s] = " + String.valueOf((tmpEnd - tmpStart)/1000.0));
         
@@ -654,7 +654,7 @@ public class ParticlePairInteractionCalculatorTest extends TestCase {
         // new ParticleIndexPairNumberCalculatorForTesting ---------------------
         
         tmpStart = System.currentTimeMillis();
-        ParticleIndexPairNumberCalculatorForTesting tmpParticleIndexPairNumberCalculator = new ParticleIndexPairNumberCalculatorForTesting(new Factory(Factory.RandomType.ACRNG_MT_64, 1, Factory.DpdType.CUTOFF_LENGTH_ONE, Factory.ElectrostaticsType.AD_HOC, Factory.HarmonicBondType.DEFAULT, Factory.IntegrationType.GWMVV, new Double[] {0.65}), tmpMemoryLogger, tmpBoxSize, tmpPeriodicBoundaries, tmpCutOffLength, null, null, new ParallelizationInfo(2, 2, aParallelTaskNumber), tmpRandomNumberSeed);
+        ParticleIndexPairNumberCalculatorForTesting tmpParticleIndexPairNumberCalculator = new ParticleIndexPairNumberCalculatorForTesting(new Factory(Factory.RandomType.ACRNG_MT_64, 1, Factory.DpdType.CUTOFF_LENGTH_ONE, Factory.ElectrostaticsType.AD_HOC, Factory.BondType.HARMONIC, Factory.IntegrationType.GWMVV, new Double[] {0.65}), tmpMemoryLogger, tmpBoxSize, tmpPeriodicBoundaries, tmpCutOffLength, null, null, new ParallelizationInfo(2, 2, aParallelTaskNumber), tmpRandomNumberSeed);
         tmpEnd = System.currentTimeMillis();
         System.out.println("new ParticleIndexPairNumberCalculator,      t [s] = " + String.valueOf((tmpEnd - tmpStart)/1000.0));
 

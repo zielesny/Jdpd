@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2021  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>  
  * 
@@ -17,6 +17,55 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+--------------------------------------------------------------------------------
+Jdpd 1.4.0.0 (Jdpd.jar)
+--------------------------------------------------------------------------------
+for Java 8 or higher
+
+Dependencies:
+  - commons-rng-client-api-1.3.jar
+    commons-rng-core-1.3.jar
+    commons-rng-sampling-1.3.jar
+    commons-rng-simple-1.3.jar
+      Apache Commons RNG 1.3 (http://commons.apache.org/proper/commons-rng/)
+      Version 1.3
+      
+Unit tests: 
+  - Package src.de.gnwi.jdpd.tests
+  
+Simulation input file description:  
+  - File Input.txt in package src.de.gnwi.jdpd.tests.test_Water_GWMVV              
+--------------------------------------------------------------------------------
+- Removals:
+  - The PCG pseudorandom generator is removed (Pcg32.java). For old job 
+    definitions this setting is automatically converted to the default random 
+    number generator.
+
+- Refactoring:
+  - Internal Enum HarmonicBondType with single value DEFAULT is refactored to 
+    enum BondType with single value HARMONIC. This does not affect older job
+    definitions, i.e. there are no compatibility issues.
+
+- Improvements:
+  - A harmonic bond now has a HarmonicBondBehaviour which is DEFAULT (repulsive 
+    and attractive), REPULSIVE (repulsive if squeezed but NOT attractive if 
+    elongated) or ATTRACTIVE (attractive if elongated, but NOT repulsive if 
+    squeezed). Backbone bonds may now be defined accordingly (see 
+    de.gnwi.jdpd.samples.FileInput.getMoleculeDescriptions()). Job definitions 
+    of older versions are still compatible.
+  - Random number generation is now based on Apache Commons RNG 1.3. If a 
+    specified random number generator is jumpable then jump-ahead operations 
+    are performed for successive random number generator creation (otherwise 
+    successive random number generators are created with incremented seeds). For 
+    random seed initialization procedures init_genrand() for integer arrays 
+    (MT19937, improved initialization 2002/1/26) and init_genrand64() for long 
+    arrays (MT19937-64, 2004/9/29 version) according to Takuji Nishimura and 
+    Makoto Matsumoto are used. The new default random number generator is 
+    xoshiro256** (ACRNG_XO_SHI_RO_256_SS). For old job definitions a possible 
+    now invalid RNG setting is automatically converted to the default random 
+    number generator.
+
 
 --------------------------------------------------------------------------------
 Jdpd 1.3.0.0 (Jdpd.jar)

@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2021  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -19,6 +19,8 @@
  */
 package de.gnwi.jdpd.samples.harmonicBonds;
 
+import java.util.Arrays;
+
 /**
  * Harmonic bond
  * 
@@ -26,6 +28,63 @@ package de.gnwi.jdpd.samples.harmonicBonds;
  */
 public class HarmonicBond {
 
+    // <editor-fold defaultstate="collapsed" desc="Public enums">
+    /**
+     * Behaviour of harmonic bond
+     */
+    public enum HarmonicBondBehaviour {
+        
+        /**
+         * Harmonic bond is repulsive and attractive (default)
+         */
+        DEFAULT,
+        /**
+         * Harmonic bond is only repulsive if squeezed (but NOT attractive if
+         * elongated)
+         */
+        REPULSIVE,
+        /**
+         * Harmonic bond is only attractive if elongated (but NOT repulsive if
+         * squeezed)
+         */
+        ATTRACTIVE;
+
+        /**
+         * Harmonic bond behaviour representations
+         * 
+         * @return Harmonic bond behaviour representations
+         */
+        public static String[] getHarmonicBondBehaviourRepresentations() {
+            String[] tmpHarmonicBondBehaviourRepresentations = new String[HarmonicBondBehaviour.values().length];
+            int tmpIndex = 0;
+            for (HarmonicBondBehaviour tmpHarmonicBondBehaviour : HarmonicBondBehaviour.values()) {
+                tmpHarmonicBondBehaviourRepresentations[tmpIndex++] = tmpHarmonicBondBehaviour.toString();
+            }
+            Arrays.sort(tmpHarmonicBondBehaviourRepresentations);
+            return tmpHarmonicBondBehaviourRepresentations;
+        }
+
+        /**
+         * Default harmonic bond behaviour representation
+         * 
+         * @return Default harmonic bond behaviour representation
+         */
+        public static String getDefaultHarmonicBondBehaviourRepresentation() {
+            return HarmonicBondBehaviour.getDefaultHarmonicBondBehaviour().toString();
+        }
+
+        /**
+         * Default harmonic bond behaviour 
+         * 
+         * @return Default harmonic bond behaviour 
+         */
+        public static HarmonicBondBehaviour getDefaultHarmonicBondBehaviour() {
+            return HarmonicBondBehaviour.DEFAULT;
+        }
+        
+    }
+    // </editor-fold>
+    //
     // <editor-fold defaultstate="collapsed" desc="Private final class variables">
     /**
      * Index 1
@@ -48,9 +107,9 @@ public class HarmonicBond {
     private final double forceConstant;
     
     /**
-     * True: Repulsion for bond is to be calculated, false: Otherwise (no repulsion, attraction only)
+     * Behaviour of harmonic bond
      */
-    private final boolean isRepulsion;
+    private final HarmonicBondBehaviour harmonicBondBehaviour;
     // </editor-fold>
     //
     // <editor-fold defaultstate="collapsed" desc="Constructor">
@@ -61,7 +120,7 @@ public class HarmonicBond {
      * @param anIndex2 Index of particle 2
      * @param aBondLength Bond length in DPD units
      * @param aForceConstant Spring force constant in DPD units
-     * @param anIsRepulsion True: Repulsion for bond is to be calculated, false: Otherwise (no repulsion, attraction only)
+     * @param aHarmonicBondBehaviour Behaviour of harmonic bond
      * @throws IllegalArgumentException Thrown if an argument is illegal
      */
     public HarmonicBond(
@@ -69,27 +128,27 @@ public class HarmonicBond {
         int anIndex2,
         double aBondLength,
         double aForceConstant,
-        boolean anIsRepulsion
+        HarmonicBondBehaviour aHarmonicBondBehaviour
         ) {
         // <editor-fold defaultstate="collapsed" desc="Checks">
         if (anIndex1 < 0) {
-            throw new IllegalArgumentException("Bond.Constructor: anIndex1 < 0.");
+            throw new IllegalArgumentException("HarmonicBond.Constructor: anIndex1 < 0.");
         }
         if (anIndex2 < 0) {
-            throw new IllegalArgumentException("Bond.Constructor: anIndex2 < 0.");
+            throw new IllegalArgumentException("HarmonicBond.Constructor: anIndex2 < 0.");
         }
         if (aBondLength <= 0.0) {
-            throw new IllegalArgumentException("Bond.Constructor: aBondLength <= 0.0.");
+            throw new IllegalArgumentException("HarmonicBond.Constructor: aBondLength <= 0.0.");
         }
         if (aForceConstant <= 0.0) {
-            throw new IllegalArgumentException("Bond.Constructor: aForceConstant <= 0.0.");
+            throw new IllegalArgumentException("HarmonicBond.Constructor: aForceConstant <= 0.0.");
         }
         // </editor-fold>
         this.index1 = anIndex1;
         this.index2 = anIndex2;
         this.bondLength = aBondLength;
         this.forceConstant = aForceConstant;
-        this.isRepulsion = anIsRepulsion;
+        this.harmonicBondBehaviour = aHarmonicBondBehaviour;
     }
     // </editor-fold>
     //
@@ -131,12 +190,12 @@ public class HarmonicBond {
     }
     
     /**
-     * True: Repulsion for bond is to be calculated, false: Otherwise (no repulsion, attraction only)
+     * Behaviour of harmonic bond
      * 
-     * @return True: Repulsion for bond is to be calculated, false: Otherwise (no repulsion, attraction only)
+     * @return Behaviour of harmonic bond
      */
-    public boolean isRepulsion() {
-        return this.isRepulsion;
+    public HarmonicBondBehaviour getHarmonicBondBehaviour() {
+        return this.harmonicBondBehaviour;
     }
     // </editor-fold>
     

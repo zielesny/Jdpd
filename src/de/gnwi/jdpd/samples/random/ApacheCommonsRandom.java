@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2021  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -20,6 +20,8 @@
 package de.gnwi.jdpd.samples.random;
 
 import de.gnwi.jdpd.interfaces.IRandom;
+import org.apache.commons.rng.JumpableUniformRandomProvider;
+import org.apache.commons.rng.LongJumpableUniformRandomProvider;
 import org.apache.commons.rng.UniformRandomProvider;
 import org.apache.commons.rng.sampling.distribution.ZigguratNormalizedGaussianSampler;
 import org.apache.commons.rng.sampling.distribution.ContinuousSampler;
@@ -38,6 +40,11 @@ public class ApacheCommonsRandom implements IRandom {
     private final double A_HALF = 0.5;
     
     /**
+     * Random source this RNG is constructed with
+     */
+    private final RandomSource randomSource;
+    
+    /**
      * Random number generator
      */
     private final UniformRandomProvider randomNumberGenerator;
@@ -48,7 +55,7 @@ public class ApacheCommonsRandom implements IRandom {
     private final ContinuousSampler gaussianSampler;
     // </editor-fold>
     //
-    // <editor-fold defaultstate="collapsed" desc="Constructor">
+    // <editor-fold defaultstate="collapsed" desc="Constructors">
     /**
      * Constructor
      * NOTE: Implementation is NOT thread-safe.
@@ -67,16 +74,27 @@ public class ApacheCommonsRandom implements IRandom {
             throw new IllegalArgumentException("ApacheCommonsRandom.Constructor: aNumberOfWarmUpSteps < 0.");
         }
         // </editor-fold>
+        // <editor-fold defaultstate="collapsed" desc="Initialize">
+        this.randomSource = aRandomSource;
+        // </editor-fold>
         // <editor-fold defaultstate="collapsed" desc="Native seed">
         boolean tmpIsIntArray = false;
         boolean tmpIsLongArray = false;
         int tmpArrayLength = -1;
-        switch(aRandomSource) {
+        switch(this.randomSource) {
             case ISAAC:
                 tmpIsIntArray = true;
                 tmpArrayLength = 256;
                 break;
             case JDK:
+                tmpIsLongArray = true;
+                tmpArrayLength = 1;
+                break;
+            case JSF_32: // new in ACRNG 1.3
+                tmpIsIntArray = true;
+                tmpArrayLength = 1;
+                break;
+            case JSF_64: // new in ACRNG 1.3
                 tmpIsLongArray = true;
                 tmpArrayLength = 1;
                 break;
@@ -92,9 +110,41 @@ public class ApacheCommonsRandom implements IRandom {
                 tmpIsLongArray = true;
                 tmpArrayLength = 312;
                 break;
+            case MSWS: // new in ACRNG 1.3
+                tmpIsLongArray = true;
+                tmpArrayLength = 3;
+                break;
             case MWC_256:
                 tmpIsIntArray = true;
                 tmpArrayLength = 257;
+                break;
+            case PCG_XSH_RR_32: // new in ACRNG 1.3
+                tmpIsLongArray = true;
+                tmpArrayLength = 2;
+                break;
+            case PCG_XSH_RS_32: // new in ACRNG 1.3
+                tmpIsLongArray = true;
+                tmpArrayLength = 2;
+                break;
+            case PCG_RXS_M_XS_64: // new in ACRNG 1.3
+                tmpIsLongArray = true;
+                tmpArrayLength = 2;
+                break;
+            case PCG_MCG_XSH_RR_32: // new in ACRNG 1.3
+                tmpIsLongArray = true;
+                tmpArrayLength = 1;
+                break;
+            case PCG_MCG_XSH_RS_32: // new in ACRNG 1.3
+                tmpIsLongArray = true;
+                tmpArrayLength = 1;
+                break;
+            case SFC_32: // new in ACRNG 1.3
+                tmpIsIntArray = true;
+                tmpArrayLength = 3;
+                break;
+            case SFC_64: // new in ACRNG 1.3
+                tmpIsLongArray = true;
+                tmpArrayLength = 3;
                 break;
             case SPLIT_MIX_64:
                 tmpIsLongArray = true;
@@ -128,7 +178,75 @@ public class ApacheCommonsRandom implements IRandom {
                 tmpIsIntArray = true;
                 tmpArrayLength = 16;
                 break;
-            case XOR_SHIFT_1024_S:
+            case XOR_SHIFT_1024_S_PHI: // new in ACRNG 1.3
+                tmpIsLongArray = true;
+                tmpArrayLength = 16;
+                break;
+            case XO_RO_SHI_RO_64_S: // new in ACRNG 1.3
+                tmpIsIntArray = true;
+                tmpArrayLength = 2;
+                break;
+            case XO_RO_SHI_RO_64_SS: // new in ACRNG 1.3
+                tmpIsIntArray = true;
+                tmpArrayLength = 2;
+                break;
+            case XO_SHI_RO_128_PLUS: // new in ACRNG 1.3
+                tmpIsIntArray = true;
+                tmpArrayLength = 4;
+                break;
+            case XO_SHI_RO_128_SS: // new in ACRNG 1.3
+                tmpIsIntArray = true;
+                tmpArrayLength = 4;
+                break;
+            case XO_RO_SHI_RO_128_PLUS: // new in ACRNG 1.3
+                tmpIsLongArray = true;
+                tmpArrayLength = 2;
+                break;
+            case XO_RO_SHI_RO_128_SS: // new in ACRNG 1.3
+                tmpIsLongArray = true;
+                tmpArrayLength = 2;
+                break;
+            case XO_SHI_RO_256_PLUS: // new in ACRNG 1.3
+                tmpIsLongArray = true;
+                tmpArrayLength = 4;
+                break;
+            case XO_SHI_RO_256_SS: // new in ACRNG 1.3
+                tmpIsLongArray = true;
+                tmpArrayLength = 4;
+                break;
+            case XO_SHI_RO_512_PLUS: // new in ACRNG 1.3
+                tmpIsLongArray = true;
+                tmpArrayLength = 8;
+                break;
+            case XO_SHI_RO_512_SS: // new in ACRNG 1.3
+                tmpIsLongArray = true;
+                tmpArrayLength = 8;
+                break;
+            case XO_SHI_RO_128_PP: // new in ACRNG 1.3
+                tmpIsIntArray = true;
+                tmpArrayLength = 4;
+                break;
+            case XO_RO_SHI_RO_128_PP: // new in ACRNG 1.3
+                tmpIsLongArray = true;
+                tmpArrayLength = 2;
+                break;
+            case XO_SHI_RO_256_PP: // new in ACRNG 1.3
+                tmpIsLongArray = true;
+                tmpArrayLength = 4;
+                break;
+            case XO_SHI_RO_512_PP: // new in ACRNG 1.3
+                tmpIsLongArray = true;
+                tmpArrayLength = 8;
+                break;
+            case XO_RO_SHI_RO_1024_PP: // new in ACRNG 1.3
+                tmpIsLongArray = true;
+                tmpArrayLength = 16;
+                break;
+            case XO_RO_SHI_RO_1024_S: // new in ACRNG 1.3
+                tmpIsLongArray = true;
+                tmpArrayLength = 16;
+                break;
+            case XO_RO_SHI_RO_1024_SS: // new in ACRNG 1.3
                 tmpIsLongArray = true;
                 tmpArrayLength = 16;
                 break;
@@ -137,31 +255,32 @@ public class ApacheCommonsRandom implements IRandom {
         }
         if (tmpIsIntArray) {
             if (tmpArrayLength == 1) {
-                this.randomNumberGenerator = RandomSource.create(aRandomSource, aSeed);
+                this.randomNumberGenerator = RandomSource.create(this.randomSource, aSeed);
             } else {
                 // Seed generation according to Takuji Nishimura and Makoto 
-                // Matsumoto for MT19937 (improved initialization 2002/1/26)
+                // Matsumoto for MT19937 (improved initialization 2002/1/26):
+                // init_genrand()
                 int[] tmpNativeIntegerSeedArray = new int[tmpArrayLength];
                 tmpNativeIntegerSeedArray[0]= aSeed & 0xFFFFFFFF;
                 for (int i = 1; i < tmpArrayLength; i++) {
                     tmpNativeIntegerSeedArray[i] = (1812433253 * (tmpNativeIntegerSeedArray[i - 1] ^ (tmpNativeIntegerSeedArray[i - 1] >> 30)) + i);
                     tmpNativeIntegerSeedArray[i] &= 0xFFFFFFFF;
                 }
-                this.randomNumberGenerator = RandomSource.create(aRandomSource, tmpNativeIntegerSeedArray);
+                this.randomNumberGenerator = RandomSource.create(this.randomSource, tmpNativeIntegerSeedArray);
             }
         } else if (tmpIsLongArray) {
             if (tmpArrayLength == 1) {
-                this.randomNumberGenerator = RandomSource.create(aRandomSource, (long) aSeed);
+                this.randomNumberGenerator = RandomSource.create(this.randomSource, (long) aSeed);
             } else {
                 // Seed generation according to Takuji Nishimura and Makoto 
-                // Matsumoto for MT19937 (improved initialization 2002/1/26)
+                // Matsumoto for MT19937-64 (2004/9/29 version):
+                // init_genrand64()
                 long[] tmpNativeLongSeedArray = new long[tmpArrayLength];
-                tmpNativeLongSeedArray[0] = ((long) aSeed) & 0xFFFFFFFFL;
+                tmpNativeLongSeedArray[0] = (long) aSeed;
                 for (int i = 1; i < tmpArrayLength; i++) {
-                    tmpNativeLongSeedArray[i] = (1812433253L * (tmpNativeLongSeedArray[i - 1] ^ (tmpNativeLongSeedArray[i - 1] >> 30)) + ((long) i));
-                    tmpNativeLongSeedArray[i] &= 0xFFFFFFFFL;
+                    tmpNativeLongSeedArray[i] = (6364136223846793005L * (tmpNativeLongSeedArray[i - 1] ^ (tmpNativeLongSeedArray[i - 1] >> 62)) + ((long) i));
                 }            
-                this.randomNumberGenerator = RandomSource.create(aRandomSource, tmpNativeLongSeedArray);
+                this.randomNumberGenerator = RandomSource.create(this.randomSource, tmpNativeLongSeedArray);
             }
         } else {
             throw new IllegalArgumentException("ApacheCommonsRandom.Constructor: Unknown random source.");
@@ -177,6 +296,24 @@ public class ApacheCommonsRandom implements IRandom {
         // this.gaussianSampler = new BoxMullerGaussianSampler(this.randomNumberGenerator, 0.0, 1.0);
         this.gaussianSampler = new ZigguratNormalizedGaussianSampler(this.randomNumberGenerator);
         // </editor-fold>
+    }
+
+    /**
+     * Constructor
+     * NOTE: Implementation is NOT thread-safe.
+     * 
+     * @param aRandomSource Random source
+     * @param aRandomNumberGenerator Jumped random number generator
+     */
+    private ApacheCommonsRandom(RandomSource aRandomSource, UniformRandomProvider aRandomNumberGenerator) {
+        // <editor-fold defaultstate="collapsed" desc="Checks">
+        if (aRandomNumberGenerator == null) {
+            throw new IllegalArgumentException("ApacheCommonsRandom.Constructor: aRandomNumberGenerator is null.");
+        }
+        // </editor-fold>
+        this.randomSource = aRandomSource;
+        this.randomNumberGenerator = aRandomNumberGenerator;
+        this.gaussianSampler = new ZigguratNormalizedGaussianSampler(this.randomNumberGenerator);
     }
     // </editor-fold>
     //
@@ -215,6 +352,29 @@ public class ApacheCommonsRandom implements IRandom {
     @Override
     public double nextGaussian() {
         return this.gaussianSampler.sample();
+    }
+    
+    /**
+     * Returns if RNG is jumpable
+     * @return True: RNG is jumpable, false: Otherwise
+     */
+    public boolean isJumpable() {
+        return this.randomSource.isJumpable() || this.randomSource.isLongJumpable();
+    }
+    
+    /**
+     * Returns jumped RNG
+     * 
+     * @return Jumped RNG or null if RNG cannot jump
+     */
+    public ApacheCommonsRandom getJumpedRng() {
+        if (this.randomSource.isLongJumpable()) {
+            return new ApacheCommonsRandom(this.randomSource, ((LongJumpableUniformRandomProvider) this.randomNumberGenerator).longJump());
+        } else if (this.randomSource.isJumpable()) {
+            return new ApacheCommonsRandom(this.randomSource, ((JumpableUniformRandomProvider) this.randomNumberGenerator).jump());
+        } else {
+            return null;
+        }
     }
     // </editor-fold>
     

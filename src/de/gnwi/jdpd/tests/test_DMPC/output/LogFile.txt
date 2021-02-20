@@ -1,6 +1,6 @@
 ---------------------------------------
 DPD Simulation:
-Logger started at 2019/08/16 - 17:48:28
+Logger started at 2020/04/03 - 15:01:05
 ---------------------------------------
 <(METHOD_CALL): FileInput.getFactory (ID = 1)
 |  (QUANTITY): FileInput.getFactory: Random type           = ACRNG_MT
@@ -8,7 +8,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  (QUANTITY): FileInput.getFactory: Random warm-up steps  = 10000
 |  (QUANTITY): FileInput.getFactory: DPD type              = CUTOFF_LENGTH_ONE
 |  (QUANTITY): FileInput.getFactory: Electrostatics type   = AD_HOC
-|  (QUANTITY): FileInput.getFactory: Harmonic bond type    = DEFAULT
+|  (QUANTITY): FileInput.getFactory: Harmonic bond type    = HARMONIC
 |  (QUANTITY): FileInput.getFactory: Integration type      = GWMVV
 |  (QUANTITY): FileInput.getFactory: Integration parameter = 0.65
 >(METHOD_CALL): FileInput.getFactory (ID = 1)
@@ -68,8 +68,8 @@ Logger started at 2019/08/16 - 17:48:28
 >(METHOD_CALL): DpdSimulationTask.Constructor (ID = 2)
 <(METHOD_CALL): DpdSimulationTask.call (ID = 4)
 |  <(METHOD_CALL): DpdSimulationTask.initialiseVelocities (NO restart) (ID = 5)
-|  |  (QUANTITY): DpdSimulationTask.initialiseVelocities, tmpUkin = 337316.69381507795
-|  |  (V_SCALE): DpdSimulationTask.initialiseVelocities, velocity scale factor = 0.9931686233648769
+|  |  (QUANTITY): DpdSimulationTask.initialiseVelocities, tmpUkin = 337310.2220410373
+|  |  (V_SCALE): DpdSimulationTask.initialiseVelocities, velocity scale factor = 0.9931779919698333
 |  >(METHOD_CALL): DpdSimulationTask.initialiseVelocities (NO restart) (ID = 5)
 |  <(METHOD_CALL): GwmvvTimeStepCalculator.Constructor (ID = 6)
 |  |  (METHOD_CALL): CellBox.Constructor: FULL, IsCellBasedCalculation = true
@@ -1351,52 +1351,52 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0450960164172949
+|  |  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0455944126064343
 |  |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 10)
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(DPD)      = 765000.3535021547
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(DPD) = 1495293.0235049066
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(DPD) = 1495927.5874073922
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(DPD) = 1482023.5454549948
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(DPD)      = 764955.0883661977
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(DPD) = 1495336.8119977682
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(DPD) = 1495910.3499247548
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(DPD) = 1482402.1491823872
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(Bonds)      = 8874.062759804972
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(Bonds) = -932.1243415917068
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(Bonds) = -738.0599385398295
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(Bonds) = -2822.505041762243
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(Bonds)      = 8851.849609183131
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(Bonds) = -925.1464967933387
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(Bonds) = -735.7981560354322
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(Bonds) = -2799.7662030096667
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(Estat)      = -1823.6598289887315
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(Estat) = -373.05416481413926
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(Estat) = -293.74412766743893
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(Estat) = -1047.9125128555045
-|  |  |  (QUANTITY): DpdSimulationTask.call: Temperature              = 0.9001954967512091
-|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(DPD)                = 765000.3535021547
-|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(Bonds)              = 8874.062759804972
-|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(Electrostatics)     = -1823.6598289887315
-|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(total)              = 772050.756432971
-|  |  |  (QUANTITY): DpdSimulationTask.call: Ukin                     = 304626.15610060917
-|  |  |  (QUANTITY): DpdSimulationTask.call: U(total)                 = 1076676.91253358
-|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension X        = 4.189133532291607
-|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Y        = 4.953560007469156
-|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Z        = -9.142693539760764
-|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Norm     = 11.21050586106403
-|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension X    = 3.5459320058133503
-|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Y    = 4.0801945481551956
-|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Z    = -7.626126553968546
-|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Norm = 9.347696377064835
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(Estat)      = -1887.8601521338574
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(Estat) = -356.98878814682257
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(Estat) = -346.59326421049207
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(Estat) = -1100.228753289208
+|  |  |  (QUANTITY): DpdSimulationTask.call: Temperature              = 0.8993375214765389
+|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(DPD)                = 764955.0883661977
+|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(Bonds)              = 8851.849609183131
+|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(Electrostatics)     = -1887.8601521338574
+|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(total)              = 771919.077823247
+|  |  |  (QUANTITY): DpdSimulationTask.call: Ukin                     = 304335.81726766075
+|  |  |  (QUANTITY): DpdSimulationTask.call: U(total)                 = 1076254.8950909078
+|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension X        = 4.147727637144772
+|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Y        = 4.798781840435514
+|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Z        = -8.946509477580287
+|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Norm     = 10.966858416906007
+|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension X    = 3.4690942778225193
+|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Y    = 3.951976820937581
+|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Z    = -7.4210710987599695
+|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Norm = 9.095330238891789
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (PARTICLE): DpdSimulationTask.call: DPD conservat. F (min/mean/max) = 0.09046157244129574 / 5.1530597621594225 / 32.053483354355436
-|  |  |  (PARTICLE): DpdSimulationTask.call: DPD random F     (min/mean/max) = 0.1431350015600725 / 10.713554183112056 / 35.724682849529664
-|  |  |  (PARTICLE): DpdSimulationTask.call: DPD dissipat. F  (min/mean/max) = 0.013554465956585228 / 1.7107466517456384 / 26.419624016254797
-|  |  |  (PARTICLE): DpdSimulationTask.call: Bond F           (min/mean/max) = 2.498273465247891E-4 / 1.3498974111874917 / 17.93876791987073
-|  |  |  (PARTICLE): DpdSimulationTask.call: Electrostatics F (min/mean/max) = 0.11871551968628379 / 6.144860674036916 / 103.17663685833435
-|  |  |  (PARTICLE): DpdSimulationTask.call: Total F          (min/mean/max) = 0.1919772976708377 / 12.588319536267383 / 126.76386844241162
-|  |  |  (PARTICLE): DpdSimulationTask.call: Velocity v       (min/mean/max) = 0.022504003095928867 / 1.513261112374158 / 5.4681784081176215
+|  |  |  (PARTICLE): DpdSimulationTask.call: DPD conservat. F (min/mean/max) = 0.06864609654043798 / 5.1457151127080865 / 33.61350707824429
+|  |  |  (PARTICLE): DpdSimulationTask.call: DPD random F     (min/mean/max) = 0.16634505469450067 / 10.708408097310352 / 35.62642276982046
+|  |  |  (PARTICLE): DpdSimulationTask.call: DPD dissipat. F  (min/mean/max) = 0.014192727945268156 / 1.7078220872495926 / 24.313192338890573
+|  |  |  (PARTICLE): DpdSimulationTask.call: Bond F           (min/mean/max) = 2.2315001516837182E-5 / 1.3468684030105533 / 17.37822877721789
+|  |  |  (PARTICLE): DpdSimulationTask.call: Electrostatics F (min/mean/max) = 0.07705769785570712 / 6.436802378373536 / 102.63948026306328
+|  |  |  (PARTICLE): DpdSimulationTask.call: Total F          (min/mean/max) = 0.26120968736633715 / 12.57432347727471 / 116.06225656662755
+|  |  |  (PARTICLE): DpdSimulationTask.call: Velocity v       (min/mean/max) = 0.023430421210094032 / 1.5127735721873339 / 5.487533459867019
 |  |  >(OUTPUT_STEP): Output time step = 1 (ID = 9)
 |  >(TIME_STEP): Time step = 1 (ID = 9)
 |  <(TIME_STEP): Time step = 2 (ID = 11)
@@ -1406,7 +1406,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.1512374322243886
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.1523765951898584
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 12)
 |  >(TIME_STEP): Time step = 2 (ID = 11)
 |  <(TIME_STEP): Time step = 3 (ID = 13)
@@ -1416,7 +1416,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.245811426085194
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.247447959539805
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 14)
 |  >(TIME_STEP): Time step = 3 (ID = 13)
 |  <(TIME_STEP): Time step = 4 (ID = 15)
@@ -1426,7 +1426,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.2648821267714758
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.266914783723503
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 16)
 |  >(TIME_STEP): Time step = 4 (ID = 15)
 |  <(TIME_STEP): Time step = 5 (ID = 17)
@@ -1436,7 +1436,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.2274907144556357
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.2286713838349985
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 18)
 |  >(TIME_STEP): Time step = 5 (ID = 17)
 |  <(TIME_STEP): Time step = 6 (ID = 19)
@@ -1446,7 +1446,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.1845127508546551
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.1857291693286565
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 20)
 |  >(TIME_STEP): Time step = 6 (ID = 19)
 |  <(TIME_STEP): Time step = 7 (ID = 21)
@@ -1456,7 +1456,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.1593032619875436
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.1612884364515688
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 22)
 |  >(TIME_STEP): Time step = 7 (ID = 21)
 |  <(TIME_STEP): Time step = 8 (ID = 23)
@@ -1466,7 +1466,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.1517728130844456
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.1533777754337666
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 24)
 |  >(TIME_STEP): Time step = 8 (ID = 23)
 |  <(TIME_STEP): Time step = 9 (ID = 25)
@@ -1476,7 +1476,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.151077387692816
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.1520756788485969
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 26)
 |  >(TIME_STEP): Time step = 9 (ID = 25)
 |  <(TIME_STEP): Time step = 10 (ID = 27)
@@ -1487,52 +1487,52 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.1481488774927344
+|  |  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.1487429528094495
 |  |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 28)
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(DPD)      = 897980.8789680664
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(DPD) = 1406944.5003344645
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(DPD) = 1407355.7456683365
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(DPD) = 1395010.3475952493
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(DPD)      = 897522.681937396
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(DPD) = 1406727.6165620352
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(DPD) = 1406955.0970030893
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(DPD) = 1395764.8457626116
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(Bonds)      = 12260.675738864307
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(Bonds) = -6105.283859398809
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(Bonds) = -5968.104187050952
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(Bonds) = -8648.840404456669
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(Bonds)      = 12079.430822059461
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(Bonds) = -6024.279701949203
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(Bonds) = -5805.885929443257
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(Bonds) = -8382.171785878569
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(Estat)      = -2567.534579572849
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(Estat) = -685.3483463003895
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(Estat) = -679.6331302512149
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(Estat) = -1154.503166117596
-|  |  |  (QUANTITY): DpdSimulationTask.call: Temperature              = 0.7458522593215924
-|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(DPD)                = 897980.8789680664
-|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(Bonds)              = 12260.675738864307
-|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(Electrostatics)     = -2567.534579572849
-|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(total)              = 907674.0201273579
-|  |  |  (QUANTITY): DpdSimulationTask.call: Ukin                     = 252396.40455442687
-|  |  |  (QUANTITY): DpdSimulationTask.call: U(total)                 = 1160070.4246817848
-|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension X        = 4.039253426488947
-|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Y        = 4.505804333030614
-|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Z        = -8.54505775951956
-|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Norm     = 10.4707140656445
-|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension X    = 3.2338522994201204
-|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Y    = 3.5800947767183806
-|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Z    = -6.813947076138501
-|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Norm = 8.348937301307721
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(Estat)      = -2501.2565879534654
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(Estat) = -695.7920576352296
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(Estat) = -688.4685233740987
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(Estat) = -1068.439389671107
+|  |  |  (QUANTITY): DpdSimulationTask.call: Temperature              = 0.7450810200414472
+|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(DPD)                = 897522.681937396
+|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(Bonds)              = 12079.430822059461
+|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(Electrostatics)     = -2501.2565879534654
+|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(total)              = 907100.856171502
+|  |  |  (QUANTITY): DpdSimulationTask.call: Ukin                     = 252135.41718202573
+|  |  |  (QUANTITY): DpdSimulationTask.call: U(total)                 = 1159236.2733535278
+|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension X        = 3.715778200905477
+|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Y        = 4.097341948836977
+|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Z        = -7.813120149742454
+|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Norm     = 9.57288175829698
+|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension X    = 3.012811106531963
+|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Y    = 3.204335204096405
+|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Z    = -6.217146310628237
+|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Norm = 7.615622306260481
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (PARTICLE): DpdSimulationTask.call: DPD conservat. F (min/mean/max) = 0.17751158091524086 / 8.90474346176925 / 32.90885574164659
-|  |  |  (PARTICLE): DpdSimulationTask.call: DPD random F     (min/mean/max) = 0.2681653904455181 / 11.52021687989911 / 37.81941950602981
-|  |  |  (PARTICLE): DpdSimulationTask.call: DPD dissipat. F  (min/mean/max) = 0.005137095924738349 / 1.9532116566476818 / 28.494649002093084
-|  |  |  (PARTICLE): DpdSimulationTask.call: Bond F           (min/mean/max) = 0.0019327829326307722 / 1.622100095972573 / 14.425891190335244
-|  |  |  (PARTICLE): DpdSimulationTask.call: Electrostatics F (min/mean/max) = 0.049660094362256726 / 6.821053767316499 / 101.42095026643159
-|  |  |  (PARTICLE): DpdSimulationTask.call: Total F          (min/mean/max) = 0.21598529117518062 / 14.70067947148637 / 132.3766785635401
-|  |  |  (PARTICLE): DpdSimulationTask.call: Velocity v       (min/mean/max) = 0.022633587451702592 / 1.3768874243225135 / 6.434987812897217
+|  |  |  (PARTICLE): DpdSimulationTask.call: DPD conservat. F (min/mean/max) = 0.05224992142697028 / 8.881029126968718 / 34.46181216982605
+|  |  |  (PARTICLE): DpdSimulationTask.call: DPD random F     (min/mean/max) = 0.22553869143881666 / 11.476689124332308 / 42.74231553899509
+|  |  |  (PARTICLE): DpdSimulationTask.call: DPD dissipat. F  (min/mean/max) = 0.011058131569271224 / 1.9537306128505472 / 38.89180367284732
+|  |  |  (PARTICLE): DpdSimulationTask.call: Bond F           (min/mean/max) = 1.9542874416522696E-5 / 1.6057785663588737 / 15.401949454758928
+|  |  |  (PARTICLE): DpdSimulationTask.call: Electrostatics F (min/mean/max) = 0.0731448077212948 / 6.349944157834584 / 102.2022750822608
+|  |  |  (PARTICLE): DpdSimulationTask.call: Total F          (min/mean/max) = 0.3058416805390796 / 14.667285561034138 / 111.93642023731064
+|  |  |  (PARTICLE): DpdSimulationTask.call: Velocity v       (min/mean/max) = 0.027836514475522905 / 1.375410355408186 / 5.888981817488136
 |  |  >(OUTPUT_STEP): Output time step = 10 (ID = 27)
 |  >(TIME_STEP): Time step = 10 (ID = 27)
 |  <(TIME_STEP): Time step = 11 (ID = 29)
@@ -1542,7 +1542,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.1393612755031248
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.1399759556646987
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 30)
 |  >(TIME_STEP): Time step = 11 (ID = 29)
 |  <(TIME_STEP): Time step = 12 (ID = 31)
@@ -1552,7 +1552,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.1272707397767152
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.1281036503614996
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 32)
 |  >(TIME_STEP): Time step = 12 (ID = 31)
 |  <(TIME_STEP): Time step = 13 (ID = 33)
@@ -1562,7 +1562,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.1162273636159212
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.1173032556340672
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 34)
 |  >(TIME_STEP): Time step = 13 (ID = 33)
 |  <(TIME_STEP): Time step = 14 (ID = 35)
@@ -1572,7 +1572,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.1078176355683382
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.1087414911218605
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 36)
 |  >(TIME_STEP): Time step = 14 (ID = 35)
 |  <(TIME_STEP): Time step = 15 (ID = 37)
@@ -1582,7 +1582,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.101455233207115
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.1019088265644885
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 38)
 |  >(TIME_STEP): Time step = 15 (ID = 37)
 |  <(TIME_STEP): Time step = 16 (ID = 39)
@@ -1592,7 +1592,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0959701023868178
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0962515654526463
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 40)
 |  >(TIME_STEP): Time step = 16 (ID = 39)
 |  <(TIME_STEP): Time step = 17 (ID = 41)
@@ -1602,7 +1602,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0906649914595854
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0911531905417393
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 42)
 |  >(TIME_STEP): Time step = 17 (ID = 41)
 |  <(TIME_STEP): Time step = 18 (ID = 43)
@@ -1612,7 +1612,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0847093760784874
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0852309278818077
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 44)
 |  >(TIME_STEP): Time step = 18 (ID = 43)
 |  <(TIME_STEP): Time step = 19 (ID = 45)
@@ -1622,7 +1622,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.078548714056292
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0791380475151335
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 46)
 |  >(TIME_STEP): Time step = 19 (ID = 45)
 |  <(TIME_STEP): Time step = 20 (ID = 47)
@@ -1633,52 +1633,52 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0730422445586698
+|  |  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0734152836302442
 |  |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 48)
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(DPD)      = 911428.2323953855
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(DPD) = 1404063.4450036583
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(DPD) = 1404296.1466099084
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(DPD) = 1392543.2176769327
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(DPD)      = 911380.2873133454
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(DPD) = 1404611.1605459303
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(DPD) = 1405804.5875969504
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(DPD) = 1392017.487728578
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(Bonds)      = 17594.98162453033
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(Bonds) = -11809.25844181768
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(Bonds) = -11822.685588151802
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(Bonds) = -13747.558348125738
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(Bonds)      = 17399.983631534138
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(Bonds) = -11898.720067618868
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(Bonds) = -11603.277452427383
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(Bonds) = -13244.604734696892
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(Estat)      = -3214.226690262723
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(Estat) = -981.296025204739
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(Estat) = -952.0790848741605
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(Estat) = -1178.4117171504888
-|  |  |  (QUANTITY): DpdSimulationTask.call: Temperature              = 0.8539168446541541
-|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(DPD)                = 911428.2323953855
-|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(Bonds)              = 17594.98162453033
-|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(Electrostatics)     = -3214.226690262723
-|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(total)              = 925808.9873296531
-|  |  |  (QUANTITY): DpdSimulationTask.call: Ukin                     = 288965.46023096575
-|  |  |  (QUANTITY): DpdSimulationTask.call: U(total)                 = 1214774.4475606189
-|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension X        = 3.7626569633657896
-|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Y        = 3.971870955409332
-|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Z        = -7.734527918774991
-|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Norm     = 9.473978490407243
-|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension X    = 3.1677934849150042
-|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Y    = 3.363713472287699
-|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Z    = -6.531506957202573
-|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Norm = 8.00062916392863
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(Estat)      = -2971.097473472938
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(Estat) = -925.3654411645109
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(Estat) = -911.811360656111
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(Estat) = -1072.561364864067
+|  |  |  (QUANTITY): DpdSimulationTask.call: Temperature              = 0.8533234322057506
+|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(DPD)                = 911380.2873133454
+|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(Bonds)              = 17399.983631534138
+|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(Electrostatics)     = -2971.097473472938
+|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(total)              = 925809.1734714066
+|  |  |  (QUANTITY): DpdSimulationTask.call: Ukin                     = 288764.649458426
+|  |  |  (QUANTITY): DpdSimulationTask.call: U(total)                 = 1214573.8229298326
+|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension X        = 3.531735696612583
+|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Y        = 4.7966811614474985
+|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Z        = -8.32841685806008
+|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Norm     = 10.23932783716452
+|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension X    = 3.199427860395215
+|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Y    = 4.204217713520755
+|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Z    = -7.403645573915839
+|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Norm = 9.095369866075727
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (PARTICLE): DpdSimulationTask.call: DPD conservat. F (min/mean/max) = 0.14061843829672951 / 9.215645984379803 / 34.31944422745182
-|  |  |  (PARTICLE): DpdSimulationTask.call: DPD random F     (min/mean/max) = 0.25903507038607926 / 11.562812919149442 / 41.50223975654058
-|  |  |  (PARTICLE): DpdSimulationTask.call: DPD dissipat. F  (min/mean/max) = 0.029727449737179525 / 2.117456807141937 / 31.613147242421007
-|  |  |  (PARTICLE): DpdSimulationTask.call: Bond F           (min/mean/max) = 2.343443594980954E-4 / 2.041097420081074 / 14.003832340430378
-|  |  |  (PARTICLE): DpdSimulationTask.call: Electrostatics F (min/mean/max) = 0.045000536150118786 / 8.35792457072131 / 101.09451173050503
-|  |  |  (PARTICLE): DpdSimulationTask.call: Total F          (min/mean/max) = 0.16519554959859276 / 14.965665607170099 / 119.33315238035127
-|  |  |  (PARTICLE): DpdSimulationTask.call: Velocity v       (min/mean/max) = 0.020398417118335996 / 1.474246935687538 / 5.602971686598801
+|  |  |  (PARTICLE): DpdSimulationTask.call: DPD conservat. F (min/mean/max) = 0.11967567121516022 / 9.228911843750831 / 34.466485376347535
+|  |  |  (PARTICLE): DpdSimulationTask.call: DPD random F     (min/mean/max) = 0.17816661609275114 / 11.575935091680368 / 40.231957719634565
+|  |  |  (PARTICLE): DpdSimulationTask.call: DPD dissipat. F  (min/mean/max) = 0.018853489738407645 / 2.1140834263977784 / 30.784567833244434
+|  |  |  (PARTICLE): DpdSimulationTask.call: Bond F           (min/mean/max) = 0.0015477138046335879 / 2.022156433271349 / 13.12991606494632
+|  |  |  (PARTICLE): DpdSimulationTask.call: Electrostatics F (min/mean/max) = 0.03500271462072545 / 6.919850168958655 / 101.77419942136267
+|  |  |  (PARTICLE): DpdSimulationTask.call: Total F          (min/mean/max) = 0.09727709181370135 / 14.971453549041806 / 123.76475558073035
+|  |  |  (PARTICLE): DpdSimulationTask.call: Velocity v       (min/mean/max) = 0.016792657205841673 / 1.4738158905386305 / 6.02538403544372
 |  |  >(OUTPUT_STEP): Output time step = 20 (ID = 47)
 |  >(TIME_STEP): Time step = 20 (ID = 47)
 |  <(TIME_STEP): Time step = 21 (ID = 49)
@@ -1688,7 +1688,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0688166839463888
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.068752326758404
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 50)
 |  >(TIME_STEP): Time step = 21 (ID = 49)
 |  <(TIME_STEP): Time step = 22 (ID = 51)
@@ -1698,7 +1698,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0653829651158242
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.064729410749975
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 52)
 |  >(TIME_STEP): Time step = 22 (ID = 51)
 |  <(TIME_STEP): Time step = 23 (ID = 53)
@@ -1708,7 +1708,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.061680243010872
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0607457856810698
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 54)
 |  >(TIME_STEP): Time step = 23 (ID = 53)
 |  <(TIME_STEP): Time step = 24 (ID = 55)
@@ -1718,7 +1718,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.057676063212033
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0570577411478324
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 56)
 |  >(TIME_STEP): Time step = 24 (ID = 55)
 |  <(TIME_STEP): Time step = 25 (ID = 57)
@@ -1728,7 +1728,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0539757090550914
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0537023742056266
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 58)
 |  >(TIME_STEP): Time step = 25 (ID = 57)
 |  <(TIME_STEP): Time step = 26 (ID = 59)
@@ -1738,7 +1738,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0505806394287107
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0499142457443988
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 60)
 |  >(TIME_STEP): Time step = 26 (ID = 59)
 |  <(TIME_STEP): Time step = 27 (ID = 61)
@@ -1748,7 +1748,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0475847606716324
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0465402659487284
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 62)
 |  >(TIME_STEP): Time step = 27 (ID = 61)
 |  <(TIME_STEP): Time step = 28 (ID = 63)
@@ -1758,7 +1758,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0446796603754673
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0435166312226658
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 64)
 |  >(TIME_STEP): Time step = 28 (ID = 63)
 |  <(TIME_STEP): Time step = 29 (ID = 65)
@@ -1768,7 +1768,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0418707619669536
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0401723189077827
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 66)
 |  >(TIME_STEP): Time step = 29 (ID = 65)
 |  <(TIME_STEP): Time step = 30 (ID = 67)
@@ -1779,52 +1779,52 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0389268938829197
+|  |  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0375140887155545
 |  |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 68)
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(DPD)      = 922200.0782257395
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(DPD) = 1405997.0723087222
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(DPD) = 1405908.6957149438
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(DPD) = 1392265.7413365478
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(DPD)      = 921711.2602658549
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(DPD) = 1406609.1841976775
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(DPD) = 1405588.9310618534
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(DPD) = 1393838.2182096352
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(Bonds)      = 20739.665174340636
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(Bonds) = -14753.732803394112
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(Bonds) = -14801.150170966912
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(Bonds) = -15635.039065350627
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(Bonds)      = 21249.73670086865
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(Bonds) = -15439.561953154549
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(Bonds) = -14784.17359502563
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(Bonds) = -15872.432758270277
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(Estat)      = -3504.6704793940526
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(Estat) = -1156.888066529463
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(Estat) = -1112.5818714243128
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(Estat) = -1158.777053987124
-|  |  |  (QUANTITY): DpdSimulationTask.call: Temperature              = 0.9109179150126478
-|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(DPD)                = 922200.0782257395
-|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(Bonds)              = 20739.665174340636
-|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(Electrostatics)     = -3504.6704793940526
-|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(total)              = 939435.0729206861
-|  |  |  (QUANTITY): DpdSimulationTask.call: Ukin                     = 308254.62244028004
-|  |  |  (QUANTITY): DpdSimulationTask.call: U(total)                 = 1247689.695360966
-|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension X        = 4.127176890080028
-|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Y        = 4.050149995867524
-|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Z        = -8.177326885947553
-|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Norm     = 10.015287268504936
-|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension X    = 3.878438966605527
-|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Y    = 3.8040314822048193
-|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Z    = -7.682470448810346
-|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Norm = 9.409213385407613
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(Estat)      = -3459.1688521378287
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(Estat) = -1106.81772507302
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(Estat) = -1114.0380949379337
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(Estat) = -1178.5475581258318
+|  |  |  (QUANTITY): DpdSimulationTask.call: Temperature              = 0.9134004370039421
+|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(DPD)                = 921711.2602658549
+|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(Bonds)              = 21249.73670086865
+|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(Electrostatics)     = -3459.1688521378287
+|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(total)              = 939501.8281145857
+|  |  |  (QUANTITY): DpdSimulationTask.call: Ukin                     = 309094.707882134
+|  |  |  (QUANTITY): DpdSimulationTask.call: U(total)                 = 1248596.5359967197
+|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension X        = 3.8301522799558083
+|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Y        = 3.5168801947893327
+|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Z        = -7.347032474745141
+|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Norm     = 9.000966557937645
+|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension X    = 3.870443813064288
+|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Y    = 3.0114554085200784
+|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Z    = -6.881899221584367
+|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Norm = 8.450428147948243
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (PARTICLE): DpdSimulationTask.call: DPD conservat. F (min/mean/max) = 0.10601326635383312 / 9.491909295772375 / 39.613880226307465
-|  |  |  (PARTICLE): DpdSimulationTask.call: DPD random F     (min/mean/max) = 0.20924742269095828 / 11.640660518460425 / 41.29874234903495
-|  |  |  (PARTICLE): DpdSimulationTask.call: DPD dissipat. F  (min/mean/max) = 0.024871443259116482 / 2.2035064116154524 / 31.82139868731182
-|  |  |  (PARTICLE): DpdSimulationTask.call: Bond F           (min/mean/max) = 1.1272749043289564E-4 / 2.241218880347468 / 15.595691613866583
-|  |  |  (PARTICLE): DpdSimulationTask.call: Electrostatics F (min/mean/max) = 0.041376623704199374 / 9.220844351133525 / 103.97738918083215
-|  |  |  (PARTICLE): DpdSimulationTask.call: Total F          (min/mean/max) = 0.1238835021529792 / 15.206393623192401 / 121.08735095194642
-|  |  |  (PARTICLE): DpdSimulationTask.call: Velocity v       (min/mean/max) = 0.01644703796371369 / 1.5224648170915762 / 5.795690758911018
+|  |  |  (PARTICLE): DpdSimulationTask.call: DPD conservat. F (min/mean/max) = 0.1000479569878037 / 9.494294623156883 / 38.40595107298493
+|  |  |  (PARTICLE): DpdSimulationTask.call: DPD random F     (min/mean/max) = 0.09542859844861112 / 11.637876920853486 / 41.26239874155186
+|  |  |  (PARTICLE): DpdSimulationTask.call: DPD dissipat. F  (min/mean/max) = 0.027782153875199594 / 2.1999326216692676 / 25.633834685741917
+|  |  |  (PARTICLE): DpdSimulationTask.call: Bond F           (min/mean/max) = 4.0574073891086476E-4 / 2.2717435180549144 / 15.049651929089789
+|  |  |  (PARTICLE): DpdSimulationTask.call: Electrostatics F (min/mean/max) = 0.05612021428167509 / 8.898661651215255 / 102.57356431020786
+|  |  |  (PARTICLE): DpdSimulationTask.call: Total F          (min/mean/max) = 0.3838262242189222 / 15.185723472271938 / 123.88554850630874
+|  |  |  (PARTICLE): DpdSimulationTask.call: Velocity v       (min/mean/max) = 0.03390910039919769 / 1.524700447906989 / 5.75745512197183
 |  |  >(OUTPUT_STEP): Output time step = 30 (ID = 67)
 |  >(TIME_STEP): Time step = 30 (ID = 67)
 |  <(TIME_STEP): Time step = 31 (ID = 69)
@@ -1834,7 +1834,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0353803932162766
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0351339918195561
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 70)
 |  >(TIME_STEP): Time step = 31 (ID = 69)
 |  <(TIME_STEP): Time step = 32 (ID = 71)
@@ -1844,7 +1844,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0330125022901702
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0330510780071407
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 72)
 |  >(TIME_STEP): Time step = 32 (ID = 71)
 |  <(TIME_STEP): Time step = 33 (ID = 73)
@@ -1854,7 +1854,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.031153627573614
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.031282530754729
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 74)
 |  >(TIME_STEP): Time step = 33 (ID = 73)
 |  <(TIME_STEP): Time step = 34 (ID = 75)
@@ -1864,7 +1864,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.028834020401656
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0289790020118297
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 76)
 |  >(TIME_STEP): Time step = 34 (ID = 75)
 |  <(TIME_STEP): Time step = 35 (ID = 77)
@@ -1874,7 +1874,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.026289866794391
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0264589185632977
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 78)
 |  >(TIME_STEP): Time step = 35 (ID = 77)
 |  <(TIME_STEP): Time step = 36 (ID = 79)
@@ -1884,7 +1884,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.023418686720383
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0240112474774392
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 80)
 |  >(TIME_STEP): Time step = 36 (ID = 79)
 |  <(TIME_STEP): Time step = 37 (ID = 81)
@@ -1894,7 +1894,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0211584554400688
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0215221836074075
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 82)
 |  >(TIME_STEP): Time step = 37 (ID = 81)
 |  <(TIME_STEP): Time step = 38 (ID = 83)
@@ -1904,7 +1904,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.019714852347351
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0198477786039648
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 84)
 |  >(TIME_STEP): Time step = 38 (ID = 83)
 |  <(TIME_STEP): Time step = 39 (ID = 85)
@@ -1914,7 +1914,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0182635463267142
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0183505381183047
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 86)
 |  >(TIME_STEP): Time step = 39 (ID = 85)
 |  <(TIME_STEP): Time step = 40 (ID = 87)
@@ -1925,52 +1925,52 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0164588858507215
+|  |  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0173520760821986
 |  |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 88)
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(DPD)      = 928213.87284696
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(DPD) = 1407463.5985468319
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(DPD) = 1406791.4894488985
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(DPD) = 1393712.1184939041
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(DPD)      = 928546.8134808638
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(DPD) = 1405035.2730032355
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(DPD) = 1405035.047795297
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(DPD) = 1393736.2954767742
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(Bonds)      = 23407.111624192326
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(Bonds) = -16565.645905574715
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(Bonds) = -16553.296186695665
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(Bonds) = -17746.347814197492
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(Bonds)      = 23451.26181523911
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(Bonds) = -17071.5106502937
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(Bonds) = -16531.326935922803
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(Bonds) = -17737.297480703746
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(Estat)      = -3544.2133870932757
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(Estat) = -1142.6253612771402
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(Estat) = -1175.5198885169336
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(Estat) = -1164.1360423725507
-|  |  |  (QUANTITY): DpdSimulationTask.call: Temperature              = 0.9516332045750691
-|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(DPD)                = 928213.87284696
-|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(Bonds)              = 23407.111624192326
-|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(Electrostatics)     = -3544.2133870932757
-|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(total)              = 948076.771084059
-|  |  |  (QUANTITY): DpdSimulationTask.call: Ukin                     = 322032.67642820335
-|  |  |  (QUANTITY): DpdSimulationTask.call: U(total)                 = 1270109.4475122625
-|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension X        = 4.391077007296895
-|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Y        = 3.8079063676026013
-|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Z        = -8.198983374899365
-|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Norm     = 10.050126196735844
-|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension X    = 4.047915625858019
-|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Y    = 3.482042411219856
-|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Z    = -7.529958037078006
-|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Norm = 9.230953813542508
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(Estat)      = -3638.6589751638385
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(Estat) = -1203.8132083974174
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(Estat) = -1173.2027435454054
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(Estat) = -1175.28400792799
+|  |  |  (QUANTITY): DpdSimulationTask.call: Temperature              = 0.9499629541757812
+|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(DPD)                = 928546.8134808638
+|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(Bonds)              = 23451.26181523911
+|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(Electrostatics)     = -3638.6589751638385
+|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(total)              = 948359.4163209391
+|  |  |  (QUANTITY): DpdSimulationTask.call: Ukin                     = 321467.46369308437
+|  |  |  (QUANTITY): DpdSimulationTask.call: U(total)                 = 1269826.8800140235
+|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension X        = 3.1897232559675675
+|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Y        = 3.670106126763997
+|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Z        = -6.859829382731564
+|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Norm     = 8.408404877951481
+|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension X    = 3.1710705865179025
+|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Y    = 3.1708809757234255
+|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Z    = -6.341951562241328
+|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Norm = 7.767272651626113
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (PARTICLE): DpdSimulationTask.call: DPD conservat. F (min/mean/max) = 0.17240586321610185 / 9.632620315202733 / 35.53650350336898
-|  |  |  (PARTICLE): DpdSimulationTask.call: DPD random F     (min/mean/max) = 0.1480473070014258 / 11.682886592708554 / 42.85797412912876
-|  |  |  (PARTICLE): DpdSimulationTask.call: DPD dissipat. F  (min/mean/max) = 0.014472390985147902 / 2.2601997006429464 / 32.969268925211075
-|  |  |  (PARTICLE): DpdSimulationTask.call: Bond F           (min/mean/max) = 6.98280679181984E-4 / 2.3912240423134845 / 14.111242238296924
-|  |  |  (PARTICLE): DpdSimulationTask.call: Electrostatics F (min/mean/max) = 0.07895350168158534 / 8.97448716301788 / 101.15002296334345
-|  |  |  (PARTICLE): DpdSimulationTask.call: Total F          (min/mean/max) = 0.31107410296092425 / 15.334696146825987 / 132.5788996316116
-|  |  |  (PARTICLE): DpdSimulationTask.call: Velocity v       (min/mean/max) = 0.029604558634258465 / 1.5561888654308602 / 5.353539944680337
+|  |  |  (PARTICLE): DpdSimulationTask.call: DPD conservat. F (min/mean/max) = 0.1617347116350474 / 9.64223782398552 / 41.81046993754072
+|  |  |  (PARTICLE): DpdSimulationTask.call: DPD random F     (min/mean/max) = 0.09550111821585311 / 11.665846434475714 / 43.20547139971732
+|  |  |  (PARTICLE): DpdSimulationTask.call: DPD dissipat. F  (min/mean/max) = 0.02077758239283954 / 2.260149401980241 / 33.98506530210232
+|  |  |  (PARTICLE): DpdSimulationTask.call: Bond F           (min/mean/max) = 0.0010712658104052863 / 2.4009521772407685 / 14.863899774212907
+|  |  |  (PARTICLE): DpdSimulationTask.call: Electrostatics F (min/mean/max) = 0.05461032709550654 / 9.719731340349888 / 101.63094796392723
+|  |  |  (PARTICLE): DpdSimulationTask.call: Total F          (min/mean/max) = 0.2219518063185628 / 15.32285731101346 / 130.2532644408389
+|  |  |  (PARTICLE): DpdSimulationTask.call: Velocity v       (min/mean/max) = 0.017124511658831963 / 1.5542407249546186 / 5.785317225809531
 |  |  >(OUTPUT_STEP): Output time step = 40 (ID = 87)
 |  >(TIME_STEP): Time step = 40 (ID = 87)
 |  <(TIME_STEP): Time step = 41 (ID = 89)
@@ -1980,7 +1980,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0151947816143443
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0163344210839023
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 90)
 |  >(TIME_STEP): Time step = 41 (ID = 89)
 |  <(TIME_STEP): Time step = 42 (ID = 91)
@@ -1990,7 +1990,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0138356346624224
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0145810306500342
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 92)
 |  >(TIME_STEP): Time step = 42 (ID = 91)
 |  <(TIME_STEP): Time step = 43 (ID = 93)
@@ -2000,7 +2000,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0127164081373736
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0128099942213766
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 94)
 |  >(TIME_STEP): Time step = 43 (ID = 93)
 |  <(TIME_STEP): Time step = 44 (ID = 95)
@@ -2010,7 +2010,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0113615474650623
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0111396744918915
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 96)
 |  >(TIME_STEP): Time step = 44 (ID = 95)
 |  <(TIME_STEP): Time step = 45 (ID = 97)
@@ -2020,7 +2020,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0096425604973316
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0100358847473117
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 98)
 |  >(TIME_STEP): Time step = 45 (ID = 97)
 |  <(TIME_STEP): Time step = 46 (ID = 99)
@@ -2030,7 +2030,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0082098541805466
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.009350859928406
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 100)
 |  >(TIME_STEP): Time step = 46 (ID = 99)
 |  <(TIME_STEP): Time step = 47 (ID = 101)
@@ -2040,7 +2040,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.007088639806015
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0084028590827452
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 102)
 |  >(TIME_STEP): Time step = 47 (ID = 101)
 |  <(TIME_STEP): Time step = 48 (ID = 103)
@@ -2050,7 +2050,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.00692473039583
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0069447236748723
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 104)
 |  >(TIME_STEP): Time step = 48 (ID = 103)
 |  <(TIME_STEP): Time step = 49 (ID = 105)
@@ -2060,7 +2060,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.006406877787367
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.005014721471921
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 106)
 |  >(TIME_STEP): Time step = 49 (ID = 105)
 |  <(TIME_STEP): Time step = 50 (ID = 107)
@@ -2071,52 +2071,52 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0050829642866537
+|  |  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0041077483738634
 |  |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 108)
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(DPD)      = 931369.9308384465
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(DPD) = 1406344.4798209378
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(DPD) = 1406376.40057855
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(DPD) = 1394428.0118665863
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(DPD)      = 930512.6122429622
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(DPD) = 1406088.3509495207
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(DPD) = 1406100.7791602006
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(DPD) = 1393791.4076737587
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(Bonds)      = 25258.09384378545
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(Bonds) = -17986.771943106
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(Bonds) = -17826.271057845886
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(Bonds) = -19644.818617054658
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(Bonds)      = 25580.487429013934
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(Bonds) = -18435.53267145862
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(Bonds) = -17900.167380955194
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(Bonds) = -19717.82893121773
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(Estat)      = -3647.2958841988907
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(Estat) = -1178.6514271415099
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(Estat) = -1188.574729200846
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(Estat) = -1176.6899690084356
-|  |  |  (QUANTITY): DpdSimulationTask.call: Temperature              = 0.973297027079101
-|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(DPD)                = 931369.9308384465
-|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(Bonds)              = 25258.09384378545
-|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(Electrostatics)     = -3647.2958841988907
-|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(total)              = 952980.7287980331
-|  |  |  (QUANTITY): DpdSimulationTask.call: Ukin                     = 329363.7139635678
-|  |  |  (QUANTITY): DpdSimulationTask.call: U(total)                 = 1282344.442761601
-|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension X        = 3.7578588524618626
-|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Y        = 3.911510875771299
-|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Z        = -7.669369728233292
-|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Norm     = 9.393649584407774
-|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension X    = 3.335344885434215
-|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Y    = 3.3622201379479053
-|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Z    = -6.69756502338212
-|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Norm = 8.202830426337371
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(Estat)      = -3525.370568865291
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(Estat) = -1172.8142416966423
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(Estat) = -1112.7878064029164
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(Estat) = -1156.2261403383636
+|  |  |  (QUANTITY): DpdSimulationTask.call: Temperature              = 0.975188528627585
+|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(DPD)                = 930512.6122429622
+|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(Bonds)              = 25580.487429013934
+|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(Electrostatics)     = -3525.370568865291
+|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(total)              = 952567.7291031108
+|  |  |  (QUANTITY): DpdSimulationTask.call: Ukin                     = 330003.7980875748
+|  |  |  (QUANTITY): DpdSimulationTask.call: U(total)                 = 1282571.5271906857
+|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension X        = 3.635715375788469
+|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Y        = 4.147461195675384
+|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Z        = -7.783176571463853
+|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Norm     = 9.539271366617138
+|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension X    = 3.4475940743963185
+|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Y    = 3.4580578392094656
+|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Z    = -6.905651913605785
+|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Norm = 8.457665001229232
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (PARTICLE): DpdSimulationTask.call: DPD conservat. F (min/mean/max) = 0.14328219839350365 / 9.705708503054105 / 39.57042778595645
-|  |  |  (PARTICLE): DpdSimulationTask.call: DPD random F     (min/mean/max) = 0.11871284572108975 / 11.688959227548178 / 42.842822490000636
-|  |  |  (PARTICLE): DpdSimulationTask.call: DPD dissipat. F  (min/mean/max) = 0.007705680903201423 / 2.288586581677708 / 31.89961644332536
-|  |  |  (PARTICLE): DpdSimulationTask.call: Bond F           (min/mean/max) = 8.013515128819649E-4 / 2.486891921463566 / 12.90165688616994
-|  |  |  (PARTICLE): DpdSimulationTask.call: Electrostatics F (min/mean/max) = 0.08027340127548126 / 9.767327160692071 / 104.97793549596051
-|  |  |  (PARTICLE): DpdSimulationTask.call: Total F          (min/mean/max) = 0.11278307216137208 / 15.402239496824297 / 139.32987961854843
-|  |  |  (PARTICLE): DpdSimulationTask.call: Velocity v       (min/mean/max) = 0.035069234098038346 / 1.573160219207497 / 6.173172728622716
+|  |  |  (PARTICLE): DpdSimulationTask.call: DPD conservat. F (min/mean/max) = 0.10534582111376757 / 9.67172882197759 / 36.899592838842004
+|  |  |  (PARTICLE): DpdSimulationTask.call: DPD random F     (min/mean/max) = 0.1788947765803618 / 11.693078536220881 / 41.668765985554195
+|  |  |  (PARTICLE): DpdSimulationTask.call: DPD dissipat. F  (min/mean/max) = 0.019797308561162567 / 2.2890659847335333 / 31.270560743327188
+|  |  |  (PARTICLE): DpdSimulationTask.call: Bond F           (min/mean/max) = 1.5780718711955188E-4 / 2.4995963482146606 / 16.747384486658223
+|  |  |  (PARTICLE): DpdSimulationTask.call: Electrostatics F (min/mean/max) = 0.0788163342371428 / 8.736501251762622 / 101.38318837410606
+|  |  |  (PARTICLE): DpdSimulationTask.call: Total F          (min/mean/max) = 0.19134116309901106 / 15.373295103491712 / 125.37501283681381
+|  |  |  (PARTICLE): DpdSimulationTask.call: Velocity v       (min/mean/max) = 0.01137171733698715 / 1.5756767280531967 / 5.534243836555211
 |  |  >(OUTPUT_STEP): Output time step = 50 (ID = 107)
 |  >(TIME_STEP): Time step = 50 (ID = 107)
 |  <(TIME_STEP): Time step = 51 (ID = 109)
@@ -2126,7 +2126,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0040965935901194
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.003433044379785
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 110)
 |  >(TIME_STEP): Time step = 51 (ID = 109)
 |  <(TIME_STEP): Time step = 52 (ID = 111)
@@ -2136,7 +2136,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0036329079910913
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0030831066664527
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 112)
 |  >(TIME_STEP): Time step = 52 (ID = 111)
 |  <(TIME_STEP): Time step = 53 (ID = 113)
@@ -2146,7 +2146,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.003169698595981
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.00216663981103
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 114)
 |  >(TIME_STEP): Time step = 53 (ID = 113)
 |  <(TIME_STEP): Time step = 54 (ID = 115)
@@ -2156,7 +2156,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0024279263136053
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0017781797184349
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 116)
 |  >(TIME_STEP): Time step = 54 (ID = 115)
 |  <(TIME_STEP): Time step = 55 (ID = 117)
@@ -2166,7 +2166,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0019634875950802
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0020994984553544
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 118)
 |  >(TIME_STEP): Time step = 55 (ID = 117)
 |  <(TIME_STEP): Time step = 56 (ID = 119)
@@ -2176,7 +2176,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0016207037948115
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0014241137568354
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 120)
 |  >(TIME_STEP): Time step = 56 (ID = 119)
 |  <(TIME_STEP): Time step = 57 (ID = 121)
@@ -2186,7 +2186,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0003178711975331
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0010303106245868
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 122)
 |  >(TIME_STEP): Time step = 57 (ID = 121)
 |  <(TIME_STEP): Time step = 58 (ID = 123)
@@ -2196,7 +2196,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9992393654266063
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0010226434615022
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 124)
 |  >(TIME_STEP): Time step = 58 (ID = 123)
 |  <(TIME_STEP): Time step = 59 (ID = 125)
@@ -2206,7 +2206,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9993445171838361
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 1.0002635110897984
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 126)
 |  >(TIME_STEP): Time step = 59 (ID = 125)
 |  <(TIME_STEP): Time step = 60 (ID = 127)
@@ -2217,52 +2217,52 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9997011140323568
+|  |  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9992299214454639
 |  |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 128)
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(DPD)      = 933734.1808676169
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(DPD) = 1406915.4709241372
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(DPD) = 1406100.9739695962
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(DPD) = 1394586.9491530452
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(DPD)      = 932959.799292385
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(DPD) = 1406109.832648223
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(DPD) = 1406986.8413624386
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(DPD) = 1395093.0087223006
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(Bonds)      = 26655.123513776623
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(Bonds) = -19033.92171132385
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(Bonds) = -18658.742912288486
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(Bonds) = -20669.195446815975
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(Bonds)      = 27109.225618909808
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(Bonds) = -19434.122512202885
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(Bonds) = -19158.864677505604
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(Bonds) = -20690.162011122953
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(Estat)      = -3609.0739009673343
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(Estat) = -1215.330299072734
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(Estat) = -1168.392673783988
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(Estat) = -1170.2708581064664
-|  |  |  (QUANTITY): DpdSimulationTask.call: Temperature              = 0.9838046446712305
-|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(DPD)                = 933734.1808676169
-|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(Bonds)              = 26655.123513776623
-|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(Electrostatics)     = -3609.0739009673343
-|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(total)              = 956780.2304804261
-|  |  |  (QUANTITY): DpdSimulationTask.call: Ukin                     = 332919.4917567444
-|  |  |  (QUANTITY): DpdSimulationTask.call: U(total)                 = 1289699.7222371704
-|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension X        = 4.016350707569805
-|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Y        = 3.685991197963435
-|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Z        = -7.702341905533109
-|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Norm     = 9.436295615727168
-|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension X    = 3.6885292775590215
-|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Y    = 3.00277452227268
-|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Z    = -6.691303799831832
-|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Norm = 8.209473162430335
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(Estat)      = -3626.132797955409
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(Estat) = -1201.5689221304099
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(Estat) = -1246.862701229113
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(Estat) = -1079.6659018391254
+|  |  |  (QUANTITY): DpdSimulationTask.call: Temperature              = 0.9847327008534906
+|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(DPD)                = 932959.799292385
+|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(Bonds)              = 27109.225618909808
+|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(Electrostatics)     = -3626.132797955409
+|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(total)              = 956442.8921133394
+|  |  |  (QUANTITY): DpdSimulationTask.call: Ukin                     = 333233.5459688212
+|  |  |  (QUANTITY): DpdSimulationTask.call: U(total)                 = 1289676.4380821607
+|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension X        = 3.0994456130751966
+|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Y        = 4.031446447013865
+|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Z        = -7.130892060089062
+|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Norm     = 8.758352878035517
+|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension X    = 2.8456936764821052
+|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Y    = 3.5840793669968876
+|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Z    = -6.429773043478993
+|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Norm = 7.892121311786341
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (PARTICLE): DpdSimulationTask.call: DPD conservat. F (min/mean/max) = 0.084145681523472 / 9.744028715348172 / 39.28546158745288
-|  |  |  (PARTICLE): DpdSimulationTask.call: DPD random F     (min/mean/max) = 0.08592528859375699 / 11.712094655795932 / 40.78323355664666
-|  |  |  (PARTICLE): DpdSimulationTask.call: DPD dissipat. F  (min/mean/max) = 0.015104909046832374 / 2.3008460438538045 / 37.444388480573
-|  |  |  (PARTICLE): DpdSimulationTask.call: Bond F           (min/mean/max) = 8.061100563239164E-5 / 2.550608778005993 / 14.800343292342234
-|  |  |  (PARTICLE): DpdSimulationTask.call: Electrostatics F (min/mean/max) = 0.0650163259624876 / 8.902330364577784 / 102.59596154781633
-|  |  |  (PARTICLE): DpdSimulationTask.call: Total F          (min/mean/max) = 0.2292726480350919 / 15.417320443461827 / 122.48183482000968
-|  |  |  (PARTICLE): DpdSimulationTask.call: Velocity v       (min/mean/max) = 0.025850721998820155 / 1.5833989109960784 / 5.711217734958941
+|  |  |  (PARTICLE): DpdSimulationTask.call: DPD conservat. F (min/mean/max) = 0.13846038962653662 / 9.717292231295858 / 38.461782197624736
+|  |  |  (PARTICLE): DpdSimulationTask.call: DPD random F     (min/mean/max) = 0.14986845594508183 / 11.6831303930277 / 39.289839063872726
+|  |  |  (PARTICLE): DpdSimulationTask.call: DPD dissipat. F  (min/mean/max) = 0.022499232243854906 / 2.297591069605844 / 34.43698523197342
+|  |  |  (PARTICLE): DpdSimulationTask.call: Bond F           (min/mean/max) = 0.0014615173272227722 / 2.570449980618415 / 15.421006589667307
+|  |  |  (PARTICLE): DpdSimulationTask.call: Electrostatics F (min/mean/max) = 0.08034324754295276 / 9.396063478111015 / 101.82053301114072
+|  |  |  (PARTICLE): DpdSimulationTask.call: Total F          (min/mean/max) = 0.32485418069023453 / 15.391834484505907 / 118.21310846896279
+|  |  |  (PARTICLE): DpdSimulationTask.call: Velocity v       (min/mean/max) = 0.015234861604178572 / 1.5839395051537544 / 6.549562181401255
 |  |  >(OUTPUT_STEP): Output time step = 60 (ID = 127)
 |  >(TIME_STEP): Time step = 60 (ID = 127)
 |  <(TIME_STEP): Time step = 61 (ID = 129)
@@ -2272,7 +2272,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9991784061014376
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9987571224791794
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 130)
 |  >(TIME_STEP): Time step = 61 (ID = 129)
 |  <(TIME_STEP): Time step = 62 (ID = 131)
@@ -2282,7 +2282,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9986190832667865
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9988030267848604
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 132)
 |  >(TIME_STEP): Time step = 62 (ID = 131)
 |  <(TIME_STEP): Time step = 63 (ID = 133)
@@ -2292,7 +2292,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9986586188798706
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9984619010207858
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 134)
 |  >(TIME_STEP): Time step = 63 (ID = 133)
 |  <(TIME_STEP): Time step = 64 (ID = 135)
@@ -2302,7 +2302,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9983454928981027
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9979217745419934
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 136)
 |  >(TIME_STEP): Time step = 64 (ID = 135)
 |  <(TIME_STEP): Time step = 65 (ID = 137)
@@ -2312,7 +2312,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9983083456900727
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9972760877159556
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 138)
 |  >(TIME_STEP): Time step = 65 (ID = 137)
 |  <(TIME_STEP): Time step = 66 (ID = 139)
@@ -2322,7 +2322,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9981962738727184
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9970094275320817
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 140)
 |  >(TIME_STEP): Time step = 66 (ID = 139)
 |  <(TIME_STEP): Time step = 67 (ID = 141)
@@ -2332,7 +2332,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9975944168747525
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9973869071179803
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 142)
 |  >(TIME_STEP): Time step = 67 (ID = 141)
 |  <(TIME_STEP): Time step = 68 (ID = 143)
@@ -2342,7 +2342,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9970345890962872
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9969962017982965
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 144)
 |  >(TIME_STEP): Time step = 68 (ID = 143)
 |  <(TIME_STEP): Time step = 69 (ID = 145)
@@ -2352,7 +2352,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.996716391360956
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9964796234837747
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 146)
 |  >(TIME_STEP): Time step = 69 (ID = 145)
 |  <(TIME_STEP): Time step = 70 (ID = 147)
@@ -2363,52 +2363,52 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9972473491522292
+|  |  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9958350953257453
 |  |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 148)
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(DPD)      = 935309.4564408234
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(DPD) = 1406595.3121696122
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(DPD) = 1408549.3586867892
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(DPD) = 1394980.6097835787
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(DPD)      = 934888.0426258743
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(DPD) = 1406266.1285424386
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(DPD) = 1406569.3856962132
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(DPD) = 1396056.4450733035
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(Bonds)      = 27909.063030991587
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(Bonds) = -20300.525061754848
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(Bonds) = -19425.256423110302
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(Bonds) = -21478.727561161926
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(Bonds)      = 27883.919923663394
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(Bonds) = -20022.26645684196
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(Bonds) = -19555.354012999058
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(Bonds) = -21241.210515174196
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(Estat)      = -3713.547386523945
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(Estat) = -1176.5636241985897
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(Estat) = -1239.655227283118
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(Estat) = -1182.7440564915048
-|  |  |  (QUANTITY): DpdSimulationTask.call: Temperature              = 0.9886519780602585
-|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(DPD)                = 935309.4564408234
-|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(Bonds)              = 27909.063030991587
-|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(Electrostatics)     = -3713.547386523945
-|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(total)              = 959504.972085291
-|  |  |  (QUANTITY): DpdSimulationTask.call: Ukin                     = 334559.8293755915
-|  |  |  (QUANTITY): DpdSimulationTask.call: U(total)                 = 1294064.8014608826
-|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension X        = 2.815677671197256
-|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Y        = 5.1446623836616725
-|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Z        = -7.9603400548589285
-|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Norm     = 9.887497437619574
-|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension X    = 2.71121975526098
-|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Y    = 4.356402937020192
-|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Z    = -7.067622692281172
-|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Norm = 8.733856515391315
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(Estat)      = -3625.15455081474
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(Estat) = -1208.6420064592555
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(Estat) = -1201.8576784774327
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(Estat) = -1100.5602140446335
+|  |  |  (QUANTITY): DpdSimulationTask.call: Temperature              = 0.991458100445155
+|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(DPD)                = 934888.0426258743
+|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(Bonds)              = 27883.919923663394
+|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(Electrostatics)     = -3625.15455081474
+|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(total)              = 959146.8079987229
+|  |  |  (QUANTITY): DpdSimulationTask.call: Ukin                     = 335509.4211906405
+|  |  |  (QUANTITY): DpdSimulationTask.call: U(total)                 = 1294656.2291893633
+|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension X        = 2.959011768274597
+|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Y        = 3.6131576753252554
+|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Z        = -6.572169443599721
+|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Norm     = 8.062510169105849
+|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension X    = 2.780194129140609
+|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Y    = 3.035517410727053
+|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Z    = -5.815711539867531
+|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Norm = 7.125050600626171
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (PARTICLE): DpdSimulationTask.call: DPD conservat. F (min/mean/max) = 0.04805257781804539 / 9.757245241576769 / 37.87248421189922
-|  |  |  (PARTICLE): DpdSimulationTask.call: DPD random F     (min/mean/max) = 0.14399973908769134 / 11.696809221383694 / 42.49115394964472
-|  |  |  (PARTICLE): DpdSimulationTask.call: DPD dissipat. F  (min/mean/max) = 0.02274195177564672 / 2.31467804658804 / 34.10560672390608
-|  |  |  (PARTICLE): DpdSimulationTask.call: Bond F           (min/mean/max) = 6.089787217176124E-4 / 2.607444635205291 / 13.993053386283176
-|  |  |  (PARTICLE): DpdSimulationTask.call: Electrostatics F (min/mean/max) = 0.03156494087062396 / 10.036872067076963 / 101.99364275466667
-|  |  |  (PARTICLE): DpdSimulationTask.call: Total F          (min/mean/max) = 0.23343949862415334 / 15.420540472379585 / 123.25839872954161
-|  |  |  (PARTICLE): DpdSimulationTask.call: Velocity v       (min/mean/max) = 0.025730718105769823 / 1.5865631060874315 / 6.105557014411511
+|  |  |  (PARTICLE): DpdSimulationTask.call: DPD conservat. F (min/mean/max) = 0.23200788179779905 / 9.746413365318233 / 38.26086609257578
+|  |  |  (PARTICLE): DpdSimulationTask.call: DPD random F     (min/mean/max) = 0.08186877056034544 / 11.703019165370971 / 43.9033341434601
+|  |  |  (PARTICLE): DpdSimulationTask.call: DPD dissipat. F  (min/mean/max) = 0.02150267097110561 / 2.3106491994329805 / 25.83323616390232
+|  |  |  (PARTICLE): DpdSimulationTask.call: Bond F           (min/mean/max) = 0.002404873317169099 / 2.600539023869898 / 13.271607716578519
+|  |  |  (PARTICLE): DpdSimulationTask.call: Electrostatics F (min/mean/max) = 0.11180982457185636 / 9.334819288764244 / 101.82943064869356
+|  |  |  (PARTICLE): DpdSimulationTask.call: Total F          (min/mean/max) = 0.22189200668044695 / 15.432913715357866 / 125.227340376436
+|  |  |  (PARTICLE): DpdSimulationTask.call: Velocity v       (min/mean/max) = 0.02846767632173804 / 1.5888393615403609 / 6.226577673673888
 |  |  >(OUTPUT_STEP): Output time step = 70 (ID = 147)
 |  >(TIME_STEP): Time step = 70 (ID = 147)
 |  <(TIME_STEP): Time step = 71 (ID = 149)
@@ -2418,7 +2418,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9972504711717098
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9951611771011142
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 150)
 |  >(TIME_STEP): Time step = 71 (ID = 149)
 |  <(TIME_STEP): Time step = 72 (ID = 151)
@@ -2428,7 +2428,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9963167970171476
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9949657759973275
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 152)
 |  >(TIME_STEP): Time step = 72 (ID = 151)
 |  <(TIME_STEP): Time step = 73 (ID = 153)
@@ -2438,7 +2438,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9951450376358183
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9945364325278518
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 154)
 |  >(TIME_STEP): Time step = 73 (ID = 153)
 |  <(TIME_STEP): Time step = 74 (ID = 155)
@@ -2448,7 +2448,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9940667293633486
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9941059929378793
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 156)
 |  >(TIME_STEP): Time step = 74 (ID = 155)
 |  <(TIME_STEP): Time step = 75 (ID = 157)
@@ -2458,7 +2458,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9932054368678127
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9938514481978417
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 158)
 |  >(TIME_STEP): Time step = 75 (ID = 157)
 |  <(TIME_STEP): Time step = 76 (ID = 159)
@@ -2468,7 +2468,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9931814164351725
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9935473585966216
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 160)
 |  >(TIME_STEP): Time step = 76 (ID = 159)
 |  <(TIME_STEP): Time step = 77 (ID = 161)
@@ -2478,7 +2478,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9927439033385236
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9929631926180267
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 162)
 |  >(TIME_STEP): Time step = 77 (ID = 161)
 |  <(TIME_STEP): Time step = 78 (ID = 163)
@@ -2488,7 +2488,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9926295896464772
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9927142574388682
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 164)
 |  >(TIME_STEP): Time step = 78 (ID = 163)
 |  <(TIME_STEP): Time step = 79 (ID = 165)
@@ -2498,7 +2498,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9926832635953766
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9931041773425536
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 166)
 |  >(TIME_STEP): Time step = 79 (ID = 165)
 |  <(TIME_STEP): Time step = 80 (ID = 167)
@@ -2509,52 +2509,52 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9926181259519575
+|  |  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9934327665434802
 |  |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 168)
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(DPD)      = 935818.878948802
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(DPD) = 1406965.4784190406
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(DPD) = 1405679.2451164767
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(DPD) = 1395506.991017357
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(DPD)      = 936424.3572234045
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(DPD) = 1406091.5648787182
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(DPD) = 1405882.7744532658
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(DPD) = 1396011.3483231722
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(Bonds)      = 28752.767804206484
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(Bonds) = -20870.33561334479
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(Bonds) = -20241.846818807953
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(Bonds) = -21838.72781812292
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(Bonds)      = 28545.30295324524
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(Bonds) = -20764.41016210031
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(Bonds) = -20190.59915126554
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(Bonds) = -21472.983416220388
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(Estat)      = -3714.9630660737575
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(Estat) = -1252.0126916679721
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(Estat) = -1274.9389002195417
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(Estat) = -1120.500429269243
-|  |  |  (QUANTITY): DpdSimulationTask.call: Temperature              = 0.9978949338251815
-|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(DPD)                = 935818.878948802
-|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(Bonds)              = 28752.767804206484
-|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(Electrostatics)     = -3714.9630660737575
-|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(total)              = 960856.6836869348
-|  |  |  (QUANTITY): DpdSimulationTask.call: Ukin                     = 337687.6456064414
-|  |  |  (QUANTITY): DpdSimulationTask.call: U(total)                 = 1298544.3292933763
-|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension X        = 3.6416669026005577
-|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Y        = 3.0685853483041927
-|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Z        = -6.710252250904751
-|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Norm     = 8.228331491869769
-|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension X    = 3.5767487236587905
-|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Y    = 2.4938218953588005
-|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Z    = -6.070570619017591
-|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Norm = 7.474229506674609
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(Estat)      = -3732.6239845043197
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(Estat) = -1247.7860709447061
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(Estat) = -1255.2014450828651
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(Estat) = -1148.9160323174026
+|  |  |  (QUANTITY): DpdSimulationTask.call: Temperature              = 0.9962590054836455
+|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(DPD)                = 936424.3572234045
+|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(Bonds)              = 28545.30295324524
+|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(Electrostatics)     = -3732.6239845043197
+|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(total)              = 961237.0361921453
+|  |  |  (QUANTITY): DpdSimulationTask.call: Ukin                     = 337134.04745566566
+|  |  |  (QUANTITY): DpdSimulationTask.call: U(total)                 = 1298371.0836478109
+|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension X        = 2.899717755436488
+|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Y        = 3.200798652987752
+|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Z        = -6.1005164084241095
+|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Norm     = 7.474608720703287
+|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension X    = 2.887563677620415
+|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Y    = 2.7117753872971533
+|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Z    = -5.599339064917569
+|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Norm = 6.8588882267737326
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (PARTICLE): DpdSimulationTask.call: DPD conservat. F (min/mean/max) = 0.09088912586910526 / 9.780959616682221 / 37.6409014022333
-|  |  |  (PARTICLE): DpdSimulationTask.call: DPD random F     (min/mean/max) = 0.14540560330596614 / 11.717886609046253 / 42.17232512621288
-|  |  |  (PARTICLE): DpdSimulationTask.call: DPD dissipat. F  (min/mean/max) = 0.017952311047033993 / 2.3190865808358088 / 29.946204589868795
-|  |  |  (PARTICLE): DpdSimulationTask.call: Bond F           (min/mean/max) = 2.2654630155827252E-5 / 2.638846163453026 / 15.810827723384255
-|  |  |  (PARTICLE): DpdSimulationTask.call: Electrostatics F (min/mean/max) = 0.02823950639682942 / 9.621075801469656 / 101.82335493452767
-|  |  |  (PARTICLE): DpdSimulationTask.call: Total F          (min/mean/max) = 0.17985829514733964 / 15.469845317646284 / 131.00005833496445
-|  |  |  (PARTICLE): DpdSimulationTask.call: Velocity v       (min/mean/max) = 0.016339805411295073 / 1.5936343783060434 / 5.60008372284483
+|  |  |  (PARTICLE): DpdSimulationTask.call: DPD conservat. F (min/mean/max) = 0.11051693345941946 / 9.78342245135981 / 39.880122777552174
+|  |  |  (PARTICLE): DpdSimulationTask.call: DPD random F     (min/mean/max) = 0.23017168401842422 / 11.732089698735471 / 40.58985644208293
+|  |  |  (PARTICLE): DpdSimulationTask.call: DPD dissipat. F  (min/mean/max) = 0.030909340488860418 / 2.320994251706648 / 33.85678202111365
+|  |  |  (PARTICLE): DpdSimulationTask.call: Bond F           (min/mean/max) = 0.0011920817547901308 / 2.634428428952898 / 15.169100348704866
+|  |  |  (PARTICLE): DpdSimulationTask.call: Electrostatics F (min/mean/max) = 0.06100497630199732 / 9.667124787684621 / 101.74980537173595
+|  |  |  (PARTICLE): DpdSimulationTask.call: Total F          (min/mean/max) = 0.12221248834401967 / 15.475376096965814 / 117.64139031389051
+|  |  |  (PARTICLE): DpdSimulationTask.call: Velocity v       (min/mean/max) = 0.017915832286958117 / 1.5924245618545583 / 5.474958897995374
 |  |  >(OUTPUT_STEP): Output time step = 80 (ID = 167)
 |  >(TIME_STEP): Time step = 80 (ID = 167)
 |  <(TIME_STEP): Time step = 81 (ID = 169)
@@ -2564,7 +2564,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9918118831125343
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9930996294549925
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 170)
 |  >(TIME_STEP): Time step = 81 (ID = 169)
 |  <(TIME_STEP): Time step = 82 (ID = 171)
@@ -2574,7 +2574,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.990745203577124
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9923064895541465
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 172)
 |  >(TIME_STEP): Time step = 82 (ID = 171)
 |  <(TIME_STEP): Time step = 83 (ID = 173)
@@ -2584,7 +2584,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9903321690749317
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9916236068893323
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 174)
 |  >(TIME_STEP): Time step = 83 (ID = 173)
 |  <(TIME_STEP): Time step = 84 (ID = 175)
@@ -2594,7 +2594,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9903636540390234
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9913036314773443
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 176)
 |  >(TIME_STEP): Time step = 84 (ID = 175)
 |  <(TIME_STEP): Time step = 85 (ID = 177)
@@ -2604,7 +2604,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9901160287586558
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9911804722096658
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 178)
 |  >(TIME_STEP): Time step = 85 (ID = 177)
 |  <(TIME_STEP): Time step = 86 (ID = 179)
@@ -2614,7 +2614,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9897267094162191
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9910659054239057
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 180)
 |  >(TIME_STEP): Time step = 86 (ID = 179)
 |  <(TIME_STEP): Time step = 87 (ID = 181)
@@ -2624,7 +2624,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.989444150756231
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9908505259316153
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 182)
 |  >(TIME_STEP): Time step = 87 (ID = 181)
 |  <(TIME_STEP): Time step = 88 (ID = 183)
@@ -2634,7 +2634,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9891728902997212
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9909008055091733
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 184)
 |  >(TIME_STEP): Time step = 88 (ID = 183)
 |  <(TIME_STEP): Time step = 89 (ID = 185)
@@ -2644,7 +2644,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9891506572906172
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9905870277168054
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 186)
 |  >(TIME_STEP): Time step = 89 (ID = 185)
 |  <(TIME_STEP): Time step = 90 (ID = 187)
@@ -2655,52 +2655,52 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9890458405266037
+|  |  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9901828215310226
 |  |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 188)
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(DPD)      = 935208.7976552404
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(DPD) = 1406845.0161290865
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(DPD) = 1404258.594275781
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(DPD) = 1394253.9124967807
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(DPD)      = 935188.903806939
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(DPD) = 1406580.746639409
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(DPD) = 1406003.0421169344
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(DPD) = 1393917.5465860707
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(Bonds)      = 28856.60873796181
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(Bonds) = -20763.51224820501
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(Bonds) = -20544.888867932463
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(Bonds) = -22009.147131621474
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(Bonds)      = 29109.461493228948
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(Bonds) = -20750.932179476644
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(Bonds) = -20645.805727665414
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(Bonds) = -22175.074643748925
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(Estat)      = -3689.0473065860456
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(Estat) = -1215.8366853481439
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(Estat) = -1181.1577318485763
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(Estat) = -1179.241231685074
-|  |  |  (QUANTITY): DpdSimulationTask.call: Temperature              = 1.0051164458752089
-|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(DPD)                = 935208.7976552404
-|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(Bonds)              = 28856.60873796181
-|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(Electrostatics)     = -3689.0473065860456
-|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(total)              = 960376.3590866162
-|  |  |  (QUANTITY): DpdSimulationTask.call: Ukin                     = 340131.4052841707
-|  |  |  (QUANTITY): DpdSimulationTask.call: U(total)                 = 1300507.764370787
-|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension X        = 4.527727808733412
-|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Y        = 2.5633892114536834
-|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Z        = -7.091117020187096
-|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Norm     = 8.795181860164242
-|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension X    = 4.25950447787098
-|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Y    = 2.081901387776529
-|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Z    = -6.34140586564764
-|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Norm = 7.9177724227398105
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(Estat)      = -3645.2641594084894
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(Estat) = -1242.5116617142012
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(Estat) = -1175.3951498658664
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(Estat) = -1167.8744858006771
+|  |  |  (QUANTITY): DpdSimulationTask.call: Temperature              = 1.002809513922421
+|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(DPD)                = 935188.903806939
+|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(Bonds)              = 29109.461493228948
+|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(Electrostatics)     = -3645.2641594084894
+|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(total)              = 960653.1011407594
+|  |  |  (QUANTITY): DpdSimulationTask.call: Ukin                     = 339350.7395113472
+|  |  |  (QUANTITY): DpdSimulationTask.call: U(total)                 = 1300003.8406521066
+|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension X        = 4.046393895608781
+|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Y        = 3.705020989923708
+|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Z        = -7.75141488553249
+|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Norm     = 9.496573951791769
+|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension X    = 3.716000502533009
+|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Y    = 3.2296099503906226
+|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Z    = -6.945610452923631
+|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Norm = 8.51355065353168
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (PARTICLE): DpdSimulationTask.call: DPD conservat. F (min/mean/max) = 0.0885008600387063 / 9.786878736687484 / 38.499829417942244
-|  |  |  (PARTICLE): DpdSimulationTask.call: DPD random F     (min/mean/max) = 0.14212455564662915 / 11.706494951221611 / 40.173922737019744
-|  |  |  (PARTICLE): DpdSimulationTask.call: DPD dissipat. F  (min/mean/max) = 0.014964201045362028 / 2.3313867875335244 / 29.979131668126897
-|  |  |  (PARTICLE): DpdSimulationTask.call: Bond F           (min/mean/max) = 0.001482034522190645 / 2.6400354856875317 / 16.109369129922484
-|  |  |  (PARTICLE): DpdSimulationTask.call: Electrostatics F (min/mean/max) = 0.022819953360562827 / 9.43620944264942 / 101.54616356893474
-|  |  |  (PARTICLE): DpdSimulationTask.call: Total F          (min/mean/max) = 0.12873953315200037 / 15.443887525315054 / 117.96074773802854
-|  |  |  (PARTICLE): DpdSimulationTask.call: Velocity v       (min/mean/max) = 0.0289557115913088 / 1.5988079737318295 / 5.554958204050191
+|  |  |  (PARTICLE): DpdSimulationTask.call: DPD conservat. F (min/mean/max) = 0.1489458954406282 / 9.796888909053852 / 39.033069063291244
+|  |  |  (PARTICLE): DpdSimulationTask.call: DPD random F     (min/mean/max) = 0.16116095178063863 / 11.695702682826893 / 41.50910352035159
+|  |  |  (PARTICLE): DpdSimulationTask.call: DPD dissipat. F  (min/mean/max) = 0.015776181875747926 / 2.3196089821415216 / 31.381804798777754
+|  |  |  (PARTICLE): DpdSimulationTask.call: Bond F           (min/mean/max) = 8.107363446745453E-4 / 2.652529744688955 / 15.2587103222525
+|  |  |  (PARTICLE): DpdSimulationTask.call: Electrostatics F (min/mean/max) = 0.07718770061387518 / 9.495022222995301 / 101.28558172066195
+|  |  |  (PARTICLE): DpdSimulationTask.call: Total F          (min/mean/max) = 0.33115086347637734 / 15.475606903010235 / 121.66721796018477
+|  |  |  (PARTICLE): DpdSimulationTask.call: Velocity v       (min/mean/max) = 0.024797593345921964 / 1.5974431052326112 / 5.82923584890281
 |  |  >(OUTPUT_STEP): Output time step = 90 (ID = 187)
 |  >(TIME_STEP): Time step = 90 (ID = 187)
 |  <(TIME_STEP): Time step = 91 (ID = 189)
@@ -2710,7 +2710,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9893569648611084
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9900047648778195
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 190)
 |  >(TIME_STEP): Time step = 91 (ID = 189)
 |  <(TIME_STEP): Time step = 92 (ID = 191)
@@ -2720,7 +2720,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9895221730941542
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9893945690844581
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 192)
 |  >(TIME_STEP): Time step = 92 (ID = 191)
 |  <(TIME_STEP): Time step = 93 (ID = 193)
@@ -2730,7 +2730,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9892597592786126
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9892868229774244
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 194)
 |  >(TIME_STEP): Time step = 93 (ID = 193)
 |  <(TIME_STEP): Time step = 94 (ID = 195)
@@ -2740,7 +2740,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.988548320734448
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9894886716174762
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 196)
 |  >(TIME_STEP): Time step = 94 (ID = 195)
 |  <(TIME_STEP): Time step = 95 (ID = 197)
@@ -2750,7 +2750,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9877742781451501
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9894471729959217
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 198)
 |  >(TIME_STEP): Time step = 95 (ID = 197)
 |  <(TIME_STEP): Time step = 96 (ID = 199)
@@ -2760,7 +2760,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.987770887035082
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9890820572585194
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 200)
 |  >(TIME_STEP): Time step = 96 (ID = 199)
 |  <(TIME_STEP): Time step = 97 (ID = 201)
@@ -2770,7 +2770,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9884087192895143
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9889870526494479
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 202)
 |  >(TIME_STEP): Time step = 97 (ID = 201)
 |  <(TIME_STEP): Time step = 98 (ID = 203)
@@ -2780,7 +2780,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9885949916704001
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.988892234203559
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 204)
 |  >(TIME_STEP): Time step = 98 (ID = 203)
 |  <(TIME_STEP): Time step = 99 (ID = 205)
@@ -2790,7 +2790,7 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9883318507233448
+|  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9887044383644282
 |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 206)
 |  >(TIME_STEP): Time step = 99 (ID = 205)
 |  <(TIME_STEP): Time step = 100 (ID = 207)
@@ -2801,52 +2801,52 @@ Logger started at 2019/08/16 - 17:48:28
 |  |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9878291234094845
+|  |  |  |  (V_SCALE): GwmvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.988576049943367
 |  |  |  >(METHOD_CALL): GwmvvTimeStepCalculator.calculate (ID = 208)
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(DPD)      = 935897.989018025
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(DPD) = 1405539.073217914
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(DPD) = 1405839.6423679208
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(DPD) = 1393716.5744150688
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(DPD)      = 935138.9714169358
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(DPD) = 1406925.7654778208
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(DPD) = 1406393.4962001466
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(DPD) = 1394433.9148739013
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(Bonds)      = 29560.959826595976
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(Bonds) = -21325.277623435657
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(Bonds) = -20969.380238205817
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(Bonds) = -22423.29797243631
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(Bonds)      = 29702.965446714523
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(Bonds) = -21314.548032933337
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(Bonds) = -20970.41661833977
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(Bonds) = -22727.5591341385
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(Estat)      = -3708.3533540617404
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(Estat) = -1196.137721116329
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(Estat) = -1201.2517458378886
-|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(Estat) = -1232.0436217996833
-|  |  |  (QUANTITY): DpdSimulationTask.call: Temperature              = 1.0075939908461076
-|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(DPD)                = 935897.989018025
-|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(Bonds)              = 29560.959826595976
-|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(Electrostatics)     = -3708.3533540617404
-|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(total)              = 961750.5954905592
-|  |  |  (QUANTITY): DpdSimulationTask.call: Ukin                     = 340969.8065023228
-|  |  |  (QUANTITY): DpdSimulationTask.call: U(total)                 = 1302720.4019928821
-|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension X        = 3.45336343812596
-|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Y        = 4.001760923178975
-|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Z        = -7.455124361304935
-|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Norm     = 9.138855987736633
-|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension X    = 3.233577897563461
-|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Y    = 3.486638050533429
-|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Z    = -6.72021594809689
-|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Norm = 8.232494962287817
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: uPot(Estat)      = -3633.7320448312307
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureX(Estat) = -1194.753394517851
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureY(Estat) = -1114.701419383739
+|  |  |  (QUANTITY): PotentialAccumulator.accumulate: PressureZ(Estat) = -1231.193602895442
+|  |  |  (QUANTITY): DpdSimulationTask.call: Temperature              = 1.006071974666956
+|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(DPD)                = 935138.9714169358
+|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(Bonds)              = 29702.965446714523
+|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(Electrostatics)     = -3633.7320448312307
+|  |  |  (QUANTITY): DpdSimulationTask.call: Upot(total)              = 961208.2048188191
+|  |  |  (QUANTITY): DpdSimulationTask.call: Ukin                     = 340454.7562272979
+|  |  |  (QUANTITY): DpdSimulationTask.call: U(total)                 = 1301662.961046117
+|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension X        = 3.942897694907467
+|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Y        = 3.8518962353865622
+|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Z        = -7.79479393029403
+|  |  |  (QUANTITY): DpdSimulationTask.call: Surface Tension Norm     = 9.546850750715674
+|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension X    = 3.655160850072062
+|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Y    = 3.207023891151667
+|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Z    = -6.86218474122373
+|  |  |  (QUANTITY): DpdSimulationTask.call: DPD Surface Tension Norm = 8.410397285562727
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): HarmonicBondPropertyCalculator.calculateBondProperties: Current parallel task number = 8
 |  |  |  (PARALLEL): ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
-|  |  |  (PARTICLE): DpdSimulationTask.call: DPD conservat. F (min/mean/max) = 0.09534150629095339 / 9.799548893730975 / 37.551749501960686
-|  |  |  (PARTICLE): DpdSimulationTask.call: DPD random F     (min/mean/max) = 0.27676647826629136 / 11.703397501303588 / 42.39248020012319
-|  |  |  (PARTICLE): DpdSimulationTask.call: DPD dissipat. F  (min/mean/max) = 0.029707038100283096 / 2.3293742340501185 / 31.3904792822062
-|  |  |  (PARTICLE): DpdSimulationTask.call: Bond F           (min/mean/max) = 0.0017900493756890512 / 2.668538476378315 / 13.813959407430152
-|  |  |  (PARTICLE): DpdSimulationTask.call: Electrostatics F (min/mean/max) = 0.07931085317682758 / 9.761554696588872 / 100.96480111282816
-|  |  |  (PARTICLE): DpdSimulationTask.call: Total F          (min/mean/max) = 0.19004498748332363 / 15.460354400074008 / 131.87833270070368
-|  |  |  (PARTICLE): DpdSimulationTask.call: Velocity v       (min/mean/max) = 0.03618132714936979 / 1.6015154944870518 / 5.8142517306930745
+|  |  |  (PARTICLE): DpdSimulationTask.call: DPD conservat. F (min/mean/max) = 0.12553893012165673 / 9.798023145292433 / 36.199966779328214
+|  |  |  (PARTICLE): DpdSimulationTask.call: DPD random F     (min/mean/max) = 0.09614628354114432 / 11.722705992706063 / 41.25716776724889
+|  |  |  (PARTICLE): DpdSimulationTask.call: DPD dissipat. F  (min/mean/max) = 0.027185995684195732 / 2.319184870980344 / 29.607700209458148
+|  |  |  (PARTICLE): DpdSimulationTask.call: Bond F           (min/mean/max) = 3.031361950771582E-4 / 2.675304591482363 / 15.295405586219864
+|  |  |  (PARTICLE): DpdSimulationTask.call: Electrostatics F (min/mean/max) = 0.05157360545462981 / 9.113603302597003 / 101.37896720250964
+|  |  |  (PARTICLE): DpdSimulationTask.call: Total F          (min/mean/max) = 0.26975670210379943 / 15.466258736803685 / 118.10366249000322
+|  |  |  (PARTICLE): DpdSimulationTask.call: Velocity v       (min/mean/max) = 0.016359448118815137 / 1.6001484609798649 / 5.863569189356574
 |  |  >(OUTPUT_STEP): Output time step = 100 (ID = 207)
 |  >(TIME_STEP): Time step = 100 (ID = 207)
 |  (PROGRESS): Time-step loop finished
@@ -2855,5 +2855,5 @@ Logger started at 2019/08/16 - 17:48:28
 <(METHOD_CALL): DpdSimulationTask.releaseMemoryAndFinishLogging (ID = 209)
 >(METHOD_CALL): DpdSimulationTask.releaseMemoryAndFinishLogging (ID = 209)
 ----------------------------------------
-Logger finished at 2019/08/16 - 17:48:58
+Logger finished at 2020/04/03 - 15:01:42
 ----------------------------------------

@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2021  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -230,7 +230,7 @@ public class CellBox {
             }
             this.cutOffLengthY = this.boxSize.getYLength()/(TWO * (double) tmpCellNumberHalfY);
             this.cellNumberXtimesY = this.cellNumberX * this.cellNumberY;
-            // Multiple of 3 in x direction:
+            // Multiple of 3 in z direction:
             int tmpCellNumberThirdZ = (int) (this.boxSize.getZLength()/(THREE * this.cutOffLength));
             this.cellNumberZ = INT_THREE * tmpCellNumberThirdZ;
             if (this.cellNumberZ%INT_THREE != 0) {

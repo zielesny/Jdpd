@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2019  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2021  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -43,9 +43,9 @@ public class ParticlePairHarmonicBond {
     private final double forceConstant;
     
     /**
-     * True: Repulsion for bond is to be calculated, false: Otherwise (no repulsion, attraction only)
+     * Behaviour of harmonic bond
      */
-    private final boolean isRepulsion;
+    private final HarmonicBond.HarmonicBondBehaviour harmonicBondBehaviour;
     // </editor-fold>
     //
     // <editor-fold defaultstate="collapsed" desc="Constructor">
@@ -55,14 +55,14 @@ public class ParticlePairHarmonicBond {
      * @param aParticlePairKey Particle-pair key
      * @param aBondLength Bond length in DPD units
      * @param aForceConstant Spring force constant in DPD units
-     * @param anIsRepulsion True: Repulsion for bond is to be calculated, false: Otherwise (no repulsion, attraction only)
+     * @param aHarmonicBondBehaviour Behaviour of harmonic bond
      * @throws IllegalArgumentException Thrown if an argument is illegal
      */
     public ParticlePairHarmonicBond(
         String aParticlePairKey,
         double aBondLength,
         double aForceConstant,
-        boolean anIsRepulsion
+        HarmonicBond.HarmonicBondBehaviour aHarmonicBondBehaviour
         ) {
         // <editor-fold defaultstate="collapsed" desc="Checks">
         if (aParticlePairKey == null || aParticlePairKey.isEmpty()) {
@@ -78,7 +78,7 @@ public class ParticlePairHarmonicBond {
         this.particlePairKey = aParticlePairKey;
         this.bondLength = aBondLength;
         this.forceConstant = aForceConstant;
-        this.isRepulsion = anIsRepulsion;
+        this.harmonicBondBehaviour = aHarmonicBondBehaviour;
     }
     // </editor-fold>
     //
@@ -111,12 +111,12 @@ public class ParticlePairHarmonicBond {
     }
     
     /**
-     * True: Repulsion for bond is to be calculated, false: Otherwise (no repulsion, attraction only)
+     * Behaviour of harmonic bond
      * 
-     * @return True: Repulsion for bond is to be calculated, false: Otherwise (no repulsion, attraction only)
+     * @return Behaviour of harmonic bond
      */
-    public boolean isRepulsion() {
-        return this.isRepulsion;
+    public HarmonicBond.HarmonicBondBehaviour getHarmonicBondBehaviour() {
+        return this.harmonicBondBehaviour;
     }
     // </editor-fold>
     
