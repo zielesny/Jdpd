@@ -2,7 +2,7 @@
 Jdpd - An open Java Simulation Kernel for Molecular Fragment Dissipative Particle Dynamics (DPD)
 
 Jdpd is an open Java simulation kernel for Molecular Fragment Dissipative Particle Dynamics (DPD) with parallelizable force calculation, efficient caching options and fast property calculations. It is characterized by an interface and factory-pattern driven design for simple code changes and may help to avoid problems of polyglot programming.
-Detailed input/output communication, parallelization and process control as well as internal logging capabilities for debugging purposes are supported. The kernel may be utilized in different simulation environments ranging from flexible scripting solutions up to fully integrated “all-in-one” simulation systems.
+Detailed input/output communication, parallelization and process control as well as internal logging capabilities for debugging purposes are supported. The kernel may be utilized in different simulation environments ranging from flexible scripting solutions up to fully integrated “all-in-one” simulation systems like [MFsim](https://github.com/zielesny/MFsim).
 
 Jdpd uses the [Apache Commons RNG](http://commons.apache.org/proper/commons-rng/) libraries and is published as open source under the GNU General Public License version 3. This repository comprises the Java bytecode libraries (including the Apache Commons RNG libraries), the Javadoc HTML documentation and the Netbeans source code packages including Unit tests.
 
