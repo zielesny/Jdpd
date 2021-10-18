@@ -19,6 +19,8 @@
  */
 package de.gnwi.jdpd.utilities;
 
+import org.apache.commons.math3.util.FastMath;
+
 /**
  * Box size
  * 
@@ -153,7 +155,7 @@ public class BoxSize {
      * @return Minimum side length
      */
     public double getMinimumLength() {
-        return Math.min(this.getXLength(), Math.min(this.getYLength(), this.getZLength()));
+        return FastMath.min(this.getXLength(), FastMath.min(this.getYLength(), this.getZLength()));
     }
     
     /**

@@ -64,7 +64,9 @@ import de.gnwi.jdpd.movement.MoleculeBoundaryInfo;
 import de.gnwi.jdpd.nearestNeighbor.NearestNeighborManager;
 import de.gnwi.jdpd.nearestNeighbor.NearestNeighborBaseParticleDescription;
 import de.gnwi.jdpd.samples.interactions.ParticlePairInteractionCalculator;
+import de.gnwi.jdpd.utilities.Electrostatics;
 import java.util.Arrays;
+import org.apache.commons.math3.util.FastMath;
 
 /**
  * Task for Molecular Fragment DPD simulation.
@@ -376,12 +378,12 @@ public class DpdSimulationTask implements Callable<Boolean> {
                     double tmpSurfaceTensionAlongX = (tmpPressureX - 0.5 * (tmpPressureZ + tmpPressureY)) / (tmpBoxZLength * tmpBoxYLength);
                     double tmpSurfaceTensionAlongY = (tmpPressureY - 0.5 * (tmpPressureX + tmpPressureZ)) / (tmpBoxXLength * tmpBoxZLength);
                     double tmpSurfaceTensionNorm = 
-                        Math.sqrt(tmpSurfaceTensionAlongX * tmpSurfaceTensionAlongX + tmpSurfaceTensionAlongY * tmpSurfaceTensionAlongY + tmpSurfaceTensionAlongZ * tmpSurfaceTensionAlongZ);
+                        FastMath.sqrt(tmpSurfaceTensionAlongX * tmpSurfaceTensionAlongX + tmpSurfaceTensionAlongY * tmpSurfaceTensionAlongY + tmpSurfaceTensionAlongZ * tmpSurfaceTensionAlongZ);
                     double tmpDpdSurfaceTensionAlongZ = (tmpDpdPressureZ - 0.5 * (tmpDpdPressureX + tmpDpdPressureY)) / (tmpBoxXLength * tmpBoxYLength);
                     double tmpDpdSurfaceTensionAlongX = (tmpDpdPressureX - 0.5 * (tmpDpdPressureZ + tmpDpdPressureY)) / (tmpBoxZLength * tmpBoxYLength);
                     double tmpDpdSurfaceTensionAlongY = (tmpDpdPressureY - 0.5 * (tmpDpdPressureX + tmpDpdPressureZ)) / (tmpBoxXLength * tmpBoxZLength);
                     double tmpDpdSurfaceTensionNorm = 
-                        Math.sqrt(tmpDpdSurfaceTensionAlongX * tmpDpdSurfaceTensionAlongX + tmpDpdSurfaceTensionAlongY * tmpDpdSurfaceTensionAlongY + tmpDpdSurfaceTensionAlongZ * tmpDpdSurfaceTensionAlongZ);
+                        FastMath.sqrt(tmpDpdSurfaceTensionAlongX * tmpDpdSurfaceTensionAlongX + tmpDpdSurfaceTensionAlongY * tmpDpdSurfaceTensionAlongY + tmpDpdSurfaceTensionAlongZ * tmpDpdSurfaceTensionAlongZ);
                     // Ukin
                     double tmpUkin = 
                         Utils.calculateUkin(
@@ -631,7 +633,7 @@ public class DpdSimulationTask implements Callable<Boolean> {
     // <editor-fold defaultstate="collapsed" desc="- Initialisation related methods">
     /**
      * Sets simulation parameters
-     * NOTE: No checks are performed.
+     * (No checks are performed)
      * 
      * @param aRestartInfo Restart info (may be null)
      * @param aSimulationInput Simulation input
@@ -662,6 +664,7 @@ public class DpdSimulationTask implements Callable<Boolean> {
             aSimulationInput.getTimeStepLength(),
             aSimulationInput.getTimeStepFrequencyForOutput(),
             aSimulationInput.getInitialPotentialEnergyMinimizationStepNumber(),
+            aSimulationInput.isInitialPotentialEnergyMinimizationWithAllForces(),
             aSimulationInput.isInitialPotentialEnergyMinimizationStepOutput(),
             aSimulationInput.getPeriodicBoundaries(),
             aSimulationInput.isDpdUnitMass(),
@@ -680,14 +683,17 @@ public class DpdSimulationTask implements Callable<Boolean> {
             }
         }
         // </editor-fold>
-        // <editor-fold defaultstate="collapsed" desc="Intermediate results logging">
-        if (aSimulationInput.getElectrostatics() != null) {
+        Electrostatics tmpElectrostatics = aSimulationInput.getElectrostatics();
+        // <editor-fold defaultstate="collapsed" desc="Intermediate results logging for electrostatics">
+        if (tmpElectrostatics != null) {
             this.simulationLogger.appendIntermediateResults("DpdSimulationTask.setParameters: Electrostatics parameters defined");
+            this.simulationLogger.appendIntermediateResults("DpdSimulationTask.setParameters: Electrostatics charge distribution type = " + tmpElectrostatics.getChargeDistributionType().toString());
+            this.simulationLogger.appendIntermediateResults("DpdSimulationTask.setParameters: Electrostatics splitting type           = " + tmpElectrostatics.getSplittingType().toString());
         } else {
             this.simulationLogger.appendIntermediateResults("DpdSimulationTask.setParameters: No electrostatics parameters");
         }
         // </editor-fold>
-        // <editor-fold defaultstate="collapsed" desc="Intermediate results logging">
+        // <editor-fold defaultstate="collapsed" desc="Intermediate results logging for graviational acceleration">
         if (aSimulationInput.getGravitationalAcceleration().isGravitationalAcceleration()) {
             this.simulationLogger.appendIntermediateResults("DpdSimulationTask.setParameters: Gravitational acceleration is defined");
         } else {
@@ -700,7 +706,7 @@ public class DpdSimulationTask implements Callable<Boolean> {
             aSimulationInput.isGaussianRandomDpdForce(),
             tmpParticleTypes.getParticleTypeNumber(),
             tmpAij,
-            aSimulationInput.getElectrostatics(),
+            tmpElectrostatics,
             aSimulationInput.getGravitationalAcceleration(),
             tmpSimulationDescription
         );

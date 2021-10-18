@@ -33,6 +33,7 @@ import de.gnwi.jdpd.utilities.ParticlePairDistanceParameters;
 import de.gnwi.jdpd.utilities.PeriodicBoundaries;
 import de.gnwi.jdpd.utilities.RandomAdderGroup;
 import java.util.concurrent.atomic.AtomicInteger;
+import org.apache.commons.math3.util.FastMath;
 
 /**
  * Particle pair DPD full (i.e. conservative + random + dissipative) force 
@@ -139,7 +140,7 @@ public class ParticlePairGwmvvDpdForceFullCutoff1Calculator extends ParticlePair
      * NOTE: ParticlePairInteractionCalculator parallelisation guarantees that
      * NO thread-safe implementation of random number generator or double adder 
      * is necessary.
-     * NOTE: No checks are performed.
+     * (No checks are performed)
      * 
      * @param aParticleIndex_i Index of particle i
      * @param aParticleIndex_j Index of particle j
@@ -173,7 +174,7 @@ public class ParticlePairGwmvvDpdForceFullCutoff1Calculator extends ParticlePair
         } else {
             tmpRandomValue = aRandomAdderGroup.getRandomNumberGenerator().nextZeroMeanUnitVarianceDouble();
         }
-        final double tmpRij = Math.sqrt(aRij_Square);
+        final double tmpRij = FastMath.sqrt(aRij_Square);
         final double tmpRijInversMinusOne = ONE/tmpRij - 1.0;        
         // Difference of particle velocities: Vector v_ij
         // IMPORTANT: Use tmpParticleArrays.getVnew_x() etc., NOT tmpParticleArrays.getV_x()
@@ -221,7 +222,7 @@ public class ParticlePairGwmvvDpdForceFullCutoff1Calculator extends ParticlePair
      * NOTE: ParticlePairInteractionCalculator parallelisation guarantees that
      * NO thread-safe implementation of random number generator or double adder 
      * is necessary.
-     * NOTE: No checks are performed.
+     * (No checks are performed)
      * 
      * @param aParticleIndex_i Index of particle i
      * @param aParticleIndex_j Index of particle j

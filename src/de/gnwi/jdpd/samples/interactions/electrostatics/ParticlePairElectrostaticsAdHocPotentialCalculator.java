@@ -32,6 +32,7 @@ import de.gnwi.jdpd.utilities.ParticlePairDistanceParameters;
 import de.gnwi.jdpd.utilities.PeriodicBoundaries;
 import de.gnwi.jdpd.utilities.RandomAdderGroup;
 import java.util.concurrent.atomic.AtomicInteger;
+import org.apache.commons.math3.util.FastMath;
 
 /**
  * Particle pair ad-hoc electrostatics potential calculator that uses 
@@ -74,7 +75,7 @@ public class ParticlePairElectrostaticsAdHocPotentialCalculator extends Particle
             aRandomNumberSeed
         );
         // <editor-fold defaultstate="collapsed" desc="Method call logging">
-        this.simulationLogger.appendMethodCall("ParticlePairAdHocElectrostaticsPotentialCalculator.Constructor: FULL");
+        this.simulationLogger.appendMethodCall("ParticlePairElectrostaticsAdHocPotentialCalculator.Constructor: FULL");
         // </editor-fold>
     }
 
@@ -88,7 +89,7 @@ public class ParticlePairElectrostaticsAdHocPotentialCalculator extends Particle
     public ParticlePairElectrostaticsAdHocPotentialCalculator(IParticlePairInteractionCalculator aParticlePairInteractionCalculator) throws IllegalArgumentException {
         super(aParticlePairInteractionCalculator);
         // <editor-fold defaultstate="collapsed" desc="Method call logging">
-        this.simulationLogger.appendMethodCall("ParticlePairAdHocElectrostaticsPotentialCalculator.Constructor WITH aParticlePairInteractionCalculator");
+        this.simulationLogger.appendMethodCall("ParticlePairElectrostaticsAdHocPotentialCalculator.Constructor WITH aParticlePairInteractionCalculator");
         // </editor-fold>
     }
     // </editor-fold>
@@ -101,7 +102,7 @@ public class ParticlePairElectrostaticsAdHocPotentialCalculator extends Particle
      * NO thread-safe implementation of random number generator or double adder 
      * is necessary.
      * NOTE: aRandomAdderGroup is used for potential value accumulation.
-     * NOTE: No checks are performed.
+     * (No checks are performed)
      * 
      * @param aParticleIndex_i Index of particle i
      * @param aParticleIndex_j Index of particle j
@@ -138,7 +139,7 @@ public class ParticlePairElectrostaticsAdHocPotentialCalculator extends Particle
             throw new IllegalStateException("ParticlePairElectrostaticsAdHocPotentialCalculator.calculateParticlePairInteraction: A charged particle does NOT have a charge.");
         }
         final Electrostatics tmpElectrostatics = aParameters.getInteractionDescription().getElectrostatics();
-        final double tmpRij = Math.sqrt(aRij_Square);
+        final double tmpRij = FastMath.sqrt(aRij_Square);
         final double tmpEffectiveChargeProduct = tmpParticleCharge1 * tmpElectrostatics.getEffectiveChargeFactor() * tmpParticleCharge2 * tmpElectrostatics.getEffectiveChargeFactor();
         // Potential energy
         double tmpPotentialEnergy;
@@ -147,7 +148,7 @@ public class ParticlePairElectrostaticsAdHocPotentialCalculator extends Particle
         if (tmpElectrostatics.getEffectiveExponent() == 2.0) {
             tmpFactor = tmpEffectiveChargeProduct / (tmpRij * tmpRij);
         } else {
-            tmpFactor = tmpEffectiveChargeProduct / Math.pow(tmpRij, tmpElectrostatics.getEffectiveExponent());
+            tmpFactor = tmpEffectiveChargeProduct / FastMath.pow(tmpRij, tmpElectrostatics.getEffectiveExponent());
         }
         if (tmpRij <= tmpElectrostatics.getDampingDistance()) {
             tmpFactor *= tmpElectrostatics.getDampingFactor();
@@ -157,11 +158,11 @@ public class ParticlePairElectrostaticsAdHocPotentialCalculator extends Particle
             // <editor-fold defaultstate="collapsed" desc="|F| > Fmax: Set Epot,max according to Fmax">
             double tmpRijFmax;
             if (tmpElectrostatics.getEffectiveExponent() == 2.0) {
-                tmpRijFmax = Math.sqrt(Math.abs(tmpEffectiveChargeProduct)/tmpElectrostatics.getMaximumAbsoluteForceValue());
+                tmpRijFmax = FastMath.sqrt(FastMath.abs(tmpEffectiveChargeProduct)/tmpElectrostatics.getMaximumAbsoluteForceValue());
                 tmpPotentialEnergy = tmpEffectiveChargeProduct / tmpRijFmax;
             } else {
-                tmpRijFmax = Math.pow(Math.abs(tmpEffectiveChargeProduct)/tmpElectrostatics.getMaximumAbsoluteForceValue(), 1.0 / tmpElectrostatics.getEffectiveExponent());
-                tmpPotentialEnergy = tmpEffectiveChargeProduct / Math.pow(tmpRijFmax, tmpElectrostatics.getEffectiveExponent() - 1.0);
+                tmpRijFmax = FastMath.pow(FastMath.abs(tmpEffectiveChargeProduct)/tmpElectrostatics.getMaximumAbsoluteForceValue(), 1.0 / tmpElectrostatics.getEffectiveExponent());
+                tmpPotentialEnergy = tmpEffectiveChargeProduct / FastMath.pow(tmpRijFmax, tmpElectrostatics.getEffectiveExponent() - 1.0);
             }
             if (tmpRij <= tmpElectrostatics.getDampingDistance()) {
                 tmpPotentialEnergy *= tmpElectrostatics.getDampingFactor();
@@ -172,7 +173,7 @@ public class ParticlePairElectrostaticsAdHocPotentialCalculator extends Particle
             if (tmpElectrostatics.getEffectiveExponent() == 2.0) {
                 tmpForceTerm = tmpEffectiveChargeProduct / (tmpRijFmax * tmpRijFmax * tmpRijFmax);
             } else {
-                tmpForceTerm = tmpEffectiveChargeProduct / Math.pow(tmpRijFmax, tmpElectrostatics.getEffectiveExponent() + 1.0);
+                tmpForceTerm = tmpEffectiveChargeProduct / FastMath.pow(tmpRijFmax, tmpElectrostatics.getEffectiveExponent() + 1.0);
             }
             if (tmpRij <= tmpElectrostatics.getDampingDistance()) {
                 tmpForceTerm *= tmpElectrostatics.getDampingFactor();
@@ -186,7 +187,7 @@ public class ParticlePairElectrostaticsAdHocPotentialCalculator extends Particle
             if (tmpElectrostatics.getEffectiveExponent() == 2.0) {
                 tmpPotentialEnergy = tmpEffectiveChargeProduct / tmpRij;
             } else {
-                tmpPotentialEnergy = tmpEffectiveChargeProduct / Math.pow(tmpRij, tmpElectrostatics.getEffectiveExponent() - 1.0);
+                tmpPotentialEnergy = tmpEffectiveChargeProduct / FastMath.pow(tmpRij, tmpElectrostatics.getEffectiveExponent() - 1.0);
             }
             if (tmpRij <= tmpElectrostatics.getDampingDistance()) {
                 tmpPotentialEnergy *= tmpElectrostatics.getDampingFactor();
@@ -197,7 +198,7 @@ public class ParticlePairElectrostaticsAdHocPotentialCalculator extends Particle
             if (tmpElectrostatics.getEffectiveExponent() == 2.0) {
                 tmpForceTerm = tmpEffectiveChargeProduct / (tmpRij * tmpRij * tmpRij);
             } else {
-                tmpForceTerm = tmpEffectiveChargeProduct / Math.pow(tmpRij, tmpElectrostatics.getEffectiveExponent() + 1.0);
+                tmpForceTerm = tmpEffectiveChargeProduct / FastMath.pow(tmpRij, tmpElectrostatics.getEffectiveExponent() + 1.0);
             }
             if (tmpRij <= tmpElectrostatics.getDampingDistance()) {
                 tmpForceTerm *= tmpElectrostatics.getDampingFactor();
@@ -226,7 +227,7 @@ public class ParticlePairElectrostaticsAdHocPotentialCalculator extends Particle
      * NOTE: ParticlePairInteractionCalculator parallelisation guarantees that
      * NO thread-safe implementation of random number generator or double adder 
      * is necessary.
-     * NOTE: No checks are performed.
+     * (No checks are performed)
      * 
      * @param aParticleIndex_i Index of particle i
      * @param aParticleIndex_j Index of particle j

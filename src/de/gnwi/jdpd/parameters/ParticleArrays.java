@@ -204,7 +204,7 @@ public class ParticleArrays {
     // <editor-fold defaultstate="collapsed" desc="Constructor">
     /**
      * Constructor
-     * Note: NO checks are performed.
+     * (No checks are performed)
      * 
      * @param aR_x Current x-components of particle positions in simulation box
      * @param aR_y Current y-components of particle positions in simulation box

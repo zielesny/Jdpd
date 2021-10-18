@@ -28,6 +28,7 @@ import de.gnwi.jdpd.parameters.Parameters;
 import de.gnwi.jdpd.utilities.BoxSize;
 import de.gnwi.jdpd.utilities.PeriodicBoundaries;
 import de.gnwi.jdpd.utilities.AdderGroup;
+import org.apache.commons.math3.util.FastMath;
 
 /**
  * Harmonic bond conservative force calculator
@@ -135,7 +136,7 @@ public class HarmonicBondForceConservativeCalculator extends HarmonicBondPropert
         AdderGroup anAdderGroup,
         Parameters aParameters) {
         final ParticleArrays tmpParticleArrays = aParameters.getParticleArrays();
-        double tmpRij = Math.sqrt(aRij_x * aRij_x + aRij_y * aRij_y + aRij_z * aRij_z);
+        double tmpRij = FastMath.sqrt(aRij_x * aRij_x + aRij_y * aRij_y + aRij_z * aRij_z);
         // NOTE: Sign of tmpDeviation is important for correct force direction, see below!
         double tmpDeviation = tmpRij - aBondLength;
         boolean tmpIsCalculation = false;

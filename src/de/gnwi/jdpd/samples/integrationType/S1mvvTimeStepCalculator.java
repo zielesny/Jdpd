@@ -400,23 +400,45 @@ public class S1mvvTimeStepCalculator implements ITimeStepCalculator {
             if (this.simulationDescription.getInitialPotentialEnergyMinimizationStepNumber() > 0) {
                 IParticlePairForceCalculator tmpParticlePairDpdForceConservativeMinStepCalculator = 
                     this.factory.getParticlePairDpdForceConservativeCalculator(this.conservativeForceAccumulator.getParticlePairDpdForceCalculator());
-                Utils.calculateInitialPotentialEnergyMinimizationSteps(
-                    this.simulationLogger,
-                    this.parameters,
-                    this.factory,
-                    new ForceAccumulator(
+                if (this.simulationDescription.isInitialPotentialEnergyMinimizationWithAllForces()) {
+                    this.simulationLogger.appendIntermediateResults("Initial potential energy minimization with all forces");
+                    Utils.calculateInitialPotentialEnergyMinimizationSteps(
                         this.simulationLogger,
-                        tmpParticlePairDpdForceConservativeMinStepCalculator,
-                        ParticlePairInteractionCalculator.CellBasedCalculationMode.WITH_PARTICLE_CELL_ASSIGNMENTS,
-                        this.conservativeForceAccumulator.getHarmonicBondForceConservativeCalculator(),
-                        this.conservativeForceAccumulator.getParticlePairElectrostaticsForceConservativeCalculator(),
-                        ParticlePairInteractionCalculator.CellBasedCalculationMode.WITH_PARTICLE_CELL_ASSIGNMENTS
-                    ),
-                    this.potentialAccumulator,
-                    this.simulationOutput,
-                    this.particlePositionPool,
-                    this.maximumNumberOfPositionCorrectionTrials
-                );
+                        this.parameters,
+                        this.factory,
+                        new ForceAccumulator(
+                            this.simulationLogger,
+                            tmpParticlePairDpdForceConservativeMinStepCalculator,
+                            ParticlePairInteractionCalculator.CellBasedCalculationMode.WITH_PARTICLE_CELL_ASSIGNMENTS,
+                            this.conservativeForceAccumulator.getHarmonicBondForceConservativeCalculator(),
+                            this.conservativeForceAccumulator.getParticlePairElectrostaticsForceConservativeCalculator(),
+                            ParticlePairInteractionCalculator.CellBasedCalculationMode.WITH_PARTICLE_CELL_ASSIGNMENTS
+                        ),
+                        this.potentialAccumulator,
+                        this.simulationOutput,
+                        this.particlePositionPool,
+                        this.maximumNumberOfPositionCorrectionTrials
+                    );
+                } else {
+                    this.simulationLogger.appendIntermediateResults("Initial potential energy minimization with DPD forces only");
+                    Utils.calculateInitialPotentialEnergyMinimizationSteps(
+                        this.simulationLogger,
+                        this.parameters,
+                        this.factory,
+                        new ForceAccumulator(
+                            this.simulationLogger,
+                            tmpParticlePairDpdForceConservativeMinStepCalculator,
+                            ParticlePairInteractionCalculator.CellBasedCalculationMode.WITH_PARTICLE_CELL_ASSIGNMENTS,
+                            null,
+                            null,
+                            ParticlePairInteractionCalculator.CellBasedCalculationMode.WITH_PARTICLE_CELL_ASSIGNMENTS
+                        ),
+                        this.potentialAccumulator,
+                        this.simulationOutput,
+                        this.particlePositionPool,
+                        this.maximumNumberOfPositionCorrectionTrials
+                    );
+                }
                 this.simulationOutput.setMinimizedParticlePositions(Utils.getParticlePositions(this.parameters, this.particlePositionPool));
                 tmpParticlePairDpdForceConservativeMinStepCalculator.shutdownExecutorService();
             }
@@ -693,7 +715,7 @@ public class S1mvvTimeStepCalculator implements ITimeStepCalculator {
     // <editor-fold defaultstate="collapsed" desc="- Initialisation method">
     /**
      * Initialises integration
-     * NOTE: No checks are performed.
+     * (No checks are performed)
      */
     private void initialiseIntegration() {
         // <editor-fold defaultstate="collapsed" desc="Method call logging">

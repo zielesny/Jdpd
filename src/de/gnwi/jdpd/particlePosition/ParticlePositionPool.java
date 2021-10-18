@@ -36,6 +36,9 @@ public class ParticlePositionPool {
     // </editor-fold>
     //
     // <editor-fold defaultstate="collapsed" desc="Constructor">
+    /**
+     * Constructor
+     */
     public ParticlePositionPool() {
         this.particlePositionQueue = new ConcurrentLinkedQueue<>();
     }

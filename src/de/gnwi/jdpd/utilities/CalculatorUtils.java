@@ -41,6 +41,9 @@ public class CalculatorUtils {
     // </editor-fold>
     //
     // <editor-fold defaultstate="collapsed" desc="Constructor">
+    /**
+     * Constructor
+     */
     public CalculatorUtils() {
         this.executorService = null;
         this.adderGroups = null;
@@ -50,7 +53,7 @@ public class CalculatorUtils {
     // <editor-fold defaultstate="collapsed" desc="Public methods">
     /**
      * Resets adders
-     * NOTE: NO checks are performed.
+     * (No checks are performed)
      */
     public void resetAdders() {
         if (this.adderGroups != null) {
@@ -72,7 +75,7 @@ public class CalculatorUtils {
     
     /**
      * Return accumulated (total) sum of all potential energy adders
-     * NOTE: NO checks are performed.
+     * (No checks are performed)
      * 
      * @return Return accumulated (total) sum of all potential energy adders
      */
@@ -86,7 +89,7 @@ public class CalculatorUtils {
     
     /**
      * Return accumulated (total) sum of all pressure tensor diagonal x term adders
-     * NOTE: NO checks are performed.
+     * (No checks are performed)
      * 
      * @return Return accumulated (total) sum of all pressure tensor diagonal x term adders
      */
@@ -100,7 +103,7 @@ public class CalculatorUtils {
     
     /**
      * Return accumulated (total) sum of all pressure tensor diagonal y term adders
-     * NOTE: NO checks are performed.
+     * (No checks are performed)
      * 
      * @return Return accumulated (total) sum of all pressure tensor diagonal y term adders
      */
@@ -114,7 +117,7 @@ public class CalculatorUtils {
     
     /**
      * Return accumulated (total) sum of all pressure tensor diagonal z term adders
-     * NOTE: NO checks are performed.
+     * (No checks are performed)
      * 
      * @return Return accumulated (total) sum of all pressure tensor diagonal z term adders
      */
@@ -129,7 +132,7 @@ public class CalculatorUtils {
     /**
      * Return accumulated (total) sum of all adders for G value of PNHLN 
      * integration
-     * NOTE: NO checks are performed.
+     * (No checks are performed)
      * 
      * @return Return accumulated (total) sum of all adders for G value of PNHLN 
      * integration
@@ -155,7 +158,7 @@ public class CalculatorUtils {
 
     /**
      * Executor service
-     * NOTE: NO checks are performed.
+     * (No checks are performed)
      * 
      * @param anExecutorService Executer service
      */
@@ -174,7 +177,7 @@ public class CalculatorUtils {
     
     /**
      * Adder groups
-     * NOTE: NO checks are performed.
+     * (No checks are performed)
      * 
      * @param anAdderGroups Adder groups
      */

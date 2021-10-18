@@ -99,7 +99,7 @@ public class ParticlePosition implements Comparable<ParticlePosition> {
     
     /**
      * Sets position
-     * NOTE: NO checks are performed.
+     * (No checks are performed)
      * 
      * @param aParticleToken Particle token
      * @param aMoleculeName Molecule name

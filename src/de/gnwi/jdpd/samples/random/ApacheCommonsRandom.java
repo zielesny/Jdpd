@@ -26,6 +26,7 @@ import org.apache.commons.rng.UniformRandomProvider;
 import org.apache.commons.rng.sampling.distribution.ZigguratNormalizedGaussianSampler;
 import org.apache.commons.rng.sampling.distribution.ContinuousSampler;
 import org.apache.commons.rng.simple.RandomSource;
+import org.apache.commons.math3.util.FastMath;
 
 /**
  * Apache Commons RNG implementation
@@ -36,7 +37,7 @@ import org.apache.commons.rng.simple.RandomSource;
 public class ApacheCommonsRandom implements IRandom {
     
     // <editor-fold defaultstate="collapsed" desc="Private final class variables">
-    private final double SQRT_12 = Math.sqrt(12.0);
+    private final double SQRT_12 = FastMath.sqrt(12.0);
     private final double A_HALF = 0.5;
     
     /**
@@ -298,6 +299,30 @@ public class ApacheCommonsRandom implements IRandom {
         // </editor-fold>
     }
 
+    /**
+     * Constructor
+     * NOTE: Implementation is NOT thread-safe.
+     * 
+     * @param aRandomSource Random source
+     * @param aSeed Seed value (greater/equal 0)
+     * @throws IllegalArgumentException Thrown if an argument is illegal
+     */
+    public ApacheCommonsRandom(RandomSource aRandomSource, int aSeed) {
+        this(aRandomSource, aSeed, 0);
+    }
+
+    /**
+     * Constructor
+     * NOTE: Implementation is NOT thread-safe.
+     * 
+     * @param aRandomSource Random source
+     */
+    public ApacheCommonsRandom(RandomSource aRandomSource) {
+        this.randomSource = aRandomSource;
+        this.randomNumberGenerator = RandomSource.create(this.randomSource);
+        this.gaussianSampler = new ZigguratNormalizedGaussianSampler(this.randomNumberGenerator);
+    }
+    
     /**
      * Constructor
      * NOTE: Implementation is NOT thread-safe.

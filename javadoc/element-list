@@ -15,6 +15,5 @@ de.gnwi.jdpd.samples.interactions.electrostatics
 de.gnwi.jdpd.samples.interactions.nearestNeighbor
 de.gnwi.jdpd.samples.logger
 de.gnwi.jdpd.samples.random
-de.gnwi.jdpd.tests
 de.gnwi.jdpd.tests.interactions
 de.gnwi.jdpd.utilities

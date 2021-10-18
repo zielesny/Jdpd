@@ -50,6 +50,7 @@ import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import org.apache.commons.math3.util.FastMath;
 
 /**
  * Thread-safe static utility methods
@@ -86,6 +87,15 @@ public final class Utils {
     private static final double THREE = 3.0;
     private static final double A_HALF = 0.5;
     private static final double ONE_A_HALF = 1.5;
+    private final static double ONE = 1.0;
+    private final static double TWO = 2.0;
+    private final static double SEVEN = 7.0;
+    private final static double FOURTY_TWO = 42.0;
+    private final static double C7_4 = 7.0 / 4.0;
+    private final static double C21_4 = 21.0 / 4.0;
+    private final static double C5_2 = 5.0 / 2.0;
+    private final static double C35_2 = 35.0 / 2.0;
+    private final static double C105_4 = 105.0 / 4.0;
 
     /**
      * Separator string for molecule name and particle token
@@ -745,13 +755,13 @@ public final class Utils {
         }
         // </editor-fold>
         try {
-            int tmpDays = (int) Math.floor(aTimePeriodInMillis / DAY_FACTOR);
+            int tmpDays = (int) FastMath.floor(aTimePeriodInMillis / DAY_FACTOR);
             long tmpHourRemainder = aTimePeriodInMillis - tmpDays * DAY_FACTOR;
-            int tmpHours = (int) Math.floor(tmpHourRemainder / HOUR_FACTOR);
+            int tmpHours = (int) FastMath.floor(tmpHourRemainder / HOUR_FACTOR);
             long tmpMinRemainder = tmpHourRemainder - tmpHours * HOUR_FACTOR;
-            int tmpMinutes = (int) Math.floor(tmpMinRemainder / MINUTES_FACTOR);
+            int tmpMinutes = (int) FastMath.floor(tmpMinRemainder / MINUTES_FACTOR);
             long tmpSecondsRemainder = tmpMinRemainder - tmpMinutes * MINUTES_FACTOR;
-            int tmpSeconds = (int) Math.floor(tmpSecondsRemainder / SECONDS_FACTOR);
+            int tmpSeconds = (int) FastMath.floor(tmpSecondsRemainder / SECONDS_FACTOR);
             if (tmpDays == 0) {
                 if (tmpHours == 0) {
                     if (tmpMinutes == 0) {
@@ -773,7 +783,7 @@ public final class Utils {
     // <editor-fold defaultstate="collapsed" desc="Array copy methods">
     /**
      * Copies arrays to old arrays
-     * NOTE: No checks are performed.
+     * (No checks are performed)
      * 
      * @param aX x array
      * @param aY y array
@@ -816,7 +826,7 @@ public final class Utils {
     // <editor-fold defaultstate="collapsed" desc="Calculation methods">
     /**
      * Adds b to a
-     * NOTE: NO checks are performed.
+     * (No checks are performed)
      * 
      * @param a_x x-component of a (may be changed)
      * @param a_y y-component of a (may be changed)
@@ -842,7 +852,7 @@ public final class Utils {
 
     /**
      * Fills v for fixed molecules
-     * NOTE: NO checks are performed.
+     * (No checks are performed)
      * 
      * @param aCurrentTimeStep Current time step
      * @param aMoleculeVelocityFixationInfos Molecule velocity fixation infos
@@ -891,7 +901,7 @@ public final class Utils {
     
     /**
      * Copies rOld to r for fixed molecules
-     * NOTE: NO checks are performed.
+     * (No checks are performed)
      * 
      * @param aCurrentTimeStep Current time step
      * @param aMoleculeFixationInfos Molecule fixation infos
@@ -949,7 +959,7 @@ public final class Utils {
     
     /**
      * Corrects r and v for molecule boundaries
-     * NOTE: NO checks are performed.
+     * (No checks are performed)
      * 
      * @param aCurrentTimeStep Current time step
      * @param aMoleculeBoundaryInfos Molecule boundary infos
@@ -1008,7 +1018,7 @@ public final class Utils {
     
     /**
      * Calculates v with f
-     * NOTE: No checks are performed.
+     * (No checks are performed)
      * 
      * @param aV_x Current x-components of particle velocities (may be changed)
      * @param aV_y Current y-components of particle velocities (may be changed)
@@ -1048,7 +1058,7 @@ public final class Utils {
 
     /**
      * Adds gravitational force
-     * NOTE: No checks are performed.
+     * (No checks are performed)
      * 
      * @param aGravitationalAcceleration Gravitational acceleration
      * @param aF_x Current x-components of particle forces
@@ -1108,7 +1118,7 @@ public final class Utils {
 
     /**
      * Adds single molecule acceleration to f.
-     * NOTE: NO checks are performed.
+     * (No checks are performed)
      * 
      * @param aMoleculeAccelerationInfo Molecule acceleration info
      * @param aF_x Current x-components of particle forces
@@ -1168,7 +1178,7 @@ public final class Utils {
     
     /**
      * Calculates r with v
-     * NOTE: No checks are performed.
+     * (No checks are performed)
      * 
      * @param aR_x Current x-position of particle in simulation box (may be changed)
      * @param aR_y Current y-position of particle in simulation box (may be changed)
@@ -1196,7 +1206,7 @@ public final class Utils {
     
     /**
      * Calculates kinetic energy Ukin
-     * NOTE: No checks are performed.
+     * (No checks are performed)
      * 
      * @param aV_x Current x-components of particle velocities
      * @param aV_y Current y-components of particle velocities
@@ -1228,7 +1238,7 @@ public final class Utils {
 
     /**
      * Calculates temperature (i.e. kT, k: Boltzmann constant)
-     * NOTE: No checks are performed.
+     * (No checks are performed)
      * 
      * @param aV_x Current x-components of particle velocities
      * @param aV_y Current y-components of particle velocities
@@ -1249,7 +1259,7 @@ public final class Utils {
     
     /**
      * Calculates mean magnitude of vector
-     * NOTE: No checks are performed.
+     * (No checks are performed)
      * 
      * @param aX x-component of vector
      * @param aY y-component of vector
@@ -1263,7 +1273,7 @@ public final class Utils {
     ) {
         double tmpMeanMagnitude = 0.0;
         for (int i = 0; i < aX.length; i++) {
-            tmpMeanMagnitude += Math.sqrt(aX[i] * aX[i] + aY[i] * aY[i] + aZ[i] * aZ[i]);
+            tmpMeanMagnitude += FastMath.sqrt(aX[i] * aX[i] + aY[i] * aY[i] + aZ[i] * aZ[i]);
         }
         return tmpMeanMagnitude / (double) aX.length;
     }
@@ -1271,7 +1281,7 @@ public final class Utils {
     /**
      * Calculates min, mean and max magnitude of vector components if magnitude
      * is not zero
-     * NOTE: No checks are performed.
+     * (No checks are performed)
      * 
      * @param aX x-component of vector
      * @param aY y-component of vector
@@ -1291,7 +1301,7 @@ public final class Utils {
         for (int i = 0; i < aX.length; i++) {
             if (aX[i] != 0.0 || aY[i] != 0.0 || aZ[i] != 0.0) {
                 tmpCounter++;
-                double tmpMagnitude = Math.sqrt(aX[i] * aX[i] + aY[i] * aY[i] + aZ[i] * aZ[i]);
+                double tmpMagnitude = FastMath.sqrt(aX[i] * aX[i] + aY[i] * aY[i] + aZ[i] * aZ[i]);
                 tmpSum += tmpMagnitude;
                 if (tmpMagnitude < tmpMin) {
                     tmpMin = tmpMagnitude;
@@ -1310,7 +1320,7 @@ public final class Utils {
 
     /**
      * Scales v
-     * NOTE: No checks are performed.
+     * (No checks are performed)
      * 
      * @param aV_x Current x-components of particle velocities (may be changed)
      * @param aV_y Current y-components of particle velocities (may be changed)
@@ -1356,7 +1366,7 @@ public final class Utils {
 
     /**
      * Returns velocity scale factor
-     * NOTE: No checks are performed.
+     * (No checks are performed)
      * 
      * @param aV_x Current x-components of particle velocities (may be changed)
      * @param aV_y Current y-components of particle velocities (may be changed)
@@ -1386,12 +1396,12 @@ public final class Utils {
             }
         }
         double tmpDegreesOfFreedom = THREE * (double) aV_x.length - THREE;
-        return Math.sqrt(tmpDegreesOfFreedom * aTemperature/tmpUkinDouble);
+        return FastMath.sqrt(tmpDegreesOfFreedom * aTemperature/tmpUkinDouble);
     }
     
     /**
      * Removes excess momentum from velocities
-     * NOTE: No checks are performed.
+     * (No checks are performed)
      * 
      * @param aV_x Current x-components of particle velocities (may be changed)
      * @param aV_y Current y-components of particle velocities (may be changed)
@@ -1460,7 +1470,7 @@ public final class Utils {
         double aBoxAxisLength,
         double aBoxAxisNegativeHalfLength
     ) {
-        if (Math.abs(aPositionDifference) < Constants.TINY_THRESHOLD) {
+        if (FastMath.abs(aPositionDifference) < Constants.TINY_THRESHOLD) {
             if (aPositionDifference < 0.0) {
                 return -Constants.TINY_THRESHOLD;
             } else {
@@ -1480,7 +1490,7 @@ public final class Utils {
 
     /**
      * Corrects r and v
-     * NOTE: No checks are performed.
+     * (No checks are performed)
      * 
      * @param aR_x x-position of particle in simulation box (may be changed)
      * @param aR_y y-position of particle in simulation box (may be changed)
@@ -1594,7 +1604,7 @@ public final class Utils {
         BoxSize tmpBoxSize = tmpChemicalSystemDescription.getBoxSize();
         PeriodicBoundaries tmpPeriodicBoundaries = tmpSimulationDescription.getPeriodicBoundaries();
         // Step length in DPD units derived from the minimum box side length
-        double tmpStepLength = 0.001 * aConservativeForceAccumulator.getParticlePairDpdForceCalculator().getBoxSize().getMinimumLength();
+        double tmpStepLength = 0.00001 * aConservativeForceAccumulator.getParticlePairDpdForceCalculator().getBoxSize().getMinimumLength();
         aPotentialAccumulator.accumulatePotentials(
             tmpParticleArrays.getBondChunkArraysList(),
             tmpR_x,
@@ -1622,7 +1632,7 @@ public final class Utils {
             );
             double tmpMaximum = 0.0;
             for (int k = 0; k < tmpR_x.length; k++) {
-                tmpMaximum = Math.max(Math.abs(tmpF_x[k]), Math.max(Math.abs(tmpF_y[k]), Math.abs(tmpF_z[k])));
+                tmpMaximum = FastMath.max(FastMath.abs(tmpF_x[k]), FastMath.max(FastMath.abs(tmpF_y[k]), FastMath.abs(tmpF_z[k])));
             }
             double tmpFactor = tmpStepLength / tmpMaximum;
             for (int k = 0; k < tmpR_x.length; k++) {
@@ -1693,7 +1703,7 @@ public final class Utils {
     // <editor-fold defaultstate="collapsed" desc="Particle pair related methods">
     /**
      * Returns particle token pair key.
-     * NOTE: NO checks are performed.
+     * (No checks are performed)
      *
      * @param aParticleToken1 Particle token 1 of pair
      * @param aParticleToken2 Particle token 2 of pair
@@ -1716,7 +1726,7 @@ public final class Utils {
 
     /**
      * Returns particle index pair key.
-     * NOTE: NO checks are performed.
+     * (No checks are performed)
      *
      * @param aParticleIndex1 Particle index 1 of pair
      * @param aParticleIndex2 Particle index 2 of pair
@@ -1729,7 +1739,7 @@ public final class Utils {
     // <editor-fold defaultstate="collapsed" desc="Particle position related methods">
     /**
      * Returns particle positions.
-     * NOTE: NO checks are performed.
+     * (No checks are performed)
      * NOTE: Particle position instances are obtained from specified particle 
      * position pool.
      * 
@@ -1766,7 +1776,7 @@ public final class Utils {
     // <editor-fold defaultstate="collapsed" desc="Molecule-particles related methods">
     /**
      * Returns molecule-particle string.
-     * NOTE: NO checks are performed.
+     * (No checks are performed)
      * 
      * @param aParticleToken Particle token
      * @param aMoleculeName Name of molecule of particle
@@ -1776,12 +1786,121 @@ public final class Utils {
         return aMoleculeName + Utils.MOLECULE_NAME_PARTICLE_TOKEN_SEPARATOR + aParticleToken;
     }
     // </editor-fold>
+    // <editor-fold defaultstate="collapsed" desc="Electrostatics related methods">
+    /**
+     * Returns DPD electrostatics conservative force
+     * (No checks are performed)
+     * 
+     * @param tmpParticleCharge1 Charge of particle 1
+     * @param tmpParticleCharge2 Charge of particle 2
+     * @param tmpElectrostatics Electrostatics object
+     * @param tmpRij Rij
+     * @return DPD electrostatics conservative force
+     */
+    public static double getElectrostaticsDpdForce(
+        double tmpParticleCharge1,
+        double tmpParticleCharge2,
+        Electrostatics tmpElectrostatics,
+        double tmpRij
+    ) {
+        // Coulomb term
+        double tmpTermCoulomb;
+        double tmpDerivativeTermCoulomb;
+        if (tmpElectrostatics.getEffectiveExponent() == 2.0) {
+            tmpTermCoulomb = tmpElectrostatics.getElectrostaticsCoupling() * tmpParticleCharge1 * tmpParticleCharge2 / tmpRij;
+            tmpDerivativeTermCoulomb = -tmpTermCoulomb / tmpRij;
+        } else {
+            tmpTermCoulomb = tmpElectrostatics.getElectrostaticsCoupling() * tmpParticleCharge1 * tmpParticleCharge2 / FastMath.pow(tmpRij, tmpElectrostatics.getEffectiveExponent() - 1);
+            tmpDerivativeTermCoulomb = -(tmpElectrostatics.getEffectiveExponent() - 1) * tmpTermCoulomb / tmpRij;
+        }
+        // Charge distribution
+        double tmpTermChargeDistribution = 1.0;
+        double tmpDerivativeTermChargeDistribution = 0.0;
+        if (tmpElectrostatics.getChargeDistributionType() == Electrostatics.ChargeDistributionType.ALEJANDRE) {
+            double tmpDecayLengthAlejandre = tmpElectrostatics.getDecayLengthAlejandre();
+            double tmpRij_div_halfLambda = TWO * tmpRij / tmpDecayLengthAlejandre;
+            double tmpExp = FastMath.exp(-tmpRij_div_halfLambda);
+            tmpTermChargeDistribution = ONE - (ONE + A_HALF * tmpRij_div_halfLambda) * tmpExp;
+            tmpDerivativeTermChargeDistribution = (ONE + tmpRij_div_halfLambda) * tmpExp / tmpDecayLengthAlejandre;
+        }
+        // Splitting type
+        double tmpTermSplitting = 1.0;
+        double tmpDerivativeTermSplitting = 0.0;
+        if (tmpElectrostatics.getSplittingType()== Electrostatics.SplittingType.FANOURGAKIS) {
+            double tmpRcutoff = tmpElectrostatics.getCutOffLength();
+            double tmpRij_div_Rcutoff = tmpRij / tmpRcutoff;
+            double tmpRij_div_Rcutoff_2 = tmpRij_div_Rcutoff * tmpRij_div_Rcutoff;
+            double tmpRij_div_Rcutoff_4 = tmpRij_div_Rcutoff_2 * tmpRij_div_Rcutoff_2;
+            double tmpRij_div_Rcutoff_5 = tmpRij_div_Rcutoff_4 * tmpRij_div_Rcutoff;
+            double tmpRij_div_Rcutoff_6 = tmpRij_div_Rcutoff_4 * tmpRij_div_Rcutoff_2;
+            double tmpRij_div_Rcutoff_7 = tmpRij_div_Rcutoff_6 * tmpRij_div_Rcutoff;
+            tmpTermSplitting = ONE - C7_4 * tmpRij_div_Rcutoff + C21_4 * tmpRij_div_Rcutoff_5 - SEVEN * tmpRij_div_Rcutoff_6 + C5_2 * tmpRij_div_Rcutoff_7;
+            tmpDerivativeTermSplitting = (C35_2 * tmpRij_div_Rcutoff_6 - FOURTY_TWO * tmpRij_div_Rcutoff_5 + C105_4 * tmpRij_div_Rcutoff_4 - C7_4) / tmpRcutoff;
+        }
+        // Force = - dEpot/dRij
+        double tmpForce =
+            -(
+                tmpDerivativeTermCoulomb * tmpTermChargeDistribution * tmpTermSplitting +
+                tmpTermCoulomb * tmpDerivativeTermChargeDistribution * tmpTermSplitting +
+                tmpTermCoulomb * tmpTermChargeDistribution * tmpDerivativeTermSplitting
+            );
+        return tmpForce;
+    }
+
+    /**
+     * Returns DPD electrostatics potential energy
+     * (No checks are performed)
+     * 
+     * @param tmpParticleCharge1 Charge of particle 1
+     * @param tmpParticleCharge2 Charge of particle 2
+     * @param tmpElectrostatics Electrostatics object
+     * @param tmpRij Rij
+     * @return DPD electrostatics potential
+     */
+    public static double getElectrostaticsDpdPotentialEnergy(
+        double tmpParticleCharge1,
+        double tmpParticleCharge2,
+        Electrostatics tmpElectrostatics,
+        double tmpRij
+    ) {
+        // Coulomb term
+        double tmpTermCoulomb;
+        if (tmpElectrostatics.getEffectiveExponent() == 2.0) {
+            tmpTermCoulomb = tmpElectrostatics.getElectrostaticsCoupling() * tmpParticleCharge1 * tmpParticleCharge2 / tmpRij;
+        } else {
+            tmpTermCoulomb = tmpElectrostatics.getElectrostaticsCoupling() * tmpParticleCharge1 * tmpParticleCharge2 / FastMath.pow(tmpRij, tmpElectrostatics.getEffectiveExponent() - 1);
+        }
+        // Charge distribution
+        double tmpTermChargeDistribution = 1.0;
+        if (tmpElectrostatics.getChargeDistributionType() == Electrostatics.ChargeDistributionType.ALEJANDRE) {
+            double tmpDecayLengthAlejandre = tmpElectrostatics.getDecayLengthAlejandre();
+            double tmpRij_div_halfLambda = TWO * tmpRij / tmpDecayLengthAlejandre;
+            double tmpExp = FastMath.exp(-tmpRij_div_halfLambda);
+            tmpTermChargeDistribution = ONE - (ONE + A_HALF * tmpRij_div_halfLambda) * tmpExp;
+        }
+        // Splitting type
+        double tmpTermSplitting = 1.0;
+        if (tmpElectrostatics.getSplittingType()== Electrostatics.SplittingType.FANOURGAKIS) {
+            double tmpRcutoff = tmpElectrostatics.getCutOffLength();
+            double tmpRij_div_Rcutoff = tmpRij / tmpRcutoff;
+            double tmpRij_div_Rcutoff_2 = tmpRij_div_Rcutoff * tmpRij_div_Rcutoff;
+            double tmpRij_div_Rcutoff_4 = tmpRij_div_Rcutoff_2 * tmpRij_div_Rcutoff_2;
+            double tmpRij_div_Rcutoff_5 = tmpRij_div_Rcutoff_4 * tmpRij_div_Rcutoff;
+            double tmpRij_div_Rcutoff_6 = tmpRij_div_Rcutoff_4 * tmpRij_div_Rcutoff_2;
+            double tmpRij_div_Rcutoff_7 = tmpRij_div_Rcutoff_6 * tmpRij_div_Rcutoff;
+            tmpTermSplitting = ONE - C7_4 * tmpRij_div_Rcutoff + C21_4 * tmpRij_div_Rcutoff_5 - SEVEN * tmpRij_div_Rcutoff_6 + C5_2 * tmpRij_div_Rcutoff_7;
+        }
+        // Epot
+        double tmpPotential = tmpTermCoulomb * tmpTermChargeDistribution * tmpTermSplitting;
+        return tmpPotential;
+    }
+    // </editor-fold>
     // </editor-fold>
     //
     // <editor-fold defaultstate="collapsed" desc="Private methods">
     /**
      * Corrects r and v component for molecule boundaries
-     * NOTE: NO checks are performed.
+     * (No checks are performed)
      * 
      * @param aR Current component of particle position in simulation box (may be changed)
      * @param aV Current component of particle velocities (may be changed)
@@ -1827,7 +1946,7 @@ public final class Utils {
 
     /**
      * Corrects r
-     * NOTE: No checks are performed.
+     * (No checks are performed)
      * 
      * @param aR_x x-position of particle in simulation box (may be changed)
      * @param aR_y y-position of particle in simulation box (may be changed)
@@ -1869,7 +1988,7 @@ public final class Utils {
 
     /**
      * Corrects r component
-     * NOTE: No checks are performed.
+     * (No checks are performed)
      * 
      * @param aR Current component of particle position in simulation box (may be changed)
      * @param anIsPeriodicBoundary True: Periodic boundary, false: Otherwise
@@ -1910,7 +2029,7 @@ public final class Utils {
 
     /**
      * Corrects r and v for periodic boundary
-     * NOTE: No checks are performed.
+     * (No checks are performed)
      * 
      * @param aR Current component of particle position in simulation box (may be changed)
      * @param aV Current component of particle velocities (may be changed)
@@ -1955,7 +2074,7 @@ public final class Utils {
     
     /**
      * Corrects r component for periodic boundary
-     * NOTE: No checks are performed.
+     * (No checks are performed)
      * 
      * @param aR Current component of particle position in simulation box (may be changed)
      * @param anIndex Index

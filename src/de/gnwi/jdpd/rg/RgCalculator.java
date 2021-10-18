@@ -21,6 +21,8 @@ package de.gnwi.jdpd.rg;
 
 import de.gnwi.jdpd.utilities.BoxSize;
 import de.gnwi.jdpd.utilities.PeriodicBoundaries;
+import de.gnwi.jdpd.utilities.Utils;
+import org.apache.commons.math3.util.FastMath;
 
 /**
  * Particle radius of gyration calculation
@@ -150,13 +152,16 @@ public class RgCalculator {
         this.boxSize = aBoxSize;
         this.periodicBoundaries = aPeriodicBoundaries;
         this.numberOfMolecules = this.totalMoleculeParticleNumber/this.singleMoleculeParticleNumber;
+        this.r_x = null;
+        this.r_y = null;
+        this.r_z = null;
     }
     // </editor-fold>
     //
     // <editor-fold defaultstate="collapsed" desc="Public methods">
     /**
      * Calculates the particle radius of gyration
-     * NOTE: NO checks are performed.
+     * (No checks are performed)
      * NOTE: aR_x, aR_y, aR_z and aParticleMolarMasses correspond to each other,
      *       e.g. aR_x[i] and aParticleMolarMasses[i] refer to the same 
      *       particle i
@@ -171,10 +176,23 @@ public class RgCalculator {
         double[] aR_x,
         double[] aR_y,
         double[] aR_z,
-        double[] aParticleMolarMasses) {
-        this.r_x = aR_x;
-        this.r_y = aR_y;
-        this.r_z = aR_z;
+        double[] aParticleMolarMasses
+    ) {
+        if (this.r_x == null) {
+            this.r_x = new double[aR_x.length];
+            this.r_y = new double[aR_y.length];
+            this.r_z = new double[aR_z.length];
+        }
+        // IMPORTANT: Copy aR_x, aR_y, aR_z to this.r_x, this.r_y, this.r_z
+        // since the latter arrays may be changed during Rg calculation
+        Utils.copyToOld(
+            aR_x, 
+            aR_y, 
+            aR_z, 
+            this.r_x, 
+            this.r_y, 
+            this.r_z
+        );
         this.particleMolarMasses = aParticleMolarMasses;
         double tmpRgSum = 0;
         for (int i = 0; i < this.numberOfMolecules; i++) {
@@ -201,7 +219,7 @@ public class RgCalculator {
     /**
      * Calculates the particle radius of gyration of a single molecule with
      * specified start and (exclusive) end index in this.r_x etc.
-     * NOTE: NO checks are performed.
+     * (No checks are performed)
      * 
      * @param aSingleMoleculeStartIndex Single molecule start index in this.r_x etc.
      * @param aSingleMoleculeExclusiveEndIndex Exclusive single molecule end index in this.r_x etc.
@@ -273,12 +291,12 @@ public class RgCalculator {
             tmpRg += tmpDelta * this.particleMolarMasses[i];
         }
         // </editor-fold>
-        return Math.sqrt(tmpRg / this.molarMass);
+        return FastMath.sqrt(tmpRg / this.molarMass);
     }
     
     /**
      * Corrects this.r_x, this.r_y or this.r_z
-     * NOTE: NO checks are performed.
+     * (No checks are performed)
      * 
      * @param aStartIndex Start index in aR_i
      * @param anExclusiveEndIndex Exclusive end index in aR_i

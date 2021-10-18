@@ -46,7 +46,7 @@ public class MoleculeAccelerationInfo extends MoleculeAccelerationDescription {
     // <editor-fold defaultstate="collapsed" desc="Constructor">
     /**
      * Constructor
-     * Note: NO checks are performed.
+     * (No checks are performed)
      * 
      * @param aMoleculeName Name of molecule
      * @param anAccelerationX x-component of acceleration

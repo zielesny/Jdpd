@@ -339,7 +339,7 @@ public class ParticlePairDistanceParameters {
     
     /**
      * Consolidates arrays
-     * NOTE: NO checks are performed.
+     * (No checks are performed)
      */
     private void consolidate() {
         if (!this.isConsolidated) {
@@ -404,7 +404,7 @@ public class ParticlePairDistanceParameters {
     
     /**
      * Consolidates integer arrays
-     * NOTE: No checks are performed.
+     * (No checks are performed)
      * 
      * @param tmpNewArraySize New array size
      * @param anArrayList Array list with arrays to consolidate
@@ -440,7 +440,7 @@ public class ParticlePairDistanceParameters {
 
     /**
      * Consolidates double arrays
-     * NOTE: No checks are performed.
+     * (No checks are performed)
      * 
      * @param tmpNewArraySize New array size
      * @param anArrayList Array list with arrays to consolidate

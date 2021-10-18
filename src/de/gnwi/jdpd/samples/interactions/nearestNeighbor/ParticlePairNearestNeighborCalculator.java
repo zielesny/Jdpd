@@ -29,6 +29,7 @@ import de.gnwi.jdpd.utilities.ParticlePairDistanceParameters;
 import de.gnwi.jdpd.utilities.PeriodicBoundaries;
 import de.gnwi.jdpd.utilities.RandomAdderGroup;
 import java.util.concurrent.atomic.AtomicInteger;
+import org.apache.commons.math3.util.FastMath;
 
 /**
  * Particle pair nearest-neighbor calculator that uses 
@@ -89,7 +90,7 @@ public class ParticlePairNearestNeighborCalculator extends ParticlePairInteracti
      * NO thread-safe implementation of random number generator or double adder 
      * is necessary.
      * NOTE: aRandomAdderGroup is used for potential value accumulation.
-     * NOTE: No checks are performed.
+     * (No checks are performed)
      * 
      * @param aParticleIndex_i Index of particle i
      * @param aParticleIndex_j Index of particle j
@@ -113,7 +114,7 @@ public class ParticlePairNearestNeighborCalculator extends ParticlePairInteracti
         Parameters aParameters,
         ParticlePairDistanceParameters aParticlePairDistanceParameters
     ) {
-        final double tmpRij = Math.sqrt(aRij_Square);
+        final double tmpRij = FastMath.sqrt(aRij_Square);
         // Check if distance is small enough
         if (tmpRij <= aParameters.getChemicalSystemDescription().getNearestNeighborDistance()) {
             final boolean[] tmpIsNearestNeighborBaseParticleDeterminations = aParameters.getParticleArrays().isNearestNeighborBaseParticleDeterminations();
@@ -162,7 +163,7 @@ public class ParticlePairNearestNeighborCalculator extends ParticlePairInteracti
      * NOTE: ParticlePairInteractionCalculator parallelisation guarantees that
      * NO thread-safe implementation of random number generator or double adder 
      * is necessary.
-     * NOTE: No checks are performed.
+     * (No checks are performed)
      * 
      * @param aParticleIndex_i Index of particle i
      * @param aParticleIndex_j Index of particle j

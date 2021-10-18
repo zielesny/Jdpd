@@ -32,6 +32,7 @@ import de.gnwi.jdpd.utilities.ParticlePairDistanceParameters;
 import de.gnwi.jdpd.utilities.PeriodicBoundaries;
 import de.gnwi.jdpd.utilities.RandomAdderGroup;
 import java.util.concurrent.atomic.AtomicInteger;
+import org.apache.commons.math3.util.FastMath;
 
 /**
  * Particle pair DPD dissipative force calculator for SCMVV integration type 
@@ -137,7 +138,7 @@ public class ParticlePairScmvvDpdForceDissipativeCutoff1Calculator extends Parti
      * NOTE: ParticlePairInteractionCalculator parallelisation guarantees that
      * NO thread-safe implementation of random number generator or double adder 
      * is necessary.
-     * NOTE: No checks are performed.
+     * (No checks are performed)
      * 
      * @param aParticleIndex_i Index of particle i
      * @param aParticleIndex_j Index of particle j
@@ -161,7 +162,7 @@ public class ParticlePairScmvvDpdForceDissipativeCutoff1Calculator extends Parti
         Parameters aParameters,
         ParticlePairDistanceParameters aParticlePairDistanceParameters
     ) {
-        final double tmpRij = Math.sqrt(aRij_Square);
+        final double tmpRij = FastMath.sqrt(aRij_Square);
         this.calculateParticlePairInteraction(
             aParticleIndex_i, 
             aParticleIndex_j, 
@@ -192,7 +193,7 @@ public class ParticlePairScmvvDpdForceDissipativeCutoff1Calculator extends Parti
      * NOTE: ParticlePairInteractionCalculator parallelisation guarantees that
      * NO thread-safe implementation of random number generator or double adder 
      * is necessary.
-     * NOTE: No checks are performed.
+     * (No checks are performed)
      * 
      * @param aParticleIndex_i Index of particle i
      * @param aParticleIndex_j Index of particle j
@@ -253,11 +254,11 @@ public class ParticlePairScmvvDpdForceDissipativeCutoff1Calculator extends Parti
         if (this.simulationLogger.isLogLevel(ILogger.SCMVV) && this.simulationLogger.isScmvvInformationAccumulation()) {
             this.simulationLogger.getScmvvFdissParticleIndexPairCounter().incrementAndGet();
             this.simulationLogger.getScmvvFdissRij_x_Adder().add(aRij_x);
-            this.simulationLogger.getScmvvFdissAbsRij_x_Adder().add(Math.abs(aRij_x));
+            this.simulationLogger.getScmvvFdissAbsRij_x_Adder().add(FastMath.abs(aRij_x));
             this.simulationLogger.getScmvvFdissVij_x_Adder().add(tmpVij_x);
-            this.simulationLogger.getScmvvFdissAbsVij_x_Adder().add(Math.abs(tmpVij_x));
+            this.simulationLogger.getScmvvFdissAbsVij_x_Adder().add(FastMath.abs(tmpVij_x));
             this.simulationLogger.getScmvvFdissRijVij_x_Adder().add(tmpVij_x * aRij_x);
-            this.simulationLogger.getScmvvFdissAbsRijVij_x_Adder().add(Math.abs(tmpVij_x * aRij_x));
+            this.simulationLogger.getScmvvFdissAbsRijVij_x_Adder().add(FastMath.abs(tmpVij_x * aRij_x));
             this.simulationLogger.getScmvvFdissVdotR_Adder().add(tmpVij_x * aRij_x + tmpVij_y * aRij_y + tmpVij_z * aRij_z);
             this.simulationLogger.getScmvvFdissGammaFactor_Adder().add(aParameters.getInteractionDescription().getDpdGamma() * tmpRijInversMinusOne * tmpRijInversMinusOne);
         }

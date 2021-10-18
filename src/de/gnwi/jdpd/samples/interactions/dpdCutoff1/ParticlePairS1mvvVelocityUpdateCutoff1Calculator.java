@@ -33,6 +33,7 @@ import de.gnwi.jdpd.utilities.ParticlePairDistanceParameters;
 import de.gnwi.jdpd.utilities.PeriodicBoundaries;
 import de.gnwi.jdpd.utilities.RandomAdderGroup;
 import java.util.concurrent.atomic.AtomicInteger;
+import org.apache.commons.math3.util.FastMath;
 
 /**
  * Particle pair velocity update calculator for S1MVV integration type 
@@ -114,7 +115,7 @@ public class ParticlePairS1mvvVelocityUpdateCutoff1Calculator extends ParticlePa
      * NOTE: ParticlePairInteractionCalculator parallelisation guarantees that
      * NO thread-safe implementation of random number generator or double adder 
      * is necessary.
-     * NOTE: No checks are performed.
+     * (No checks are performed)
      * 
      * @param aParticleIndex_i Index of particle i
      * @param aParticleIndex_j Index of particle j
@@ -138,7 +139,7 @@ public class ParticlePairS1mvvVelocityUpdateCutoff1Calculator extends ParticlePa
         Parameters aParameters,
         ParticlePairDistanceParameters aParticlePairDistanceParameters
     ) {
-        final double tmpRij = Math.sqrt(aRij_Square);
+        final double tmpRij = FastMath.sqrt(aRij_Square);
         this.calculateParticlePairInteraction(
             aParticleIndex_i, 
             aParticleIndex_j, 
@@ -169,7 +170,7 @@ public class ParticlePairS1mvvVelocityUpdateCutoff1Calculator extends ParticlePa
      * NOTE: ParticlePairInteractionCalculator parallelisation guarantees that
      * NO thread-safe implementation of random number generator or double adder 
      * is necessary.
-     * NOTE: No checks are performed.
+     * (No checks are performed)
      * 
      * @param aParticleIndex_i Index of particle i
      * @param aParticleIndex_j Index of particle j

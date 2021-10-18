@@ -34,6 +34,7 @@ import de.gnwi.jdpd.utilities.ParticlePairDistanceParameters;
 import de.gnwi.jdpd.utilities.PeriodicBoundaries;
 import de.gnwi.jdpd.utilities.RandomAdderGroup;
 import java.util.concurrent.atomic.AtomicInteger;
+import org.apache.commons.math3.util.FastMath;
 
 /**
  * Particle pair velocity update calculator for PNHLN integration type 
@@ -114,7 +115,7 @@ public class ParticlePairPnhlnVelocityUpdatePlusGCutoff1Calculator extends Parti
     /**
      * Returns accumulated (total) sum of all adders for G value of PNHLN 
      * integration
-     * NOTE: NO checks are performed.
+     * (No checks are performed)
      * 
      * @return Accumulated (total) sum of all adders for G value of PNHLN 
      * integration
@@ -129,7 +130,7 @@ public class ParticlePairPnhlnVelocityUpdatePlusGCutoff1Calculator extends Parti
      * NOTE: ParticlePairInteractionCalculator parallelisation guarantees that
      * NO thread-safe implementation of random number generator or double adder 
      * is necessary.
-     * NOTE: No checks are performed.
+     * (No checks are performed)
      * 
      * @param aParticleIndex_i Index of particle i
      * @param aParticleIndex_j Index of particle j
@@ -153,7 +154,7 @@ public class ParticlePairPnhlnVelocityUpdatePlusGCutoff1Calculator extends Parti
         Parameters aParameters,
         ParticlePairDistanceParameters aParticlePairDistanceParameters
     ) {
-        final double tmpRij = Math.sqrt(aRij_Square);
+        final double tmpRij = FastMath.sqrt(aRij_Square);
         this.calculateParticlePairInteraction(
             aParticleIndex_i, 
             aParticleIndex_j, 
@@ -184,7 +185,7 @@ public class ParticlePairPnhlnVelocityUpdatePlusGCutoff1Calculator extends Parti
      * NOTE: ParticlePairInteractionCalculator parallelisation guarantees that
      * NO thread-safe implementation of random number generator or double adder 
      * is necessary.
-     * NOTE: No checks are performed.
+     * (No checks are performed)
      * 
      * @param aParticleIndex_i Index of particle i
      * @param aParticleIndex_j Index of particle j
@@ -242,7 +243,7 @@ public class ParticlePairPnhlnVelocityUpdatePlusGCutoff1Calculator extends Parti
         final double tmpFactor3 = tmpVij_x * aRij_x + tmpVij_y * aRij_y + tmpVij_z * aRij_z;
         
         final double tmpFactor4 = ONE - aRij - aRij + aRij_Square;
-        final double tmpFactor5 = tmpSimulationDescription.getTimeStepLengthHalf() * tmpFactor2 * tmpFactor3 * (Math.exp(-tmpInteractionDescription.getPnhln_Ksi() * tmpFactor4 * tmpSimulationDescription.getTimeStepLength() / tmpM_ij) - ONE);
+        final double tmpFactor5 = tmpSimulationDescription.getTimeStepLengthHalf() * tmpFactor2 * tmpFactor3 * (FastMath.exp(-tmpInteractionDescription.getPnhln_Ksi() * tmpFactor4 * tmpSimulationDescription.getTimeStepLength() / tmpM_ij) - ONE);
 
         // Update v_i
         tmpV_x[aParticleIndex_i] += tmpFactor1_i * tmpFactor5 * aRij_x;

@@ -47,7 +47,7 @@ public class MoleculeRgValue {
 
     /**
      * Constructor
-     * NOTE: No checks are performed.
+     * (No checks are performed)
      * 
      * @param aMoleculeName Molecule name
      * @param aRgValue Rg value
@@ -61,7 +61,7 @@ public class MoleculeRgValue {
     // <editor-fold defaultstate="collapsed" desc="Public methods">
     /**
      * Set molecule and Rg value
-     * NOTE: No checks are performed.
+     * (No checks are performed)
      * 
      * @param aMoleculeName Molecule name
      * @param aRgValue Rg value

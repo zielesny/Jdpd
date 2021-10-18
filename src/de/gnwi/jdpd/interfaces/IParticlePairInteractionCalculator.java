@@ -39,7 +39,7 @@ public interface IParticlePairInteractionCalculator extends ICalculator {
     /**
      * Calculates particle pair interactions with a distance smaller than 
      * cut-off length based on calculation mode.
-     * NOTE: No checks are performed.
+     * (No checks are performed)
      * NOTE: This method scales linearly with the number of particles.
      * 
      * @param aR_x Current x-components of particle positions in simulation box
@@ -102,7 +102,7 @@ public interface IParticlePairInteractionCalculator extends ICalculator {
     /**
      * Set particle assignments (e.g. for call of method
  this.calculateCellBasedParticlePairInteractionsWithCurrentParticleCellAssignments())
- NOTE: NO checks are performed.
+ (No checks are performed)
      * 
      * @param aHeadParticleIndexOfCellArray Head particle index of cell array
      * (retrieved with corresponding getter)
@@ -114,7 +114,7 @@ public interface IParticlePairInteractionCalculator extends ICalculator {
     /**
      * Set particle assignments (e.g. for call of method
      * this.calculateCellBasedParticlePairInteractionsWithCurrentParticleCellAssignments())
-     * NOTE: NO checks are performed.
+     * (No checks are performed)
      * 
      * @param aParticlePairInteractionCalculator Particle pair interaction calculator whose 
      * head particle index of cell array and next particle index of cell array are 

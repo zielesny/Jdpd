@@ -73,7 +73,7 @@ public class MoleculeTypes {
     // <editor-fold defaultstate="collapsed" desc="Constructor">
     /**
      * Constructor
-     * Note: NO checks are performed.
+     * (No checks are performed)
 
      * @param aMoleculeNameToIndexMap Map of molecule name to molecule index. This index refers to molecule related arrays.
      * @param aMoleculeNames Molecule names

@@ -86,7 +86,7 @@ public class MoleculeBoundaryDescription {
     // <editor-fold defaultstate="collapsed" desc="Constructor">
     /**
      * Constructor
-     * Note: NO checks are performed.
+     * (No checks are performed)
      * 
      * @param aMoleculeName Name of molecule
      * @param anIsBoundaryX True: Boundary in x-direction is defined, false: Otherwise

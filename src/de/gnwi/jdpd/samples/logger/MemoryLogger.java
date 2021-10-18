@@ -48,12 +48,12 @@ public class MemoryLogger implements ILogger {
     /**
      * Logger format string
      */
-    public final String FORMAT = "(%s): %s";
+    public final String FORMAT = "%s : %s";
 
     /**
      * Logger format string with ID
      */
-    public final String ID_FORMAT = "%s(%s): %s (ID = %s)";
+    public final String ID_FORMAT = "%s %s : %s (ID = %s)";
     
     /**
      * Start prefix for simulation logger
@@ -243,7 +243,7 @@ public class MemoryLogger implements ILogger {
     public void appendSimulationInit(String aMessage) {
         // No checks are performed!
         if (this.isLogLevel(ILogger.INIT)) {
-            this.append(String.format(this.FORMAT, "INIT", aMessage));
+            this.append(String.format(this.FORMAT, "INIT       ", aMessage));
         }
     }
     // </editor-fold>
@@ -258,7 +258,7 @@ public class MemoryLogger implements ILogger {
     public void appendSimulationProgress(String aMessage) {
         // No checks are performed!
         if (this.isLogLevel(ILogger.PROGRESS)) {
-            this.append(String.format(this.FORMAT, "PROGRESS", aMessage));
+            this.append(String.format(this.FORMAT, "PROGRESS   ", aMessage));
         }
     }
     // </editor-fold>
@@ -273,7 +273,7 @@ public class MemoryLogger implements ILogger {
     public void appendTimeStep(String aMessage) {
         // No checks are performed!
         if (this.isLogLevel(ILogger.TIME_STEP)) {
-            this.append(String.format(this.FORMAT, "TIME_STEP", aMessage));
+            this.append(String.format(this.FORMAT, "TIME_STEP  ", aMessage));
         }
     }
 
@@ -288,7 +288,7 @@ public class MemoryLogger implements ILogger {
     public void appendTimeStepStart(int aTimeStep, long anId) {
         // No checks are performed!
         if (this.isLogLevel(ILogger.TIME_STEP)) {
-            this.append(String.format(this.ID_FORMAT, this.START_PREFIX, "TIME_STEP", "Time step = " + String.valueOf(aTimeStep), String.valueOf(anId)));
+            this.append(String.format(this.ID_FORMAT, this.START_PREFIX, "TIME_STEP  ", "Time step = " + String.valueOf(aTimeStep), String.valueOf(anId)));
         }
     }
 
@@ -303,7 +303,7 @@ public class MemoryLogger implements ILogger {
     public void appendTimeStepEnd(int aTimeStep, long anId) {
         // No checks are performed!
         if (this.isLogLevel(ILogger.TIME_STEP)) {
-            this.append(String.format(this.ID_FORMAT, this.END_PREFIX, "TIME_STEP", "Time step = " + String.valueOf(aTimeStep), String.valueOf(anId)));
+            this.append(String.format(this.ID_FORMAT, this.END_PREFIX, "TIME_STEP  ", "Time step = " + String.valueOf(aTimeStep), String.valueOf(anId)));
         }
     }
     // </editor-fold>
@@ -408,7 +408,7 @@ public class MemoryLogger implements ILogger {
     public void appendVelocityScaleFactor(String aMessage) {
         // No checks are performed!
         if (this.isLogLevel(ILogger.V_SCALE)) {
-            this.append(String.format(this.FORMAT, "V_SCALE", aMessage));
+            this.append(String.format(this.FORMAT, "V_SCALE    ", aMessage));
         }
     }
     // </editor-fold>
@@ -423,7 +423,7 @@ public class MemoryLogger implements ILogger {
     public void appendIntermediateResults(String aMessage) {
         // No checks are performed!
         if (this.isLogLevel(ILogger.QUANTITY)) {
-            this.append(String.format(this.FORMAT, "QUANTITY", aMessage));
+            this.append(String.format(this.FORMAT, "QUANTITY   ", aMessage));
         }
     }
     /**
@@ -440,7 +440,7 @@ public class MemoryLogger implements ILogger {
             String tmpFormat = anArrayName + "[%s] = %s";
             for (int i = 0; i < anArray.length; i++) {
                 String tmpMessage = String.format(tmpFormat, String.valueOf(i), String.valueOf(anArray[i]));
-                this.append(String.format(this.FORMAT, "QUANTITY", tmpMessage));
+                this.append(String.format(this.FORMAT, "QUANTITY   ", tmpMessage));
             }
         }
     }
@@ -456,7 +456,7 @@ public class MemoryLogger implements ILogger {
     public void appendParallelization(String aMessage) {
         // No checks are performed!
         if (this.isLogLevel(ILogger.PARALLEL)) {
-            this.append(String.format(this.FORMAT, "PARALLEL", aMessage));
+            this.append(String.format(this.FORMAT, "PARALLEL   ", aMessage));
         }
     }
     // </editor-fold>
@@ -471,7 +471,7 @@ public class MemoryLogger implements ILogger {
     public void appendAij(String aMessage) {
         // No checks are performed!
         if (this.isLogLevel(ILogger.A_IJ)) {
-            this.append(String.format(this.FORMAT, "A_IJ", aMessage));
+            this.append(String.format(this.FORMAT, "A_IJ       ", aMessage));
         }
     }
     // </editor-fold>
@@ -486,7 +486,7 @@ public class MemoryLogger implements ILogger {
     public void appendParticleForceMagnitude(String aMessage) {
         // No checks are performed!
         if (this.isLogLevel(ILogger.PARTICLE)) {
-            this.append(String.format(this.FORMAT, "PARTICLE", aMessage));
+            this.append(String.format(this.FORMAT, "PARTICLE   ", aMessage));
         }
     }
     // </editor-fold>
@@ -747,7 +747,7 @@ public class MemoryLogger implements ILogger {
      * in corresponding lines with each line appended separately.
      * NOTE: Method MUST be synchronised in order to get atomic 
      *       append-operations.
-     * NOTE: No checks are performed.
+     * (No checks are performed)
      * 
      * @param aMessage Message
      */
@@ -768,7 +768,7 @@ public class MemoryLogger implements ILogger {
      * Appends an exception.
      * NOTE: Method MUST be synchronised in order to get atomic 
      *       append-operations.
-     * NOTE: No checks are performed.
+     * (No checks are performed)
      * 
      * @param aMessage Message
      */

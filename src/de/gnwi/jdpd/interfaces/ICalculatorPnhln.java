@@ -29,7 +29,7 @@ public interface ICalculatorPnhln {
     /**
      * Returns accumulated (total) sum of all adders for G value of PNHLN 
      * integration
-     * NOTE: NO checks are performed.
+     * (No checks are performed)
      * 
      * @return Accumulated (total) sum of all adders for G value of PNHLN 
      * integration

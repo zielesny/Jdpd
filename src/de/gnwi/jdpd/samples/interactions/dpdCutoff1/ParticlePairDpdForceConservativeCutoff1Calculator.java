@@ -32,6 +32,7 @@ import de.gnwi.jdpd.utilities.ParticlePairDistanceParameters;
 import de.gnwi.jdpd.utilities.PeriodicBoundaries;
 import de.gnwi.jdpd.utilities.RandomAdderGroup;
 import java.util.concurrent.atomic.AtomicInteger;
+import org.apache.commons.math3.util.FastMath;
 
 /**
  * Particle pair DPD conservative force calculator that uses 
@@ -130,7 +131,7 @@ public class ParticlePairDpdForceConservativeCutoff1Calculator extends ParticleP
      * NOTE: ParticlePairInteractionCalculator parallelisation guarantees that
      * NO thread-safe implementation of random number generator or double adder 
      * is necessary.
-     * NOTE: No checks are performed.
+     * (No checks are performed)
      * 
      * @param aParticleIndex_i Index of particle i
      * @param aParticleIndex_j Index of particle j
@@ -157,7 +158,7 @@ public class ParticlePairDpdForceConservativeCutoff1Calculator extends ParticleP
         // Support quantities
         final ParticleArrays tmpParticleArrays = aParameters.getParticleArrays();
         final int[] tmpParticleTypeIndices = tmpParticleArrays.getParticleTypeIndices();
-        final double tmpRij = Math.sqrt(aRij_Square);
+        final double tmpRij = FastMath.sqrt(aRij_Square);
         final double tmpFactor = aParameters.getInteractionDescription().getAij()[tmpParticleTypeIndices[aParticleIndex_i]][tmpParticleTypeIndices[aParticleIndex_j]] * (ONE/tmpRij - ONE);
         // DPD force: Conservative
         final double tmpFij_x = tmpFactor * aRij_x;
@@ -194,7 +195,7 @@ public class ParticlePairDpdForceConservativeCutoff1Calculator extends ParticleP
      * NOTE: ParticlePairInteractionCalculator parallelisation guarantees that
      * NO thread-safe implementation of random number generator or double adder 
      * is necessary.
-     * NOTE: No checks are performed.
+     * (No checks are performed)
      * 
      * @param aParticleIndex_i Index of particle i
      * @param aParticleIndex_j Index of particle j

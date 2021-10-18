@@ -36,7 +36,7 @@ public class SimulationCounts {
     // <editor-fold defaultstate="collapsed" desc="Constructor">
     /**
      * Constructor
-     * Note: NO checks are performed.
+     * (No checks are performed)
      * 
      * @param aParticleNumber Number of particles in simulation box
      */

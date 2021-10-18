@@ -26,6 +26,52 @@ package de.gnwi.jdpd.utilities;
  */
 public class Electrostatics {
 
+    // <editor-fold defaultstate="collapsed" desc="Public enums">
+    /**
+     * Type of charge distribution
+     */
+    public enum ChargeDistributionType {
+        
+        /**
+         * No charge distribution, i.e. point charges
+         */
+        NONE,
+        /**
+         * Alejandre charge distribution
+         * 
+         * Source: 
+         * M. González-Melchor, E. Mayoral, M. E. Velázquez and J. Alejandre
+         * Electrostatic interactions in dissipative particle dynamics using 
+         * the Ewald sums
+         * The Journal of Chemical Physics 125, 2006, 224107
+         */
+        ALEJANDRE
+        
+    }
+
+    /**
+     * Splitting type
+     */
+    public enum SplittingType {
+        
+        /**
+         * No splitting
+         */
+        NONE,
+        /**
+         * Fanourgakis splitting
+         * 
+         * Source: 
+         * G. S. Fanourgakis
+         * An Extension of Wolf’s Method for the Treatment of Electrostatic 
+         * Interactions: Application to Liquid Water and Aqueous Solutions
+         * J. Phys. Chem. B 119, 2015, 1974−1985
+         */
+        FANOURGAKIS
+        
+    }
+    // </editor-fold>
+    //
     // <editor-fold defaultstate="collapsed" desc="Private final class variables">
     /**
      * Cut-off length in DPD units
@@ -56,12 +102,32 @@ public class Electrostatics {
      * Damping factor
      */
     private final double dampingFactor;
+    
+    /**
+     * Electrostatics coupling constant
+     */
+    private final double electrostaticsCoupling;
+    
+    /**
+     * Charge distribution type
+     */
+    private final ChargeDistributionType chargeDistributionType;
+    
+    /**
+     * Alejandre decay length
+     */
+    private final double decayLengthAlejandre;
+    
+    /**
+     * Splitting type
+     */
+    private final SplittingType splittingType;
     // </editor-fold>
     //
-    // <editor-fold defaultstate="collapsed" desc="Constructor">
+    // <editor-fold defaultstate="collapsed" desc="Constructors">
     /**
      * Constructor
-     * NOTE: NO checks are performed.
+     * (No checks are performed)
      * 
      * @param aCutOffLength Cut-off length in DPD units
      * @param aMaximumAbsoluteForceValue Maximum absolute force value in DPD units
@@ -84,6 +150,49 @@ public class Electrostatics {
         this.effectiveExponent = anEffectiveExponent;
         this.dampingDistance = aDampingDistance;
         this.dampingFactor = aDampingFactor;
+
+        this.electrostaticsCoupling = 1;
+        this.chargeDistributionType = ChargeDistributionType.NONE;
+        this.decayLengthAlejandre = 1;
+        this.splittingType = SplittingType.NONE;
+    }
+
+    /**
+     * Constructor
+     * (No checks are performed)
+     * 
+     * @param aCutOffLength Cut-off length in DPD units
+     * @param aMaximumAbsoluteForceValue Maximum absolute force value in DPD units
+     * @param anEffectiveExponent Effective exponent
+     * @param aDampingDistance Damping distance in DPD units
+     * @param aDampingFactor Damping factor
+     * @param anElectrostaticsCoupling Electrostatics coupling constant
+     * @param aChargeDistributionType Charge distribution type
+     * @param aDecayLengthAlejandre Alejandre decay length
+     * @param aSplittingType Splitting type
+     */
+    public Electrostatics(
+        double aCutOffLength,
+        double aMaximumAbsoluteForceValue,
+        double anEffectiveExponent,
+        double aDampingDistance,
+        double aDampingFactor,
+        double anElectrostaticsCoupling,
+        ChargeDistributionType aChargeDistributionType,
+        double aDecayLengthAlejandre,
+        SplittingType aSplittingType
+        ) {
+        this.cutOffLength = aCutOffLength;
+        this.maximumAbsoluteForceValue = aMaximumAbsoluteForceValue;
+        this.effectiveExponent = anEffectiveExponent;
+        this.dampingDistance = aDampingDistance;
+        this.dampingFactor = aDampingFactor;
+        this.electrostaticsCoupling = anElectrostaticsCoupling;
+        this.chargeDistributionType = aChargeDistributionType;
+        this.decayLengthAlejandre = aDecayLengthAlejandre;
+        this.splittingType = aSplittingType;
+
+        this.effectiveChargeFactor = 1;
     }
     // </editor-fold>
     //
@@ -140,6 +249,42 @@ public class Electrostatics {
      */
     public double getDampingFactor() {
         return this.dampingFactor;
+    }
+   
+    /**
+     * Electrostatics coupling constant
+     * 
+     * @return Electrostatics coupling constant
+     */
+    public double getElectrostaticsCoupling() {
+        return this.electrostaticsCoupling;
+    }
+    
+    /**
+     * Charge distribution type
+     * 
+     * @return Charge distribution type
+     */
+    public ChargeDistributionType getChargeDistributionType() {
+        return this.chargeDistributionType;
+    }
+    
+    /**
+     * Alejandre decay length
+     * 
+     * @return Alejandre decay length
+     */
+    public double getDecayLengthAlejandre() {
+        return this.decayLengthAlejandre;
+    }
+    
+    /**
+     * Splitting type
+     * 
+     * @return Splitting type
+     */
+    public SplittingType getSplittingType() {
+        return this.splittingType;
     }
     // </editor-fold>
     

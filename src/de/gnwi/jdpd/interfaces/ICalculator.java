@@ -41,7 +41,7 @@ public interface ICalculator {
     
     /**
      * Return accumulated (total) sum of all pressure tensor diagonal x term adders
-     * NOTE: NO checks are performed.
+     * (No checks are performed)
      * 
      * @return Return accumulated (total) sum of all pressure tensor diagonal x term adders
      */
@@ -49,7 +49,7 @@ public interface ICalculator {
     
     /**
      * Return accumulated (total) sum of all pressure tensor diagonal y term adders
-     * NOTE: NO checks are performed.
+     * (No checks are performed)
      * 
      * @return Return accumulated (total) sum of all pressure tensor diagonal y term adders
      */
@@ -57,7 +57,7 @@ public interface ICalculator {
     
     /**
      * Return accumulated (total) sum of all pressure tensor diagonal z term adders
-     * NOTE: NO checks are performed.
+     * (No checks are performed)
      * 
      * @return Return accumulated (total) sum of all pressure tensor diagonal z term adders
      */

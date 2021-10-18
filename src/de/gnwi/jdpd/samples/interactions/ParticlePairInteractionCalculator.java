@@ -520,7 +520,7 @@ public abstract class ParticlePairInteractionCalculator extends CellBox implemen
     /**
      * Calculates particle pair interactions with a distance smaller than 
      * cut-off length based on calculation mode.
-     * NOTE: No checks are performed.
+     * (No checks are performed)
      * NOTE: This method scales linearly with the number of particles.
      * 
      * @param aR_x Current x-components of particle positions in simulation box
@@ -570,7 +570,7 @@ public abstract class ParticlePairInteractionCalculator extends CellBox implemen
      * Calculates particle pair interactions with a distance smaller than 
      * cut-off length based on cell partitioning. Particle cell assignments are 
      * calculated.
-     * NOTE: No checks are performed.
+     * (No checks are performed)
      * NOTE: This method scales linearly with the number of particles.
      * 
      * @param aR_x Current x-components of particle positions in simulation box
@@ -648,7 +648,7 @@ public abstract class ParticlePairInteractionCalculator extends CellBox implemen
      * Calculates particle pair interactions with a distance smaller than 
      * cut-off length based on cell partitioning.
      * NOTE: Particles MUST already be assigned to cells.
-     * NOTE: No checks are performed.
+     * (No checks are performed)
      * NOTE: This method scales linearly with the number of particles.
      * 
      * @param aR_x Current x-components of particle positions in simulation box
@@ -699,7 +699,7 @@ public abstract class ParticlePairInteractionCalculator extends CellBox implemen
      * Calculates particle pair interactions with a distance smaller than 
      * cut-off length based on cache.
      * NOTE: Cache MUST already be set.
-     * NOTE: No checks are performed.
+     * (No checks are performed)
      * 
      * @param aParameters Parameters (may be null)
      * @return True: Operation successful, false: Otherwise
@@ -876,7 +876,7 @@ public abstract class ParticlePairInteractionCalculator extends CellBox implemen
     
     /**
      * Returns accumulated (total) sum of all potential energy adders
-     * NOTE: NO checks are performed.
+     * (No checks are performed)
      * 
      * @return Accumulated (total) sum of all potential energy adders
      */
@@ -887,7 +887,7 @@ public abstract class ParticlePairInteractionCalculator extends CellBox implemen
     
     /**
      * Returns accumulated (total) sum of all pressure tensor diagonal x term adders
-     * NOTE: NO checks are performed.
+     * (No checks are performed)
      * 
      * @return Accumulated (total) sum of all pressure tensor diagonal x term adders
      */
@@ -898,7 +898,7 @@ public abstract class ParticlePairInteractionCalculator extends CellBox implemen
     
     /**
      * Returns accumulated (total) sum of all pressure tensor diagonal y term adders
-     * NOTE: NO checks are performed.
+     * (No checks are performed)
      * 
      * @return Accumulated (total) sum of all pressure tensor diagonal y term adders
      */
@@ -909,7 +909,7 @@ public abstract class ParticlePairInteractionCalculator extends CellBox implemen
     
     /**
      * Returns accumulated (total) sum of all pressure tensor diagonal z term adders
-     * NOTE: NO checks are performed.
+     * (No checks are performed)
      * 
      * @return Accumulated (total) sum of all pressure tensor diagonal z term adders
      */
@@ -1065,7 +1065,7 @@ public abstract class ParticlePairInteractionCalculator extends CellBox implemen
     /**
      * Set particle assignments (e.g. for call of method
  this.calculateCellBasedParticlePairInteractionsWithoutParticleCellAssignments())
- NOTE: NO checks are performed.
+ (No checks are performed)
      * 
      * @param aHeadParticleIndexOfCellArray Head particle index of cell array
      * (retrieved with corresponding getter)
@@ -1081,7 +1081,7 @@ public abstract class ParticlePairInteractionCalculator extends CellBox implemen
     /**
      * Set particle assignments (e.g. for call of method
  this.calculateCellBasedParticlePairInteractionsWithoutParticleCellAssignments())
- NOTE: NO checks are performed.
+ (No checks are performed)
      * 
      * @param aParticlePairInteractionCalculator Particle pair interaction calculator whose 
      * head particle index of cell array and next particle index of cell array are 
@@ -1240,7 +1240,7 @@ public abstract class ParticlePairInteractionCalculator extends CellBox implemen
     }
     /**
      * Support method
-     * NOTE: No checks are performed.
+     * (No checks are performed)
      * 
      * @param aCellIndex Cell index
      * @param aR_x Current x-components of particle positions in simulation box
@@ -1317,7 +1317,7 @@ public abstract class ParticlePairInteractionCalculator extends CellBox implemen
         // Fast implementation for positive values:
         return (int) (aPosition/this.cutOffLengthX);
         // Slower alternative:
-        // return (int) Math.floor(aPosition/this.cutOffLengthX);
+        // return (int) FastMath.floor(aPosition/this.cutOffLengthX);
     }
 
     /**
@@ -1330,7 +1330,7 @@ public abstract class ParticlePairInteractionCalculator extends CellBox implemen
         // Fast implementation for positive values:
         return (int) (aPosition/this.cutOffLengthY);
         // Slower alternative:
-        // return (int) Math.floor(aPosition/this.cutOffLengthY);
+        // return (int) FastMath.floor(aPosition/this.cutOffLengthY);
     }
 
     /**
@@ -1343,12 +1343,12 @@ public abstract class ParticlePairInteractionCalculator extends CellBox implemen
         // Fast implementation for positive values:
         return (int) (aPosition/this.cutOffLengthZ);
         // Slower alternative:
-        // return (int) Math.floor(aPosition/this.cutOffLengthZ);
+        // return (int) FastMath.floor(aPosition/this.cutOffLengthZ);
     }
     
     /**
      * Support method
-     * NOTE: No checks are performed.
+     * (No checks are performed)
      * 
      * @param aParticleIndex_i Index of particle i
      * @param aParticleIndex_j Index of particle j

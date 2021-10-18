@@ -249,7 +249,7 @@ public class ParticleForceMagnitudeAccumulator {
      * ParticleArrays.getF_z
      * are used for accumulative ("+=" and "-=") operations but their initial
      * value is saved and finally restored, i.e. they are NOT changed.
-     * NOTE: No checks are performed.
+     * (No checks are performed)
      * 
      * @param aBondChunkArraysList List of bond chunk arrays (may be null)
      * @param aR_x Current x-components of particle positions in simulation box

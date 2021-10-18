@@ -133,7 +133,7 @@ public class ForceAccumulator {
      * Accumulates forces to 
      * aParameters.getParticleArrays().getF_x() etc. and
      * aParameters.getParticleArrays().getFtwo_x() etc.
-     * NOTE: No checks are performed.
+     * (No checks are performed)
      * 
      * @param aBondChunkArraysList List of bond chunk arrays (may be null)
      * @param aR_x Current x-components of particle positions in simulation box

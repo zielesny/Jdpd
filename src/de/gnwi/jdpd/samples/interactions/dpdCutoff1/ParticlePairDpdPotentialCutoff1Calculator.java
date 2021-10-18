@@ -32,6 +32,7 @@ import de.gnwi.jdpd.utilities.ParticlePairDistanceParameters;
 import de.gnwi.jdpd.utilities.PeriodicBoundaries;
 import de.gnwi.jdpd.utilities.RandomAdderGroup;
 import java.util.concurrent.atomic.AtomicInteger;
+import org.apache.commons.math3.util.FastMath;
 
 /**
  * Particle pair DPD potential calculator that uses 
@@ -105,7 +106,7 @@ public class ParticlePairDpdPotentialCutoff1Calculator extends ParticlePairInter
      * NO thread-safe implementation of random number generator or double adder 
      * is necessary.
      * NOTE: aRandomAdderGroup is used for potential value accumulation.
-     * NOTE: No checks are performed.
+     * (No checks are performed)
      * 
      * @param aParticleIndex_i Index of particle i
      * @param aParticleIndex_j Index of particle j
@@ -132,7 +133,7 @@ public class ParticlePairDpdPotentialCutoff1Calculator extends ParticlePairInter
         final ParticleArrays tmpParticleArrays = aParameters.getParticleArrays();
         final int[] tmpParticleTypeIndices = tmpParticleArrays.getParticleTypeIndices();
         final InteractionDescription tmpInteractionDescription = aParameters.getInteractionDescription();
-        final double tmpRij = Math.sqrt(aRij_Square);
+        final double tmpRij = FastMath.sqrt(aRij_Square);
         final double tmpFactor1 = ONE - tmpRij;
         final double tmpFactor2 = tmpInteractionDescription.getAij()[tmpParticleTypeIndices[aParticleIndex_i]][tmpParticleTypeIndices[aParticleIndex_j]] * tmpFactor1;
         // Potential energy
@@ -161,7 +162,7 @@ public class ParticlePairDpdPotentialCutoff1Calculator extends ParticlePairInter
      * NOTE: ParticlePairInteractionCalculator parallelisation guarantees that
      * NO thread-safe implementation of random number generator or double adder 
      * is necessary.
-     * NOTE: No checks are performed.
+     * (No checks are performed)
      * 
      * @param aParticleIndex_i Index of particle i
      * @param aParticleIndex_j Index of particle j

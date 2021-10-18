@@ -46,7 +46,7 @@ public class MoleculeVelocityFixationDescription extends MoleculeFixationDescrip
     // <editor-fold defaultstate="collapsed" desc="Constructor">
     /**
      * Constructor
-     * Note: NO checks are performed.
+     * (No checks are performed)
      * 
      * @param aMoleculeName Name of molecule
      * @param anIsFixedX True: x-component of all particles of molecule is fixed, false: Otherwise

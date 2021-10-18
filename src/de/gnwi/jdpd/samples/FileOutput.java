@@ -96,7 +96,7 @@ public class FileOutput implements IOutput {
         // <editor-fold defaultstate="collapsed" desc="Constructor">
         /**
          * Constructor
-         * Note: NO checks are performed.
+         * (No checks are performed)
          * 
          * @param aParticlePositionsFilePathname Particle positions file pathname
          * @param aParticlePositions Particle positions 
@@ -746,7 +746,7 @@ public class FileOutput implements IOutput {
 
     /**
      * Sets simulation step information
-     * Note: NO checks are performed.
+     * (No checks are performed)
      * Note: Particle position instances are set in ParticlePositionPool for re-use.
      * 
      * @param aSimulationStep Simulation step
@@ -1139,7 +1139,7 @@ public class FileOutput implements IOutput {
     
     /**
      * Pathname of Rg file
-     * NOTE: NO checks are performed.
+     * (No checks are performed)
      * 
      * @param aMoleculeName Molecule name
      * @return Pathname of Rg file
@@ -1150,7 +1150,7 @@ public class FileOutput implements IOutput {
     
     /**
      * Updates base to nearest-neighbor map (see code)
-     * NOTE: NO checks are performed.
+     * (No checks are performed)
      * 
      * @param aBaseToNearestNeighborFrequencyMap Base to nearest-neighbor frequency map (NOT allowed to be null, is NOT changed)
      * @param aBaseToNearestNeighborStepFrequencyMap Base to nearest-neighbor step-frequency map (NOT allowed to be null, may be changed)
@@ -1206,7 +1206,7 @@ public class FileOutput implements IOutput {
 
     /**
      * Support method for method updateBaseToNearestNeighborMap().
-     * NOTE: NO checks are performed.
+     * (No checks are performed)
      * 
      * @param aSimulationStepList Simulation step list (NOT allowed to be null, is NOT changed)
      */

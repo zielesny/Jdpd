@@ -71,7 +71,7 @@ public final class Parameters {
     // <editor-fold defaultstate="collapsed" desc="Constructor">
     /**
      * Constructor
-     * NOTE: NO checks are performed.
+     * (No checks are performed)
      * 
      * @param aRestartInfo Restart info
      * @param aParticleArrays Particle arrays

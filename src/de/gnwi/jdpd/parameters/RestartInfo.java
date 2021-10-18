@@ -89,7 +89,7 @@ public class RestartInfo {
     // <editor-fold defaultstate="collapsed" desc="Constructor">
     /**
      * Constructor
-     * Note: NO checks are performed.
+     * (No checks are performed)
      * 
      * @param aLastTimeStep Last simulation time step to which the particle positions and velocities belong
      * @param aR_x Current x-position of particle in simulation box

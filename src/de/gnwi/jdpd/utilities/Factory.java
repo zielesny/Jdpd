@@ -40,6 +40,8 @@ import de.gnwi.jdpd.samples.integrationType.S1mvvTimeStepCalculator;
 import de.gnwi.jdpd.samples.integrationType.ScmvvTimeStepCalculator;
 import de.gnwi.jdpd.samples.interactions.electrostatics.ParticlePairElectrostaticsAdHocForceConservativeCalculator;
 import de.gnwi.jdpd.samples.interactions.electrostatics.ParticlePairElectrostaticsAdHocPotentialCalculator;
+import de.gnwi.jdpd.samples.interactions.electrostatics.ParticlePairElectrostaticsDpdForceConservativeCalculator;
+import de.gnwi.jdpd.samples.interactions.electrostatics.ParticlePairElectrostaticsDpdPotentialCalculator;
 import de.gnwi.jdpd.samples.interactions.dpdCutoff1.ParticlePairDpdForceConservativeCutoff1Calculator;
 import de.gnwi.jdpd.samples.interactions.dpdCutoff1.ParticlePairDpdForceDissipativeCutoff1Calculator;
 import de.gnwi.jdpd.samples.interactions.dpdCutoff1.ParticlePairDpdForceRandomCutoff1Calculator;
@@ -498,7 +500,11 @@ public class Factory {
         /**
          * Ad-hoc electrostatics
          */
-        AD_HOC
+        AD_HOC,
+        /**
+         * DPD electrostatics
+         */
+        DPD
         
     }
     
@@ -1518,6 +1524,16 @@ public class Factory {
                     aParallelizationInfo,
                     aRandomNumberSeed
                 );
+            case DPD:
+                return new ParticlePairElectrostaticsDpdForceConservativeCalculator(
+                    this,
+                    aSimulationLogger, 
+                    aBoxSize, 
+                    aPeriodicBoundaries, 
+                    aCutOffLength,
+                    aParallelizationInfo,
+                    aRandomNumberSeed
+                );
             default:
                 throw new IllegalArgumentException("Factory.getParticlePairElectrostaticsForceConservativeCalculator: Unknown electrostatics type.");
         }
@@ -1534,6 +1550,8 @@ public class Factory {
         switch (this.electrostaticsType) {
             case AD_HOC:
                 return new ParticlePairElectrostaticsAdHocForceConservativeCalculator(aParticlePairInteractionCalculator);
+            case DPD:
+                return new ParticlePairElectrostaticsDpdForceConservativeCalculator(aParticlePairInteractionCalculator);
             default:
                 throw new IllegalArgumentException("Factory.getParticlePairElectrostaticsForceConservativeCalculator: Unknown electrostatics type.");
         }
@@ -1569,6 +1587,16 @@ public class Factory {
                     aParallelizationInfo,
                     aRandomNumberSeed
                 );
+            case DPD:
+                return new ParticlePairElectrostaticsDpdPotentialCalculator(
+                    this,
+                    aSimulationLogger, 
+                    aBoxSize, 
+                    aPeriodicBoundaries, 
+                    aCutOffLength,
+                    aParallelizationInfo,
+                    aRandomNumberSeed
+                );
             default:
                 throw new IllegalArgumentException("Factory.getParticlePairElectrostaticsPotentialCalculator: Unknown electrostatics type.");
         }
@@ -1585,6 +1613,8 @@ public class Factory {
         switch (this.electrostaticsType) {
             case AD_HOC:
                 return new ParticlePairElectrostaticsAdHocPotentialCalculator(aParticlePairInteractionCalculator);
+            case DPD:
+                return new ParticlePairElectrostaticsDpdPotentialCalculator(aParticlePairInteractionCalculator);
             default:
                 throw new IllegalArgumentException("Factory.getParticlePairElectrostaticsPotentialCalculator: Unknown electrostatics type.");
         }

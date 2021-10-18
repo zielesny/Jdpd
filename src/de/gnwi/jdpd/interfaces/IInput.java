@@ -212,6 +212,14 @@ public interface IInput {
     int getInitialPotentialEnergyMinimizationStepNumber();
     
     /**
+     * Type of initial potential energy minimization (true: All forces, false:
+     * DPD force only)
+     * 
+     * @return Type of initial potential energy minimization
+     */
+    public boolean isInitialPotentialEnergyMinimizationWithAllForces();
+    
+    /**
      * Flag for initial potential energy minimization step output
      * 
      * @return True: Potential energy minimization step output is generated, false: Otherwise (NO output)

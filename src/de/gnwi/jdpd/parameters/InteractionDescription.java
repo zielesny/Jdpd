@@ -21,6 +21,7 @@ package de.gnwi.jdpd.parameters;
 
 import de.gnwi.jdpd.utilities.Electrostatics;
 import de.gnwi.jdpd.utilities.GravitationalAcceleration;
+import org.apache.commons.math3.util.FastMath;
 
 /**
  * Simulation interaction parameters
@@ -98,7 +99,7 @@ public class InteractionDescription {
     // <editor-fold defaultstate="collapsed" desc="Constructor">
     /**
      * Constructor
-     * Note: NO checks are performed.
+     * (No checks are performed)
      * 
      * @param aTemperature Temperature in DPD units (i.e. kT fractions, k: Boltzmann constant)
      * @param aDpdSigma DPD sigma parameter in DPD units
@@ -122,7 +123,7 @@ public class InteractionDescription {
         this.temperature = aTemperature;
         this.dpdSigma = aDpdSigma;
         // DPD sigma parameter divided by root of time step length in DPD units
-        this.dpdSigmaDivRootTimeStepLength = this.dpdSigma/Math.sqrt(aSimulationDescription.getTimeStepLength());
+        this.dpdSigmaDivRootTimeStepLength = this.dpdSigma/FastMath.sqrt(aSimulationDescription.getTimeStepLength());
         this.isGaussianRandomDpdForce = anIsGaussianRandomDpdForce;
         this.particleTypeNumber = aParticleTypeNumber;
         this.aij = anAij;

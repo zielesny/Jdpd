@@ -33,6 +33,7 @@ import de.gnwi.jdpd.utilities.ParticlePairDistanceParameters;
 import de.gnwi.jdpd.utilities.PeriodicBoundaries;
 import de.gnwi.jdpd.utilities.RandomAdderGroup;
 import java.util.concurrent.atomic.AtomicInteger;
+import org.apache.commons.math3.util.FastMath;
 
 /**
  * Particle pair ad-hoc electrostatics conservative force calculator
@@ -82,7 +83,7 @@ public class ParticlePairElectrostaticsAdHocForceConservativeCalculator extends 
             aRandomNumberSeed
         );
         // <editor-fold defaultstate="collapsed" desc="Method call logging">
-        this.simulationLogger.appendMethodCall("ParticlePairAdHocElectrostaticsForceCalculator.Constructor: FULL");
+        this.simulationLogger.appendMethodCall("ParticlePairElectrostaticsAdHocForceCalculator.Constructor: FULL");
         // </editor-fold>
     }
 
@@ -96,7 +97,7 @@ public class ParticlePairElectrostaticsAdHocForceConservativeCalculator extends 
     public ParticlePairElectrostaticsAdHocForceConservativeCalculator(IParticlePairInteractionCalculator aParticlePairInteractionCalculator) throws IllegalArgumentException {
         super(aParticlePairInteractionCalculator);
         // <editor-fold defaultstate="collapsed" desc="Method call logging">
-        this.simulationLogger.appendMethodCall("ParticlePairAdHocElectrostaticsForceCalculator.Constructor WITH aParticlePairInteractionCalculator");
+        this.simulationLogger.appendMethodCall("ParticlePairElectrostaticsAdHocForceCalculator.Constructor WITH aParticlePairInteractionCalculator");
         // </editor-fold>
     }
     // </editor-fold>
@@ -127,7 +128,7 @@ public class ParticlePairElectrostaticsAdHocForceConservativeCalculator extends 
      * NOTE: ParticlePairInteractionCalculator parallelisation guarantees that
      * NO thread-safe implementation of random number generator or double adder 
      * is necessary.
-     * NOTE: No checks are performed.
+     * (No checks are performed)
      * 
      * @param aParticleIndex_i Index of particle i
      * @param aParticleIndex_j Index of particle j
@@ -165,12 +166,12 @@ public class ParticlePairElectrostaticsAdHocForceConservativeCalculator extends 
             throw new IllegalStateException("ParticlePairElectrostaticsAdHocForceConservativeCalculator.calculateParticlePairInteraction: A charged particle does NOT have a charge.");
         }
         final Electrostatics tmpElectrostatics = aParameters.getInteractionDescription().getElectrostatics();
-        final double tmpRij = Math.sqrt(aRij_Square);
+        final double tmpRij = FastMath.sqrt(aRij_Square);
         double tmpFactor;
         if (tmpElectrostatics.getEffectiveExponent() == 2.0) {
             tmpFactor = tmpParticleCharge1 * tmpElectrostatics.getEffectiveChargeFactor() * tmpParticleCharge2 * tmpElectrostatics.getEffectiveChargeFactor() / (tmpRij * tmpRij);
         } else {
-            tmpFactor = tmpParticleCharge1 * tmpElectrostatics.getEffectiveChargeFactor() * tmpParticleCharge2 * tmpElectrostatics.getEffectiveChargeFactor() / Math.pow(tmpRij, tmpElectrostatics.getEffectiveExponent());
+            tmpFactor = tmpParticleCharge1 * tmpElectrostatics.getEffectiveChargeFactor() * tmpParticleCharge2 * tmpElectrostatics.getEffectiveChargeFactor() / FastMath.pow(tmpRij, tmpElectrostatics.getEffectiveExponent());
         }
         if (tmpRij <= tmpElectrostatics.getDampingDistance()) {
             tmpFactor *= tmpElectrostatics.getDampingFactor();
@@ -219,7 +220,7 @@ public class ParticlePairElectrostaticsAdHocForceConservativeCalculator extends 
      * NOTE: ParticlePairInteractionCalculator parallelisation guarantees that
      * NO thread-safe implementation of random number generator or double adder 
      * is necessary.
-     * NOTE: No checks are performed.
+     * (No checks are performed)
      * 
      * @param aParticleIndex_i Index of particle i
      * @param aParticleIndex_j Index of particle j

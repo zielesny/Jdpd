@@ -94,7 +94,7 @@ public class ChemicalSystemDescription {
     // <editor-fold defaultstate="collapsed" desc="Constructor">
     /**
      * Constructor
-     * Note: NO checks are performed.
+     * (No checks are performed)
      * 
      * @param aMoleculeTypes Molecule types
      * @param aBoxSize Box size in DPD units

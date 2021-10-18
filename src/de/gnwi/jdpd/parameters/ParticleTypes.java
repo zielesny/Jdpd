@@ -63,7 +63,7 @@ public class ParticleTypes {
     // <editor-fold defaultstate="collapsed" desc="Constructor">
     /**
      * Constructor
-     * Note: NO checks are performed.
+     * (No checks are performed)
 
      * @param aParticleTokenToIndexMap Map of particle token to particle index. This index refers to particle related arrays.
      * @param aParticleTokens Tokens of particles (e.g. "H2O")

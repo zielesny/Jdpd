@@ -279,7 +279,7 @@ public class CellBox {
     // <editor-fold defaultstate="collapsed" desc="Protected methods">
     /**
      * Returns index of cell in array this.cells
-     * NOTE: No checks are performed.
+     * (No checks are performed)
      * 
      * @param anIndexX Index in x-direction
      * @param anIndexY Index in x-direction

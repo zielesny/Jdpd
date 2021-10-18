@@ -83,7 +83,7 @@ public class MoleculeDescription {
     // <editor-fold defaultstate="collapsed" desc="Constructor">
     /**
      * Constructor
-     * Note: NO checks are performed.
+     * (No checks are performed)
      * 
      * @param aMoleculeName Name of molecule
      * @param aTotalMoleculeParticleNumber Total number of all particles of molecules

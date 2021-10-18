@@ -60,6 +60,11 @@ public class SimulationDescription {
     private final int initialPotentialEnergyMinimizationStepNumber;
     
     /**
+     * Type of initial potential energy minimization (true: All forces, false: DPD force only)
+     */
+    private final boolean isInitialPotentialEnergyMinimizationWithAllForces;
+    
+    /**
      * Flag for initial potential energy minimization step output.
      * True: Potential energy minimization step output is generated, 
      * false: Otherwise (NO output)
@@ -89,12 +94,13 @@ public class SimulationDescription {
     // <editor-fold defaultstate="collapsed" desc="Constructor">
     /**
      * Constructor
-     * Note: NO checks are performed.
+     * (No checks are performed)
      * 
      * @param aTimeStepNumber Number of time steps
      * @param aTimeStepLength Time step length
      * @param aTimeStepFrequencyForOutput Time step frequency for output
      * @param anInitialPotentialEnergyMinimizationStepNumber Number of initial potential energy minimization steps
+     * @param anIsInitialPotentialEnergyMinimizationWithAllForces Type of initial potential energy minimization (true: All forces, false: DPD force only)
      * @param anIsInitialPotentialEnergyMinimizationStepOutput Flag for initial potential energy minimization step output
      * @param aPeriodicBoundaries Periodic boundaries
      * @param anIsDpdUnitMass Flag for use of DPD unit masses
@@ -105,6 +111,7 @@ public class SimulationDescription {
         double aTimeStepLength,
         int aTimeStepFrequencyForOutput,
         int anInitialPotentialEnergyMinimizationStepNumber,
+        boolean anIsInitialPotentialEnergyMinimizationWithAllForces,
         boolean anIsInitialPotentialEnergyMinimizationStepOutput,
         PeriodicBoundaries aPeriodicBoundaries,
         boolean anIsDpdUnitMass,
@@ -118,6 +125,7 @@ public class SimulationDescription {
         this.timeStepLengthSquareHalf = (this.timeStepLength * this.timeStepLength)/2.0;
         this.timeStepFrequencyForOutput = aTimeStepFrequencyForOutput;
         this.initialPotentialEnergyMinimizationStepNumber = anInitialPotentialEnergyMinimizationStepNumber;
+        this.isInitialPotentialEnergyMinimizationWithAllForces = anIsInitialPotentialEnergyMinimizationWithAllForces;
         this.isInitialPotentialEnergyMinimizationStepOutput = anIsInitialPotentialEnergyMinimizationStepOutput;
         this.periodicBoundaries = aPeriodicBoundaries;
         this.isDpdUnitMass = anIsDpdUnitMass;
@@ -178,6 +186,15 @@ public class SimulationDescription {
      */
     public int getInitialPotentialEnergyMinimizationStepNumber() {
         return this.initialPotentialEnergyMinimizationStepNumber;
+    }
+
+    /**
+     * Type of initial potential energy minimization (true: All forces, false: DPD force only)
+     * 
+     * @return Type of initial potential energy minimization (true: All forces, false: DPD force only)
+     */
+    public boolean isInitialPotentialEnergyMinimizationWithAllForces() {
+        return this.isInitialPotentialEnergyMinimizationWithAllForces;
     }
 
     /**

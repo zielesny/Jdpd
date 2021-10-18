@@ -26,6 +26,7 @@ import de.gnwi.jdpd.parameters.Parameters;
 import de.gnwi.jdpd.utilities.BoxSize;
 import de.gnwi.jdpd.utilities.PeriodicBoundaries;
 import de.gnwi.jdpd.utilities.AdderGroup;
+import org.apache.commons.math3.util.FastMath;
 
 /**
  * Harmonic bond potential calculator
@@ -110,7 +111,7 @@ public class HarmonicBondPotentialCalculator extends HarmonicBondPropertyCalcula
         final double tmpRij_x_Square = aRij_x * aRij_x;
         final double tmpRij_y_Square = aRij_y * aRij_y;
         final double tmpRij_z_Square = aRij_z * aRij_z;
-        final double tmpRij = Math.sqrt(tmpRij_x_Square + tmpRij_y_Square + tmpRij_z_Square);
+        final double tmpRij = FastMath.sqrt(tmpRij_x_Square + tmpRij_y_Square + tmpRij_z_Square);
         final double tmpDeviation = tmpRij - aBondLength;
         boolean tmpIsCalculation = false;
         switch (aHarmonicBondBehaviour) {

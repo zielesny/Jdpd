@@ -429,12 +429,18 @@ public class FileInput implements IInput {
             throw new IllegalArgumentException("FileInput.getFactory: Illegal integration type");
         }
         // </editor-fold>
+        // <editor-fold defaultstate="collapsed" desc="Intermediate results logging">
+        Factory.ElectrostaticsType tmpElectrostaticsType = Factory.ElectrostaticsType.AD_HOC;
+        if (this.isElectrostaticsTypeDpd()) {
+            tmpElectrostaticsType = Factory.ElectrostaticsType.DPD;
+        }
+        // </editor-fold>
         Factory tmpFactory = 
             new Factory(
                 tmpRandomType, 
                 tmpNumberORandomNumberGeneratorWarmUpSteps,
                 Factory.DpdType.CUTOFF_LENGTH_ONE, 
-                Factory.ElectrostaticsType.AD_HOC,
+                tmpElectrostaticsType,
                 Factory.BondType.HARMONIC,
                 tmpIntegrationType,
                 tmpIntegrationParameters
@@ -444,7 +450,7 @@ public class FileInput implements IInput {
         this.simulationLogger.appendIntermediateResults("FileInput.getFactory: Random seed           = " + String.valueOf(tmpRandomSeed));
         this.simulationLogger.appendIntermediateResults("FileInput.getFactory: Random warm-up steps  = " + String.valueOf(tmpNumberORandomNumberGeneratorWarmUpSteps));
         this.simulationLogger.appendIntermediateResults("FileInput.getFactory: DPD type              = " + Factory.DpdType.CUTOFF_LENGTH_ONE.toString());
-        this.simulationLogger.appendIntermediateResults("FileInput.getFactory: Electrostatics type   = " + Factory.ElectrostaticsType.AD_HOC.toString());
+        this.simulationLogger.appendIntermediateResults("FileInput.getFactory: Electrostatics type   = " + tmpElectrostaticsType.toString());
         this.simulationLogger.appendIntermediateResults("FileInput.getFactory: Harmonic bond type    = " + Factory.BondType.HARMONIC.toString());
         this.simulationLogger.appendIntermediateResults("FileInput.getFactory: Integration type      = " + tmpIntegrationType.toString());
         if (tmpIntegrationParameters != null) {
@@ -911,20 +917,57 @@ public class FileInput implements IInput {
      * Electrostatics parameters
      * 
      * @return Electrostatics parameters or null if none are available
+     * @throws IllegalArgumentException Thrown if an argument is illegal
      */
     @Override
     public Electrostatics getElectrostatics() {
         if (this.hasParameter(Section.INTERACTION_DESCRIPTION, FileInput.ELECTROSTATICS)) {
-            double[] tmpElectrostaticsParameters = this.getSixtupelDoubleValues(Section.INTERACTION_DESCRIPTION, FileInput.ELECTROSTATICS);
-            return
-                new Electrostatics(
-                    tmpElectrostaticsParameters[0],
-                    tmpElectrostaticsParameters[1],
-                    tmpElectrostaticsParameters[2],
-                    tmpElectrostaticsParameters[3],
-                    tmpElectrostaticsParameters[4],
-                    tmpElectrostaticsParameters[5]
-                );
+            if (this.isElectrostaticsTypeDpd()) {
+                // Factory.ElectrostaticsType.DPD
+                String[] tmpElectrostaticsParameters = this.getNinetupelStringValues(Section.INTERACTION_DESCRIPTION, FileInput.ELECTROSTATICS);
+                // Charge distribution
+                Electrostatics.ChargeDistributionType tmpChargeDistributionType;
+                if (tmpElectrostaticsParameters[6].equalsIgnoreCase(Electrostatics.ChargeDistributionType.NONE.toString())) {
+                    tmpChargeDistributionType = Electrostatics.ChargeDistributionType.NONE;
+                } else if (tmpElectrostaticsParameters[6].equalsIgnoreCase(Electrostatics.ChargeDistributionType.ALEJANDRE.toString())) {
+                    tmpChargeDistributionType = Electrostatics.ChargeDistributionType.ALEJANDRE;
+                } else {
+                    throw new IllegalArgumentException("FileInput.getElectrostatics: Unknown charge distribution type.");
+                }
+                // Splitting type
+                Electrostatics.SplittingType tmpSplittingType;
+                if (tmpElectrostaticsParameters[8].equalsIgnoreCase(Electrostatics.SplittingType.NONE.toString())) {
+                    tmpSplittingType = Electrostatics.SplittingType.NONE;
+                } else if (tmpElectrostaticsParameters[8].equalsIgnoreCase(Electrostatics.SplittingType.FANOURGAKIS.toString())) {
+                    tmpSplittingType = Electrostatics.SplittingType.FANOURGAKIS;
+                } else {
+                    throw new IllegalArgumentException("FileInput.getElectrostatics: Unknown splitting type.");
+                }
+                return
+                    new Electrostatics(
+                        Double.valueOf(tmpElectrostaticsParameters[0]), // aCutOffLength
+                        Double.valueOf(tmpElectrostaticsParameters[1]), // aMaximumAbsoluteForceValue
+                        Double.valueOf(tmpElectrostaticsParameters[2]), // anEffectiveExponent
+                        Double.valueOf(tmpElectrostaticsParameters[3]), // aDampingDistance
+                        Double.valueOf(tmpElectrostaticsParameters[4]), // aDampingFactor
+                        Double.valueOf(tmpElectrostaticsParameters[5]), // anElectrostaticsCoupling
+                        tmpChargeDistributionType,                      // aChargeDistributionType
+                        Double.valueOf(tmpElectrostaticsParameters[7]), // aDecayLengthAlejandre
+                        tmpSplittingType                                // aSplittingType
+                    );
+            } else {
+                // Factory.ElectrostaticsType.AD_HOC
+                double[] tmpElectrostaticsParameters = this.getSixtupelDoubleValues(Section.INTERACTION_DESCRIPTION, FileInput.ELECTROSTATICS);
+                return
+                    new Electrostatics(
+                        tmpElectrostaticsParameters[0], // aCutOffLength
+                        tmpElectrostaticsParameters[1], // aMaximumAbsoluteForceValue
+                        tmpElectrostaticsParameters[2], // anEffectiveChargeFactor
+                        tmpElectrostaticsParameters[3], // anEffectiveExponent
+                        tmpElectrostaticsParameters[4], // aDampingDistance
+                        tmpElectrostaticsParameters[5]  // aDampingFactor
+                    );
+            }
         } else {
             return null;
         }
@@ -979,7 +1022,23 @@ public class FileInput implements IInput {
      */
     @Override
     public int getInitialPotentialEnergyMinimizationStepNumber() {
-        return this.getSingleIntegerValue(Section.SIMULATION_DESCRIPTION, FileInput.INITIAL_POTENTIAL_ENERGY_MINIMIZATION_STEP_NUMBER);
+        return this.getFirstIntegerValue(Section.SIMULATION_DESCRIPTION, FileInput.INITIAL_POTENTIAL_ENERGY_MINIMIZATION_STEP_NUMBER);
+    }
+    
+    /**
+     * Type of initial potential energy minimization (true: All forces, false:
+     * DPD force only)
+     * 
+     * @return Type of initial potential energy minimization
+     */
+    @Override
+    public boolean isInitialPotentialEnergyMinimizationWithAllForces() {
+        if (this.hasSecondBooleanValue(Section.SIMULATION_DESCRIPTION, FileInput.INITIAL_POTENTIAL_ENERGY_MINIMIZATION_STEP_NUMBER)) {
+            return this.getSecondBooleanValue(Section.SIMULATION_DESCRIPTION, FileInput.INITIAL_POTENTIAL_ENERGY_MINIMIZATION_STEP_NUMBER);
+        } else {
+            // true: All forces for initial potential energy minimization
+            return true;
+        }
     }
     
     /**
@@ -1382,6 +1441,72 @@ public class FileInput implements IInput {
     }
     
     /**
+     * Returns second boolean value of parameter
+     * 
+     * @param aSection Section tag
+     * @param aParameterString Parameter string
+     * @return Second boolean value of parameter
+     * @throws IllegalArgumentException Thrown if an argument is illegal.
+     */
+    private boolean getSecondBooleanValue(Section aSection, String aParameterString) throws IllegalArgumentException {
+        // <editor-fold defaultstate="collapsed" desc="Checks">
+        if (aSection == null || !this.sectionMap.containsKey(aSection)) {
+            throw new IllegalArgumentException("FileInput.getSecondBooleanValue: aSection is null/empty or does not exist.");
+        }
+        if (aParameterString == null || aParameterString.isEmpty()) {
+            throw new IllegalArgumentException("FileInput.getSecondBooleanValue: aParameterString is null/empty.");
+        }
+        // </editor-fold>
+        try {
+            String[][] tmpSection = this.sectionMap.get(aSection);
+            for (String[] tmpSectionLine : tmpSection) {
+                if (tmpSectionLine[0].equalsIgnoreCase(aParameterString)) {
+                    if (tmpSectionLine.length < 3) {
+                        throw new IllegalArgumentException("FileInput.getSecondBooleanValue: tmpSectionLine has wrong format.");
+                    }
+                    return Boolean.valueOf(tmpSectionLine[2]);
+                }
+            }
+            throw new IllegalArgumentException("FileInput.getSecondBooleanValue: aParameterString could not be found in section.");
+        } catch (Exception anException) {
+            throw new IllegalArgumentException("FileInput.getSecondBooleanValue: aParameterString can not be evaluated.", anException);
+        }
+    }
+    
+    /**
+     * Returns if second boolean value of parameter exists
+     * 
+     * @param aSection Section tag
+     * @param aParameterString Parameter string
+     * @return True: Second boolean value of parameter exists, false: Otherwise
+     */
+    private boolean hasSecondBooleanValue(Section aSection, String aParameterString) throws IllegalArgumentException {
+        // <editor-fold defaultstate="collapsed" desc="Checks">
+        if (aSection == null || !this.sectionMap.containsKey(aSection)) {
+            return false;
+        }
+        if (aParameterString == null || aParameterString.isEmpty()) {
+            return false;
+        }
+        // </editor-fold>
+        try {
+            String[][] tmpSection = this.sectionMap.get(aSection);
+            for (String[] tmpSectionLine : tmpSection) {
+                if (tmpSectionLine[0].equalsIgnoreCase(aParameterString)) {
+                    if (tmpSectionLine.length < 3) {
+                        return false;
+                    }
+                    boolean tmpSecondBooleanValue = Boolean.valueOf(tmpSectionLine[2]);
+                    return true;
+                }
+            }
+            return false;
+        } catch (Exception anException) {
+            return false;
+        }
+    }
+    
+    /**
      * Returns triple boolean value of parameter
      * 
      * @param aSection Section tag
@@ -1444,6 +1569,39 @@ public class FileInput implements IInput {
             throw new IllegalArgumentException("FileInput.getSingleIntegerValue: aParameterString could not be found in section.");
         } catch (Exception anException) {
             throw new IllegalArgumentException("FileInput.getSingleIntegerValue: aParameterString can not be evaluated.", anException);
+        }
+    }
+    
+    /**
+     * Returns first integer value of parameter
+     * 
+     * @param aSection Section tag
+     * @param aParameterString Parameter string
+     * @return First integer value of parameter
+     * @throws IllegalArgumentException Thrown if an argument is illegal.
+     */
+    private int getFirstIntegerValue(Section aSection, String aParameterString) throws IllegalArgumentException {
+        // <editor-fold defaultstate="collapsed" desc="Checks">
+        if (aSection == null || !this.sectionMap.containsKey(aSection)) {
+            throw new IllegalArgumentException("FileInput.getFirstIntegerValue: aSection is null/empty or does not exist.");
+        }
+        if (aParameterString == null || aParameterString.isEmpty()) {
+            throw new IllegalArgumentException("FileInput.getFirstIntegerValue: aParameterString is null/empty.");
+        }
+        // </editor-fold>
+        try {
+            String[][] tmpSection = this.sectionMap.get(aSection);
+            for (String[] tmpSectionLine : tmpSection) {
+                if (tmpSectionLine[0].equalsIgnoreCase(aParameterString)) {
+                    if (tmpSectionLine.length < 2) {
+                        throw new IllegalArgumentException("FileInput.getFirstIntegerValue: tmpSectionLine has wrong format.");
+                    }
+                    return Integer.valueOf(tmpSectionLine[1]);
+                }
+            }
+            throw new IllegalArgumentException("FileInput.getFirstIntegerValue: aParameterString could not be found in section.");
+        } catch (Exception anException) {
+            throw new IllegalArgumentException("FileInput.getFirstIntegerValue: aParameterString can not be evaluated.", anException);
         }
     }
     
@@ -1543,6 +1701,49 @@ public class FileInput implements IInput {
             throw new IllegalArgumentException("FileInput.getTripleStringValues: aParameterString could not be found in section.");
         } catch (Exception anException) {
             throw new IllegalArgumentException("FileInput.getTripleStringValues: aParameterString can not be evaluated.", anException);
+        }
+    }
+
+    /**
+     * Returns ninetupel String value of parameter
+     * 
+     * @param aSection Section tag
+     * @param aParameterString Parameter string
+     * @return Ninetupel String value of parameter
+     * @throws IllegalArgumentException Thrown if an argument is illegal.
+     */
+    private String[] getNinetupelStringValues(Section aSection, String aParameterString) throws IllegalArgumentException {
+        // <editor-fold defaultstate="collapsed" desc="Checks">
+        if (aSection == null || !this.sectionMap.containsKey(aSection)) {
+            throw new IllegalArgumentException("FileInput.getNinetupelStringValues: aSection is null/empty or does not exist.");
+        }
+        if (aParameterString == null || aParameterString.isEmpty()) {
+            throw new IllegalArgumentException("FileInput.getNinetupelStringValues: aParameterString is null/empty.");
+        }
+        // </editor-fold>
+        try {
+            String[][] tmpSection = this.sectionMap.get(aSection);
+            for (String[] tmpSectionLine : tmpSection) {
+                if (tmpSectionLine[0].equalsIgnoreCase(aParameterString)) {
+                    if (tmpSectionLine.length != 10) {
+                        throw new IllegalArgumentException("FileInput.getNinetupelStringValues: tmpSectionLine has wrong format.");
+                    }
+                    return new String[] {
+                        tmpSectionLine[1], 
+                        tmpSectionLine[2], 
+                        tmpSectionLine[3],
+                        tmpSectionLine[4],
+                        tmpSectionLine[5],
+                        tmpSectionLine[6],
+                        tmpSectionLine[7],
+                        tmpSectionLine[8],
+                        tmpSectionLine[9]
+                    };
+                }
+            }
+            throw new IllegalArgumentException("FileInput.getNinetupelStringValues: aParameterString could not be found in section.");
+        } catch (Exception anException) {
+            throw new IllegalArgumentException("FileInput.getNinetupelStringValues: aParameterString can not be evaluated.", anException);
         }
     }
     
@@ -1675,6 +1876,26 @@ public class FileInput implements IInput {
             tmpReferencedParticleToken = aParticleToken;
         }
         return tmpReferencedParticleToken;
+    }
+    
+    /**
+     * Returns if electrostatics type is DPD
+     * 
+     * @return True: Electrostatics type is DPD, false: Otherwise
+     */
+    private boolean isElectrostaticsTypeDpd() {
+        String[][] tmpSection = this.sectionMap.get(Section.INTERACTION_DESCRIPTION);
+        for (String[] tmpSectionLine : tmpSection) {
+            if (tmpSectionLine[0].equalsIgnoreCase(FileInput.ELECTROSTATICS)) {
+                if (tmpSectionLine.length != 7) {
+                    // Factory.ElectrostaticsType.DPD
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        }
+        return false;
     }
     // </editor-fold>
     

@@ -161,7 +161,7 @@ public class NearestNeighborManager {
 
     /**
      * Evaluates nearest-neighbors
-     * NOTE: NO checks are performed.
+     * (No checks are performed)
      * 
      * @param aNearestNeighborParticleIndices Nearest-neighbor particle indices in particle arrays
      * @param aParticleTokens Particle tokens in particle arrays
@@ -346,7 +346,7 @@ public class NearestNeighborManager {
     
     /**
      * Returns molecule name tuple
-     * NOTE: NO checks are performed.
+     * (No checks are performed)
      * 
      * @param aMoleculeNameSet Molecule name set to generate tuple from
      * @return Molecule name tuple

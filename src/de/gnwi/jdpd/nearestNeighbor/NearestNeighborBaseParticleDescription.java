@@ -51,7 +51,7 @@ public class NearestNeighborBaseParticleDescription {
     // <editor-fold defaultstate="collapsed" desc="Constructor">
     /**
      * Constructor
-     * Note: NO checks are performed.
+     * (No checks are performed)
      * 
      * @param aMoleculeName Name of molecule
      * @param aBaseParticleToken Base particle token
