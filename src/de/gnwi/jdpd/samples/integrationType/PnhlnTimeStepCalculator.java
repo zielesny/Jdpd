@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2021  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2022  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -39,6 +39,7 @@ import de.gnwi.jdpd.interfaces.IParticlePairInteractionPnhlnCalculator;
 import de.gnwi.jdpd.interfaces.IRandom;
 import de.gnwi.jdpd.movement.MoleculeAccelerationInfo;
 import de.gnwi.jdpd.movement.MoleculeBoundaryInfo;
+import de.gnwi.jdpd.movement.MoleculeSphereInfo;
 import de.gnwi.jdpd.parameters.ChemicalSystemDescription;
 import de.gnwi.jdpd.parameters.InteractionDescription;
 import de.gnwi.jdpd.parameters.ParallelizationInfo;
@@ -164,6 +165,16 @@ public class PnhlnTimeStepCalculator implements ITimeStepCalculator {
      * True: Molecule boundary infos are defined, false: Otherwise
      */
     private final boolean hasMoleculeBoundaryInfos;
+
+    /**
+     * Molecule sphere infos
+     */
+    private final MoleculeSphereInfo[] moleculeSphereInfos;
+    
+    /**
+     * True: Molecule sphere infos are defined, false: Otherwise
+     */
+    private final boolean hasMoleculeSphereInfos;
     
     /**
      * Molecule velocity fixation infos
@@ -286,6 +297,8 @@ public class PnhlnTimeStepCalculator implements ITimeStepCalculator {
         this.hasMoleculeFixationInfos = this.moleculeFixationInfos != null;
         this.moleculeBoundaryInfos = this.chemicalSystemDescription.getMoleculeBoundaryInfos();
         this.hasMoleculeBoundaryInfos = this.moleculeBoundaryInfos != null;
+        this.moleculeSphereInfos = this.chemicalSystemDescription.getMoleculeSphereInfos();
+        this.hasMoleculeSphereInfos = this.moleculeSphereInfos != null;
         this.moleculeVelocityFixationInfos = this.chemicalSystemDescription.getMoleculeVelocityFixationInfos();
         this.hasMoleculeVelocityFixationInfos = this.moleculeVelocityFixationInfos != null;
         this.moleculeAccelerationInfos = this.chemicalSystemDescription.getMoleculeAccelerationInfos();
@@ -511,9 +524,9 @@ public class PnhlnTimeStepCalculator implements ITimeStepCalculator {
                 this.particleArrays.getR_x(),
                 this.particleArrays.getR_y(),
                 this.particleArrays.getR_z(),
-                this.particleArrays.getROld_x(),
-                this.particleArrays.getROld_y(),
-                this.particleArrays.getROld_z()
+                this.particleArrays.getRold_x(),
+                this.particleArrays.getRold_y(),
+                this.particleArrays.getRold_z()
             );
         }
         Utils.correct_r_and_v(
@@ -532,6 +545,19 @@ public class PnhlnTimeStepCalculator implements ITimeStepCalculator {
             Utils.correct_r_and_v_forMoleculeBoundaries(
                 aCurrentTimeStep,
                 this.moleculeBoundaryInfos,
+                this.particleArrays.getR_x(),
+                this.particleArrays.getR_y(),
+                this.particleArrays.getR_z(),
+                this.particleArrays.getV_x(),
+                this.particleArrays.getV_y(),
+                this.particleArrays.getV_z()
+            );
+        }
+        // Molecule spheres (AFTER Utils.correct_r_and_v_forMoleculeBoundaries())
+        if (this.hasMoleculeSphereInfos) {
+            Utils.correct_r_and_v_forMoleculeSpheres(
+                aCurrentTimeStep,
+                this.moleculeSphereInfos,
                 this.particleArrays.getR_x(),
                 this.particleArrays.getR_y(),
                 this.particleArrays.getR_z(),
@@ -643,9 +669,9 @@ public class PnhlnTimeStepCalculator implements ITimeStepCalculator {
                 this.particleArrays.getR_x(),
                 this.particleArrays.getR_y(),
                 this.particleArrays.getR_z(),
-                this.particleArrays.getROld_x(),
-                this.particleArrays.getROld_y(),
-                this.particleArrays.getROld_z()
+                this.particleArrays.getRold_x(),
+                this.particleArrays.getRold_y(),
+                this.particleArrays.getRold_z()
             );
         }
         Utils.correct_r_and_v(
@@ -664,6 +690,19 @@ public class PnhlnTimeStepCalculator implements ITimeStepCalculator {
             Utils.correct_r_and_v_forMoleculeBoundaries(
                 aCurrentTimeStep,
                 this.moleculeBoundaryInfos,
+                this.particleArrays.getR_x(),
+                this.particleArrays.getR_y(),
+                this.particleArrays.getR_z(),
+                this.particleArrays.getV_x(),
+                this.particleArrays.getV_y(),
+                this.particleArrays.getV_z()
+            );
+        }
+        // Molecule spheres (AFTER Utils.correct_r_and_v_forMoleculeBoundaries())
+        if (this.hasMoleculeSphereInfos) {
+            Utils.correct_r_and_v_forMoleculeSpheres(
+                aCurrentTimeStep,
+                this.moleculeSphereInfos,
                 this.particleArrays.getR_x(),
                 this.particleArrays.getR_y(),
                 this.particleArrays.getR_z(),
@@ -820,9 +859,9 @@ public class PnhlnTimeStepCalculator implements ITimeStepCalculator {
                 this.particleArrays.getR_x(),
                 this.particleArrays.getR_y(),
                 this.particleArrays.getR_z(),
-                this.particleArrays.getROld_x(),
-                this.particleArrays.getROld_y(),
-                this.particleArrays.getROld_z()
+                this.particleArrays.getRold_x(),
+                this.particleArrays.getRold_y(),
+                this.particleArrays.getRold_z()
             );
         }
         // <editor-fold defaultstate="collapsed" desc="Method call logging">

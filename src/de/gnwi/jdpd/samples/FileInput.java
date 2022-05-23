@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2021  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2022  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -38,6 +38,7 @@ import de.gnwi.jdpd.utilities.Constants;
 import de.gnwi.jdpd.utilities.Electrostatics;
 import de.gnwi.jdpd.utilities.MoleculeDescription;
 import de.gnwi.jdpd.movement.MoleculeFixationDescription;
+import de.gnwi.jdpd.movement.MoleculeSphereDescription;
 import de.gnwi.jdpd.rg.MoleculeRgCalculationDescription;
 import de.gnwi.jdpd.movement.MoleculeVelocityFixationDescription;
 import de.gnwi.jdpd.nearestNeighbor.NearestNeighborBaseParticleDescription;
@@ -148,6 +149,11 @@ public class FileInput implements IInput {
      * String for parameter MoleculeBoundary
      */
     private static final String MOLECULE_BOUNDARY = "MoleculeBoundary";
+    
+    /**
+     * String for parameter MoleculeSphere
+     */
+    private static final String MOLECULE_SPHERE = "MoleculeSphere";
 
     /**
      * String for parameter MoleculeFixedVelocity
@@ -678,6 +684,48 @@ public class FileInput implements IInput {
         }
         if (!tmpMoleculeBoundaryList.isEmpty()) {
             return tmpMoleculeBoundaryList.toArray(new MoleculeBoundaryDescription[0]);
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * Molecule sphere descriptions
+     * 
+     * @return Molecule sphere descriptions or null if no molecule has a exclusion/inclusion sphere
+     */
+    @Override
+    public MoleculeSphereDescription[] getMoleculeSphereDescriptions() {
+        if (this.hasParameter(Section.CHEMICAL_SYSTEM_DESCRIPTION, FileInput.MOLECULE_SPHERE)) {
+            String[][] tmpMoleculeSphereTable = this.getValueTable(Section.CHEMICAL_SYSTEM_DESCRIPTION, FileInput.MOLECULE_SPHERE);
+            LinkedList<MoleculeSphereDescription> tmpMoleculeSphereList = new LinkedList<>();
+            for (int i = 0; i < tmpMoleculeSphereTable.length; i++) {
+                double tmpSphereRadius = Double.valueOf(tmpMoleculeSphereTable[i][5]);
+                if (tmpSphereRadius > 0.0) {
+                    String tmpMoleculeName = tmpMoleculeSphereTable[i][0];
+                    boolean tmpIsExclusiveSphere = Boolean.valueOf(tmpMoleculeSphereTable[i][1]);
+                    double tmpSphereCenterX = Double.valueOf(tmpMoleculeSphereTable[i][2]);
+                    double tmpSphereCenterY = Double.valueOf(tmpMoleculeSphereTable[i][3]);
+                    double tmpSphereCenterZ = Double.valueOf(tmpMoleculeSphereTable[i][4]);
+                    int tmpMaxTimeStep = Integer.valueOf(tmpMoleculeSphereTable[i][6]);
+                    tmpMoleculeSphereList.add(
+                        new MoleculeSphereDescription(
+                            tmpMoleculeName, 
+                            tmpIsExclusiveSphere,
+                            tmpSphereCenterX,
+                            tmpSphereCenterY,
+                            tmpSphereCenterZ,
+                            tmpSphereRadius,
+                            tmpMaxTimeStep
+                        )
+                    );
+                }
+            }
+            if (!tmpMoleculeSphereList.isEmpty()) {
+                return tmpMoleculeSphereList.toArray(new MoleculeSphereDescription[0]);
+            } else {
+                return null;
+            }
         } else {
             return null;
         }

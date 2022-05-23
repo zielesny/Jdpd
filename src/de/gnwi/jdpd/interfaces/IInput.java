@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2021  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2022  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -21,6 +21,7 @@ package de.gnwi.jdpd.interfaces;
 
 import de.gnwi.jdpd.movement.MoleculeAccelerationDescription;
 import de.gnwi.jdpd.movement.MoleculeBoundaryDescription;
+import de.gnwi.jdpd.movement.MoleculeSphereDescription;
 import de.gnwi.jdpd.utilities.Factory;
 import de.gnwi.jdpd.samples.harmonicBonds.ParticlePairHarmonicBond;
 import de.gnwi.jdpd.parameters.ParticleTypes;
@@ -88,6 +89,13 @@ public interface IInput {
      * @return Molecule boundary descriptions or null if no molecule is bounded
      */
     MoleculeBoundaryDescription[] getMoleculeBoundaryDescriptions();
+
+    /**
+     * Molecule sphere descriptions
+     * 
+     * @return Molecule sphere descriptions or null if no molecule is bounded
+     */
+    MoleculeSphereDescription[] getMoleculeSphereDescriptions();
     
     /**
      * Molecule velocity fixation descriptions

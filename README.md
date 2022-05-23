@@ -11,6 +11,7 @@ Jdpd has been described in the scientific literature (the final manuscript *2018
 See text file *JdpdVersionHistory.txt* for a version history with detailed information.
 
 # Important bug fixes
+- Jdpd releases **prior to version 1.6.0.0** contained a severe error when restarting a job with continued calculation of the radius of gyration: This led to an illegal file output so that the radius of gyration data of the restarted job result could not be evaluated.
 - Jdpd releases **prior to version 1.5.0.0** contained a severe error in the radius of gyration calculation method which could affect the position of particles in the simulation box and lead to wrong and unphysical "particle jumps".
 - Jdpd releases **prior to version 1.3.0.0** contained a severe mapping error regarding electrostatics force calculations which could affect uncharged particles.
 

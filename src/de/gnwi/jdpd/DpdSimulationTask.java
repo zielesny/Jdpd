@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2021  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2022  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -61,6 +61,8 @@ import de.gnwi.jdpd.movement.MoleculeAccelerationDescription;
 import de.gnwi.jdpd.movement.MoleculeAccelerationInfo;
 import de.gnwi.jdpd.movement.MoleculeBoundaryDescription;
 import de.gnwi.jdpd.movement.MoleculeBoundaryInfo;
+import de.gnwi.jdpd.movement.MoleculeSphereDescription;
+import de.gnwi.jdpd.movement.MoleculeSphereInfo;
 import de.gnwi.jdpd.nearestNeighbor.NearestNeighborManager;
 import de.gnwi.jdpd.nearestNeighbor.NearestNeighborBaseParticleDescription;
 import de.gnwi.jdpd.samples.interactions.ParticlePairInteractionCalculator;
@@ -199,6 +201,8 @@ public class DpdSimulationTask implements Callable<Boolean> {
             this.setParameters(aSimulationInput, aRestartInfo);
             // 3. Correct molecule boundaries if necessary
             this.correctMoleculeBoundaries();
+            // 4. Correct molecule spheres if necessary
+            this.correctMoleculeSpheres();
             // <editor-fold defaultstate="collapsed" desc="Method call logging">
             this.simulationLogger.appendMethodCallEnd("DpdSimulationTask.Constructor", tmpId);
             // </editor-fold>
@@ -598,7 +602,11 @@ public class DpdSimulationTask implements Callable<Boolean> {
             if (tmpParticlePairNearestNeighborCalculator != null) {
                 tmpParticlePairNearestNeighborCalculator.shutdownExecutorService();
             }
-            this.simulationOutput.finish();
+            if (!this.simulationOutput.finish()) {
+                // <editor-fold defaultstate="collapsed" desc="Exception logging">
+                this.simulationLogger.appendException("DpdSimulationTask.call", "WARNING: Simulation output did NOT finish successfully, output files may be corrupted.");
+                // </editor-fold>
+            }
             // </editor-fold>
             // <editor-fold defaultstate="collapsed" desc="Simulation progress logging">
             this.simulationLogger.appendSimulationProgress("Postprocessing for time-step loop finished");
@@ -958,6 +966,33 @@ public class DpdSimulationTask implements Callable<Boolean> {
             this.simulationLogger.appendIntermediateResults("DpdSimulationTask.setParameters: Molecule boundaries            = " + String.valueOf(tmpMoleculeBoundaryInfos.length));
         }
         // </editor-fold>
+        // Set molecule spheres if necessary
+        MoleculeSphereDescription[] tmpMoleculeSphereDescriptions = aSimulationInput.getMoleculeSphereDescriptions();
+        MoleculeSphereInfo[] tmpMoleculeSphereInfos = null;
+        if (tmpMoleculeSphereDescriptions != null) {
+            tmpMoleculeSphereInfos = new MoleculeSphereInfo[tmpMoleculeSphereDescriptions.length];
+            for (int i = 0; i < tmpMoleculeSphereDescriptions.length; i++) {
+                tmpMoleculeSphereInfos[i] =
+                    new MoleculeSphereInfo(
+                        tmpMoleculeSphereDescriptions[i].getMoleculeName(),
+                        tmpMoleculeSphereDescriptions[i].isExclusiveSphere(),
+                        tmpMoleculeSphereDescriptions[i].getSphereCenterX(),
+                        tmpMoleculeSphereDescriptions[i].getSphereCenterY(),
+                        tmpMoleculeSphereDescriptions[i].getSphereCenterZ(),
+                        tmpMoleculeSphereDescriptions[i].getSphereRadius(),
+                        tmpMoleculeSphereDescriptions[i].getMaxTimeStep(),
+                        tmpMoleculeTypes.getFirstIndex(tmpMoleculeSphereDescriptions[i].getMoleculeName()),
+                        tmpMoleculeTypes.getLastIndex(tmpMoleculeSphereDescriptions[i].getMoleculeName())
+                    );
+            }
+        }
+        // <editor-fold defaultstate="collapsed" desc="Intermediate results logging">
+        if (tmpMoleculeSphereInfos == null) {
+            this.simulationLogger.appendIntermediateResults("DpdSimulationTask.setParameters: No molecule exlusion/inclusion spheres");
+        } else {
+            this.simulationLogger.appendIntermediateResults("DpdSimulationTask.setParameters: Molecule incl./excl. spheres   = " + String.valueOf(tmpMoleculeSphereInfos.length));
+        }
+        // </editor-fold>
         // Set molecule velocity fixations if necessary
         MoleculeVelocityFixationDescription[] tmpMoleculeVelocityFixationDescriptions = aSimulationInput.getMoleculeVelocityFixationDescriptions();
         MoleculeVelocityFixationInfo[] tmpMoleculeVelocityFixationInfos = null;
@@ -1135,6 +1170,7 @@ public class DpdSimulationTask implements Callable<Boolean> {
                 tmpBoxSize,
                 tmpMoleculeFixationInfos,
                 tmpMoleculeBoundaryInfos,
+                tmpMoleculeSphereInfos,
                 tmpMoleculeVelocityFixationInfos,
                 tmpMoleculeAccelerationInfos,
                 tmpRgCalculators,
@@ -1278,6 +1314,55 @@ public class DpdSimulationTask implements Callable<Boolean> {
                             }
                         }
                         // Min = Max: Do nothing!
+                    }
+                }
+            }
+        }        
+    }
+
+    /**
+     * Corrects molecule spheres if necessary.
+     */
+    private void correctMoleculeSpheres() {
+        if (this.parameters.getChemicalSystemDescription().getMoleculeSphereInfos() != null) {
+            double[] tmpR_x = this.parameters.getParticleArrays().getR_x();
+            double[] tmpR_y = this.parameters.getParticleArrays().getR_y();
+            double[] tmpR_z = this.parameters.getParticleArrays().getR_z();
+            for (MoleculeSphereInfo tmpMoleculeSphereInfo: this.parameters.getChemicalSystemDescription().getMoleculeSphereInfos()) {
+                int tmpFirstIndex = tmpMoleculeSphereInfo.getFirstIndex();
+                int tmpExclusiveLastIndex = tmpMoleculeSphereInfo.getExclusiveLastIndex();
+                for (int i = tmpFirstIndex; i < tmpExclusiveLastIndex; i++) {
+                    double tmpDeltaX = tmpR_x[i] - tmpMoleculeSphereInfo.getSphereCenterX();
+                    double tmpDeltaY = tmpR_y[i] - tmpMoleculeSphereInfo.getSphereCenterY();
+                    double tmpDeltaZ = tmpR_z[i] - tmpMoleculeSphereInfo.getSphereCenterZ();
+                    double tmpDistanceSquare = tmpDeltaX * tmpDeltaX + tmpDeltaY * tmpDeltaY + tmpDeltaZ * tmpDeltaZ;
+                    boolean tmpIsInsideSphere = tmpDistanceSquare <= tmpMoleculeSphereInfo.getSphereRadiusSquare();
+                    if (tmpMoleculeSphereInfo.isExclusiveSphere() && tmpIsInsideSphere) {
+                        // <editor-fold defaultstate="collapsed" desc="Exclusive sphere (no particle allowed INSIDE sphere)">
+                        double tmpDistance = FastMath.sqrt(tmpDistanceSquare);
+                        // NOTE: Unit vector tmpR_new_0 points from the center of the sphere in radial direction towards aR[i]
+                        double tmpR_new_0_x = tmpDeltaX/tmpDistance;
+                        double tmpR_new_0_y = tmpDeltaY/tmpDistance;
+                        double tmpR_new_0_z = tmpDeltaZ/tmpDistance;
+                        // New point outside sphere in radial direction
+                        double tmpNewLength = tmpMoleculeSphereInfo.getSphereDiameter() - tmpDistance;
+                        tmpR_x[i] = tmpMoleculeSphereInfo.getSphereCenterX() + tmpR_new_0_x * tmpNewLength;
+                        tmpR_y[i] = tmpMoleculeSphereInfo.getSphereCenterY() + tmpR_new_0_y * tmpNewLength;
+                        tmpR_z[i] = tmpMoleculeSphereInfo.getSphereCenterZ() + tmpR_new_0_z * tmpNewLength;
+                        // </editor-fold>
+                    } else if (!tmpMoleculeSphereInfo.isExclusiveSphere() && !tmpIsInsideSphere) {
+                        // <editor-fold defaultstate="collapsed" desc="Inclusive sphere (no particle allowed OUTSIDE sphere)">
+                        double tmpDistance = FastMath.sqrt(tmpDistanceSquare);
+                        // NOTE: Unit vector tmpR_new_0 points from the center of the sphere in radial direction towards aR[i]
+                        double tmpR_new_0_x = tmpDeltaX/tmpDistance;
+                        double tmpR_new_0_y = tmpDeltaY/tmpDistance;
+                        double tmpR_new_0_z = tmpDeltaZ/tmpDistance;
+                        // New point inside sphere in radial direction
+                        double tmpNewLength = tmpMoleculeSphereInfo.getSphereDiameter() - tmpDistance;
+                        tmpR_x[i] = tmpMoleculeSphereInfo.getSphereCenterX() + tmpR_new_0_x * tmpNewLength;
+                        tmpR_y[i] = tmpMoleculeSphereInfo.getSphereCenterY() + tmpR_new_0_y * tmpNewLength;
+                        tmpR_z[i] = tmpMoleculeSphereInfo.getSphereCenterZ() + tmpR_new_0_z * tmpNewLength;
+                        // </editor-fold>
                     }
                 }
             }

@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2021  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2022  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -131,6 +131,7 @@ public class FileOutput implements IOutput {
             Arrays.sort(this.particlePositions);
             try (PrintWriter tmpPrintWriter = new PrintWriter(new GZIPOutputStream(new FileOutputStream(this.particlePositionsFilePathname), Constants.BUFFER_SIZE))) {
                 this.writeOutput(tmpPrintWriter);
+                tmpPrintWriter.flush();
             } catch (Exception e) {
                 return;
             }
@@ -856,8 +857,10 @@ public class FileOutput implements IOutput {
                 this.rgValueLists = new LinkedList[this.rgMoleculeNames.length];
                 for (int i = 0; i < this.rgValueLists.length; i++) {
                     this.rgValueLists[i] = this.getInitializedList(this.getRgFilePathname(this.rgMoleculeNames[i]));
-                    // Important: Add molecule name first
-                    this.rgValueLists[i].add(this.rgMoleculeNames[i]);
+                    if (this.rgValueLists[i].size() == 1) {
+                        // Important: this.rgValueLists[i] does NOT contain any data: Add molecule name first!
+                        this.rgValueLists[i].add(this.rgMoleculeNames[i]);
+                    }
                 }
             }
             // </editor-fold>
@@ -992,28 +995,40 @@ public class FileOutput implements IOutput {
     
     /**
      * Finishes output
+     * 
+     * @return True: Successful finished, false: Otherwise
      */
     @Override
-    public void finish() {
+    public boolean finish() {
         this.writeSimulationStepProperties();
+
+        boolean tmphasFinishedWithSuccess = false;
+        // IMPORTANT: FIRST shutdown executor service (disable new tasks from being submitted) ...
         if (this.executorService != null) {
             this.executorService.shutdown();
         }
-        if (this.setCount != this.particlePositionsfilePathnameQueue.size()) {
-            try {
-                if (this.executorService != null) {
-                    // 1 minute for time-out is expected to be sufficient for all practical purposes
-                    this.executorService.awaitTermination(1L, TimeUnit.MINUTES);
+        // ... THEN await termination:
+        try {
+            if (!this.executorService.awaitTermination(1L, TimeUnit.MINUTES)) {
+                // Wait for a maximum of 10 minutes for all practical purposes
+                for (int i = 0; i < 9; i++) {
+                    if (this.executorService.awaitTermination(1L, TimeUnit.MINUTES)) {
+                        tmphasFinishedWithSuccess = true;
+                        break;
+                    }
                 }
-            } catch (Exception anException) {
-                return;
             }
+        } catch (Exception anException) {
+            return false;
+        }
+        if (this.setCount != this.particlePositionsfilePathnameQueue.size()) {
+            tmphasFinishedWithSuccess = false;
         }
         // Copy last step file to final file if necessary
         if (this.lastSimulationStepParticlePositionsFilePathname != null) {
             String tmpFileEnding;
             tmpFileEnding = Strings.GZIP_FILE_ENDING;
-            Utils.copySingleFile(
+            tmphasFinishedWithSuccess = Utils.copySingleFile(
                 this.lastSimulationStepParticlePositionsFilePathname, 
                 this.outputDirectoryPath + File.separatorChar + FileOutputStrings.PARTICLE_POSITIONS_FINAL_FILENAME_PREFIX + tmpFileEnding
             );
@@ -1022,8 +1037,9 @@ public class FileOutput implements IOutput {
         if (this.restartInfo != null) {
             String tmpFileEnding;
             tmpFileEnding = Strings.GZIP_FILE_ENDING;
-            this.restartInfo.writeToFile(this.outputDirectoryPath + File.separatorChar + FileOutputStrings.RESTART_INFO_FILENAME_PREFIX + tmpFileEnding);
+            tmphasFinishedWithSuccess = this.restartInfo.writeToFile(this.outputDirectoryPath + File.separatorChar + FileOutputStrings.RESTART_INFO_FILENAME_PREFIX + tmpFileEnding);
         }
+        return tmphasFinishedWithSuccess;
     }
 
     /**

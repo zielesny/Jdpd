@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2021  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2022  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -196,6 +196,7 @@ public class RestartInfo {
         // </editor-fold>
         try (PrintWriter tmpPrintWriter = new PrintWriter(new GZIPOutputStream(new FileOutputStream(aRestartInfoFilePathname), Constants.BUFFER_SIZE))) {
             this.writeOutput(tmpPrintWriter);
+            tmpPrintWriter.flush();
         } catch (Exception e) {
             return false;
         }

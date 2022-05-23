@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2021  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2022  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -393,7 +393,7 @@ public class ParticleArrays {
      * 
      * @return Old x-components of particle positions in simulation box
      */
-    public double[] getROld_x() {
+    public double[] getRold_x() {
         return this.rOld_x;
     }
 
@@ -402,7 +402,7 @@ public class ParticleArrays {
      * 
      * @return Old y-components of particle positions in simulation box
      */
-    public double[] getROld_y() {
+    public double[] getRold_y() {
         return this.rOld_y;
     }
 
@@ -411,7 +411,7 @@ public class ParticleArrays {
      * 
      * @return Old z-components of particle positions in simulation box
      */
-    public double[] getROld_z() {
+    public double[] getRold_z() {
         return this.rOld_z;
     }
     

@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2021  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2022  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -23,6 +23,7 @@ import de.gnwi.jdpd.movement.MoleculeAccelerationInfo;
 import de.gnwi.jdpd.movement.MoleculeBoundaryInfo;
 import de.gnwi.jdpd.movement.MoleculeVelocityFixationInfo;
 import de.gnwi.jdpd.movement.MoleculeFixationInfo;
+import de.gnwi.jdpd.movement.MoleculeSphereInfo;
 import de.gnwi.jdpd.nearestNeighbor.NearestNeighborManager;
 import de.gnwi.jdpd.rg.RgCalculator;
 import de.gnwi.jdpd.utilities.BoxSize;
@@ -54,6 +55,11 @@ public class ChemicalSystemDescription {
      * Molecule boundary infos
      */
     private final MoleculeBoundaryInfo[] moleculeBoundaryInfos;
+    
+    /**
+     * Molecule sphere infos
+     */
+    private final MoleculeSphereInfo[] moleculeSphereInfos;
     
     /**
      * Molecule velocity fixation infos
@@ -100,6 +106,7 @@ public class ChemicalSystemDescription {
      * @param aBoxSize Box size in DPD units
      * @param aMoleculeFixationInfos Molecule fixation infos (may be null)
      * @param aMoleculeBoundaryInfos Molecule boundary infos (may be null)
+     * @param aMoleculeSphereInfos Molecule sphere infos (may be null)
      * @param aMoleculeVelocityFixationInfos Molecule velocity fixation infos (may be null)
      * @param aMoleculeAccelerationInfos Molecule acceleration infos (may be null)
      * @param aRgCalculators Rg calculators (may be null)
@@ -111,6 +118,7 @@ public class ChemicalSystemDescription {
         BoxSize aBoxSize,
         MoleculeFixationInfo[] aMoleculeFixationInfos,
         MoleculeBoundaryInfo[] aMoleculeBoundaryInfos,
+        MoleculeSphereInfo[] aMoleculeSphereInfos,
         MoleculeVelocityFixationInfo[] aMoleculeVelocityFixationInfos,
         MoleculeAccelerationInfo[] aMoleculeAccelerationInfos,
         RgCalculator[] aRgCalculators,
@@ -121,6 +129,7 @@ public class ChemicalSystemDescription {
         this.boxSize = aBoxSize;
         this.moleculeFixationInfos = aMoleculeFixationInfos;
         this.moleculeBoundaryInfos = aMoleculeBoundaryInfos;
+        this.moleculeSphereInfos = aMoleculeSphereInfos;
         this.moleculeVelocityFixationInfos = aMoleculeVelocityFixationInfos;
         this.moleculeAccelerationInfos = aMoleculeAccelerationInfos;
         
@@ -168,6 +177,15 @@ public class ChemicalSystemDescription {
      */
     public MoleculeBoundaryInfo[] getMoleculeBoundaryInfos() {
         return this.moleculeBoundaryInfos;
+    }
+    
+    /**
+     * Molecule sphere infos
+     * 
+     * @return Molecule sphere infos
+     */
+    public MoleculeSphereInfo[] getMoleculeSphereInfos() {
+        return this.moleculeSphereInfos;
     }
     
     /**

@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2021  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2022  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -27,6 +27,7 @@ import de.gnwi.jdpd.interfaces.ILogger;
 import de.gnwi.jdpd.interfaces.IOutput;
 import de.gnwi.jdpd.movement.MoleculeAccelerationInfo;
 import de.gnwi.jdpd.movement.MoleculeBoundaryInfo;
+import de.gnwi.jdpd.movement.MoleculeSphereInfo;
 import de.gnwi.jdpd.parameters.ChemicalSystemDescription;
 import de.gnwi.jdpd.particlePosition.ParticlePositionPool;
 import de.gnwi.jdpd.particlePosition.ParticlePosition;
@@ -186,6 +187,7 @@ public final class Utils {
                     tmpPrintWriter.println("");
                 }
             }
+            tmpPrintWriter.flush();
             return true;
         } catch (Exception anException) {
             return false;
@@ -230,6 +232,7 @@ public final class Utils {
                     tmpPrintWriter.println("");
                 }
             }
+            tmpPrintWriter.flush();
             return true;
         } catch (Exception anException) {
             return false;
@@ -314,6 +317,7 @@ public final class Utils {
                     tmpPrintWriter.println("");
                 }
             }
+            tmpPrintWriter.flush();
             return true;
         } catch (Exception anException) {
             return false;
@@ -386,6 +390,7 @@ public final class Utils {
                     }
                 }
             }
+            tmpPrintWriter.flush();
             return true;
         } catch (Exception anException) {
             return false;
@@ -1017,6 +1022,89 @@ public final class Utils {
     }
     
     /**
+     * Corrects r and v for molecule spheres
+     * (No checks are performed)
+     * 
+     * @param aCurrentTimeStep Current time step
+     * @param aMoleculeSphereInfos Molecule sphere infos
+     * @param aR_x Current x-position of particle in simulation box (may be changed)
+     * @param aR_y Current y-position of particle in simulation box (may be changed)
+     * @param aR_z Current z-position of particle in simulation box (may be changed)
+     * @param aV_x Current x-components of particle velocities (may be changed)
+     * @param aV_y Current y-components of particle velocities (may be changed)
+     * @param aV_z Current z-components of particle velocities (may be changed)
+     */
+    public static void correct_r_and_v_forMoleculeSpheres(
+        int aCurrentTimeStep,
+        MoleculeSphereInfo[] aMoleculeSphereInfos,
+        double[] aR_x,
+        double[] aR_y,
+        double[] aR_z,
+        double[] aV_x,
+        double[] aV_y,
+        double[] aV_z
+    ) {
+        for (MoleculeSphereInfo tmpMoleculeSphereInfo: aMoleculeSphereInfos) {
+            if (aCurrentTimeStep <= tmpMoleculeSphereInfo.getMaxTimeStep()) {
+                int tmpFirstIndex = tmpMoleculeSphereInfo.getFirstIndex();
+                int tmpExclusiveLastIndex = tmpMoleculeSphereInfo.getExclusiveLastIndex();
+                for (int i = tmpFirstIndex; i < tmpExclusiveLastIndex; i++) {
+                    double tmpDeltaX = aR_x[i] - tmpMoleculeSphereInfo.getSphereCenterX();
+                    double tmpDeltaY = aR_y[i] - tmpMoleculeSphereInfo.getSphereCenterY();
+                    double tmpDeltaZ = aR_z[i] - tmpMoleculeSphereInfo.getSphereCenterZ();
+                    double tmpDistanceSquare = tmpDeltaX * tmpDeltaX + tmpDeltaY * tmpDeltaY + tmpDeltaZ * tmpDeltaZ;
+                    boolean tmpIsInsideSphere = tmpDistanceSquare <= tmpMoleculeSphereInfo.getSphereRadiusSquare();
+                    if (tmpMoleculeSphereInfo.isExclusiveSphere() && tmpIsInsideSphere) {
+                        // <editor-fold defaultstate="collapsed" desc="Exclusive sphere (no particle allowed INSIDE sphere)">
+                        double tmpDistance = FastMath.sqrt(tmpDistanceSquare);
+                        // NOTE: Unit vector tmpR_new_0 points from the center of the sphere in radial direction towards aR[i]
+                        double tmpR_new_0_x = tmpDeltaX/tmpDistance;
+                        double tmpR_new_0_y = tmpDeltaY/tmpDistance;
+                        double tmpR_new_0_z = tmpDeltaZ/tmpDistance;
+                        // New point outside sphere in radial direction
+                        double tmpNewLength = tmpMoleculeSphereInfo.getSphereDiameter() - tmpDistance;
+                        aR_x[i] = tmpMoleculeSphereInfo.getSphereCenterX() + tmpR_new_0_x * tmpNewLength;
+                        aR_y[i] = tmpMoleculeSphereInfo.getSphereCenterY() + tmpR_new_0_y * tmpNewLength;
+                        aR_z[i] = tmpMoleculeSphereInfo.getSphereCenterZ() + tmpR_new_0_z * tmpNewLength;
+                        // New velocity vector in radial direction outside sphere with old length value
+                        // double tmpV = FastMath.sqrt(aV_x[i] * aV_x[i] + aV_y[i] * aV_y[i] + aV_z[i] * aV_z[i]);
+                        // aV_x[i] = tmpR_new_0_x * tmpV;
+                        // aV_y[i] = tmpR_new_0_y * tmpV;
+                        // aV_z[i] = tmpR_new_0_z * tmpV;
+                        // Reverse velocity vector
+                        aV_x[i] = -aV_x[i];
+                        aV_y[i] = -aV_y[i];
+                        aV_z[i] = -aV_z[i];
+                        // </editor-fold>
+                    } else if (!tmpMoleculeSphereInfo.isExclusiveSphere() && !tmpIsInsideSphere) {
+                        // <editor-fold defaultstate="collapsed" desc="Inclusive sphere (no particle allowed OUTSIDE sphere)">
+                        double tmpDistance = FastMath.sqrt(tmpDistanceSquare);
+                        // NOTE: Unit vector tmpR_new_0 points from the center of the sphere in radial direction towards aR[i]
+                        double tmpR_new_0_x = tmpDeltaX/tmpDistance;
+                        double tmpR_new_0_y = tmpDeltaY/tmpDistance;
+                        double tmpR_new_0_z = tmpDeltaZ/tmpDistance;
+                        // New point inside sphere in radial direction
+                        double tmpNewLength = tmpMoleculeSphereInfo.getSphereDiameter() - tmpDistance;
+                        aR_x[i] = tmpMoleculeSphereInfo.getSphereCenterX() + tmpR_new_0_x * tmpNewLength;
+                        aR_y[i] = tmpMoleculeSphereInfo.getSphereCenterY() + tmpR_new_0_y * tmpNewLength;
+                        aR_z[i] = tmpMoleculeSphereInfo.getSphereCenterZ() + tmpR_new_0_z * tmpNewLength;
+                        // New velocity vector in negative radial direction inside sphere with old length value
+                        // double tmpV = FastMath.sqrt(aV_x[i] * aV_x[i] + aV_y[i] * aV_y[i] + aV_z[i] * aV_z[i]);
+                        // aV_x[i] = -tmpR_new_0_x * tmpV;
+                        // aV_y[i] = -tmpR_new_0_y * tmpV;
+                        // aV_z[i] = -tmpR_new_0_z * tmpV;
+                        // Reverse velocity vector
+                        aV_x[i] = -aV_x[i];
+                        aV_y[i] = -aV_y[i];
+                        aV_z[i] = -aV_z[i];
+                        // </editor-fold>
+                    }
+                }
+            }
+        }
+    }
+    
+    /**
      * Calculates v with f
      * (No checks are performed)
      * 
@@ -1595,9 +1683,9 @@ public final class Utils {
         double[] tmpR_x = tmpParticleArrays.getR_x();
         double[] tmpR_y = tmpParticleArrays.getR_y();
         double[] tmpR_z = tmpParticleArrays.getR_z();
-        double[] tmpROld_x = tmpParticleArrays.getROld_x();
-        double[] tmpROld_y = tmpParticleArrays.getROld_y();
-        double[] tmpROld_z = tmpParticleArrays.getROld_z();
+        double[] tmpRold_x = tmpParticleArrays.getRold_x();
+        double[] tmpRold_y = tmpParticleArrays.getRold_y();
+        double[] tmpRold_z = tmpParticleArrays.getRold_z();
         double[] tmpF_x = tmpParticleArrays.getF_x();
         double[] tmpF_y = tmpParticleArrays.getF_y();
         double[] tmpF_z = tmpParticleArrays.getF_z();
@@ -1619,9 +1707,9 @@ public final class Utils {
         for (int i = 0; i < tmpSimulationDescription.getInitialPotentialEnergyMinimizationStepNumber(); i++) {
             // Save x,y,z-positions
             for (int k = 0; k < tmpR_x.length; k++) {
-                tmpROld_x[k] = tmpR_x[k];
-                tmpROld_y[k] = tmpR_y[k];
-                tmpROld_z[k] = tmpR_z[k];
+                tmpRold_x[k] = tmpR_x[k];
+                tmpRold_y[k] = tmpR_y[k];
+                tmpRold_z[k] = tmpR_z[k];
             }
             aConservativeForceAccumulator.accumulate_f_and_fTwo(
                 tmpParticleArrays.getBondChunkArraysList(),
@@ -1674,9 +1762,9 @@ public final class Utils {
                 // </editor-fold>
                 // Restore x,y,z-positions
                 for (int k = 0; k < tmpR_x.length; k++) {
-                    tmpR_x[k] = tmpROld_x[k];
-                    tmpR_y[k] = tmpROld_y[k];
-                    tmpR_z[k] = tmpROld_z[k];
+                    tmpR_x[k] = tmpRold_x[k];
+                    tmpR_y[k] = tmpRold_y[k];
+                    tmpR_z[k] = tmpRold_z[k];
                 }
                 if (tmpStepLength > 1E-12) {
                     tmpStepLength *= 0.5;
