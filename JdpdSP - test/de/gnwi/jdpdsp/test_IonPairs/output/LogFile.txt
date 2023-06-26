@@ -1,0 +1,1710 @@
+---------------------------------------
+DPD Simulation:
+Logger started at 2022/12/08 - 10:34:03
+---------------------------------------
+< METHOD_CALL : FileInput.getFactory (ID = 1)
+|  QUANTITY    : FileInput.getFactory: Random type           = ACRNG_XO_SHI_RO_256_SS
+|  QUANTITY    : FileInput.getFactory: Random seed           = 1
+|  QUANTITY    : FileInput.getFactory: Random warm-up steps  = 10000
+|  QUANTITY    : FileInput.getFactory: DPD type              = CUTOFF_LENGTH_ONE
+|  QUANTITY    : FileInput.getFactory: Electrostatics type   = DPD
+|  QUANTITY    : FileInput.getFactory: Harmonic bond type    = HARMONIC
+|  QUANTITY    : FileInput.getFactory: Integration type      = S1MVV
+|  QUANTITY    : FileInput.getFactory: Integration parameter = true
+> METHOD_CALL : FileInput.getFactory (ID = 1)
+< METHOD_CALL : DpdSimulationTask.Constructor (ID = 2)
+|  < METHOD_CALL : DpdSimulationTask.setParameters (ID = 3)
+|  |  INIT        : SimulationCounts initialised
+|  |  INIT        : ParticleTypes initialised
+|  |  INIT        : Random seed initialised
+|  |  INIT        : SimulationDescription initialised
+|  |  A_IJ        : a(H2O, H2O) = 25.0
+|  |  A_IJ        : a(H2O, H2ON) = 25.0
+|  |  A_IJ        : a(H2O, H2OP) = 25.0
+|  |  A_IJ        : a(H2ON, H2O) = 25.0
+|  |  A_IJ        : a(H2ON, H2ON) = 25.0
+|  |  A_IJ        : a(H2ON, H2OP) = 25.0
+|  |  A_IJ        : a(H2OP, H2O) = 25.0
+|  |  A_IJ        : a(H2OP, H2ON) = 25.0
+|  |  A_IJ        : a(H2OP, H2OP) = 25.0
+|  |  QUANTITY    : DpdSimulationTask.setParameters: Electrostatics parameters defined
+|  |  QUANTITY    : DpdSimulationTask.setParameters: Electrostatics charge distribution type = ALEJANDRE
+|  |  QUANTITY    : DpdSimulationTask.setParameters: Electrostatics splitting type           = FANOURGAKIS
+|  |  QUANTITY    : DpdSimulationTask.setParameters: No gravitational acceleration 
+|  |  INIT        : InteractionDescription initialised
+|  |  QUANTITY    : DPD Temperature          = 1.0
+|  |  QUANTITY    : DPD Sigma                = 3.0
+|  |  QUANTITY    : DPD Sigma/SQRT(TimeStep) = 15.0
+|  |  QUANTITY    : DPD Gamma                = 4.5
+|  |  QUANTITY    : DpdSimulationTask.setParameters: Bond number                    = 0
+|  |  QUANTITY    : DpdSimulationTask.setParameters: Bond chunk number              = 0
+|  |  QUANTITY    : DpdSimulationTask.setParameters: Bond info                      : 
+|  |  QUANTITY    : DpdSimulationTask.setParameters: Charged particle number        = 10000
+|  |  QUANTITY    : DpdSimulationTask.setParameters: Molecule number                = 2
+|  |  QUANTITY    : DpdSimulationTask.setParameters: No molecule fixations
+|  |  QUANTITY    : DpdSimulationTask.setParameters: No molecule boundaries
+|  |  QUANTITY    : DpdSimulationTask.setParameters: No molecule exlusion/inclusion spheres
+|  |  QUANTITY    : DpdSimulationTask.setParameters: No molecule velocity fixations
+|  |  QUANTITY    : DpdSimulationTask.setParameters: No molecule accelerations
+|  |  QUANTITY    : DpdSimulationTask.setParameters: Rg calculations                = 1
+|  |  QUANTITY    : DpdSimulationTask.setParameters: 2 nearest-neigbor determinations defined
+|  |  INIT        : ParticleArrays initialised WITHOUT aRestartInfo
+|  |  INIT        : ChemicalSystemDescription initialised
+|  |  INIT        : Parameters initialised
+|  > METHOD_CALL : DpdSimulationTask.setParameters (ID = 3)
+> METHOD_CALL : DpdSimulationTask.Constructor (ID = 2)
+< METHOD_CALL : DpdSimulationTask.call (ID = 4)
+|  < METHOD_CALL : DpdSimulationTask.initialiseVelocities (NO restart) (ID = 5)
+|  |  QUANTITY    : DpdSimulationTask.initialiseVelocities, tmpUkin = 314568.62
+|  |  V_SCALE     : DpdSimulationTask.initialiseVelocities, velocity scale factor = 1.0006806
+|  > METHOD_CALL : DpdSimulationTask.initialiseVelocities (NO restart) (ID = 5)
+|  < METHOD_CALL : S1mvvTimeStepCalculator.Constructor (ID = 6)
+|  |  METHOD_CALL : CellBox.Constructor: FULL, IsCellBasedCalculation = true
+|  |  METHOD_CALL : ParticlePairInteractionCalculator.Constructor: FULL
+|  |  METHOD_CALL : ParticlePairInteractionCalculator.Constructor WITHOUT aCellNeigbours, aParallelizationSafeCellChunks
+|  |  METHOD_CALL : ParticlePairDpdForceConservativeCutoff1Calculator.Constructor: FULL
+|  |  METHOD_CALL : CellBox.Constructor: FULL, IsCellBasedCalculation = true
+|  |  METHOD_CALL : ParticlePairInteractionCalculator.Constructor: FULL
+|  |  METHOD_CALL : ParticlePairInteractionCalculator.Constructor WITHOUT aCellNeigbours, aParallelizationSafeCellChunks
+|  |  METHOD_CALL : ParticlePairElectrostaticsDpdForceCalculator.Constructor: FULL
+|  |  METHOD_CALL : ForceAccumulator.Constructor
+|  |  METHOD_CALL : CellBox.Constructor: FULL, IsCellBasedCalculation = true
+|  |  METHOD_CALL : ParticlePairInteractionCalculator.Constructor: FULL
+|  |  METHOD_CALL : ParticlePairInteractionCalculator.Constructor WITHOUT aCellNeigbours, aParallelizationSafeCellChunks
+|  |  METHOD_CALL : ParticlePairS1mvvVelocityUpdateCutoff1Calculator.Constructor: FULL
+|  |  METHOD_CALL : CellBox.Constructor: FULL, IsCellBasedCalculation = true
+|  |  METHOD_CALL : ParticlePairInteractionCalculator.Constructor: FULL
+|  |  METHOD_CALL : ParticlePairInteractionCalculator.Constructor WITH aParticlePairInteractionCalculator
+|  |  METHOD_CALL : ParticlePairElectrostaticsDpdPotentialCalculator.Constructor WITH aParticlePairInteractionCalculator
+|  |  METHOD_CALL : CellBox.Constructor: FULL, IsCellBasedCalculation = true
+|  |  METHOD_CALL : ParticlePairInteractionCalculator.Constructor: FULL
+|  |  METHOD_CALL : ParticlePairInteractionCalculator.Constructor WITH aParticlePairInteractionCalculator
+|  |  METHOD_CALL : ParticlePairDpdPotentialCutoff1Calculator.Constructor WITH aParticlePairInteractionCalculator
+|  |  METHOD_CALL : PotentialAccumulator.Constructor
+|  |  METHOD_CALL : CellBox.Constructor: FULL, IsCellBasedCalculation = true
+|  |  METHOD_CALL : ParticlePairInteractionCalculator.Constructor: FULL
+|  |  METHOD_CALL : ParticlePairInteractionCalculator.Constructor WITHOUT aCellNeigbours, aParallelizationSafeCellChunks
+|  |  METHOD_CALL : ParticlePairDpdForceConservativeCutoff1Calculator.Constructor: FULL
+|  |  METHOD_CALL : CellBox.Constructor: FULL, IsCellBasedCalculation = true
+|  |  METHOD_CALL : ParticlePairInteractionCalculator.Constructor: FULL
+|  |  METHOD_CALL : ParticlePairInteractionCalculator.Constructor WITHOUT aCellNeigbours, aParallelizationSafeCellChunks
+|  |  METHOD_CALL : ParticlePairDpdForceRandomCutoff1Calculator.Constructor: FULL
+|  |  METHOD_CALL : CellBox.Constructor: FULL, IsCellBasedCalculation = true
+|  |  METHOD_CALL : ParticlePairInteractionCalculator.Constructor: FULL
+|  |  METHOD_CALL : ParticlePairInteractionCalculator.Constructor WITHOUT aCellNeigbours, aParallelizationSafeCellChunks
+|  |  METHOD_CALL : ParticlePairDpdForceDissipativeCutoff1Calculator.Constructor: FULL
+|  |  METHOD_CALL : ParticleForceMagnitudeAccumulator.Constructor
+|  |  METHOD_CALL : CellBox.Constructor: FULL, IsCellBasedCalculation = true
+|  |  METHOD_CALL : ParticlePairInteractionCalculator.Constructor: FULL
+|  |  METHOD_CALL : ParticlePairInteractionCalculator.Constructor WITH aParticlePairInteractionCalculator
+|  |  METHOD_CALL : ParticlePairDpdForceConservativeCutoff1Calculator.Constructor WITH aParticlePairInteractionCalculator
+|  |  QUANTITY    : Initial potential energy minimization with DPD forces only
+|  |  METHOD_CALL : ForceAccumulator.Constructor
+|  |  < METHOD_CALL : Utils.calculateInitialPotentialEnergyMinimizationSteps (ID = 7)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(DPD)      = 1838004.0
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(DPD) = 1650233.2
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(DPD) = 1648338.5
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(DPD) = 1651586.2
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(Estat)      = -200053.73
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(Estat) = -2.8868594
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(Estat) = -2.8868656
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(Estat) = -2.8868613
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Upot(START)       = 1637950.2
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(DPD)      = 1836197.0
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(DPD) = 1650007.6
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(DPD) = 1648111.9
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(DPD) = 1651360.8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(Estat)      = -4998.9883
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(Estat) = -5.1531196E-4
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(Estat) = -5.071384E-4
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(Estat) = 1.6315281E-4
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 1, Timestep Length = 4.1212852E-4
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 1, Upot(Current)   = 1831198.0
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(DPD)      = 1837115.2
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(DPD) = 1650112.5
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(DPD) = 1648217.5
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(DPD) = 1651465.4
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(Estat)      = -5000.062
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(Estat) = 1.6056746E-4
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(Estat) = -2.6483723E-4
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(Estat) = -4.2188168E-4
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 2, Timestep Length = 2.0606426E-4
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 2, Upot(Current)   = 1832115.2
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(DPD)      = 1837579.8
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(DPD) = 1650169.9
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(DPD) = 1648277.1
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(DPD) = 1651525.1
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(Estat)      = -4999.837
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(Estat) = -6.01463E-4
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(Estat) = -8.4589404E-4
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(Estat) = -4.3409318E-4
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 3, Timestep Length = 1.0303213E-4
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 3, Upot(Current)   = 1832579.9
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(DPD)      = 1837799.8
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(DPD) = 1650201.0
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(DPD) = 1648307.1
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(DPD) = 1651554.6
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(Estat)      = -5000.4565
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(Estat) = -7.4476004E-5
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(Estat) = 3.865488E-4
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(Estat) = -4.7944486E-5
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 4, Timestep Length = 5.1516065E-5
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 4, Upot(Current)   = 1832799.2
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(DPD)      = 1837904.4
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(DPD) = 1650215.1
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(DPD) = 1648321.9
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(DPD) = 1651570.2
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(Estat)      = -4983.0317
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(Estat) = 5.96337E-4
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(Estat) = 1.3958343E-4
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(Estat) = 1.4848262E-4
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 5, Timestep Length = 2.5758032E-5
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 5, Upot(Current)   = 1832921.4
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(DPD)      = 1837955.0
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(DPD) = 1650223.4
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(DPD) = 1648330.0
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(DPD) = 1651578.4
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(Estat)      = -5017.2324
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(Estat) = -1.4969707E-4
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(Estat) = -3.8206234E-4
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(Estat) = -6.688759E-4
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 6, Timestep Length = 1.2879016E-5
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 6, Upot(Current)   = 1832937.8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(DPD)      = 1837979.0
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(DPD) = 1650228.9
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(DPD) = 1648335.2
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(DPD) = 1651582.4
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(Estat)      = -6425.876
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(Estat) = -0.08307776
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(Estat) = -0.08281681
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(Estat) = -0.08302031
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 7, Timestep Length = 6.439508E-6
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 7, Upot(Current)   = 1831553.1
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(DPD)      = 1837992.5
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(DPD) = 1650231.2
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(DPD) = 1648337.0
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(DPD) = 1651584.6
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(Estat)      = -181677.48
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(Estat) = -5.313946
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(Estat) = -5.2508907
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(Estat) = -5.302162
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 8, Timestep Length = 3.219754E-6
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 8, Upot(Current)   = 1656315.0
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(DPD)      = 1838000.0
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(DPD) = 1650232.6
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(DPD) = 1648338.0
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(DPD) = 1651586.0
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(Estat)      = -198298.05
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(Estat) = -3.5669835
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(Estat) = -3.5810442
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(Estat) = -3.4924736
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 9, Timestep Length = 1.609877E-6
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 9, Upot(Current)   = 1639702.0
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(DPD)      = 1838003.1
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(DPD) = 1650233.2
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(DPD) = 1648338.6
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(DPD) = 1651586.5
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(Estat)      = -200053.73
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(Estat) = -2.9444318
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(Estat) = -2.9543672
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(Estat) = -2.942083
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 10, Timestep Length = 8.049385E-7
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 10, Upot(Min)       = 1637949.4
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(DPD)      = 1837998.5
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(DPD) = 1650232.5
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(DPD) = 1648338.1
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(DPD) = 1651585.8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(Estat)      = -184486.62
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(Estat) = -3.8046548
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(Estat) = -3.7572105
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(Estat) = -3.6860356
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 11, Timestep Length = 1.609877E-6
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 11, Upot(Current)   = 1653511.9
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(DPD)      = 1838001.9
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(DPD) = 1650233.0
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(DPD) = 1648338.5
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(DPD) = 1651586.2
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(Estat)      = -198844.28
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(Estat) = -3.3783057
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(Estat) = -3.389815
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(Estat) = -3.2875524
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 12, Timestep Length = 8.049385E-7
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 12, Upot(Current)   = 1639157.6
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(DPD)      = 1838002.8
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(DPD) = 1650233.0
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(DPD) = 1648338.5
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(DPD) = 1651586.5
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(Estat)      = -200053.73
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(Estat) = -2.94521
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(Estat) = -2.9549327
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(Estat) = -2.9415312
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 13, Timestep Length = 4.0246925E-7
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 13, Upot(Min)       = 1637949.0
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(DPD)      = 1838001.4
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(DPD) = 1650233.0
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(DPD) = 1648338.5
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(DPD) = 1651586.1
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(Estat)      = -197673.83
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(Estat) = -3.4853358
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(Estat) = -3.4674299
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(Estat) = -3.3965793
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 14, Timestep Length = 8.049385E-7
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 14, Upot(Current)   = 1640327.5
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(DPD)      = 1838002.4
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(DPD) = 1650233.1
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(DPD) = 1648338.5
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(DPD) = 1651586.2
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(Estat)      = -200053.73
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(Estat) = -3.04887
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(Estat) = -3.02568
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(Estat) = -3.0466146
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 15, Timestep Length = 4.0246925E-7
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 15, Upot(Min)       = 1637948.6
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(DPD)      = 1838001.1
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(DPD) = 1650233.1
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(DPD) = 1648338.5
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(DPD) = 1651586.2
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(Estat)      = -188427.14
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(Estat) = -3.546266
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(Estat) = -3.461047
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(Estat) = -3.4527388
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 16, Timestep Length = 8.049385E-7
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 16, Upot(Current)   = 1649574.0
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(DPD)      = 1838001.9
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(DPD) = 1650233.2
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(DPD) = 1648338.5
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(DPD) = 1651586.1
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(Estat)      = -198141.97
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(Estat) = -3.218549
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(Estat) = -3.1542153
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(Estat) = -3.2120976
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 17, Timestep Length = 4.0246925E-7
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 17, Upot(Current)   = 1639859.9
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(DPD)      = 1838002.0
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(DPD) = 1650233.1
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(DPD) = 1648338.5
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(DPD) = 1651586.2
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(Estat)      = -199819.64
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(Estat) = -3.0866754
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(Estat) = -3.053966
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(Estat) = -3.0900145
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 18, Timestep Length = 2.0123463E-7
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 18, Upot(Current)   = 1638182.4
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(DPD)      = 1838002.4
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(DPD) = 1650233.1
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(DPD) = 1648338.5
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(DPD) = 1651586.2
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(Estat)      = -200053.73
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(Estat) = -3.0589075
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(Estat) = -3.0326734
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(Estat) = -3.0542464
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 19, Timestep Length = 1.00617314E-7
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 19, Upot(Current)   = 1637948.6
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(DPD)      = 1838002.4
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(DPD) = 1650233.1
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(DPD) = 1648338.5
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(DPD) = 1651586.2
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(Estat)      = -200014.7
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(Estat) = -3.0485563
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(Estat) = -3.0265598
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(Estat) = -3.0477028
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 20, Timestep Length = 5.0308657E-8
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 20, Upot(Current)   = 1637987.6
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(DPD)      = 1838002.4
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(DPD) = 1650233.1
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(DPD) = 1648338.5
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(DPD) = 1651586.2
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(Estat)      = -200053.73
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(Estat) = -3.049099
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(Estat) = -3.0260172
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(Estat) = -3.0467944
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 21, Timestep Length = 2.5154328E-8
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 21, Upot(Current)   = 1637948.6
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(DPD)      = 1838002.4
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(DPD) = 1650233.1
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(DPD) = 1648338.5
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(DPD) = 1651586.2
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(Estat)      = -200053.73
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(Estat) = -3.048891
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(Estat) = -3.0256934
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(Estat) = -3.0466328
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 22, Timestep Length = 1.2577164E-8
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 22, Upot(Current)   = 1637948.6
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(DPD)      = 1838002.4
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(DPD) = 1650233.1
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(DPD) = 1648338.5
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(DPD) = 1651586.2
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(Estat)      = -200053.73
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(Estat) = -3.0488806
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(Estat) = -3.0256796
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(Estat) = -3.0466137
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 23, Timestep Length = 6.288582E-9
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 23, Upot(Current)   = 1637948.6
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(DPD)      = 1838002.4
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(DPD) = 1650233.1
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(DPD) = 1648338.5
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(DPD) = 1651586.2
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(Estat)      = -200053.73
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(Estat) = -3.048872
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(Estat) = -3.0256796
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(Estat) = -3.0466142
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 24, Timestep Length = 3.144291E-9
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 24, Upot(Current)   = 1637948.6
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(DPD)      = 1838002.4
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(DPD) = 1650233.1
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(DPD) = 1648338.5
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(DPD) = 1651586.2
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(Estat)      = -200053.73
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(Estat) = -3.04887
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(Estat) = -3.02568
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(Estat) = -3.0466146
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 25, Timestep Length = 1.5721455E-9
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 25, Upot(Current)   = 1637948.6
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(DPD)      = 1838002.4
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(DPD) = 1650233.1
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(DPD) = 1648338.5
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(DPD) = 1651586.2
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(Estat)      = -200053.73
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(Estat) = -3.04887
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(Estat) = -3.02568
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(Estat) = -3.0466146
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 26, Timestep Length = 7.8607276E-10
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 26, Upot(Current)   = 1637948.6
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(DPD)      = 1838002.4
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(DPD) = 1650233.1
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(DPD) = 1648338.5
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(DPD) = 1651586.2
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(Estat)      = -200053.73
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(Estat) = -3.04887
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(Estat) = -3.02568
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(Estat) = -3.0466146
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 27, Timestep Length = 3.9303638E-10
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 27, Upot(Current)   = 1637948.6
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(DPD)      = 1838002.4
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(DPD) = 1650233.1
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(DPD) = 1648338.5
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(DPD) = 1651586.2
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(Estat)      = -200053.73
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(Estat) = -3.04887
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(Estat) = -3.02568
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(Estat) = -3.0466146
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 28, Timestep Length = 1.9651819E-10
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 28, Upot(Current)   = 1637948.6
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(DPD)      = 1838002.4
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(DPD) = 1650233.1
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(DPD) = 1648338.5
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(DPD) = 1651586.2
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(Estat)      = -200053.73
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(Estat) = -3.04887
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(Estat) = -3.02568
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(Estat) = -3.0466146
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 29, Timestep Length = 9.8259095E-11
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 29, Upot(Current)   = 1637948.6
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(DPD)      = 1838002.4
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(DPD) = 1650233.1
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(DPD) = 1648338.5
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(DPD) = 1651586.2
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(Estat)      = -200053.73
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(Estat) = -3.04887
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(Estat) = -3.02568
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(Estat) = -3.0466146
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 30, Timestep Length = 4.9129548E-11
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 30, Upot(Current)   = 1637948.6
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(DPD)      = 1838002.4
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(DPD) = 1650233.1
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(DPD) = 1648338.5
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(DPD) = 1651586.2
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(Estat)      = -200053.73
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(Estat) = -3.04887
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(Estat) = -3.02568
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(Estat) = -3.0466146
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 31, Timestep Length = 2.4564774E-11
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 31, Upot(Current)   = 1637948.6
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(DPD)      = 1838002.4
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(DPD) = 1650233.1
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(DPD) = 1648338.5
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(DPD) = 1651586.2
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(Estat)      = -200053.73
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(Estat) = -3.04887
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(Estat) = -3.02568
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(Estat) = -3.0466146
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 32, Timestep Length = 1.2282387E-11
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 32, Upot(Current)   = 1637948.6
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(DPD)      = 1838002.4
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(DPD) = 1650233.1
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(DPD) = 1648338.5
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(DPD) = 1651586.2
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(Estat)      = -200053.73
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(Estat) = -3.04887
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(Estat) = -3.02568
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(Estat) = -3.0466146
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 33, Timestep Length = 6.1411935E-12
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 33, Upot(Current)   = 1637948.6
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(DPD)      = 1838002.4
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(DPD) = 1650233.1
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(DPD) = 1648338.5
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(DPD) = 1651586.2
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(Estat)      = -200053.73
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(Estat) = -3.04887
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(Estat) = -3.02568
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(Estat) = -3.0466146
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 34, Timestep Length = 3.0705967E-12
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 34, Upot(Current)   = 1637948.6
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(DPD)      = 1838002.4
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(DPD) = 1650233.1
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(DPD) = 1648338.5
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(DPD) = 1651586.2
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(Estat)      = -200053.73
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(Estat) = -3.04887
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(Estat) = -3.02568
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(Estat) = -3.0466146
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 35, Timestep Length = 1.5352984E-12
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 35, Upot(Current)   = 1637948.6
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(DPD)      = 1838002.4
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(DPD) = 1650233.1
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(DPD) = 1648338.5
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(DPD) = 1651586.2
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(Estat)      = -200053.73
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(Estat) = -3.04887
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(Estat) = -3.02568
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(Estat) = -3.0466146
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 36, Timestep Length = 7.676492E-13
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 36, Upot(Current)   = 1637948.6
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Minimization step = 36, Break
+|  |  |  QUANTITY    : Utils.calculateInitialPotentialEnergyMinimizationSteps, Upot(Minimum) = 1637948.6
+|  |  > METHOD_CALL : Utils.calculateInitialPotentialEnergyMinimizationSteps (ID = 7)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.initialiseIntegration (ID = 8)
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.initialiseIntegration (ID = 8)
+|  > METHOD_CALL : S1mvvTimeStepCalculator.Constructor (ID = 6)
+|  METHOD_CALL : CellBox.Constructor: FULL, IsCellBasedCalculation = true
+|  METHOD_CALL : ParticlePairInteractionCalculator.Constructor: FULL
+|  METHOD_CALL : ParticlePairInteractionCalculator.Constructor WITHOUT aCellNeigbours, aParallelizationSafeCellChunks
+|  METHOD_CALL : ParticlePairNearestNeighborCalculator.Constructor: FULL
+|  PROGRESS    : Preparations for time-step loop finished
+|  < TIME_STEP   : Time step = 1 (ID = 9)
+|  |  < OUTPUT_STEP : Output time step = 1 (ID = 9)
+|  |  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 10)
+|  |  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITH scaling = 0.3526935
+|  |  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 10)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 4
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(DPD)      = 1541823.8
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(DPD) = 1637450.5
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(DPD) = 1637124.1
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(DPD) = 1638874.6
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(Estat)      = -1726.4679
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(Estat) = -1295.9249
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(Estat) = -1213.017
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(Estat) = -1295.604
+|  |  |  QUANTITY    : DpdSimulationTask.call: Temperature              = 0.9999893
+|  |  |  QUANTITY    : DpdSimulationTask.call: Upot(DPD)                = 1541823.8
+|  |  |  QUANTITY    : DpdSimulationTask.call: Upot(Bonds)              = 0.0
+|  |  |  QUANTITY    : DpdSimulationTask.call: Upot(Electrostatics)     = -1726.4679
+|  |  |  QUANTITY    : DpdSimulationTask.call: Upot(total)              = 1540097.2
+|  |  |  QUANTITY    : DpdSimulationTask.call: Ukin                     = 314996.62
+|  |  |  QUANTITY    : DpdSimulationTask.call: U(total)                 = 1855093.9
+|  |  |  QUANTITY    : DpdSimulationTask.call: Surface Tension X        = -0.34758624
+|  |  |  QUANTITY    : DpdSimulationTask.call: Surface Tension Y        = -0.56262904
+|  |  |  QUANTITY    : DpdSimulationTask.call: Surface Tension Z        = 0.9102889
+|  |  |  QUANTITY    : DpdSimulationTask.call: Surface Tension Norm     = 1.1251638
+|  |  |  QUANTITY    : DpdSimulationTask.call: DPD Surface Tension X    = -0.32315293
+|  |  |  QUANTITY    : DpdSimulationTask.call: DPD Surface Tension Y    = -0.6113485
+|  |  |  QUANTITY    : DpdSimulationTask.call: DPD Surface Tension Z    = 0.934575
+|  |  |  QUANTITY    : DpdSimulationTask.call: DPD Surface Tension Norm = 1.1625856
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  PARTICLE    : DpdSimulationTask.call: DPD conservat. F (min/mean/max) = 0.32888532 / 22.964611 / 93.01282
+|  |  |  PARTICLE    : DpdSimulationTask.call: DPD random F     (min/mean/max) = 0.18520036 / 14.514043 / 64.88315
+|  |  |  PARTICLE    : DpdSimulationTask.call: DPD dissipat. F  (min/mean/max) = 0.0013019367 / 2.9975452 / 73.53571
+|  |  |  PARTICLE    : DpdSimulationTask.call: Bond F is not defined
+|  |  |  PARTICLE    : DpdSimulationTask.call: Electrostatics F (min/mean/max) = 0.016345546 / 0.67022055 / 3.001685
+|  |  |  PARTICLE    : DpdSimulationTask.call: Total F          (min/mean/max) = 0.10875574 / 26.286013 / 118.176445
+|  |  |  PARTICLE    : DpdSimulationTask.call: Velocity v       (min/mean/max) = 0.014156387 / 0.9734227 / 8.585699
+|  |  > OUTPUT_STEP : Output time step = 1 (ID = 9)
+|  > TIME_STEP   : Time step = 1 (ID = 9)
+|  < TIME_STEP   : Time step = 2 (ID = 11)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 12)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITH scaling = 0.83484894
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 12)
+|  > TIME_STEP   : Time step = 2 (ID = 11)
+|  < TIME_STEP   : Time step = 3 (ID = 13)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 14)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITH scaling = 0.81681395
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 14)
+|  > TIME_STEP   : Time step = 3 (ID = 13)
+|  < TIME_STEP   : Time step = 4 (ID = 15)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 16)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITH scaling = 0.85755754
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 16)
+|  > TIME_STEP   : Time step = 4 (ID = 15)
+|  < TIME_STEP   : Time step = 5 (ID = 17)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 18)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITH scaling = 0.9114481
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 18)
+|  > TIME_STEP   : Time step = 5 (ID = 17)
+|  < TIME_STEP   : Time step = 6 (ID = 19)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 20)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITH scaling = 0.9581008
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 20)
+|  > TIME_STEP   : Time step = 6 (ID = 19)
+|  < TIME_STEP   : Time step = 7 (ID = 21)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 22)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITH scaling = 0.98884577
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 22)
+|  > TIME_STEP   : Time step = 7 (ID = 21)
+|  < TIME_STEP   : Time step = 8 (ID = 23)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 24)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITH scaling = 1.0041827
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 24)
+|  > TIME_STEP   : Time step = 8 (ID = 23)
+|  < TIME_STEP   : Time step = 9 (ID = 25)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 26)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITH scaling = 1.0072081
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 26)
+|  > TIME_STEP   : Time step = 9 (ID = 25)
+|  < TIME_STEP   : Time step = 10 (ID = 27)
+|  |  < OUTPUT_STEP : Output time step = 10 (ID = 27)
+|  |  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 28)
+|  |  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITH scaling = 1.0025645
+|  |  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 28)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 4
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(DPD)      = 984008.25
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(DPD) = 1466912.2
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(DPD) = 1467557.2
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(DPD) = 1467318.1
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(Estat)      = -476.38992
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(Estat) = -587.84357
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(Estat) = -419.9493
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(Estat) = -608.2216
+|  |  |  QUANTITY    : DpdSimulationTask.call: Temperature              = 0.9999861
+|  |  |  QUANTITY    : DpdSimulationTask.call: Upot(DPD)                = 984008.25
+|  |  |  QUANTITY    : DpdSimulationTask.call: Upot(Bonds)              = 0.0
+|  |  |  QUANTITY    : DpdSimulationTask.call: Upot(Electrostatics)     = -476.38992
+|  |  |  QUANTITY    : DpdSimulationTask.call: Upot(total)              = 983531.9
+|  |  |  QUANTITY    : DpdSimulationTask.call: Ukin                     = 314995.62
+|  |  |  QUANTITY    : DpdSimulationTask.call: U(total)                 = 1298527.5
+|  |  |  QUANTITY    : DpdSimulationTask.call: Surface Tension X        = -0.35273787
+|  |  |  QUANTITY    : DpdSimulationTask.call: Surface Tension Y        = 0.36510172
+|  |  |  QUANTITY    : DpdSimulationTask.call: Surface Tension Z        = -0.012290262
+|  |  |  QUANTITY    : DpdSimulationTask.call: Surface Tension Norm     = 0.5078133
+|  |  |  QUANTITY    : DpdSimulationTask.call: DPD Surface Tension X    = -0.30939078
+|  |  |  QUANTITY    : DpdSimulationTask.call: DPD Surface Tension Y    = 0.26022974
+|  |  |  QUANTITY    : DpdSimulationTask.call: DPD Surface Tension Z    = 0.04908745
+|  |  |  QUANTITY    : DpdSimulationTask.call: DPD Surface Tension Norm = 0.407249
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  PARTICLE    : DpdSimulationTask.call: DPD conservat. F (min/mean/max) = 0.07552206 / 11.010618 / 36.674175
+|  |  |  PARTICLE    : DpdSimulationTask.call: DPD random F     (min/mean/max) = 0.15958172 / 11.87346 / 46.086613
+|  |  |  PARTICLE    : DpdSimulationTask.call: DPD dissipat. F  (min/mean/max) = 0.022753404 / 2.3667645 / 18.004593
+|  |  |  PARTICLE    : DpdSimulationTask.call: Bond F is not defined
+|  |  |  PARTICLE    : DpdSimulationTask.call: Electrostatics F (min/mean/max) = 0.023775011 / 0.8329543 / 2.6793728
+|  |  |  PARTICLE    : DpdSimulationTask.call: Total F          (min/mean/max) = 0.23662834 / 16.216597 / 58.866856
+|  |  |  PARTICLE    : DpdSimulationTask.call: Velocity v       (min/mean/max) = 0.012366912 / 1.5879835 / 6.0345383
+|  |  > OUTPUT_STEP : Output time step = 10 (ID = 27)
+|  > TIME_STEP   : Time step = 10 (ID = 27)
+|  < TIME_STEP   : Time step = 11 (ID = 29)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 30)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.99578375
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 30)
+|  > TIME_STEP   : Time step = 11 (ID = 29)
+|  < TIME_STEP   : Time step = 12 (ID = 31)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 32)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9911228
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 32)
+|  > TIME_STEP   : Time step = 12 (ID = 31)
+|  < TIME_STEP   : Time step = 13 (ID = 33)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 34)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9889282
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 34)
+|  > TIME_STEP   : Time step = 13 (ID = 33)
+|  < TIME_STEP   : Time step = 14 (ID = 35)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 36)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9894592
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 36)
+|  > TIME_STEP   : Time step = 14 (ID = 35)
+|  < TIME_STEP   : Time step = 15 (ID = 37)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 38)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9909512
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 38)
+|  > TIME_STEP   : Time step = 15 (ID = 37)
+|  < TIME_STEP   : Time step = 16 (ID = 39)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 40)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9914537
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 40)
+|  > TIME_STEP   : Time step = 16 (ID = 39)
+|  < TIME_STEP   : Time step = 17 (ID = 41)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 42)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9896346
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 42)
+|  > TIME_STEP   : Time step = 17 (ID = 41)
+|  < TIME_STEP   : Time step = 18 (ID = 43)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 44)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.98761195
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 44)
+|  > TIME_STEP   : Time step = 18 (ID = 43)
+|  < TIME_STEP   : Time step = 19 (ID = 45)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 46)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.98642606
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 46)
+|  > TIME_STEP   : Time step = 19 (ID = 45)
+|  < TIME_STEP   : Time step = 20 (ID = 47)
+|  |  < OUTPUT_STEP : Output time step = 20 (ID = 47)
+|  |  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 48)
+|  |  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.98585427
+|  |  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 48)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 4
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(DPD)      = 972106.9
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(DPD) = 1457024.8
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(DPD) = 1458271.0
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(DPD) = 1456655.4
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(Estat)      = -870.2165
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(Estat) = -481.07532
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(Estat) = -411.31042
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(Estat) = -477.11694
+|  |  |  QUANTITY    : DpdSimulationTask.call: Temperature              = 1.0288984
+|  |  |  QUANTITY    : DpdSimulationTask.call: Upot(DPD)                = 972106.9
+|  |  |  QUANTITY    : DpdSimulationTask.call: Upot(Bonds)              = 0.0
+|  |  |  QUANTITY    : DpdSimulationTask.call: Upot(Electrostatics)     = -870.2165
+|  |  |  QUANTITY    : DpdSimulationTask.call: Upot(total)              = 971236.7
+|  |  |  QUANTITY    : DpdSimulationTask.call: Ukin                     = 324102.97
+|  |  |  QUANTITY    : DpdSimulationTask.call: U(total)                 = 1295339.6
+|  |  |  QUANTITY    : DpdSimulationTask.call: Surface Tension X        = -0.27987942
+|  |  |  QUANTITY    : DpdSimulationTask.call: Surface Tension Y        = 0.88239664
+|  |  |  QUANTITY    : DpdSimulationTask.call: Surface Tension Z        = -0.6025908
+|  |  |  QUANTITY    : DpdSimulationTask.call: Surface Tension Norm     = 1.1045687
+|  |  |  QUANTITY    : DpdSimulationTask.call: DPD Surface Tension X    = -0.25816908
+|  |  |  QUANTITY    : DpdSimulationTask.call: DPD Surface Tension Y    = 0.84250844
+|  |  |  QUANTITY    : DpdSimulationTask.call: DPD Surface Tension Z    = -0.5843394
+|  |  |  QUANTITY    : DpdSimulationTask.call: DPD Surface Tension Norm = 1.0573194
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  PARTICLE    : DpdSimulationTask.call: DPD conservat. F (min/mean/max) = 0.15275627 / 10.447038 / 35.594772
+|  |  |  PARTICLE    : DpdSimulationTask.call: DPD random F     (min/mean/max) = 0.13797314 / 11.810817 / 42.12524
+|  |  |  PARTICLE    : DpdSimulationTask.call: DPD dissipat. F  (min/mean/max) = 0.025939148 / 2.3589756 / 17.234818
+|  |  |  PARTICLE    : DpdSimulationTask.call: Bond F is not defined
+|  |  |  PARTICLE    : DpdSimulationTask.call: Electrostatics F (min/mean/max) = 0.021290919 / 0.7664162 / 2.5422695
+|  |  |  PARTICLE    : DpdSimulationTask.call: Total F          (min/mean/max) = 0.33023468 / 15.854898 / 64.25161
+|  |  |  PARTICLE    : DpdSimulationTask.call: Velocity v       (min/mean/max) = 0.017283894 / 1.6164505 / 5.270976
+|  |  > OUTPUT_STEP : Output time step = 20 (ID = 47)
+|  > TIME_STEP   : Time step = 20 (ID = 47)
+|  < TIME_STEP   : Time step = 21 (ID = 49)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 50)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9856546
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 50)
+|  > TIME_STEP   : Time step = 21 (ID = 49)
+|  < TIME_STEP   : Time step = 22 (ID = 51)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 52)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.98562557
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 52)
+|  > TIME_STEP   : Time step = 22 (ID = 51)
+|  < TIME_STEP   : Time step = 23 (ID = 53)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 54)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.98595667
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 54)
+|  > TIME_STEP   : Time step = 23 (ID = 53)
+|  < TIME_STEP   : Time step = 24 (ID = 55)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 56)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.98634577
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 56)
+|  > TIME_STEP   : Time step = 24 (ID = 55)
+|  < TIME_STEP   : Time step = 25 (ID = 57)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 58)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9860216
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 58)
+|  > TIME_STEP   : Time step = 25 (ID = 57)
+|  < TIME_STEP   : Time step = 26 (ID = 59)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 60)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.98521525
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 60)
+|  > TIME_STEP   : Time step = 26 (ID = 59)
+|  < TIME_STEP   : Time step = 27 (ID = 61)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 62)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.98524183
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 62)
+|  > TIME_STEP   : Time step = 27 (ID = 61)
+|  < TIME_STEP   : Time step = 28 (ID = 63)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 64)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.98516995
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 64)
+|  > TIME_STEP   : Time step = 28 (ID = 63)
+|  < TIME_STEP   : Time step = 29 (ID = 65)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 66)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.984747
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 66)
+|  > TIME_STEP   : Time step = 29 (ID = 65)
+|  < TIME_STEP   : Time step = 30 (ID = 67)
+|  |  < OUTPUT_STEP : Output time step = 30 (ID = 67)
+|  |  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 68)
+|  |  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9853729
+|  |  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 68)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 4
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(DPD)      = 968737.9
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(DPD) = 1451841.4
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(DPD) = 1452069.0
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(DPD) = 1452375.2
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(Estat)      = -1238.2753
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(Estat) = -540.0759
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(Estat) = -488.5783
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(Estat) = -610.9817
+|  |  |  QUANTITY    : DpdSimulationTask.call: Temperature              = 1.0299039
+|  |  |  QUANTITY    : DpdSimulationTask.call: Upot(DPD)                = 968737.9
+|  |  |  QUANTITY    : DpdSimulationTask.call: Upot(Bonds)              = 0.0
+|  |  |  QUANTITY    : DpdSimulationTask.call: Upot(Electrostatics)     = -1238.2753
+|  |  |  QUANTITY    : DpdSimulationTask.call: Upot(total)              = 967499.6
+|  |  |  QUANTITY    : DpdSimulationTask.call: Ukin                     = 324419.72
+|  |  |  QUANTITY    : DpdSimulationTask.call: U(total)                 = 1291919.4
+|  |  |  QUANTITY    : DpdSimulationTask.call: Surface Tension X        = -0.21842812
+|  |  |  QUANTITY    : DpdSimulationTask.call: Surface Tension Y        = 0.02803946
+|  |  |  QUANTITY    : DpdSimulationTask.call: Surface Tension Z        = 0.19046226
+|  |  |  QUANTITY    : DpdSimulationTask.call: Surface Tension Norm     = 0.2911579
+|  |  |  QUANTITY    : DpdSimulationTask.call: DPD Surface Tension X    = -0.22416848
+|  |  |  QUANTITY    : DpdSimulationTask.call: DPD Surface Tension Y    = -0.023108635
+|  |  |  QUANTITY    : DpdSimulationTask.call: DPD Surface Tension Z    = 0.24727711
+|  |  |  QUANTITY    : DpdSimulationTask.call: DPD Surface Tension Norm = 0.33456165
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  PARTICLE    : DpdSimulationTask.call: DPD conservat. F (min/mean/max) = 0.072829366 / 10.367469 / 34.66891
+|  |  |  PARTICLE    : DpdSimulationTask.call: DPD random F     (min/mean/max) = 0.17405479 / 11.825785 / 42.297825
+|  |  |  PARTICLE    : DpdSimulationTask.call: DPD dissipat. F  (min/mean/max) = 0.033612575 / 2.3499196 / 16.347435
+|  |  |  PARTICLE    : DpdSimulationTask.call: Bond F is not defined
+|  |  |  PARTICLE    : DpdSimulationTask.call: Electrostatics F (min/mean/max) = 0.038909744 / 0.7078144 / 2.1761906
+|  |  |  PARTICLE    : DpdSimulationTask.call: Total F          (min/mean/max) = 0.16652337 / 15.795629 / 65.68571
+|  |  |  PARTICLE    : DpdSimulationTask.call: Velocity v       (min/mean/max) = 0.02364607 / 1.619032 / 5.2198796
+|  |  > OUTPUT_STEP : Output time step = 30 (ID = 67)
+|  > TIME_STEP   : Time step = 30 (ID = 67)
+|  < TIME_STEP   : Time step = 31 (ID = 69)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 70)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.98482424
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 70)
+|  > TIME_STEP   : Time step = 31 (ID = 69)
+|  < TIME_STEP   : Time step = 32 (ID = 71)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 72)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9851247
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 72)
+|  > TIME_STEP   : Time step = 32 (ID = 71)
+|  < TIME_STEP   : Time step = 33 (ID = 73)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 74)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.98540777
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 74)
+|  > TIME_STEP   : Time step = 33 (ID = 73)
+|  < TIME_STEP   : Time step = 34 (ID = 75)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 76)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9853741
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 76)
+|  > TIME_STEP   : Time step = 34 (ID = 75)
+|  < TIME_STEP   : Time step = 35 (ID = 77)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 78)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9854103
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 78)
+|  > TIME_STEP   : Time step = 35 (ID = 77)
+|  < TIME_STEP   : Time step = 36 (ID = 79)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 80)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.98704153
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 80)
+|  > TIME_STEP   : Time step = 36 (ID = 79)
+|  < TIME_STEP   : Time step = 37 (ID = 81)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 82)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.98721147
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 82)
+|  > TIME_STEP   : Time step = 37 (ID = 81)
+|  < TIME_STEP   : Time step = 38 (ID = 83)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 84)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.98711103
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 84)
+|  > TIME_STEP   : Time step = 38 (ID = 83)
+|  < TIME_STEP   : Time step = 39 (ID = 85)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 86)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9874101
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 86)
+|  > TIME_STEP   : Time step = 39 (ID = 85)
+|  < TIME_STEP   : Time step = 40 (ID = 87)
+|  |  < OUTPUT_STEP : Output time step = 40 (ID = 87)
+|  |  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 88)
+|  |  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9869848
+|  |  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 88)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 4
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(DPD)      = 966512.3
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(DPD) = 1450344.4
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(DPD) = 1449230.5
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(DPD) = 1449260.9
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(Estat)      = -1419.3693
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(Estat) = -609.91644
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(Estat) = -617.3817
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(Estat) = -741.41705
+|  |  |  QUANTITY    : DpdSimulationTask.call: Temperature              = 1.0265427
+|  |  |  QUANTITY    : DpdSimulationTask.call: Upot(DPD)                = 966512.3
+|  |  |  QUANTITY    : DpdSimulationTask.call: Upot(Bonds)              = 0.0
+|  |  |  QUANTITY    : DpdSimulationTask.call: Upot(Electrostatics)     = -1419.3693
+|  |  |  QUANTITY    : DpdSimulationTask.call: Upot(total)              = 965092.94
+|  |  |  QUANTITY    : DpdSimulationTask.call: Ukin                     = 323360.94
+|  |  |  QUANTITY    : DpdSimulationTask.call: U(total)                 = 1288453.9
+|  |  |  QUANTITY    : DpdSimulationTask.call: Surface Tension X        = 0.68781304
+|  |  |  QUANTITY    : DpdSimulationTask.call: Surface Tension Y        = -0.3025465
+|  |  |  QUANTITY    : DpdSimulationTask.call: Surface Tension Z        = -0.385193
+|  |  |  QUANTITY    : DpdSimulationTask.call: Surface Tension Norm     = 0.8443902
+|  |  |  QUANTITY    : DpdSimulationTask.call: DPD Surface Tension X    = 0.646821
+|  |  |  QUANTITY    : DpdSimulationTask.call: DPD Surface Tension Y    = -0.33684146
+|  |  |  QUANTITY    : DpdSimulationTask.call: DPD Surface Tension Z    = -0.3100531
+|  |  |  QUANTITY    : DpdSimulationTask.call: DPD Surface Tension Norm = 0.7924472
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  PARTICLE    : DpdSimulationTask.call: DPD conservat. F (min/mean/max) = 0.17552374 / 10.328999 / 36.35069
+|  |  |  PARTICLE    : DpdSimulationTask.call: DPD random F     (min/mean/max) = 0.19455747 / 11.783905 / 39.136673
+|  |  |  PARTICLE    : DpdSimulationTask.call: DPD dissipat. F  (min/mean/max) = 0.03641479 / 2.3515117 / 15.622017
+|  |  |  PARTICLE    : DpdSimulationTask.call: Bond F is not defined
+|  |  |  PARTICLE    : DpdSimulationTask.call: Electrostatics F (min/mean/max) = 0.010856429 / 0.6794969 / 2.263687
+|  |  |  PARTICLE    : DpdSimulationTask.call: Total F          (min/mean/max) = 0.29346615 / 15.740988 / 59.40121
+|  |  |  PARTICLE    : DpdSimulationTask.call: Velocity v       (min/mean/max) = 0.019281432 / 1.6173915 / 5.124553
+|  |  > OUTPUT_STEP : Output time step = 40 (ID = 87)
+|  > TIME_STEP   : Time step = 40 (ID = 87)
+|  < TIME_STEP   : Time step = 41 (ID = 89)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 90)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9868063
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 90)
+|  > TIME_STEP   : Time step = 41 (ID = 89)
+|  < TIME_STEP   : Time step = 42 (ID = 91)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 92)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.98779887
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 92)
+|  > TIME_STEP   : Time step = 42 (ID = 91)
+|  < TIME_STEP   : Time step = 43 (ID = 93)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 94)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9888326
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 94)
+|  > TIME_STEP   : Time step = 43 (ID = 93)
+|  < TIME_STEP   : Time step = 44 (ID = 95)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 96)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9883509
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 96)
+|  > TIME_STEP   : Time step = 44 (ID = 95)
+|  < TIME_STEP   : Time step = 45 (ID = 97)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 98)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9874492
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 98)
+|  > TIME_STEP   : Time step = 45 (ID = 97)
+|  < TIME_STEP   : Time step = 46 (ID = 99)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 100)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9867584
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 100)
+|  > TIME_STEP   : Time step = 46 (ID = 99)
+|  < TIME_STEP   : Time step = 47 (ID = 101)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 102)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.98667204
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 102)
+|  > TIME_STEP   : Time step = 47 (ID = 101)
+|  < TIME_STEP   : Time step = 48 (ID = 103)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 104)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.98632103
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 104)
+|  > TIME_STEP   : Time step = 48 (ID = 103)
+|  < TIME_STEP   : Time step = 49 (ID = 105)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 106)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9862838
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 106)
+|  > TIME_STEP   : Time step = 49 (ID = 105)
+|  < TIME_STEP   : Time step = 50 (ID = 107)
+|  |  < OUTPUT_STEP : Output time step = 50 (ID = 107)
+|  |  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 108)
+|  |  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.98694956
+|  |  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 108)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 4
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(DPD)      = 964206.6
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(DPD) = 1448569.6
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(DPD) = 1449512.6
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(DPD) = 1449073.9
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(Estat)      = -1516.278
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(Estat) = -687.8995
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(Estat) = -746.03253
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(Estat) = -812.40625
+|  |  |  QUANTITY    : DpdSimulationTask.call: Temperature              = 1.026616
+|  |  |  QUANTITY    : DpdSimulationTask.call: Upot(DPD)                = 964206.6
+|  |  |  QUANTITY    : DpdSimulationTask.call: Upot(Bonds)              = 0.0
+|  |  |  QUANTITY    : DpdSimulationTask.call: Upot(Electrostatics)     = -1516.278
+|  |  |  QUANTITY    : DpdSimulationTask.call: Upot(total)              = 962690.4
+|  |  |  QUANTITY    : DpdSimulationTask.call: Ukin                     = 323384.03
+|  |  |  QUANTITY    : DpdSimulationTask.call: U(total)                 = 1286074.4
+|  |  |  QUANTITY    : DpdSimulationTask.call: Surface Tension X        = -0.37224036
+|  |  |  QUANTITY    : DpdSimulationTask.call: Surface Tension Y        = 0.40918475
+|  |  |  QUANTITY    : DpdSimulationTask.call: Surface Tension Z        = -0.03694438
+|  |  |  QUANTITY    : DpdSimulationTask.call: Surface Tension Norm     = 0.5544005
+|  |  |  QUANTITY    : DpdSimulationTask.call: DPD Surface Tension X    = -0.42603788
+|  |  |  QUANTITY    : DpdSimulationTask.call: DPD Surface Tension Y    = 0.40675613
+|  |  |  QUANTITY    : DpdSimulationTask.call: DPD Surface Tension Z    = 0.019281728
+|  |  |  QUANTITY    : DpdSimulationTask.call: DPD Surface Tension Norm = 0.5893476
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  PARTICLE    : DpdSimulationTask.call: DPD conservat. F (min/mean/max) = 0.16330954 / 10.308232 / 35.84601
+|  |  |  PARTICLE    : DpdSimulationTask.call: DPD random F     (min/mean/max) = 0.12253692 / 11.809512 / 40.86212
+|  |  |  PARTICLE    : DpdSimulationTask.call: DPD dissipat. F  (min/mean/max) = 0.019256862 / 2.3493922 / 19.508621
+|  |  |  PARTICLE    : DpdSimulationTask.call: Bond F is not defined
+|  |  |  PARTICLE    : DpdSimulationTask.call: Electrostatics F (min/mean/max) = 0.032046106 / 0.66481286 / 2.239655
+|  |  |  PARTICLE    : DpdSimulationTask.call: Total F          (min/mean/max) = 0.14489889 / 15.7392235 / 63.28264
+|  |  |  PARTICLE    : DpdSimulationTask.call: Velocity v       (min/mean/max) = 0.009941029 / 1.6172806 / 5.2531962
+|  |  > OUTPUT_STEP : Output time step = 50 (ID = 107)
+|  > TIME_STEP   : Time step = 50 (ID = 107)
+|  < TIME_STEP   : Time step = 51 (ID = 109)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 110)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.98724824
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 110)
+|  > TIME_STEP   : Time step = 51 (ID = 109)
+|  < TIME_STEP   : Time step = 52 (ID = 111)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 112)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9881558
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 112)
+|  > TIME_STEP   : Time step = 52 (ID = 111)
+|  < TIME_STEP   : Time step = 53 (ID = 113)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 114)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.98863417
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 114)
+|  > TIME_STEP   : Time step = 53 (ID = 113)
+|  < TIME_STEP   : Time step = 54 (ID = 115)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 116)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.98867965
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 116)
+|  > TIME_STEP   : Time step = 54 (ID = 115)
+|  < TIME_STEP   : Time step = 55 (ID = 117)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 118)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9878997
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 118)
+|  > TIME_STEP   : Time step = 55 (ID = 117)
+|  < TIME_STEP   : Time step = 56 (ID = 119)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 120)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9883245
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 120)
+|  > TIME_STEP   : Time step = 56 (ID = 119)
+|  < TIME_STEP   : Time step = 57 (ID = 121)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 122)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9886474
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 122)
+|  > TIME_STEP   : Time step = 57 (ID = 121)
+|  < TIME_STEP   : Time step = 58 (ID = 123)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 124)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.98850584
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 124)
+|  > TIME_STEP   : Time step = 58 (ID = 123)
+|  < TIME_STEP   : Time step = 59 (ID = 125)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 126)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.98872733
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 126)
+|  > TIME_STEP   : Time step = 59 (ID = 125)
+|  < TIME_STEP   : Time step = 60 (ID = 127)
+|  |  < OUTPUT_STEP : Output time step = 60 (ID = 127)
+|  |  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 128)
+|  |  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9885862
+|  |  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 128)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 4
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(DPD)      = 963558.2
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(DPD) = 1448283.4
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(DPD) = 1449387.0
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(DPD) = 1448979.0
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(Estat)      = -1597.4634
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(Estat) = -790.1977
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(Estat) = -727.6078
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(Estat) = -801.9656
+|  |  |  QUANTITY    : DpdSimulationTask.call: Temperature              = 1.0232196
+|  |  |  QUANTITY    : DpdSimulationTask.call: Upot(DPD)                = 963558.2
+|  |  |  QUANTITY    : DpdSimulationTask.call: Upot(Bonds)              = 0.0
+|  |  |  QUANTITY    : DpdSimulationTask.call: Upot(Electrostatics)     = -1597.4634
+|  |  |  QUANTITY    : DpdSimulationTask.call: Upot(total)              = 961960.75
+|  |  |  QUANTITY    : DpdSimulationTask.call: Ukin                     = 322314.2
+|  |  |  QUANTITY    : DpdSimulationTask.call: U(total)                 = 1284275.0
+|  |  |  QUANTITY    : DpdSimulationTask.call: Surface Tension X        = -0.544672
+|  |  |  QUANTITY    : DpdSimulationTask.call: Surface Tension Y        = 0.48535493
+|  |  |  QUANTITY    : DpdSimulationTask.call: Surface Tension Z        = 0.05931707
+|  |  |  QUANTITY    : DpdSimulationTask.call: Surface Tension Norm     = 0.7319532
+|  |  |  QUANTITY    : DpdSimulationTask.call: DPD Surface Tension X    = -0.52965873
+|  |  |  QUANTITY    : DpdSimulationTask.call: DPD Surface Tension Y    = 0.44495162
+|  |  |  QUANTITY    : DpdSimulationTask.call: DPD Surface Tension Z    = 0.08463354
+|  |  |  QUANTITY    : DpdSimulationTask.call: DPD Surface Tension Norm = 0.6969097
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  PARTICLE    : DpdSimulationTask.call: DPD conservat. F (min/mean/max) = 0.14001457 / 10.30395 / 34.602207
+|  |  |  PARTICLE    : DpdSimulationTask.call: DPD random F     (min/mean/max) = 0.14233486 / 11.782893 / 41.00316
+|  |  |  PARTICLE    : DpdSimulationTask.call: DPD dissipat. F  (min/mean/max) = 0.016817512 / 2.3392856 / 19.488007
+|  |  |  PARTICLE    : DpdSimulationTask.call: Bond F is not defined
+|  |  |  PARTICLE    : DpdSimulationTask.call: Electrostatics F (min/mean/max) = 0.03075933 / 0.6528459 / 1.96174
+|  |  |  PARTICLE    : DpdSimulationTask.call: Total F          (min/mean/max) = 0.25251198 / 15.722992 / 61.665436
+|  |  |  PARTICLE    : DpdSimulationTask.call: Velocity v       (min/mean/max) = 0.013375978 / 1.6145936 / 5.256571
+|  |  > OUTPUT_STEP : Output time step = 60 (ID = 127)
+|  > TIME_STEP   : Time step = 60 (ID = 127)
+|  < TIME_STEP   : Time step = 61 (ID = 129)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 130)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.98877394
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 130)
+|  > TIME_STEP   : Time step = 61 (ID = 129)
+|  < TIME_STEP   : Time step = 62 (ID = 131)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 132)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9884917
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 132)
+|  > TIME_STEP   : Time step = 62 (ID = 131)
+|  < TIME_STEP   : Time step = 63 (ID = 133)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 134)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9896244
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 134)
+|  > TIME_STEP   : Time step = 63 (ID = 133)
+|  < TIME_STEP   : Time step = 64 (ID = 135)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 136)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9894839
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 136)
+|  > TIME_STEP   : Time step = 64 (ID = 135)
+|  < TIME_STEP   : Time step = 65 (ID = 137)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 138)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.98971605
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 138)
+|  > TIME_STEP   : Time step = 65 (ID = 137)
+|  < TIME_STEP   : Time step = 66 (ID = 139)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 140)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9897675
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 140)
+|  > TIME_STEP   : Time step = 66 (ID = 139)
+|  < TIME_STEP   : Time step = 67 (ID = 141)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 142)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9903078
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 142)
+|  > TIME_STEP   : Time step = 67 (ID = 141)
+|  < TIME_STEP   : Time step = 68 (ID = 143)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 144)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9906025
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 144)
+|  > TIME_STEP   : Time step = 68 (ID = 143)
+|  < TIME_STEP   : Time step = 69 (ID = 145)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 146)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.99017614
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 146)
+|  > TIME_STEP   : Time step = 69 (ID = 145)
+|  < TIME_STEP   : Time step = 70 (ID = 147)
+|  |  < OUTPUT_STEP : Output time step = 70 (ID = 147)
+|  |  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 148)
+|  |  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9898568
+|  |  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 148)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 4
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(DPD)      = 962636.8
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(DPD) = 1446858.9
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(DPD) = 1446560.9
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(DPD) = 1447854.4
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(Estat)      = -1661.9515
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(Estat) = -856.03033
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(Estat) = -886.6924
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(Estat) = -841.8767
+|  |  |  QUANTITY    : DpdSimulationTask.call: Temperature              = 1.0205945
+|  |  |  QUANTITY    : DpdSimulationTask.call: Upot(DPD)                = 962636.8
+|  |  |  QUANTITY    : DpdSimulationTask.call: Upot(Bonds)              = 0.0
+|  |  |  QUANTITY    : DpdSimulationTask.call: Upot(Electrostatics)     = -1661.9515
+|  |  |  QUANTITY    : DpdSimulationTask.call: Upot(total)              = 960974.9
+|  |  |  QUANTITY    : DpdSimulationTask.call: Ukin                     = 321487.25
+|  |  |  QUANTITY    : DpdSimulationTask.call: U(total)                 = 1282462.1
+|  |  |  QUANTITY    : DpdSimulationTask.call: Surface Tension X        = -0.20039749
+|  |  |  QUANTITY    : DpdSimulationTask.call: Surface Tension Y        = -0.49080092
+|  |  |  QUANTITY    : DpdSimulationTask.call: Surface Tension Z        = 0.6911984
+|  |  |  QUANTITY    : DpdSimulationTask.call: Surface Tension Norm     = 0.87109125
+|  |  |  QUANTITY    : DpdSimulationTask.call: DPD Surface Tension X    = -0.20532832
+|  |  |  QUANTITY    : DpdSimulationTask.call: DPD Surface Tension Y    = -0.4685018
+|  |  |  QUANTITY    : DpdSimulationTask.call: DPD Surface Tension Z    = 0.67383015
+|  |  |  QUANTITY    : DpdSimulationTask.call: DPD Surface Tension Norm = 0.84599096
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  PARTICLE    : DpdSimulationTask.call: DPD conservat. F (min/mean/max) = 0.2784427 / 10.263871 / 32.811752
+|  |  |  PARTICLE    : DpdSimulationTask.call: DPD random F     (min/mean/max) = 0.17043419 / 11.775893 / 40.63295
+|  |  |  PARTICLE    : DpdSimulationTask.call: DPD dissipat. F  (min/mean/max) = 0.022006555 / 2.337929 / 15.429163
+|  |  |  PARTICLE    : DpdSimulationTask.call: Bond F is not defined
+|  |  |  PARTICLE    : DpdSimulationTask.call: Electrostatics F (min/mean/max) = 0.030066838 / 0.6433983 / 1.838019
+|  |  |  PARTICLE    : DpdSimulationTask.call: Total F          (min/mean/max) = 0.34991845 / 15.701778 / 63.1477
+|  |  |  PARTICLE    : DpdSimulationTask.call: Velocity v       (min/mean/max) = 0.030178577 / 1.612167 / 5.522928
+|  |  > OUTPUT_STEP : Output time step = 70 (ID = 147)
+|  > TIME_STEP   : Time step = 70 (ID = 147)
+|  < TIME_STEP   : Time step = 71 (ID = 149)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 150)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9895754
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 150)
+|  > TIME_STEP   : Time step = 71 (ID = 149)
+|  < TIME_STEP   : Time step = 72 (ID = 151)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 152)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.99049217
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 152)
+|  > TIME_STEP   : Time step = 72 (ID = 151)
+|  < TIME_STEP   : Time step = 73 (ID = 153)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 154)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9913972
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 154)
+|  > TIME_STEP   : Time step = 73 (ID = 153)
+|  < TIME_STEP   : Time step = 74 (ID = 155)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 156)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.99222225
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 156)
+|  > TIME_STEP   : Time step = 74 (ID = 155)
+|  < TIME_STEP   : Time step = 75 (ID = 157)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 158)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9922407
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 158)
+|  > TIME_STEP   : Time step = 75 (ID = 157)
+|  < TIME_STEP   : Time step = 76 (ID = 159)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 160)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.99272233
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 160)
+|  > TIME_STEP   : Time step = 76 (ID = 159)
+|  < TIME_STEP   : Time step = 77 (ID = 161)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 162)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9916831
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 162)
+|  > TIME_STEP   : Time step = 77 (ID = 161)
+|  < TIME_STEP   : Time step = 78 (ID = 163)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 164)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.99067825
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 164)
+|  > TIME_STEP   : Time step = 78 (ID = 163)
+|  < TIME_STEP   : Time step = 79 (ID = 165)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 166)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.99112123
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 166)
+|  > TIME_STEP   : Time step = 79 (ID = 165)
+|  < TIME_STEP   : Time step = 80 (ID = 167)
+|  |  < OUTPUT_STEP : Output time step = 80 (ID = 167)
+|  |  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 168)
+|  |  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9916476
+|  |  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 168)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 4
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(DPD)      = 962366.4
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(DPD) = 1446498.1
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(DPD) = 1447242.0
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(DPD) = 1447084.0
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(Estat)      = -1687.0438
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(Estat) = -914.0365
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(Estat) = -990.4564
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(Estat) = -814.9513
+|  |  |  QUANTITY    : DpdSimulationTask.call: Temperature              = 1.0169116
+|  |  |  QUANTITY    : DpdSimulationTask.call: Upot(DPD)                = 962366.4
+|  |  |  QUANTITY    : DpdSimulationTask.call: Upot(Bonds)              = 0.0
+|  |  |  QUANTITY    : DpdSimulationTask.call: Upot(Electrostatics)     = -1687.0438
+|  |  |  QUANTITY    : DpdSimulationTask.call: Upot(total)              = 960679.3
+|  |  |  QUANTITY    : DpdSimulationTask.call: Ukin                     = 320327.16
+|  |  |  QUANTITY    : DpdSimulationTask.call: U(total)                 = 1281006.5
+|  |  |  QUANTITY    : DpdSimulationTask.call: Surface Tension X        = -0.398072
+|  |  |  QUANTITY    : DpdSimulationTask.call: Surface Tension Y        = 0.1913454
+|  |  |  QUANTITY    : DpdSimulationTask.call: Surface Tension Z        = 0.20680021
+|  |  |  QUANTITY    : DpdSimulationTask.call: Surface Tension Norm     = 0.48768917
+|  |  |  QUANTITY    : DpdSimulationTask.call: DPD Surface Tension X    = -0.3914485
+|  |  |  QUANTITY    : DpdSimulationTask.call: DPD Surface Tension Y    = 0.26552853
+|  |  |  QUANTITY    : DpdSimulationTask.call: DPD Surface Tension Z    = 0.12599358
+|  |  |  QUANTITY    : DpdSimulationTask.call: DPD Surface Tension Norm = 0.4895015
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  PARTICLE    : DpdSimulationTask.call: DPD conservat. F (min/mean/max) = 0.1515233 / 10.282645 / 34.741974
+|  |  |  PARTICLE    : DpdSimulationTask.call: DPD random F     (min/mean/max) = 0.29682562 / 11.785068 / 41.399467
+|  |  |  PARTICLE    : DpdSimulationTask.call: DPD dissipat. F  (min/mean/max) = 0.016249482 / 2.3345487 / 15.754199
+|  |  |  PARTICLE    : DpdSimulationTask.call: Bond F is not defined
+|  |  |  PARTICLE    : DpdSimulationTask.call: Electrostatics F (min/mean/max) = 0.047024425 / 0.6400469 / 1.8141081
+|  |  |  PARTICLE    : DpdSimulationTask.call: Total F          (min/mean/max) = 0.3236589 / 15.711902 / 59.544376
+|  |  |  PARTICLE    : DpdSimulationTask.call: Velocity v       (min/mean/max) = 0.02095726 / 1.6094849 / 5.1850567
+|  |  > OUTPUT_STEP : Output time step = 80 (ID = 167)
+|  > TIME_STEP   : Time step = 80 (ID = 167)
+|  < TIME_STEP   : Time step = 81 (ID = 169)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 170)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.991581
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 170)
+|  > TIME_STEP   : Time step = 81 (ID = 169)
+|  < TIME_STEP   : Time step = 82 (ID = 171)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 172)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9916914
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 172)
+|  > TIME_STEP   : Time step = 82 (ID = 171)
+|  < TIME_STEP   : Time step = 83 (ID = 173)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 174)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9924779
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 174)
+|  > TIME_STEP   : Time step = 83 (ID = 173)
+|  < TIME_STEP   : Time step = 84 (ID = 175)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 176)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9925954
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 176)
+|  > TIME_STEP   : Time step = 84 (ID = 175)
+|  < TIME_STEP   : Time step = 85 (ID = 177)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 178)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.99242294
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 178)
+|  > TIME_STEP   : Time step = 85 (ID = 177)
+|  < TIME_STEP   : Time step = 86 (ID = 179)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 180)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9925421
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 180)
+|  > TIME_STEP   : Time step = 86 (ID = 179)
+|  < TIME_STEP   : Time step = 87 (ID = 181)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 182)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9931418
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 182)
+|  > TIME_STEP   : Time step = 87 (ID = 181)
+|  < TIME_STEP   : Time step = 88 (ID = 183)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 184)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.99301744
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 184)
+|  > TIME_STEP   : Time step = 88 (ID = 183)
+|  < TIME_STEP   : Time step = 89 (ID = 185)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 186)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9937712
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 186)
+|  > TIME_STEP   : Time step = 89 (ID = 185)
+|  < TIME_STEP   : Time step = 90 (ID = 187)
+|  |  < OUTPUT_STEP : Output time step = 90 (ID = 187)
+|  |  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 188)
+|  |  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.99342734
+|  |  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 188)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 4
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(DPD)      = 962048.8
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(DPD) = 1446110.9
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(DPD) = 1446922.9
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(DPD) = 1446424.5
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(Estat)      = -1701.7428
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(Estat) = -935.20447
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(Estat) = -1019.1799
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(Estat) = -866.10834
+|  |  |  QUANTITY    : DpdSimulationTask.call: Temperature              = 1.0132712
+|  |  |  QUANTITY    : DpdSimulationTask.call: Upot(DPD)                = 962048.8
+|  |  |  QUANTITY    : DpdSimulationTask.call: Upot(Bonds)              = 0.0
+|  |  |  QUANTITY    : DpdSimulationTask.call: Upot(Electrostatics)     = -1701.7428
+|  |  |  QUANTITY    : DpdSimulationTask.call: Upot(total)              = 960347.06
+|  |  |  QUANTITY    : DpdSimulationTask.call: Ukin                     = 319180.44
+|  |  |  QUANTITY    : DpdSimulationTask.call: U(total)                 = 1279527.5
+|  |  |  QUANTITY    : DpdSimulationTask.call: Surface Tension X        = -0.32697982
+|  |  |  QUANTITY    : DpdSimulationTask.call: Surface Tension Y        = 0.31601426
+|  |  |  QUANTITY    : DpdSimulationTask.call: Surface Tension Z        = 0.010965562
+|  |  |  QUANTITY    : DpdSimulationTask.call: Surface Tension Norm     = 0.4548638
+|  |  |  QUANTITY    : DpdSimulationTask.call: DPD Surface Tension X    = -0.33139548
+|  |  |  QUANTITY    : DpdSimulationTask.call: DPD Surface Tension Y    = 0.38570815
+|  |  |  QUANTITY    : DpdSimulationTask.call: DPD Surface Tension Z    = -0.054386247
+|  |  |  QUANTITY    : DpdSimulationTask.call: DPD Surface Tension Norm = 0.51142114
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  PARTICLE    : DpdSimulationTask.call: DPD conservat. F (min/mean/max) = 0.19152535 / 10.270555 / 36.369686
+|  |  |  PARTICLE    : DpdSimulationTask.call: DPD random F     (min/mean/max) = 0.28742564 / 11.786901 / 45.514008
+|  |  |  PARTICLE    : DpdSimulationTask.call: DPD dissipat. F  (min/mean/max) = 0.019610783 / 2.321679 / 16.438753
+|  |  |  PARTICLE    : DpdSimulationTask.call: Bond F is not defined
+|  |  |  PARTICLE    : DpdSimulationTask.call: Electrostatics F (min/mean/max) = 0.010876438 / 0.6392923 / 2.0327823
+|  |  |  PARTICLE    : DpdSimulationTask.call: Total F          (min/mean/max) = 0.25155896 / 15.69564 / 68.78327
+|  |  |  PARTICLE    : DpdSimulationTask.call: Velocity v       (min/mean/max) = 0.011551314 / 1.6069424 / 5.212605
+|  |  > OUTPUT_STEP : Output time step = 90 (ID = 187)
+|  > TIME_STEP   : Time step = 90 (ID = 187)
+|  < TIME_STEP   : Time step = 91 (ID = 189)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 190)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9932369
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 190)
+|  > TIME_STEP   : Time step = 91 (ID = 189)
+|  < TIME_STEP   : Time step = 92 (ID = 191)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 192)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.99385655
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 192)
+|  > TIME_STEP   : Time step = 92 (ID = 191)
+|  < TIME_STEP   : Time step = 93 (ID = 193)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 194)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9943216
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 194)
+|  > TIME_STEP   : Time step = 93 (ID = 193)
+|  < TIME_STEP   : Time step = 94 (ID = 195)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 196)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.99467164
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 196)
+|  > TIME_STEP   : Time step = 94 (ID = 195)
+|  < TIME_STEP   : Time step = 95 (ID = 197)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 198)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.99434704
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 198)
+|  > TIME_STEP   : Time step = 95 (ID = 197)
+|  < TIME_STEP   : Time step = 96 (ID = 199)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 200)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9937783
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 200)
+|  > TIME_STEP   : Time step = 96 (ID = 199)
+|  < TIME_STEP   : Time step = 97 (ID = 201)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 202)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9932665
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 202)
+|  > TIME_STEP   : Time step = 97 (ID = 201)
+|  < TIME_STEP   : Time step = 98 (ID = 203)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 204)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.993553
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 204)
+|  > TIME_STEP   : Time step = 98 (ID = 203)
+|  < TIME_STEP   : Time step = 99 (ID = 205)
+|  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 206)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.994148
+|  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 206)
+|  > TIME_STEP   : Time step = 99 (ID = 205)
+|  < TIME_STEP   : Time step = 100 (ID = 207)
+|  |  < OUTPUT_STEP : Output time step = 100 (ID = 207)
+|  |  |  < METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 208)
+|  |  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  |  V_SCALE     : S1mvvTimeStepCalculator.calculate, velocity scale factor WITHOUT scaling = 0.9943648
+|  |  |  > METHOD_CALL : S1mvvTimeStepCalculator.calculate (ID = 208)
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 4
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(DPD)      = 961526.8
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(DPD) = 1446102.9
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(DPD) = 1445871.8
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(DPD) = 1446359.1
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: uPot(Estat)      = -1707.0518
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureX(Estat) = -966.2163
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureY(Estat) = -1043.7794
+|  |  |  QUANTITY    : PotentialAccumulator.accumulate: PressureZ(Estat) = -923.15656
+|  |  |  QUANTITY    : DpdSimulationTask.call: Temperature              = 1.0113616
+|  |  |  QUANTITY    : DpdSimulationTask.call: Upot(DPD)                = 961526.8
+|  |  |  QUANTITY    : DpdSimulationTask.call: Upot(Bonds)              = 0.0
+|  |  |  QUANTITY    : DpdSimulationTask.call: Upot(Electrostatics)     = -1707.0518
+|  |  |  QUANTITY    : DpdSimulationTask.call: Upot(total)              = 959819.75
+|  |  |  QUANTITY    : DpdSimulationTask.call: Ukin                     = 318578.9
+|  |  |  QUANTITY    : DpdSimulationTask.call: U(total)                 = 1278398.6
+|  |  |  QUANTITY    : DpdSimulationTask.call: Surface Tension X        = 0.002722992
+|  |  |  QUANTITY    : DpdSimulationTask.call: Surface Tension Y        = -0.269797
+|  |  |  QUANTITY    : DpdSimulationTask.call: Surface Tension Z        = 0.2671476
+|  |  |  QUANTITY    : DpdSimulationTask.call: Surface Tension Norm     = 0.37969154
+|  |  |  QUANTITY    : DpdSimulationTask.call: DPD Surface Tension X    = -0.007433032
+|  |  |  QUANTITY    : DpdSimulationTask.call: DPD Surface Tension Y    = -0.21151024
+|  |  |  QUANTITY    : DpdSimulationTask.call: DPD Surface Tension Z    = 0.21894328
+|  |  |  QUANTITY    : DpdSimulationTask.call: DPD Surface Tension Norm = 0.3045127
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Current parallel task number = 8
+|  |  |  PARALLEL    : ParticlePairInteractionCalculator.determineParticleIndexPairs: Sequential calculation.
+|  |  |  PARTICLE    : DpdSimulationTask.call: DPD conservat. F (min/mean/max) = 0.30610734 / 10.252748 / 35.63388
+|  |  |  PARTICLE    : DpdSimulationTask.call: DPD random F     (min/mean/max) = 0.17834395 / 11.773438 / 42.208393
+|  |  |  PARTICLE    : DpdSimulationTask.call: DPD dissipat. F  (min/mean/max) = 0.025724258 / 2.3295581 / 17.27196
+|  |  |  PARTICLE    : DpdSimulationTask.call: Bond F is not defined
+|  |  |  PARTICLE    : DpdSimulationTask.call: Electrostatics F (min/mean/max) = 0.02228101 / 0.6415629 / 2.0726984
+|  |  |  PARTICLE    : DpdSimulationTask.call: Total F          (min/mean/max) = 0.35289186 / 15.686583 / 58.780376
+|  |  |  PARTICLE    : DpdSimulationTask.call: Velocity v       (min/mean/max) = 0.033076517 / 1.6048285 / 5.2396655
+|  |  > OUTPUT_STEP : Output time step = 100 (ID = 207)
+|  > TIME_STEP   : Time step = 100 (ID = 207)
+|  PROGRESS    : Time-step loop finished
+|  PROGRESS    : Postprocessing for time-step loop finished
+> METHOD_CALL : DpdSimulationTask.call (ID = 4)
+< METHOD_CALL : DpdSimulationTask.releaseMemoryAndFinishLogging (ID = 209)
+> METHOD_CALL : DpdSimulationTask.releaseMemoryAndFinishLogging (ID = 209)
+----------------------------------------
+Logger finished at 2022/12/08 - 10:34:34
+----------------------------------------

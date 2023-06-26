@@ -1,0 +1,181 @@
+# Input file for Jdpd created by MFsim
+
+# Description 5000 Ion Pairs - CDS
+# Timestamp 2021/06/03 - 16:44:02
+# ParticleSetFilename ParticleSet_H2O_V02.txt
+# ApplicationVersion MFsim V 2.4.0.0
+
+
+# ------------------------------------------------------------------------------
+[GENERAL]
+# ------------------------------------------------------------------------------
+
+Version 1.0.0.0
+
+[/GENERAL]
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+[PARTICLE_DESCRIPTION]
+# ------------------------------------------------------------------------------
+
+ParticleTable
+TABLE_START
+H2O  0  18.02 
+H2ON -1 18.02 
+H2OP 1  18.02 
+TABLE_END
+
+[/PARTICLE_DESCRIPTION]
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+[CHEMICAL_SYSTEM_DESCRIPTION]
+# ------------------------------------------------------------------------------
+
+MoleculeTable
+TABLE_START
+Water   PositionsBonds0.txt 
+IonPair PositionsBonds1.txt 
+TABLE_END
+
+BoxSize 41.212853 41.212853 41.212853
+
+MoleculeFixation
+TABLE_START
+Water   false false false 1 
+IonPair false false false 1 
+TABLE_END
+
+MoleculeBoundary
+TABLE_START
+Water   false 0 41.212853 false 0 41.212853 false 0 41.212853 1000000000 
+IonPair false 0 41.212853 false 0 41.212853 false 0 41.212853 1000000000 
+TABLE_END
+
+MoleculeFixedVelocity
+TABLE_START
+Water   false 0 false 0 false 0 1 
+IonPair false 0 false 0 false 0 1 
+TABLE_END
+
+MoleculeAcceleration
+TABLE_START
+Water   0 0 0 1 1 
+IonPair 0 0 0 1 1 
+TABLE_END
+
+RadiusOfGyration
+TABLE_START
+Water   false 
+IonPair true  
+TABLE_END
+
+NearestNeighborParticle
+TABLE_START
+IonPair H2ON true  
+IonPair H2OP true  
+Water   H2O  false 
+TABLE_END
+
+NearestNeighborDistance 2
+
+[/CHEMICAL_SYSTEM_DESCRIPTION]
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+[INTERACTION_DESCRIPTION]
+# ------------------------------------------------------------------------------
+
+Temperature 1.000000
+
+DpdSigma 3
+
+IsGaussianRandomDpdForce false
+
+InteractionTable
+TABLE_START
+H2O  H2O  25.000000 
+H2ON H2O  25.000000 
+H2ON H2ON 25.000000 
+H2OP H2O  25.000000 
+H2OP H2ON 25.000000 
+H2OP H2OP 25.000000 
+TABLE_END
+
+# Sequence of parameters:
+# 1. "Cutoff length" is the length in DPD units for cutoff of electrostatic 
+#    interactions.
+# 2. "Maximum force" is the maximum allowed absolute force magnitude in DPD 
+#    units for a charged particle pair (smaller/larger values are truncated to 
+#    this magnitude).
+# 3. "Effective exponent" is the effective exponent for the particle-particle 
+#    distance in the denominator of the electrostatics force calculation 
+#    (the default is 2), e.g. a value of 3 corresponds to a r-dependent 
+#    dielectric constant.
+# 4. "Damping distance" is the length in DPD units up to where electrostatic 
+#    forces may be damped.
+# 5. "Damping factor" is the factor by which electrostatic forces are damped 
+#    within the damping region defined by the damping distance.
+# 6. "Coupling constant" is the value of the electrostatics coupling constant 
+#    for conversion of units.
+# 7. "Charge distribution" is the type of charge distribution 
+#   ("charge smearing"), "None" or "Alejandre".
+# 8. "Decay length" is the length in DPD units for smearing out charges for the 
+#    chosen type of charge distribution (if there is no charge distribution 
+#    this parameter is ignored).
+# 9. "Splitting type" is the type of the splitting function used for 
+#    approximating the Ewald sum. "None" or "Fanourgakis"
+Electrostatics 5 1000 2 5 1 1.600711 Alejandre 1.600711 Fanourgakis
+
+Bonds12Table
+TABLE_START
+H2O  H2O  1 4 true 
+H2ON H2O  1 4 true 
+H2ON H2ON 1 4 true 
+H2OP H2O  1 4 true 
+H2OP H2ON 1 4 true 
+H2OP H2OP 1 4 true 
+TABLE_END
+
+GravitationalAcceleration 0 0 0
+
+[/INTERACTION_DESCRIPTION]
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+[SIMULATION_DESCRIPTION]
+# ------------------------------------------------------------------------------
+
+TimeStepNumber 100
+
+TimeStepLength 0.04
+
+TimeStepFrequencyForOutput 10
+
+IntegrationType S1MVV true none
+
+InitialPotentialEnergyMinimizationStepNumber 100 false
+
+IsInitialPotentialEnergyMinimizationStepOutput false
+
+PeriodicBoundaries true true true
+
+IsDpdUnitMass true
+
+InitialVelocityScalingSteps 10
+
+RandomNumberGenerator ACRNG_XO_SHI_RO_256_SS 1 10000
+
+[/SIMULATION_DESCRIPTION]
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+[SIMULATION_COUNTS]
+# ------------------------------------------------------------------------------
+
+ParticleNumber 210000
+
+[/SIMULATION_COUNTS]
+# ------------------------------------------------------------------------------
+
