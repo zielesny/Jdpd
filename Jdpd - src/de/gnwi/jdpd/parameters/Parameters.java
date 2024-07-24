@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2023  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2024  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -109,6 +109,23 @@ public final class Parameters {
      */
     public boolean hasRestartInfo() {
         return this.restartInfo != null;
+    }
+
+    /**
+     * Returns maximum time step with velocity scaling
+     * 
+     * @return Maximum time step with velocity scaling
+     */
+    public int getMaximumTimeStepWithVelocityScaling() {
+        if (this.hasRestartInfo()) {
+            if (this.restartInfo.isVelocityInitialization()) {
+                return this.restartInfo.getLastTimeStep() + this.simulationDescription.getNumberOfInitialVelocityScalingSteps();
+            } else {
+                return this.simulationDescription.getNumberOfInitialVelocityScalingSteps();
+            }
+        } else {
+            return this.simulationDescription.getNumberOfInitialVelocityScalingSteps();
+        }
     }
     // </editor-fold>
     //

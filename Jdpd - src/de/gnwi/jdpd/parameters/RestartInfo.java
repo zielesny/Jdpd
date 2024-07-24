@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2023  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2024  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -35,26 +35,9 @@ import java.util.zip.GZIPOutputStream;
  * 
  * @author Achim Zielesny
  */
-public class RestartInfo {
+public class RestartInfo extends RestartInfoBase{
     
-    // <editor-fold defaultstate="collapsed" desc="Private static final class variables">
-    /**
-     * Version
-     */
-    private final static String VERSION_1_0_0 = "Version 1.0.0";
-    // </editor-fold>
-    //
     // <editor-fold defaultstate="collapsed" desc="Private final class variables">
-    /**
-     * Last simulation time step to which the particle positions and velocities belong
-     */
-    private final int lastTimeStep;
-
-    /**
-     * Number of additional simulation time steps
-     */
-    private final int additionalTimeStepNumber;
-    
     /**
      * Current x-position of particle in simulation box
      */
@@ -106,9 +89,13 @@ public class RestartInfo {
         double[] aR_z,
         double[] aV_x,
         double[] aV_y,
-        double[] aV_z) {
-        this.lastTimeStep = aLastTimeStep;
-        this.additionalTimeStepNumber = -1;
+        double[] aV_z
+    ) {
+        super(
+            aLastTimeStep, // this.lastTimeStep
+            -1,            // this.additionalTimeStepNumber
+            false          // this.isVelocityInitialization 
+        );
         this.r_x = aR_x;
         this.r_y = aR_y;
         this.r_z = aR_z;
@@ -121,13 +108,21 @@ public class RestartInfo {
      * Constructor
      * 
      * @param anAdditionalTimeStepNumber Number of additional simulation time steps
+     * @param anIsVelocityInitialization True: Velocity initialization is to be 
+     * performed, false: Otherwise
      * @param aRestartInfoFilePathname Pathname of file written with this.writeToFile()
      * @throws IllegalArgumentException Thrown if an argument is illegal.
      */
     public RestartInfo(
         int anAdditionalTimeStepNumber,
+        boolean anIsVelocityInitialization,
         String aRestartInfoFilePathname
-        ) {
+    ) {
+        super(
+            -1,                         // this.lastTimeStep
+            anAdditionalTimeStepNumber, // this.additionalTimeStepNumber
+            anIsVelocityInitialization  // this.isVelocityInitialization 
+        );
         // <editor-fold defaultstate="collapsed" desc="Checks">
         if (anAdditionalTimeStepNumber < 1) {
             throw new IllegalArgumentException("RestartInfo.Constructor: anAdditionalTimeStepNumber < 1.");
@@ -139,7 +134,6 @@ public class RestartInfo {
             throw new IllegalArgumentException("RestartInfo.Constructor: aRestartInfoFilePathname does not exist.");
         }
         // </editor-fold>
-        this.additionalTimeStepNumber = anAdditionalTimeStepNumber;
         BufferedReader tmpBufferedReader = null;
         try {
             String tmpLine;
@@ -205,24 +199,6 @@ public class RestartInfo {
     // </editor-fold>
     //
     // <editor-fold defaultstate="collapsed" desc="Public properties (get)">
-    /**
-     * Last simulation time step to which the particle positions and velocities belong
-     * 
-     * @return Last simulation time step to which the particle positions and velocities belong
-     */
-    public int getLastTimeStep () {
-        return this.lastTimeStep;
-    }
-
-    /**
-     * Number of additional simulation time steps
-     * 
-     * @return Number of additional simulation time steps
-     */
-    public int getAdditionalTimeStepNumber() {
-        return this.additionalTimeStepNumber;
-    }
-    
     /**
      * Current x-position of particle in simulation box
      * 

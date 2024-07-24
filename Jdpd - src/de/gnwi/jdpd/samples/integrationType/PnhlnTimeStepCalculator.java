@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2023  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2024  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -210,7 +210,7 @@ public class PnhlnTimeStepCalculator implements ITimeStepCalculator {
     /**
      * Number of initial velocity scaling steps
      */
-    private final int numberOfInitialVelocityScalingSteps;
+    private final int maximumTimeStepWithVelocityScaling;
     // </editor-fold>
     //
     // <editor-fold defaultstate="collapsed" desc="Private class variables">
@@ -307,7 +307,7 @@ public class PnhlnTimeStepCalculator implements ITimeStepCalculator {
 
         this.gravitationalAcceleration = this.parameters.getInteractionDescription().getGravitationalAcceleration();
 
-        this.numberOfInitialVelocityScalingSteps = this.parameters.getSimulationDescription().getNumberOfInitialVelocityScalingSteps();
+        this.maximumTimeStepWithVelocityScaling = this.parameters.getMaximumTimeStepWithVelocityScaling();
 
         AtomicInteger tmpDummyRandomNumberSeed = new AtomicInteger(0);
         
@@ -766,7 +766,7 @@ public class PnhlnTimeStepCalculator implements ITimeStepCalculator {
             );            
         }
         final double tmpVelocityScaleFactor;
-        if (aCurrentTimeStep <= this.numberOfInitialVelocityScalingSteps) {
+        if (aCurrentTimeStep <= this.maximumTimeStepWithVelocityScaling) {
             tmpVelocityScaleFactor = Utils.scale_v(
                 this.particleArrays.getV_x(),
                 this.particleArrays.getV_y(),

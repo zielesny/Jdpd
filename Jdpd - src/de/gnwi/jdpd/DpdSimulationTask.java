@@ -1,6 +1,6 @@
 /**
  * Jdpd - Molecular Fragment Dissipative Particle Dynamics (DPD) Simulation
- * Copyright (C) 2023  Achim Zielesny (achim.zielesny@googlemail.com)
+ * Copyright (C) 2024  Achim Zielesny (achim.zielesny@googlemail.com)
  * 
  * Source code is available at <https://github.com/zielesny/Jdpd>
  * 
@@ -250,7 +250,10 @@ public class DpdSimulationTask implements Callable<Boolean>, IDpdSimulationTask 
             this.progressMonitor.setSimulationState(IProgressMonitor.SimulationState.PRE_PROCESSING);
             // </editor-fold>
             // <editor-fold defaultstate="collapsed" desc="Preparation of time step loop">
+            // Initialize velocities if necessary (at job start) or defined (at job restart)
             if (!this.parameters.hasRestartInfo()) {
+                this.initialiseVelocities();
+            } else if (this.parameters.getRestartInfo().isVelocityInitialization()) {
                 this.initialiseVelocities();
             }
             
@@ -1142,28 +1145,54 @@ public class DpdSimulationTask implements Callable<Boolean>, IDpdSimulationTask 
                 );
             this.simulationLogger.appendSimulationInit("ParticleArrays initialised WITHOUT aRestartInfo");
         } else {
-            tmpParticleArrays = 
-                new ParticleArrays(
-                    aRestartInfo.getR_x(),
-                    aRestartInfo.getR_y(),
-                    aRestartInfo.getR_z(),
-                    aRestartInfo.getV_x(),
-                    aRestartInfo.getV_y(),
-                    aRestartInfo.getV_z(),
-                    tmpParticleTokens, 
-                    tmpMoleculeNamesOfParticles,
-                    tmpParticleTypeIndices,
-                    tmpMoleculeTypeIndices,
-                    tmpMoleculeIndices,                        
-                    tmpParticleCharges, 
-                    tmpParticleDpdMasses,
-                    tmpParticleMolarMasses,
-                    tmpBondChunkArraysList,
-                    tmpChargedParticleIndices,
-                    tmpIsNearestNeighborBaseParticleDeterminations,
-                    tmpNearestNeighborDistances,
-                    tmpNearestNeighborParticleIndices
-                );
+            if (aRestartInfo.isVelocityInitialization()) {
+                // Velocities are initialized so do NOT use those from restart info
+                tmpParticleArrays = 
+                    new ParticleArrays(
+                        aRestartInfo.getR_x(),
+                        aRestartInfo.getR_y(),
+                        aRestartInfo.getR_z(),
+                        new double[tmpSimulationCounts.getParticleNumber()],
+                        new double[tmpSimulationCounts.getParticleNumber()],
+                        new double[tmpSimulationCounts.getParticleNumber()],
+                        tmpParticleTokens, 
+                        tmpMoleculeNamesOfParticles,
+                        tmpParticleTypeIndices,
+                        tmpMoleculeTypeIndices,
+                        tmpMoleculeIndices,                        
+                        tmpParticleCharges, 
+                        tmpParticleDpdMasses,
+                        tmpParticleMolarMasses,
+                        tmpBondChunkArraysList,
+                        tmpChargedParticleIndices,
+                        tmpIsNearestNeighborBaseParticleDeterminations,
+                        tmpNearestNeighborDistances,
+                        tmpNearestNeighborParticleIndices
+                    );
+            } else {
+                tmpParticleArrays = 
+                    new ParticleArrays(
+                        aRestartInfo.getR_x(),
+                        aRestartInfo.getR_y(),
+                        aRestartInfo.getR_z(),
+                        aRestartInfo.getV_x(),
+                        aRestartInfo.getV_y(),
+                        aRestartInfo.getV_z(),
+                        tmpParticleTokens, 
+                        tmpMoleculeNamesOfParticles,
+                        tmpParticleTypeIndices,
+                        tmpMoleculeTypeIndices,
+                        tmpMoleculeIndices,                        
+                        tmpParticleCharges, 
+                        tmpParticleDpdMasses,
+                        tmpParticleMolarMasses,
+                        tmpBondChunkArraysList,
+                        tmpChargedParticleIndices,
+                        tmpIsNearestNeighborBaseParticleDeterminations,
+                        tmpNearestNeighborDistances,
+                        tmpNearestNeighborParticleIndices
+                    );
+            }
             this.simulationLogger.appendSimulationInit("ParticleArrays initialised WITH aRestartInfo");
         }
         // Set chemical system description
@@ -1209,7 +1238,7 @@ public class DpdSimulationTask implements Callable<Boolean>, IDpdSimulationTask 
     }
     
     /**
-     * NO restart: Initialises velocities 
+     * Initialises velocities 
      * this.parameters.getParticleArrays().getV_x(), 
      * this.parameters.getParticleArrays().getV_y() and 
      * this.parameters.getParticleArrays().getV_z()
@@ -1217,7 +1246,7 @@ public class DpdSimulationTask implements Callable<Boolean>, IDpdSimulationTask 
     private void initialiseVelocities() {
         // <editor-fold defaultstate="collapsed" desc="Method call logging">
         long tmpId = this.simulationLogger.getId();
-        this.simulationLogger.appendMethodCallStart("DpdSimulationTask.initialiseVelocities (NO restart)", tmpId);
+        this.simulationLogger.appendMethodCallStart("DpdSimulationTask.initialiseVelocities", tmpId);
         // </editor-fold>
         IRandom tmpRandomX = this.factory.getNewOrJumpedRandomNumberGenerator(this.randomNumberSeed.incrementAndGet());
         IRandom tmpRandomY = this.factory.getNewOrJumpedRandomNumberGenerator(this.randomNumberSeed.incrementAndGet());
@@ -1252,7 +1281,7 @@ public class DpdSimulationTask implements Callable<Boolean>, IDpdSimulationTask 
         this.simulationLogger.appendVelocityScaleFactor("DpdSimulationTask.initialiseVelocities, velocity scale factor = " + String.valueOf(tmpVelocityScaleFactor));
         // </editor-fold>
         // <editor-fold defaultstate="collapsed" desc="Method call logging">
-        this.simulationLogger.appendMethodCallEnd("DpdSimulationTask.initialiseVelocities (NO restart)", tmpId);
+        this.simulationLogger.appendMethodCallEnd("DpdSimulationTask.initialiseVelocities", tmpId);
         // </editor-fold>
     }
 
